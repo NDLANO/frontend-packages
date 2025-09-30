@@ -9,7 +9,7 @@
 import { rights } from "./licenseRights";
 import { getLocaleOrDefault, type Locale, type LocaleString } from "./types";
 
-type LicenseLocaleStrings = "short" | "title" | "url" | "linkText" | "description" | "abbreviation";
+type LicenseLocaleStrings = "short" | "title" | "url" | "description" | "abbreviation";
 
 export type LicenseLocaleType = Record<LicenseLocaleStrings, string> & { rights: string[] };
 
@@ -20,18 +20,6 @@ const restrictedReuseLocale: LocaleString = {
   nb: "Begrensa gjenbruk",
   nn: "Avgrensa gjenbruk",
   en: "Restricted reuse",
-};
-
-const openLicenseLinkTextLocale: LocaleString = {
-  nb: "Les mer om opphavsrett",
-  nn: "Les meir om opphavsrett",
-  en: "Read more about copyright",
-};
-
-const publicDomainLinkTextLocale: LocaleString = {
-  nb: "Lær mer om public domain-merke",
-  nn: "Lær meir om public domain-merke",
-  en: "Learn more about public domain marks",
 };
 
 const byncndAbbrev = `${rights.CC} ${rights.BY}-${rights.NC}-${rights.ND} ${rights.VERSION}`.toUpperCase();
@@ -53,7 +41,6 @@ const byncnd: LicenseType = {
     en: "CC BY-NC-ND 4.0: Attribution-NonCommercial-NoDerivs",
   },
   url: ccLocaleLink("https://creativecommons.org/licenses/by-nc-nd/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byncndAbbrev, nn: byncndAbbrev, en: byncndAbbrev },
   description: {
     nb: "Denne lisensen er den mest restriktive av våre seks kjernelisenser. Den tillater andre å laste ned ditt verk og dele det med andre så lenge du er navngitt som opphaver, men de kan ikke endre det på noen måte, eller bruke det kommersielt.",
@@ -73,7 +60,6 @@ const byncsa: LicenseType = {
     en: "CC BY-NC-SA 4.0: Attribution-NonCommercial-ShareAlike",
   },
   url: ccLocaleLink("https://creativecommons.org/licenses/by-nc-sa/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byncsaAbbrev, nn: byncsaAbbrev, en: byncsaAbbrev },
   description: {
     nb: "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som den opprinnelige opphaveren og avledete verk må bære en tilsvarende lisens.",
@@ -93,7 +79,6 @@ const bync: LicenseType = {
     en: "CC BY-NC 4.0: Attribution-NonCommercial",
   },
   url: ccLocaleLink("https://creativecommons.org/licenses/by-nc/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byncAbbrev, nn: byncAbbrev, en: byncAbbrev },
   description: {
     nb: "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk for ikke-kommersielle formål. Deres verk må navngi deg som opphaver og også være ikke-kommersielle, men de behøver ikke kreve at verk avledet fra deres bærer de samme vilkårene.",
@@ -113,7 +98,6 @@ const bynd: LicenseType = {
     en: "CC BY-ND 4.0: Attribution-NoDerivs",
   },
   url: ccLocaleLink("https://creativecommons.org/licenses/by-nd/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byndAbbrev, nn: byndAbbrev, en: byndAbbrev },
   description: {
     nb: "Denne lisensen gir mulighet for å videredistribuere verket, både for kommersielle og ikke-kommersielle formål, så lenge det gis videre uendret og i sin helhet, og at du navngis som den som har skapt verket.",
@@ -133,7 +117,6 @@ const bysa: LicenseType = {
     en: "CC BY-SA 4.0: Attribution ShareAlike",
   },
   url: ccLocaleLink("https://creativecommons.org/licenses/by-sa/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: bysaAbbrev, nn: bysaAbbrev, en: bysaAbbrev },
   description: {
     nb: "Fri gjenbruk ved navngivelse. Navngivelse vil si at du oppgir navnet til opphaver(ene). Hvis du deler, må andre også få lov til å dele videre på samme vilkår. Dette sikrer videre gjenbruk og bidrar til delingskultur.",
@@ -149,7 +132,6 @@ const by: LicenseType = {
   short: freeUseLocale,
   title: { nb: "CC BY 4.0: Navngivelse", nn: "CC BY 4.0: Namngiving", en: "CC BY 4.0: Attribution" },
   url: ccLocaleLink("https://creativecommons.org/licenses/by/4.0"),
-  linkText: openLicenseLinkTextLocale,
   abbreviation: { nb: byAbbrev, nn: byAbbrev, en: byAbbrev },
   description: {
     nb: "Denne lisensen lar andre distribuere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, så lenge de navngir deg som den opprinnelige opphaveren. Dette er den mest fleksible og åpne lisensen vi tilbyr. Den anbefales dersom du ønsker maksimal spredning og bruk av materiale under en CC-lisens.",
@@ -167,7 +149,6 @@ const pd: LicenseType = {
     en: "PD: Public Domain Mark",
   },
   url: ccLocaleLink("https://creativecommons.org/publicdomain/mark/1.0"),
-  linkText: publicDomainLinkTextLocale,
   abbreviation: freeUseLocale,
   description: {
     nb: "Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.",
@@ -187,7 +168,6 @@ const cc0: LicenseType = {
     en: "CC0: Public Domain Dedication",
   },
   url: ccLocaleLink("https://creativecommons.org/publicdomain/zero/1.0"),
-  linkText: publicDomainLinkTextLocale,
   abbreviation: { nb: cc0Abbrev, nn: cc0Abbrev, en: cc0Abbrev },
   description: {
     nb: "Dette merket lar andre kopiere, endre, remixe, og bygge videre på ditt verk, også for kommersielle formål, uten å be om tillatelse.",
@@ -205,7 +185,6 @@ const copy: LicenseType = {
     nn: "https://ndla.no/nn/article/opphavsrett",
     en: "https://ndla.no/en/article/opphavsrett",
   },
-  linkText: openLicenseLinkTextLocale,
   abbreviation: restrictedReuseLocale,
   description: {
     nb: "Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.",
@@ -221,7 +200,6 @@ const na: LicenseType = {
   short: { nb: "N/A - ikke relevant", nn: "N/A - ikkje relevant", en: "N/A - not applicable" },
   title: { nb: "N/A - ikke relevant", nn: "N/A - ikkje relevant", en: "N/A - not applicable" },
   url: { nb: "", nn: "", en: "" },
-  linkText: { nb: "N/A", nn: "N/A", en: "N/A" },
   abbreviation: { nb: naAbbreviation, nn: naAbbreviation, en: naAbbreviation },
   description: {
     nb: "Dette merket er ment for innhold som ikke trenger lisens.",
@@ -238,7 +216,6 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
     short: license.short[surelyLocale],
     title: license.title[surelyLocale],
     url: license.url[surelyLocale],
-    linkText: license.linkText[surelyLocale],
     abbreviation: license.abbreviation[surelyLocale],
     description: license.description[surelyLocale],
     rights: license.rights,
@@ -292,7 +269,6 @@ export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | 
         title: abbreviation,
         rights: [],
         description: abbreviation,
-        linkText: abbreviation,
         url: "",
         abbreviation,
       };

@@ -8,7 +8,6 @@
 
 import { i18nInstance } from "../../../../testUtils/i18nTestInstance";
 import {
-  getCopyString,
   figureApa7CopyString,
   webpageReferenceApa7CopyString,
   podcastEpisodeApa7CopyString,
@@ -331,24 +330,4 @@ test("webpageReferenceApa7CopyString return correct content", () => {
   expect(norwegianCopyString).toEqual(
     "Etternavn, A., Person, B., Stor Bedrift. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123",
   );
-});
-
-// function getCopyString
-test("getCopyString returns correct content", () => {
-  const copyright = {
-    creators: [{ name: "Person1", type: "photographer" }],
-    rightsholders: [{ name: "Person2", type: "artist" }],
-    processors: [{ name: "Person3", type: "writer" }],
-  };
-  const copyString = getCopyString("Tittel", undefined, "/path/123", copyright, "https://test.ndla.no", tNB);
-
-  expect(copyString).toContain(" Lest: ");
-
-  const [content, date] = copyString.split(" Lest: ");
-
-  expect(content).toBe(
-    "Fotograf: Person1. Forfatter: Person3. Tittel [Internett]. Kunstner: Person2. Hentet fra: https://test.ndla.no/path/123",
-  );
-
-  expect(date).toMatch(/\d{2}.\d{2}.\d{4}/);
 });

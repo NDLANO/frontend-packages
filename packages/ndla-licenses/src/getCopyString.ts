@@ -23,20 +23,6 @@ export const getLicenseCredits = (copyright?: {
 
 type TranslationFunction = (id: string) => string;
 
-const _oldGetCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
-  if (!roles?.length) {
-    return "";
-  }
-  return (
-    roles
-      .map((creator) => {
-        const type = creator.type && t(`${creator.type.toLowerCase()}`);
-        return `${type}: ${creator.name?.trim()}`;
-      })
-      .join(", ") + ". "
-  );
-};
-
 export const getCreditString = (
   copyright: Partial<CopyrightType> | undefined,
   config: {
@@ -108,15 +94,6 @@ const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
     return fallback;
   }
   return value;
-};
-
-const getSimpleDateString = () => {
-  const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
-  const dd = String(today.getDate()).padStart(2, "0");
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const yyyy = today.getFullYear();
-  return `${dd}.${mm}.${yyyy}`;
 };
 
 export const getDateString = (locale: string, date?: string) => {
@@ -262,40 +239,4 @@ export const podcastEpisodeApa7CopyString = (
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast episode]. https://ndla.no/podkast/1#episode-14
   return creators + dateString + titleString + metaString + "NDLA. " + url;
-};
-
-export const getCopyString = (
-  title: string | undefined,
-  src: string | undefined,
-  path: string | undefined,
-  copyright:
-    | {
-        creators?: Contributor[];
-        rightsholders?: Contributor[];
-        processors?: Contributor[];
-      }
-    | undefined,
-  ndlaFrontendDomain: string | undefined,
-  t: TranslationFunction,
-): string => {
-  const credits = getLicenseCredits(copyright);
-  const creators = _oldGetCreditCopyString(credits.creators, t);
-  const processors = _oldGetCreditCopyString(credits.processors, t);
-  const rightsholders = _oldGetCreditCopyString(credits.rightsholders, t);
-  const titleString = getValueOrFallback(title, t("license.copyText.noTitle")) + " ";
-  const url = (path ? ndlaFrontendDomain + path : src) + " ";
-  const date = getSimpleDateString();
-
-  // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
-  return (
-    creators +
-    processors +
-    titleString +
-    t("license.copyText.internet") +
-    rightsholders +
-    t("license.copyText.downloadedFrom") +
-    url +
-    t("license.copyText.readDate") +
-    date
-  );
 };

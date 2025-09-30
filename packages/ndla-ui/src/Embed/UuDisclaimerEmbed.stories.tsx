@@ -12,9 +12,9 @@ import type { UUDisclaimerData, UuDisclaimerEmbedData } from "@ndla/types-embed"
 import H5pEmbed from "./H5pEmbed";
 import IframeEmbed from "./IframeEmbed";
 import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
-import { ArticleWrapper, ArticleContent } from "../Article";
-import CopyParagraphButton from "../CopyParagraphButton";
-import FactBox from "../FactBox";
+import { ArticleWrapper, ArticleContent } from "../Article/Article";
+import CopyParagraphButton from "../CopyParagraphButton/CopyParagraphButton";
+import FactBox from "../FactBox/FactBox";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",

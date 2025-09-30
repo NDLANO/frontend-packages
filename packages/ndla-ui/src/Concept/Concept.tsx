@@ -11,7 +11,11 @@ import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IDraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import type { ConceptVisualElementMeta } from "@ndla/types-embed";
-import { BrightcoveEmbed, ExternalEmbed, H5pEmbed, IframeEmbed, ImageEmbed } from "../Embed";
+import BrightcoveEmbed from "../Embed/BrightcoveEmbed";
+import ExternalEmbed from "../Embed/ExternalEmbed";
+import H5pEmbed from "../Embed/H5pEmbed";
+import IframeEmbed from "../Embed/IframeEmbed";
+import ImageEmbed from "../Embed/ImageEmbed";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 

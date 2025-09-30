@@ -9,7 +9,7 @@
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import type { FootnoteData, FootnoteEmbedData } from "@ndla/types-embed";
 import FootnoteEmbed from "./FootnoteEmbed";
-import { ArticleByline } from "../Article";
+import { ArticleByline } from "../Article/ArticleByline";
 
 /**
  * Kildehenvisninger benytter [APA-stilen](https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/) for utlistning nederst på siden.

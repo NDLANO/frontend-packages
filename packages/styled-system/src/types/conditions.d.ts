@@ -6,8 +6,6 @@ export interface Conditions {
 	"_chinese": string
 	/** `&:has([aria-invalid='true']), &[aria-invalid='true']` */
 	"_ariaInvalid": string
-	/** `&:is(:disabled, [disabled], [data-disabled], [aria-disabled='true'])` */
-	"_disabled": string
 	/** `&:is([data-state="on"])` */
 	"_on": string
 	/** `&:is(:hover, [data-hover])` */
@@ -18,6 +16,8 @@ export interface Conditions {
 	"_focusWithin": string
 	/** `&:is(:focus-visible, [data-focus-visible])` */
 	"_focusVisible": string
+	/** `&:is(:disabled, [disabled], [data-disabled], [aria-disabled=true])` */
+	"_disabled": string
 	/** `&:is(:active, [data-active])` */
 	"_active": string
 	/** `&:visited` */

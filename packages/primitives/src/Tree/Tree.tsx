@@ -122,7 +122,9 @@ export interface TreeRootProviderProps<T extends TreeNode = TreeNode>
   extends TreeView.RootProviderProps<T>,
     StyledProps {}
 
-const InternalTreeRootProvider = withProvider<ElementType<TreeRootProviderProps>>(TreeView.RootProvider, "root");
+const InternalTreeRootProvider = withProvider<ElementType<TreeRootProviderProps>>(TreeView.RootProvider, "root", {
+  baseComponent: true,
+});
 
 export const TreeRootProvider = <T extends TreeNode = TreeNode>(props: TreeRootProviderProps<T>) => (
   <InternalTreeRootProvider {...props} />

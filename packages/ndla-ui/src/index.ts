@@ -57,10 +57,7 @@ export { PdfFile } from "./FileList/PdfFile";
 
 export { default as FactBox } from "./FactBox/FactBox";
 
-export type { ContentTypeHeroProps } from "./ContentTypeHero";
-export { ContentTypeHero } from "./ContentTypeHero";
-
-export { default as ResourceBox } from "./ResourceBox/ResourceBox";
+export { ResourceBox } from "./ResourceBox/ResourceBox";
 
 export { default as AudioPlayer } from "./AudioPlayer/AudioPlayer";
 
@@ -89,12 +86,6 @@ export {
 
 export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";
 export { ContentTypeBadge, contentTypeToBadgeVariantMap } from "./ContentTypeBadge/ContentTypeBadge";
-
-export { ContentTypeBlockQuote } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
-export { type ContentTypeBlockQuoteVariant } from "./ContentTypeBlockQuote/ContentTypeBlockQuote";
-
-export { ContentTypeFramedContent } from "./ContentTypeFramedContent/ContentTypeFramedContent";
-export { type ContentTypeFramedContentVariant } from "./ContentTypeFramedContent/ContentTypeFramedContent";
 
 export { default as CopyParagraphButton } from "./CopyParagraphButton/CopyParagraphButton";
 

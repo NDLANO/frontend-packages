@@ -51,7 +51,15 @@ export type Props = BaseIconProps & IconVariantProps & StyledProps;
 
 const StyledSvg = styled("svg");
 
-const Icon = ({ children, size, title, description, css: cssProp, "aria-hidden": ariaHidden, ...props }: Props) => {
+export const Icon = ({
+  children,
+  size,
+  title,
+  description,
+  css: cssProp,
+  "aria-hidden": ariaHidden,
+  ...props
+}: Props) => {
   return (
     <StyledSvg
       data-icon=""
@@ -66,5 +74,3 @@ const Icon = ({ children, size, title, description, css: cssProp, "aria-hidden":
     </StyledSvg>
   );
 };
-
-export default Icon;

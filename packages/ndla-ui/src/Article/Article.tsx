@@ -10,7 +10,7 @@ import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
-import { Stack, styled } from "@ndla/styled-system/jsx";
+import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
 import { ContentTypeBadge, type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
@@ -101,8 +101,12 @@ export const ArticleFooter = styled(
   { baseComponent: true },
 );
 
-const StyledStack = styled(Stack, {
+const InfoWrapper = styled("div", {
   base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "small",
     width: "100%",
     minHeight: "xxlarge",
   },
@@ -144,10 +148,10 @@ export const ArticleTitle = ({
     <ArticleHeader>
       <ArticleHGroup>
         {(!!contentType || !!heartButton) && (
-          <StyledStack justify="space-between" align="center" direction="row" gap="small">
+          <InfoWrapper>
             {!!contentType && <ContentTypeBadge contentType={contentType}>{contentTypeLabel}</ContentTypeBadge>}
             {heartButton}
-          </StyledStack>
+          </InfoWrapper>
         )}
         <Heading textStyle="heading.medium" id={id} lang={lang} property="dct:title">
           {title}

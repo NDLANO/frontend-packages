@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { DownloadLine } from "@ndla/icons";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
-import { HStack, styled } from "@ndla/styled-system/jsx";
+import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
 import { FileListItem } from "./FileList";
 
@@ -45,13 +45,24 @@ const StyledSafeLink = styled(SafeLink, {
   },
 });
 
-const StyledHStack = styled(HStack, {
+const FileContainer = styled("div", {
   base: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     position: "relative",
     paddingBlock: "small",
     paddingInlineEnd: "medium",
     paddingInlineStart: "small",
     width: "100%",
+  },
+});
+
+const InfoContainer = styled("div", {
+  base: {
+    display: "flex",
+    gap: "xxsmall",
+    alignItems: "center",
   },
 });
 
@@ -63,8 +74,8 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
     const tooltip = `${t("download")} ${filename}`;
 
     return (
-      <StyledHStack justify="space-between" ref={ref} {...rest}>
-        <HStack gap="xxsmall">
+      <FileContainer ref={ref} {...rest}>
+        <InfoContainer>
           <DownloadLine />
           {fileExists ? (
             <StyledSafeLink unstyled css={linkOverlay.raw()} to={downloadUrl} title={tooltip}>
@@ -76,11 +87,11 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
           <Text textStyle="label.large" asChild consumeCss>
             <span>({fileType?.toUpperCase()})</span>
           </Text>
-        </HStack>
+        </InfoContainer>
         <Text textStyle="label.large" asChild consumeCss>
           <span>{fileSize}</span>
         </Text>
-      </StyledHStack>
+      </FileContainer>
     );
   },
 );

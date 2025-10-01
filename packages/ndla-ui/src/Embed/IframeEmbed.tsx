@@ -12,7 +12,7 @@ import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IframeMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { ResourceBox } from "../ResourceBox";
+import ResourceBox from "../ResourceBox/ResourceBox";
 
 interface Props {
   embed: IframeMetaData;

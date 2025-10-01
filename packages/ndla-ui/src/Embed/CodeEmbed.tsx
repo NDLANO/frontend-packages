@@ -13,8 +13,8 @@ import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CodeMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { CodeBlock, codeLanguageOptions } from "../CodeBlock";
-import type { ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
+import CodeBlock from "../CodeBlock/CodeBlock";
+import { codeLanguageOptions, type ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
 
 interface Props {
   embed: CodeMetaData;

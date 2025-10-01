@@ -11,8 +11,8 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { AudioMetaData } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import type { Author } from "./ImageEmbed";
-import AudioPlayer from "../AudioPlayer";
-import { EmbedByline } from "../LicenseByline";
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
 const StyledFigure = styled(Figure, {

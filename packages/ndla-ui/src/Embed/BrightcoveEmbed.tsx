@@ -14,7 +14,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
 import type { RenderContext } from "./types";
-import { EmbedByline } from "../LicenseByline";
+import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
 interface Props {

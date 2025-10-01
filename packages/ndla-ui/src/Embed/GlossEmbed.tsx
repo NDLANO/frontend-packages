@@ -13,7 +13,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import { Gloss } from "../Gloss";
+import Gloss from "../Gloss/Gloss";
 
 interface Props {
   embed: ConceptMetaData;

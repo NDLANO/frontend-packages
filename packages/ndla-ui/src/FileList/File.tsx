@@ -13,7 +13,7 @@ import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { HStack, styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { FileListItem } from ".";
+import { FileListItem } from "./FileList";
 
 export interface FileProps extends ComponentPropsWithRef<"div"> {
   title: string;

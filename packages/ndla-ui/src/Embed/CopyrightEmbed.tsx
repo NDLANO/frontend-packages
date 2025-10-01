@@ -9,7 +9,7 @@
 import type { ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CopyrightMetaData } from "@ndla/types-embed";
-import { EmbedByline } from "../LicenseByline";
+import { EmbedByline } from "../LicenseByline/EmbedByline";
 
 interface Props {
   embed: CopyrightMetaData;

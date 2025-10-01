@@ -10,8 +10,7 @@ import { type ReactNode } from "react";
 import { ErrorWarningLine } from "@ndla/icons";
 import { Figure, type FigureFloat, type FigureSize } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { EmbedByline } from "../LicenseByline";
-import { type EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
+import { EmbedByline, type EmbedBylineErrorProps } from "../LicenseByline/EmbedByline";
 
 interface Props {
   type: EmbedBylineErrorProps["type"];

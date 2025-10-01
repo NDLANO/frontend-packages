@@ -13,8 +13,8 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { ImageEmbedData } from "@ndla/types-embed";
 import ImageEmbed from "./ImageEmbed";
-import { ArticleWrapper, ArticleContent } from "../Article";
-import { Grid } from "../Grid";
+import { ArticleWrapper, ArticleContent } from "../Article/Article";
+import { Grid } from "../Grid/Grid";
 
 const embedData: ImageEmbedData = {
   resource: "image",

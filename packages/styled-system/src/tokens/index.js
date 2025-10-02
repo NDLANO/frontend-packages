@@ -940,11 +940,11 @@ const tokens = {
     "variable": "var(--fonts-sans)"
   },
   "fonts.serif": {
-    "value": "'Source Serif Pro', Times, STKaiti, '华文楷体', KaiTi, SimKai, '楷体', KaiU, DFKai-SB, '標楷體', SongTi, '宋体', serif",
+    "value": "'Source Serif 4 Variable', Times, STKaiti, '华文楷体', KaiTi, SimKai, '楷体', KaiU, DFKai-SB, '標楷體', SongTi, '宋体', serif",
     "variable": "var(--fonts-serif)"
   },
   "fonts.code": {
-    "value": "'Source Code ProVariable', Monaco",
+    "value": "'Source Code Pro Variable', Monaco",
     "variable": "var(--fonts-code)"
   },
   "animations.spin": {

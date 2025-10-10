@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { Menu, menuAnatomy } from "@ark-ui/react";
 import { css, cva, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -157,7 +157,11 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, 
 
 const InternalMenuItemGroupLabel = withContext(Menu.ItemGroupLabel, "itemGroupLabel");
 
-interface MenuItemGroupLabelProps extends Omit<Menu.ItemGroupLabelProps, "color">, StyledProps, TextProps {}
+interface MenuItemGroupLabelProps
+  extends Omit<Menu.ItemGroupLabelProps, "color">,
+    StyledProps,
+    TextProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const MenuItemGroupLabel = ({
   textStyle = "label.medium",
@@ -177,7 +181,11 @@ export const MenuItemGroup = withContext(Menu.ItemGroup, "itemGroup", { baseComp
 const InternalMenuItem = withContext(Menu.Item, "item", { baseComponent: true });
 
 export type MenuItemVariantProps = NonNullable<RecipeVariantProps<typeof itemCva>>;
-export interface MenuItemProps extends Menu.ItemProps, StyledProps, MenuItemVariantProps {}
+export interface MenuItemProps
+  extends Menu.ItemProps,
+    StyledProps,
+    MenuItemVariantProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(({ css: cssProp = {}, variant, ...props }, ref) => (
   <InternalMenuItem
@@ -191,7 +199,11 @@ export const MenuPositioner = withContext(Menu.Positioner, "positioner", { baseC
 
 const InternalMenuTriggerItem = withContext(Menu.TriggerItem, "triggerItem", { baseComponent: true });
 
-interface MenuTriggerItemProps extends Menu.TriggerItemProps, StyledProps, MenuItemVariantProps {}
+interface MenuTriggerItemProps
+  extends Menu.TriggerItemProps,
+    StyledProps,
+    MenuItemVariantProps,
+    RefAttributes<HTMLButtonElement> {}
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
   ({ css: cssProp = {}, variant, ...props }, ref) => (

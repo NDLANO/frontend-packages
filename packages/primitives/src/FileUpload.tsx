@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { FileUpload, fileUploadAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -124,7 +124,11 @@ export const FileUploadItemPreviewImage = withContext(FileUpload.ItemPreviewImag
 
 const InternalFileUploadItemName = withContext(FileUpload.ItemName, "itemName", { baseComponent: true });
 
-interface FileUploadItemNameProps extends Omit<FileUpload.ItemNameProps, "color">, TextProps, StyledProps {}
+interface FileUploadItemNameProps
+  extends Omit<FileUpload.ItemNameProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLParagraphElement> {}
 
 export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
@@ -137,7 +141,11 @@ export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameP
 
 const InternalFileUploadItemSizeText = withContext(FileUpload.ItemSizeText, "itemSizeText", { baseComponent: true });
 
-interface FileUploadItemSizeTextProps extends Omit<FileUpload.ItemSizeTextProps, "color">, TextProps, StyledProps {}
+interface FileUploadItemSizeTextProps
+  extends Omit<FileUpload.ItemSizeTextProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLParagraphElement> {}
 
 export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemSizeTextProps>(
   ({ textStyle = "label.small", ...props }, ref) => (
@@ -149,7 +157,11 @@ export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemS
 
 const InternalFileUploadLabel = withContext(FileUpload.Label, "label");
 
-interface FileUploadLabelProps extends Omit<FileUpload.LabelProps, "color">, StyledProps, TextProps {}
+interface FileUploadLabelProps
+  extends Omit<FileUpload.LabelProps, "color">,
+    StyledProps,
+    TextProps,
+    RefAttributes<HTMLLabelElement> {}
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, FileUploadLabelProps>(
   ({ textStyle = "label.medium", fontWeight = "light", children, ...props }, ref) => (

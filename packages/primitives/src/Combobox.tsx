@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef, type ElementType } from "react";
+import { forwardRef, type ElementType, type RefAttributes } from "react";
 import { Combobox, comboboxAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -150,7 +150,8 @@ export type ComboboxVariantProps = NonNullable<RecipeVariantProps<typeof combobo
 export interface ComboboxRootProps<T extends Combobox.CollectionItem>
   extends StyledProps,
     Combobox.RootProps<T>,
-    ComboboxVariantProps {
+    ComboboxVariantProps,
+    RefAttributes<HTMLDivElement> {
   translations: Combobox.RootProps<T>["translations"];
 }
 
@@ -195,7 +196,8 @@ const InternalComboboxItemGroupLabel = withContext(Combobox.ItemGroupLabel, "ite
 export interface ComboboxItemGroupLabelProps
   extends Omit<Combobox.ItemGroupLabelProps, "color">,
     TextProps,
-    StyledProps {}
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const ComboboxItemGroupLabel = ({
   children,
@@ -224,7 +226,11 @@ export const ComboboxItem = withContext(Combobox.Item, "item", { baseComponent: 
 
 const InternalComboboxItemText = withContext(Combobox.ItemText, "itemText");
 
-export interface ComboboxItemTextProps extends Omit<Combobox.ItemTextProps, "color">, TextProps, StyledProps {}
+export interface ComboboxItemTextProps
+  extends Omit<Combobox.ItemTextProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const ComboboxItemText = ({
   textStyle = "label.medium",
@@ -241,7 +247,11 @@ export const ComboboxItemText = ({
 
 const InternalComboboxLabel = withContext(Combobox.Label, "label");
 
-export interface ComboboxLabelProps extends Omit<Combobox.LabelProps, "color">, TextProps, StyledProps {}
+export interface ComboboxLabelProps
+  extends Omit<Combobox.LabelProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLLabelElement> {}
 
 export const ComboboxLabel = ({ textStyle = "label.medium", fontWeight = "bold", ...props }: ComboboxLabelProps) => (
   <InternalComboboxLabel asChild>

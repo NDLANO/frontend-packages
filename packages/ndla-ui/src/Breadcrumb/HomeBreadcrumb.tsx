@@ -63,9 +63,9 @@ const HomeBreadcrumb = ({ items }: Props) => {
       return null;
     }
     if (item.index === 0) {
-      return <StyledArrowRight />;
+      return <StyledArrowRight aria-hidden />;
     }
-    return <ArrowRightShortLine />;
+    return <ArrowRightShortLine aria-hidden />;
   };
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;

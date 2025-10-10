@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { TagsInput, tagsInputAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -146,7 +146,11 @@ export const TagsInputItemText = withContext(TagsInput.ItemText, "itemText", { b
 
 const InternalTagsInputLabel = withContext(TagsInput.Label, "label");
 
-export interface TagsInputLabelProps extends Omit<TagsInput.LabelProps, "color">, StyledProps, TextProps {}
+export interface TagsInputLabelProps
+  extends Omit<TagsInput.LabelProps, "color">,
+    StyledProps,
+    TextProps,
+    RefAttributes<HTMLLabelElement> {}
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>(({ children, ...props }, ref) => (
   <InternalTagsInputLabel asChild ref={ref} {...props}>

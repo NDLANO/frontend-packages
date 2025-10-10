@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
@@ -337,7 +337,11 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((pro
 
 const InternalDialogDescription = withContext(Dialog.Description, "description");
 
-interface DialogDescriptionProps extends Omit<Dialog.DescriptionProps, "color">, TextProps, StyledProps {}
+interface DialogDescriptionProps
+  extends Omit<Dialog.DescriptionProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLParagraphElement> {}
 
 export const DialogDescription = ({ textStyle = "body.large", children, ...rest }: DialogDescriptionProps) => {
   return (
@@ -351,7 +355,11 @@ export const DialogDescription = ({ textStyle = "body.large", children, ...rest 
 
 const InternalDialogTitle = withContext(Dialog.Title, "title");
 
-interface DialogTitleProps extends Omit<Dialog.TitleProps, "color">, TextProps, StyledProps {}
+interface DialogTitleProps
+  extends Omit<Dialog.TitleProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLHeadingElement> {}
 
 export const DialogTitle = ({ textStyle = "title.medium", children, ...rest }: DialogTitleProps) => (
   <InternalDialogTitle asChild>

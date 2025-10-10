@@ -6,6 +6,7 @@
  *
  */
 
+import type { RefAttributes } from "react";
 import { Slider, sliderAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -98,7 +99,11 @@ export const SliderThumb = withContext(Slider.Thumb, "thumb", { baseComponent: t
 
 const InternalSliderLabel = withContext(Slider.Label, "label");
 
-interface SliderLabelProps extends Omit<Slider.LabelProps, "color">, TextProps, StyledProps {}
+interface SliderLabelProps
+  extends Omit<Slider.LabelProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLLabelElement> {}
 
 export const SliderLabel = ({ textStyle = "label.medium", ...props }: SliderLabelProps) => (
   <InternalSliderLabel asChild>

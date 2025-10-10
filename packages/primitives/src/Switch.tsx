@@ -6,6 +6,7 @@
  *
  */
 
+import type { RefAttributes } from "react";
 import { Switch, switchAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -123,7 +124,11 @@ export const SwitchThumb = withContext(Switch.Thumb, "thumb", { baseComponent: t
 
 const InternalSwitchLabel = withContext(Switch.Label, "label");
 
-interface SwitchLabelProps extends Omit<Switch.LabelProps, "color">, TextProps, StyledProps {}
+interface SwitchLabelProps
+  extends Omit<Switch.LabelProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLSpanElement> {}
 
 export const SwitchLabel = ({ textStyle = "label.medium", children, ...props }: SwitchLabelProps) => (
   <InternalSwitchLabel asChild {...props}>

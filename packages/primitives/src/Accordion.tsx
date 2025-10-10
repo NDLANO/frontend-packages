@@ -6,6 +6,7 @@
  *
  */
 
+import type { RefAttributes } from "react";
 import { Accordion, accordionAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -126,7 +127,11 @@ const { withProvider, withContext } = createStyleContext(accordionRecipe);
 
 export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accordionRecipe>>;
 
-export interface AccordionRootProps extends StyledProps, Accordion.RootProps, AccordionVariantProps {}
+export interface AccordionRootProps
+  extends StyledProps,
+    Accordion.RootProps,
+    RefAttributes<HTMLDivElement>,
+    AccordionVariantProps {}
 
 export const InternalAccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 

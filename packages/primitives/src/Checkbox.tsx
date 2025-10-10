@@ -6,6 +6,7 @@
  *
  */
 
+import type { RefAttributes } from "react";
 import { Checkbox, checkboxAnatomy, type HTMLArkProps } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -229,7 +230,11 @@ export const CheckboxIndicator = withContext(Checkbox.Indicator, "indicator", { 
 
 const InternalCheckboxLabel = withContext(Checkbox.Label, "label");
 
-interface CheckboxLabelProps extends StyledProps, Omit<Checkbox.LabelProps, "color">, TextProps {}
+interface CheckboxLabelProps
+  extends StyledProps,
+    Omit<Checkbox.LabelProps, "color">,
+    TextProps,
+    RefAttributes<HTMLSpanElement> {}
 
 export const CheckboxLabel = ({ textStyle = "label.medium", children, ...props }: CheckboxLabelProps) => (
   <InternalCheckboxLabel {...props} asChild>

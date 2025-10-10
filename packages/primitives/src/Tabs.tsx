@@ -6,6 +6,7 @@
  *
  */
 
+import type { RefAttributes } from "react";
 import { Tabs } from "@ark-ui/react";
 import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -218,7 +219,7 @@ const { withProvider, withContext } = createStyleContext(tabsRecipe);
 
 export type TabsVariantProps = NonNullable<RecipeVariantProps<typeof tabsRecipe>>;
 
-export interface TabsRootProps extends Tabs.RootProps, TabsVariantProps, StyledProps {
+export interface TabsRootProps extends Tabs.RootProps, TabsVariantProps, StyledProps, RefAttributes<HTMLDivElement> {
   translations: Tabs.RootProps["translations"];
 }
 
@@ -236,7 +237,7 @@ export const TabsList = withContext(Tabs.List, "list", { baseComponent: true });
 
 const InternalTabsTrigger = withContext(Tabs.Trigger, "trigger", { baseComponent: true });
 
-interface TabsTriggerProps extends Tabs.TriggerProps, StyledProps {}
+interface TabsTriggerProps extends Tabs.TriggerProps, StyledProps, RefAttributes<HTMLButtonElement> {}
 
 export const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => (
   <InternalTabsTrigger className={cx("peer", className)} {...props} />

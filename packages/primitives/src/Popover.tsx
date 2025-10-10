@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
@@ -92,7 +92,11 @@ export const PopoverPositioner = withContext(Popover.Positioner, "positioner", {
 
 const InternalPopoverTitle = withContext(Popover.Title, "title", { baseComponent: true });
 
-interface PopoverTitleProps extends Omit<Popover.TitleProps, "color">, TextProps, StyledProps {}
+interface PopoverTitleProps
+  extends Omit<Popover.TitleProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLHeadingElement> {}
 
 export const PopoverTitle = ({ textStyle = "title.medium", children, ...rest }: PopoverTitleProps) => (
   <Heading textStyle={textStyle} {...rest} asChild consumeCss>

@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef, type ElementType } from "react";
+import { forwardRef, type ElementType, type RefAttributes } from "react";
 import {
   TreeView,
   treeViewAnatomy,
@@ -112,7 +112,10 @@ const treeRecipe = sva({
 
 const { withProvider, withContext } = createStyleContext(treeRecipe);
 
-export interface TreeRootProps<T extends TreeNode = TreeNode> extends TreeView.RootProps<T>, StyledProps {}
+export interface TreeRootProps<T extends TreeNode = TreeNode>
+  extends TreeView.RootProps<T>,
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 const InternalTreeRoot = withProvider<ElementType<TreeRootProps>>(TreeView.Root, "root", { baseComponent: true });
 
@@ -142,7 +145,11 @@ export const TreeBranch = withContext(TreeView.Branch, "branch", {
 
 const InternalTreeBranchText = withContext(TreeView.BranchText, "branchText", { baseComponent: true });
 
-interface TreeBranchTextProps extends Omit<TreeView.BranchTextProps, "color">, TextProps, StyledProps {}
+interface TreeBranchTextProps
+  extends Omit<TreeView.BranchTextProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const TreeBranchText = forwardRef<HTMLDivElement, TreeBranchTextProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
@@ -162,7 +169,11 @@ export const TreeItem = withContext(TreeView.Item, "item", { baseComponent: true
 
 const InternalTreeItemText = withContext(TreeView.ItemText, "itemText", { baseComponent: true });
 
-interface TreeItemTextProps extends Omit<TreeView.ItemTextProps, "color">, TextProps, StyledProps {}
+interface TreeItemTextProps
+  extends Omit<TreeView.ItemTextProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const TreeItemText = forwardRef<HTMLDivElement, TreeItemTextProps>(
   ({ textStyle = "label.medium", fontWeight = "bold", children, ...props }, ref) => (
@@ -176,7 +187,11 @@ export const TreeItemText = forwardRef<HTMLDivElement, TreeItemTextProps>(
 
 const InternalTreeLabel = withContext(TreeView.Label, "label", { baseComponent: true });
 
-interface TreeLabelProps extends Omit<TreeView.LabelProps, "color">, TextProps, StyledProps {}
+interface TreeLabelProps
+  extends Omit<TreeView.LabelProps, "color">,
+    TextProps,
+    StyledProps,
+    RefAttributes<HTMLDivElement> {}
 
 export const TreeLabel = forwardRef<HTMLDivElement, TreeLabelProps>(
   ({ children, textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (

@@ -6,7 +6,7 @@
  *
  */
 
-import { forwardRef } from "react";
+import { forwardRef, type RefAttributes } from "react";
 import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
@@ -107,7 +107,11 @@ export const DatePickerControl = withContext(DatePicker.Control, "control", { ba
 
 export const DatePickerInput = withContext(DatePicker.Input, "input", { baseComponent: true });
 
-interface DatePickerLabelProps extends Omit<DatePicker.LabelProps, "color">, StyledProps, TextProps {}
+interface DatePickerLabelProps
+  extends Omit<DatePicker.LabelProps, "color">,
+    StyledProps,
+    TextProps,
+    RefAttributes<HTMLLabelElement> {}
 
 const InternalDatePickerLabel = withContext(DatePicker.Label, "label");
 

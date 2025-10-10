@@ -128,7 +128,11 @@ export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accord
 
 export interface AccordionRootProps extends StyledProps, Accordion.RootProps, AccordionVariantProps {}
 
-export const AccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
+export const InternalAccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
+
+export const AccordionRoot = ({ lazyMount, unmountOnExit, ...props }: AccordionRootProps) => (
+  <InternalAccordionRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
+);
 
 export const AccordionItemContent = withContext(Accordion.ItemContent, "itemContent", { baseComponent: true });
 

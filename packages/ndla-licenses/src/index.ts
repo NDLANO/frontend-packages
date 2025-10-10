@@ -28,7 +28,6 @@ export {
 export type { LicenseLocaleType } from "./licenses";
 
 export {
-  getCopyString,
   getLicenseCredits,
   figureApa7CopyString,
   podcastSeriesApa7CopyString,

@@ -135,7 +135,7 @@ export interface AccordionRootProps
 
 export const InternalAccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 
-export const AccordionRoot = ({ lazyMount, unmountOnExit, ...props }: AccordionRootProps) => (
+export const AccordionRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: AccordionRootProps) => (
   <InternalAccordionRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
 );
 

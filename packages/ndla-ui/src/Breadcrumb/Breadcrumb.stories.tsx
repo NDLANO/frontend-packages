@@ -40,28 +40,13 @@ export default {
   },
 } as Meta<typeof Breadcrumb>;
 
-export const Defalt: StoryObj<typeof Breadcrumb> = {};
-
-export const CollapseFirst: StoryObj<typeof Breadcrumb> = {
-  args: { collapseFirst: true },
-};
-
-export const CollapseLast: StoryObj<typeof Breadcrumb> = {
-  args: { collapseLast: true },
-};
-
-export const CustomSeparator: StoryObj<typeof Breadcrumb> = {
+export const Defalt: StoryObj<typeof Breadcrumb> = {
   args: {
     renderSeparator: (item, totalCount) => (
       <div style={{ padding: "0px 12px" }}>
         {item.index}/{totalCount}
       </div>
     ),
-  },
-};
-
-export const CustomItem: StoryObj<typeof Breadcrumb> = {
-  args: {
     renderItem: (item) => (
       <div>
         {item.index}:{item.name}

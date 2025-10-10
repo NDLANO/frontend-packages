@@ -13,10 +13,8 @@ import BreadcrumbItem, { type IndexedBreadcrumbItem, type SimpleBreadcrumbItem }
 
 interface Props {
   items: SimpleBreadcrumbItem[];
-  collapseFirst?: boolean;
-  collapseLast?: boolean;
-  renderItem?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
-  renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
+  renderItem: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
+  renderSeparator: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
 const StyledList = styled("ol", {
@@ -34,7 +32,7 @@ const StyledList = styled("ol", {
   },
 });
 
-const Breadcrumb = ({ items, renderItem, renderSeparator, collapseFirst, collapseLast = true }: Props) => {
+const Breadcrumb = ({ items, renderItem, renderSeparator }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -44,17 +42,6 @@ const Breadcrumb = ({ items, renderItem, renderSeparator, collapseFirst, collaps
           <BreadcrumbItem
             renderItem={renderItem}
             renderSeparator={renderSeparator}
-            ref={(element) => {
-              if (
-                element === null ||
-                (!collapseFirst && index === 0) ||
-                (!collapseLast && index === items.length - 1)
-              ) {
-                if (element) {
-                  element.setMaxWidth("none");
-                }
-              }
-            }}
             key={typeof item.to === "string" ? item.to : item.to.pathname}
             totalCount={items.length}
             item={{ ...item, index }}

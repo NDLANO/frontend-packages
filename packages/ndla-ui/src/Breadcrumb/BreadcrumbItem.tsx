@@ -6,9 +6,7 @@
  *
  */
 
-import { useRef, useImperativeHandle, type ReactNode, forwardRef } from "react";
-import { ArrowRightShortLine } from "@ndla/icons";
-import { SafeLink } from "@ndla/safelink";
+import { type ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 
 export interface SimpleBreadcrumbItem {
@@ -46,35 +44,18 @@ interface Props {
   item: IndexedBreadcrumbItem;
   autoCollapse?: boolean;
   totalCount: number;
-  renderItem?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
-  renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
+  renderItem: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
+  renderSeparator: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
-const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, item, totalCount }, ref) => {
-  const liRef = useRef<any>(null);
-
-  useImperativeHandle(ref, () => ({
-    setMaxWidth: (maxWidth: number) => {
-      liRef.current.children[0].style.maxWidth = maxWidth;
-    },
-  }));
-
-  const { to, name, index } = item;
-  const isLast = index === totalCount - 1;
+const BreadcrumbItem = ({ renderItem, renderSeparator, item, totalCount }: Props) => {
+  const isLast = item.index === totalCount - 1;
   return (
-    <StyledListItem ref={liRef} aria-current={isLast ? "page" : undefined}>
-      {renderItem ? (
-        renderItem(item, totalCount)
-      ) : isLast ? (
-        <span>{name}</span>
-      ) : (
-        <SafeLink to={to}>
-          <span>{name}</span>
-        </SafeLink>
-      )}
-      {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <ArrowRightShortLine />}
+    <StyledListItem aria-current={isLast ? "page" : undefined}>
+      {renderItem(item, totalCount)}
+      {renderSeparator(item, totalCount)}
     </StyledListItem>
   );
-});
+};
 
 export default BreadcrumbItem;

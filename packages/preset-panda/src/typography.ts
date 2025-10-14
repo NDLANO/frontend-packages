@@ -37,7 +37,7 @@ export const fonts = defineTokens.fonts({
   },
   serif: {
     value: [
-      "'Source Serif Pro'",
+      "'Source Serif 4 Variable'",
       "Times",
       "STKaiti",
       "'华文楷体'",
@@ -53,7 +53,7 @@ export const fonts = defineTokens.fonts({
     ],
   },
   code: {
-    value: ["'Source Code ProVariable'", "Monaco"],
+    value: ["'Source Code Pro Variable'", "Monaco"],
   },
 });
 

@@ -1,7 +1,7 @@
 {
   "name": "@ndla/article-converter",
   "type": "module",
-  "version": "10.0.150-alpha.0",
+  "version": "10.0.151-alpha.0",
   "description": "Transforms NDLA articles into extended html versions",
   "license": "GPL-3.0",
   "exports": {
@@ -37,7 +37,7 @@
   "dependencies": {
     "@ndla/primitives": "workspace:^",
     "@ndla/safelink": "workspace:^",
-    "@ndla/ui": "^56.0.146-alpha.0",
+    "@ndla/ui": "^56.0.147-alpha.0",
     "html-react-parser": "^5.1.19"
   },
   "peerDependencies": {

@@ -52,14 +52,11 @@ export const getCookieString = ({
  * @param cookieName name of cookie to fetch
  * @param cookies string of cookies (usually `document.cookie` if in browser)
  */
-export const getCookie = (cookieName: string, cookies: string): string | undefined | null => {
-  const parts = cookies.split(";").map((x) => x.trim());
-  const cookiePart = parts.find((x) => x.startsWith(cookieName));
-  if (cookiePart) {
-    const values = cookiePart.split("=");
-    return values.slice(1).join("=");
-  }
-  return null;
+export const getCookie = (cookieName: string, cookies: string): string | undefined => {
+  // https://stackoverflow.com/a/15724300
+  const value = `; ${cookies}`;
+  const parts = value.split(`; ${cookieName}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift();
 };
 
 export const isValidCookie = (cookieName: string, cookies: string): boolean => {

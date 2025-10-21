@@ -12,12 +12,18 @@ const testCookieKey = "COOKIE_KEY";
 const dummyCookies =
   'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true}; THIRD_COOKIE=ONEWITH=IN;';
 
-test("test getCookie ", () => {
+const dupeCookies = "FIRST=one; FIRST_NAME_AND_LAST_NAME=Jesus=Christ; FIRST_NAME=Mark;";
+
+test("getCookie should return the requested value", () => {
   expect(getCookie(testCookieKey, dummyCookies)).toBe('{"1":true,"2":true,"3":true}');
 });
 
-test("test getCookie new", () => {
-  expect(getCookie("NEW_COOKIE_KEY", dummyCookies)).toBe(null);
+test("getCookie should return undefined for missing cookie", () => {
+  expect(getCookie("NEW_COOKIE_KEY", dummyCookies)).toBe(undefined);
+});
+
+test("getCookie should match the exact cookie passed in", () => {
+  expect(getCookie("FIRST_NAME", dupeCookies)).toBe("Mark");
 });
 
 test("test that cookies with = signs work", () => {

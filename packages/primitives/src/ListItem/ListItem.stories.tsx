@@ -11,7 +11,7 @@ import { PencilFill, DeleteBinLine, ShareLine, MoreLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, type ListItemVariantProps } from "./ListItem";
+import { ListItemContent, ListItemHeading, ListItemImage, ListItemRoot, type ListItemProps } from "./ListItem";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu";
@@ -21,12 +21,7 @@ export default {
   title: "Primitives/ListItem",
   component: ListItemRoot,
   tags: ["autodocs"],
-  args: {
-    borderVariant: "solid",
-    colorTheme: "brand1",
-    context: "standalone",
-    variant: "intense",
-  },
+  args: { nonInteractive: false },
   parameters: {
     inlineStories: true,
   },
@@ -48,12 +43,6 @@ export default {
 } satisfies Meta<typeof ListItemRoot>;
 
 export const Standalone: StoryObj<typeof ListItemRoot> = {};
-
-export const Brand2: StoryObj<typeof ListItemRoot> = {
-  args: {
-    colorTheme: "brand2",
-  },
-};
 
 export const NonInteractive: StoryFn<typeof ListItemRoot> = () => (
   <ListItemRoot nonInteractive>
@@ -87,12 +76,8 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
   </ListItemRoot>
 );
 
-const ListComponent = ({
-  context = "list",
-  borderVariant = "solid",
-  colorTheme = "brand1",
-}: NonNullable<ListItemVariantProps>) => (
-  <ListItemRoot context={context} borderVariant={borderVariant} colorTheme={colorTheme}>
+const ListComponent = (props: ListItemProps) => (
+  <ListItemRoot {...props}>
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
@@ -130,8 +115,16 @@ const ListComponent = ({
   </ListItemRoot>
 );
 
+const StyledList = styled("ul", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xsmall",
+  },
+});
+
 export const List: StoryFn<typeof ListComponent> = () => (
-  <ul>
+  <StyledList>
     <li>
       <ListComponent />
     </li>
@@ -141,11 +134,5 @@ export const List: StoryFn<typeof ListComponent> = () => (
     <li>
       <ListComponent />
     </li>
-    <li>
-      <ListComponent borderVariant="dashed" />
-    </li>
-    <li>
-      <ListComponent borderVariant="dashed" />
-    </li>
-  </ul>
+  </StyledList>
 );

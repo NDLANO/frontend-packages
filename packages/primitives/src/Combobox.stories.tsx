@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
-import { Flex } from "@ndla/styled-system/jsx";
+import { Flex, styled } from "@ndla/styled-system/jsx";
 import { IconButton } from "./Button";
 import {
   ComboboxClearTrigger,
@@ -45,6 +45,12 @@ const meta: Meta<typeof ComboboxRoot> = {
     },
   },
 };
+
+const StyledComboboxContent = styled(ComboboxContent, {
+  base: {
+    gap: "xxsmall",
+  },
+});
 
 export default meta;
 
@@ -221,10 +227,10 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
-        <ComboboxContent>
+        <StyledComboboxContent>
           {items.map((item) => (
             <ComboboxItem key={item.value} item={item} asChild>
-              <ListItemRoot context="list">
+              <ListItemRoot>
                 <ListItemImage src={item.img} alt="" />
                 <ListItemContent>
                   <Flex direction="column">
@@ -240,7 +246,7 @@ export const Advanced: StoryFn<typeof ComboboxRoot> = (args) => {
               </ListItemRoot>
             </ComboboxItem>
           ))}
-        </ComboboxContent>
+        </StyledComboboxContent>
       </Portal>
     </ComboboxRoot>
   );

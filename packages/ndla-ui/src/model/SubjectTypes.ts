@@ -10,3 +10,10 @@ export const BETA_SUBJECT = "betaSubject";
 export const SUBJECT = "subject";
 export const RESOURCE_COLLECTION = "resourceCollection";
 export const ARCHIVE_SUBJECT = "archiveSubject";
+
+export const subjectTypes = {
+  BETA_SUBJECT,
+  SUBJECT,
+  RESOURCE_COLLECTION,
+  ARCHIVE_SUBJECT,
+};

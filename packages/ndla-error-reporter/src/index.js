@@ -6,6 +6,4 @@
  *
  */
 
-import ErrorReporter from "./ErrorReporter";
-
-export { ErrorReporter };
+export { ErrorReporter } from "./ErrorReporter";

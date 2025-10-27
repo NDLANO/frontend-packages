@@ -6,6 +6,6 @@
  *
  */
 
-export { default as ImageMeta } from "./ImageMeta";
-export { default as ImageSearch } from "./ImageSearch";
+export { ImageMeta } from "./ImageMeta";
+export { ImageSearch } from "./ImageSearch";
 export type { ImageSearchProps } from "./ImageSearch";

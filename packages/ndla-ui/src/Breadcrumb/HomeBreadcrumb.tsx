@@ -9,7 +9,7 @@
 import { ArrowRightShortLine, HomeLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import Breadcrumb from "./Breadcrumb";
+import { Breadcrumb } from "./Breadcrumb";
 import type { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 const StyledSafeLink = styled(SafeLink, {
@@ -43,7 +43,7 @@ interface Props {
   items: SimpleBreadcrumbItem[];
 }
 
-const HomeBreadcrumb = ({ items }: Props) => {
+export const HomeBreadcrumb = ({ items }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return <span>{item.name}</span>;
@@ -70,5 +70,3 @@ const HomeBreadcrumb = ({ items }: Props) => {
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;
 };
-
-export default HomeBreadcrumb;

@@ -10,7 +10,7 @@ import type { ReactNode } from "react";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IAudioMetaInformationDTO, IAudioSummaryDTO } from "@ndla/types-backend/audio-api";
-import AudioSearchResult from "./AudioSearchResult";
+import { AudioSearchResult } from "./AudioSearchResult";
 
 const StyledList = styled("ul", {
   base: {
@@ -32,7 +32,7 @@ interface Props {
   loadingIndicator: ReactNode;
 }
 
-export default function AudioSearchList({
+export const AudioSearchList = ({
   audios,
   searching,
   locale,
@@ -41,7 +41,7 @@ export default function AudioSearchList({
   fetchAudio,
   onAudioSelect,
   loadingIndicator,
-}: Props) {
+}: Props) => {
   if (!audios.length && !searching) {
     return <Text>{translations.noResults}</Text>;
   }
@@ -64,4 +64,4 @@ export default function AudioSearchList({
       ))}
     </StyledList>
   );
-}
+};

@@ -11,7 +11,7 @@ import * as subjectCategories from "./SubjectCategories";
 import * as subjectTypes from "./SubjectTypes";
 import * as wordClass from "./WordClass";
 
-const model = {
+export const constants = {
   contentTypes,
   subjectCategories,
   subjectTypes,
@@ -19,5 +19,3 @@ const model = {
   resourceEmbedTypeMapping,
   wordClass,
 };
-
-export default model;

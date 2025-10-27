@@ -29,7 +29,7 @@ interface Props {
   onSearchQuerySubmit: (query: QueryObject) => void;
 }
 
-const AudioSearchInput = ({ queryObject: query, translations, onSearchQuerySubmit }: Props) => {
+export const AudioSearchInput = ({ queryObject: query, translations, onSearchQuerySubmit }: Props) => {
   const [queryObject, setQueryObject] = useState(query);
 
   const handleQueryChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
@@ -67,5 +67,3 @@ const AudioSearchInput = ({ queryObject: query, translations, onSearchQuerySubmi
     </InputWrapper>
   );
 };
-
-export default AudioSearchInput;

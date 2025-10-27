@@ -9,12 +9,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
 import type { UUDisclaimerData, UuDisclaimerEmbedData } from "@ndla/types-embed";
-import H5pEmbed from "./H5pEmbed";
-import IframeEmbed from "./IframeEmbed";
-import UuDisclaimerEmbed from "./UuDisclaimerEmbed";
+import { H5pEmbed } from "./H5pEmbed";
+import { IframeEmbed } from "./IframeEmbed";
+import { UuDisclaimerEmbed } from "./UuDisclaimerEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
-import CopyParagraphButton from "../CopyParagraphButton/CopyParagraphButton";
-import FactBox from "../FactBox/FactBox";
+import { CopyParagraphButton } from "../CopyParagraphButton/CopyParagraphButton";
+import { FactBox } from "../FactBox/FactBox";
 
 const embedData: UuDisclaimerEmbedData = {
   resource: "uu-disclaimer",

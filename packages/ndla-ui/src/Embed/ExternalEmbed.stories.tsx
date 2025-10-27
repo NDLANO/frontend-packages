@@ -9,7 +9,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import type { OembedEmbedData, OembedData } from "@ndla/types-embed";
-import ExternalEmbed from "./ExternalEmbed";
+import { ExternalEmbed } from "./ExternalEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
 
 const embedData: OembedEmbedData = {

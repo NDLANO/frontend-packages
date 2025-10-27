@@ -18,7 +18,7 @@ interface Props {
   ndlaFrontendDomain?: string;
 }
 
-const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
+export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return null;
@@ -55,5 +55,3 @@ const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: P
   }
   return null;
 };
-
-export default RelatedContentEmbed;

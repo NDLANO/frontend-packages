@@ -9,7 +9,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import type { BrightcoveData, BrightcoveEmbedData, BrightcoveMetaData } from "@ndla/types-embed";
-import BrightcoveEmbed from "./BrightcoveEmbed";
+import { BrightcoveEmbed } from "./BrightcoveEmbed";
 import { ArticleContent, ArticleWrapper } from "../Article/Article";
 
 const embedData: BrightcoveEmbedData = {

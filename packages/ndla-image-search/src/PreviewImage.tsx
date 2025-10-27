@@ -23,7 +23,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import ImageMeta from "./ImageMeta";
+import { ImageMeta } from "./ImageMeta";
 import type { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
 
@@ -121,7 +121,7 @@ interface Props {
   locale: string;
 }
 
-const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, locale }: Props) => {
+export const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, locale }: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   return (
@@ -224,5 +224,3 @@ const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translations, lo
     </StyledPreview>
   );
 };
-
-export default PreviewImage;

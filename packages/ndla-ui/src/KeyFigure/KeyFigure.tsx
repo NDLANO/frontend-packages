@@ -54,7 +54,7 @@ export interface Props {
   subtitle: string;
 }
 
-const KeyFigure = ({ image, title, subtitle }: Props) => {
+export const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
     <ContentWrapper data-embed-type="key-figure">
       {!!image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
@@ -63,5 +63,3 @@ const KeyFigure = ({ image, title, subtitle }: Props) => {
     </ContentWrapper>
   );
 };
-
-export default KeyFigure;

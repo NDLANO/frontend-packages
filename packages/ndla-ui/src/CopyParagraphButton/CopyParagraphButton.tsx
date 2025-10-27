@@ -43,7 +43,7 @@ interface Props {
   copyText: string;
   lang?: string;
 }
-const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
+export const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
   const [hasCopied, setHasCopied] = useState(false);
   const { t } = useTranslation();
   const sanitizedTitle = useMemo(() => encodeURIComponent(copyText.replace(/ /g, "-")), [copyText]);
@@ -85,5 +85,3 @@ const CopyParagraphButton = ({ children, copyText, lang }: Props) => {
     </ContainerDiv>
   );
 };
-
-export default CopyParagraphButton;

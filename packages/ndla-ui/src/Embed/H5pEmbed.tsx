@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { H5pMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 
 interface Props {
   embed: H5pMetaData;
@@ -34,7 +34,7 @@ const FigureOembed = styled(Figure, {
   },
 });
 
-const H5pEmbed = ({ embed }: Props) => {
+export const H5pEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type="h5p" />;
@@ -58,5 +58,3 @@ const H5pEmbed = ({ embed }: Props) => {
     </StyledFigure>
   );
 };
-
-export default H5pEmbed;

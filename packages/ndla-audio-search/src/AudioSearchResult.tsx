@@ -10,7 +10,7 @@ import { getLicenseByAbbreviation, type LicenseLocaleType } from "@ndla/licenses
 import { Text, ListItemContent, ListItemRoot, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IAudioMetaInformationDTO, IAudioSummaryDTO } from "@ndla/types-backend/audio-api";
-import AudioBar from "./AudioBar";
+import { AudioBar } from "./AudioBar";
 
 const StyledAudioMeta = styled("div", {
   base: {
@@ -50,7 +50,7 @@ interface Props {
   onAudioSelect: (audio: IAudioSummaryDTO) => void;
 }
 
-export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {
+export const AudioSearchResult = ({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) => {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <ListItemRoot key={audio.id} context="list" nonInteractive asChild consumeCss>
@@ -66,4 +66,4 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
       </li>
     </ListItemRoot>
   );
-}
+};

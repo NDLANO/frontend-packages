@@ -7,8 +7,8 @@
  */
 
 import type { Meta, StoryObj, StoryFn } from "@storybook/react";
-import Gloss from "./Gloss";
-import GlossExample from "./GlossExample";
+import { Gloss } from "./Gloss";
+import { GlossExample } from "./GlossExample";
 import { wordClass } from "../model/WordClass";
 
 const meta: Meta<typeof Gloss> = {

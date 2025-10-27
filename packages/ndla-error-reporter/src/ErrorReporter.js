@@ -9,7 +9,7 @@
 import TraceKit from "raven-js/vendor/TraceKit/tracekit";
 import { uuid } from "@ndla/util";
 
-import send from "./logglyApi";
+import { logglyApi } from "./logglyApi";
 
 // Taken from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 function escapeRegExp(string) {
@@ -28,7 +28,7 @@ function hasMatch(str, patterns) {
   return validPatterns.findIndex((pattern) => pattern.test(str)) !== -1;
 }
 
-const ErrorReporter = (function Singleton() {
+export const ErrorReporter = (function Singleton() {
   let instance;
   let previousNotification;
   let messagesRemaining = 10;
@@ -50,7 +50,7 @@ const ErrorReporter = (function Singleton() {
       appName: `${config.environment}/${config.componentName}`,
     };
 
-    return send(config.logglyApiKey, extendedData);
+    return logglyApi(config.logglyApiKey, extendedData);
   }
 
   function getLogData(stackInfo, level = "error", store, additionalInfo = {}) {
@@ -136,5 +136,3 @@ const ErrorReporter = (function Singleton() {
     },
   };
 })();
-
-export default ErrorReporter;

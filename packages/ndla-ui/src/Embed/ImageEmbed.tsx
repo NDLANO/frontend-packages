@@ -13,7 +13,7 @@ import { AddLine } from "@ndla/icons";
 import { Figure, type FigureSize, type FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import type { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
@@ -190,7 +190,7 @@ const ExpandButton = styled(
   { defaultProps: { type: "button" } },
 );
 
-const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", children }: Props) => {
+export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", children }: Props) => {
   const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
   const figureProps = getFigureProps(embed.embedData.size, embed.embedData.align);
   const { t } = useTranslation();
@@ -266,5 +266,3 @@ const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", childr
     </StyledFigure>
   );
 };
-
-export default ImageEmbed;

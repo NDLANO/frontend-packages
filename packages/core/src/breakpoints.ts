@@ -10,7 +10,7 @@ export type Breakpoint = "mobile" | "mobileWide" | "tablet" | "tabletWide" | "de
 
 export type Breakpoints = { [key in Breakpoint]: string };
 
-const breakpoints: Breakpoints = {
+export const breakpoints: Breakpoints = {
   mobile: "20em",
   mobileWide: "29.75em",
   tablet: "37.5625em",
@@ -19,5 +19,3 @@ const breakpoints: Breakpoints = {
   wide: "81.3125em",
   ultraWide: "100.0625em",
 };
-
-export default breakpoints;

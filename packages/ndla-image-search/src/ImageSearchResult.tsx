@@ -10,7 +10,7 @@ import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { PreviewTranslations } from "./ImageSearch";
-import PreviewImage from "./PreviewImage";
+import { PreviewImage } from "./PreviewImage";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
 const StyledButton = styled(Button, {
@@ -45,7 +45,7 @@ interface Props {
   locale: string;
 }
 
-export default function ImageSearchResult({
+export const ImageSearchResult = ({
   image,
   onImageClick,
   selectedImage,
@@ -53,7 +53,7 @@ export default function ImageSearchResult({
   showCheckbox,
   translations,
   locale,
-}: Props) {
+}: Props) => {
   const isSelectedImage = selectedImage?.id === image.id;
   return (
     <>
@@ -88,4 +88,4 @@ export default function ImageSearchResult({
       ) : null}
     </>
   );
-}
+};

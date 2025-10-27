@@ -22,7 +22,7 @@ const StyledList = styled("ul", {
   },
 });
 
-const LinkBlockSection = ({ children, ...rest }: Props) => {
+export const LinkBlockSection = ({ children, ...rest }: Props) => {
   return (
     <nav {...rest} data-embed-type="link-block-list">
       <StyledList>
@@ -33,5 +33,3 @@ const LinkBlockSection = ({ children, ...rest }: Props) => {
     </nav>
   );
 };
-
-export default LinkBlockSection;

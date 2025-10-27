@@ -8,7 +8,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CodeEmbedData, CodeMetaData } from "@ndla/types-embed";
-import CodeEmbed from "./CodeEmbed";
+import { CodeEmbed } from "./CodeEmbed";
 
 const codeEmbedData: CodeEmbedData = {
   resource: "code-block",

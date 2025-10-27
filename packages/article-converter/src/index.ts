@@ -6,6 +6,6 @@
  *
  */
 
-export { default as transform } from "./transform";
-export { default as extractEmbedMeta, extractEmbedMetas } from "./extractEmbedMeta";
+export { transform } from "./transform";
+export { extractEmbedMeta, extractEmbedMetas } from "./extractEmbedMeta";
 export type { TransformOptions } from "./plugins/types";

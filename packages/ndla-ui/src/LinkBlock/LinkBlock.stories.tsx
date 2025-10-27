@@ -7,8 +7,8 @@
  */
 
 import type { Meta, StoryObj, StoryFn } from "@storybook/react";
-import LinkBlock from "./LinkBlock";
-import LinkBlockSection from "./LinkBlockSection";
+import { LinkBlock } from "./LinkBlock";
+import { LinkBlockSection } from "./LinkBlockSection";
 
 export default {
   title: "Components/Link Block",

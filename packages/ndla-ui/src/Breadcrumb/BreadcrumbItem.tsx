@@ -48,7 +48,7 @@ interface Props {
   renderSeparator: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
-const BreadcrumbItem = ({ renderItem, renderSeparator, item, totalCount }: Props) => {
+export const BreadcrumbItem = ({ renderItem, renderSeparator, item, totalCount }: Props) => {
   const isLast = item.index === totalCount - 1;
   return (
     <StyledListItem aria-current={isLast ? "page" : undefined}>
@@ -57,5 +57,3 @@ const BreadcrumbItem = ({ renderItem, renderSeparator, item, totalCount }: Props
     </StyledListItem>
   );
 };
-
-export default BreadcrumbItem;

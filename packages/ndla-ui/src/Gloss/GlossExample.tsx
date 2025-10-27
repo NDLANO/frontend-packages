@@ -38,7 +38,7 @@ const PinyinText = styled(Text, {
   },
 });
 
-const GlossExample = ({ examples, originalLanguage }: Props) => {
+export const GlossExample = ({ examples, originalLanguage }: Props) => {
   return (
     <div>
       {examples.map((examples, index) => (
@@ -67,5 +67,3 @@ const GlossExample = ({ examples, originalLanguage }: Props) => {
     </div>
   );
 };
-
-export default GlossExample;

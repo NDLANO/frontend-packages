@@ -9,7 +9,7 @@
 import parse from "html-react-parser";
 import { type EmbedMetaData } from "@ndla/types-embed";
 
-const extractEmbedMeta = (embed: string): EmbedMetaData | undefined => {
+export const extractEmbedMeta = (embed: string): EmbedMetaData | undefined => {
   const node = parse(embed);
   if (typeof node === "string" || Array.isArray(node) || node.type !== "ndlaembed" || !node.props["data-json"]) {
     return;
@@ -40,5 +40,3 @@ export const extractEmbedMetas = (embed: string): EmbedMetaData[] => {
     return [];
   }
 };
-
-export default extractEmbedMeta;

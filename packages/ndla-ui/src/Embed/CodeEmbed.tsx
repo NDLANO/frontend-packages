@@ -12,8 +12,8 @@ import { FileCopyLine, CheckLine } from "@ndla/icons";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CodeMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import CodeBlock from "../CodeBlock/CodeBlock";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import { CodeBlock } from "../CodeBlock/CodeBlock";
 import { codeLanguageOptions, type ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
 
 interface Props {
@@ -45,7 +45,7 @@ const getTitleFromFormat = (format: string) => {
   return;
 };
 
-const CodeEmbed = ({ embed }: Props) => {
+export const CodeEmbed = ({ embed }: Props) => {
   const [isCopied, setIsCopied] = useState(false);
   const { t } = useTranslation();
 
@@ -89,5 +89,3 @@ const CodeEmbed = ({ embed }: Props) => {
     </StyledFigure>
   );
 };
-
-export default CodeEmbed;

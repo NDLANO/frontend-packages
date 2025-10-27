@@ -31,5 +31,3 @@ export const MatomoTracker = ({ trackerUrl, siteId }: Props) => {
     />
   );
 };
-
-export default MatomoTracker;

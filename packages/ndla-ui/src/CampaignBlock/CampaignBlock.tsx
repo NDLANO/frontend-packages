@@ -164,7 +164,7 @@ const LinkButton = ({ url, children, path }: LinkButtonProps) => {
   return children;
 };
 
-const CampaignBlock = ({
+export const CampaignBlock = ({
   title,
   image,
   imageSide = "left",
@@ -198,5 +198,3 @@ const CampaignBlock = ({
     </Wrapper>
   );
 };
-
-export default CampaignBlock;

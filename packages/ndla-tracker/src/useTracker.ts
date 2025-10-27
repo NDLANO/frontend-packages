@@ -21,7 +21,7 @@ declare global {
   }
 }
 
-const useTracker = () => {
+export const useTracker = () => {
   const [hasTracked, setHasTracked] = useState(false);
   const { pathname } = useLocation();
   const previousPath = usePrevious(pathname);
@@ -48,5 +48,3 @@ const useTracker = () => {
 
   return { trackPageView, hasTracked };
 };
-
-export default useTracker;

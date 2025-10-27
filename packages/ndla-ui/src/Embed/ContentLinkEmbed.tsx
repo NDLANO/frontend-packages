@@ -17,7 +17,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
+export const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return (
@@ -42,5 +42,3 @@ const ContentLinkEmbed = ({ embed, isOembed, children }: Props) => {
 
   return <a href={data.path}>{children}</a>;
 };
-
-export default ContentLinkEmbed;

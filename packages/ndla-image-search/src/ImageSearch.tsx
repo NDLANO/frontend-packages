@@ -23,7 +23,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { IImageMetaInformationV3DTO, ISearchResultV3DTO, ISearchParamsDTO } from "@ndla/types-backend/image-api";
-import ImageSearchResult from "./ImageSearchResult";
+import { ImageSearchResult } from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled("div", {
   base: {
@@ -110,7 +110,7 @@ export interface ImageSearchProps {
   translations: ImageSearchTranslations;
 }
 
-const ImageSearch = ({
+export const ImageSearch = ({
   onImageSelect,
   searchImages: search,
   onError,
@@ -263,5 +263,3 @@ const ImageSearch = ({
     </ImageSearchWrapper>
   );
 };
-
-export default ImageSearch;

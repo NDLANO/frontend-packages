@@ -72,7 +72,7 @@ interface Props extends Omit<LinkBlockEmbedData, "resource"> {
   articleLanguage?: string;
 }
 
-const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
+export const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
@@ -100,5 +100,3 @@ const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
     </StyledSafeLink>
   );
 };
-
-export default LinkBlock;

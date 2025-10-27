@@ -45,7 +45,7 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => {
+export const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => {
   return (
     <StyledFigure size={figureType} float={float} data-embed-type={type}>
       {children ?? (
@@ -57,5 +57,3 @@ const EmbedErrorPlaceholder = ({ type, children, figureType, float }: Props) => 
     </StyledFigure>
   );
 };
-
-export default EmbedErrorPlaceholder;

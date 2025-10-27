@@ -9,7 +9,7 @@
 import { useRef } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import type { IAudioMetaInformationDTO, IAudioSummarySearchResultDTO } from "@ndla/types-backend/audio-api";
-import AudioSearch, { type QueryObject } from "./AudioSearch";
+import { AudioSearch, type QueryObject } from "./AudioSearch";
 
 export default {
   title: "Production system/AudioSearch",

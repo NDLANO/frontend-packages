@@ -17,7 +17,7 @@ interface Props {
   onError: (err: any) => void;
 }
 
-const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
+export const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
   const [audioSource, setAudioSource] = useState<string | undefined>(undefined);
   const [audioType, setAudioType] = useState<string | undefined>(undefined);
 
@@ -40,5 +40,3 @@ const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
 
   return <audio controls>{!!audioSource && <source src={audioSource} type={audioType} />}</audio>;
 };
-
-export default AudioBar;

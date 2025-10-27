@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import AudioPlayer from "./AudioPlayer";
+import { AudioPlayer } from "./AudioPlayer";
 const TextVersion = (
   <>
     <p>

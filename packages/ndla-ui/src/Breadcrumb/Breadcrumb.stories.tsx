@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import Breadcrumb from "./Breadcrumb";
+import { Breadcrumb } from "./Breadcrumb";
 
 const items = [
   {

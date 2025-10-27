@@ -17,7 +17,7 @@ type Props = {
   type?: "gloss" | "audio";
 };
 
-const SpeechControl = ({ src, title, type = "audio" }: Props) => {
+export const SpeechControl = ({ src, title, type = "audio" }: Props) => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -41,5 +41,3 @@ const SpeechControl = ({ src, title, type = "audio" }: Props) => {
     </div>
   );
 };
-
-export default SpeechControl;

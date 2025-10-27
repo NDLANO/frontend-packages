@@ -22,8 +22,8 @@ import {
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledVariantProps } from "@ndla/styled-system/types";
 import type { ConceptTitleDTO, IGlossDataDTO, IGlossExampleDTO } from "@ndla/types-backend/concept-api";
-import GlossExample from "./GlossExample";
-import SpeechControl from "../AudioPlayer/SpeechControl";
+import { GlossExample } from "./GlossExample";
+import { SpeechControl } from "../AudioPlayer/SpeechControl";
 
 // TODO: Figure out padding between bordered and simple variant.
 // The design says that the content above the accordion content should have enough padding to align with the accordion content.
@@ -111,7 +111,7 @@ export interface Props {
   exampleLangs?: string;
 }
 
-const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: Props & GlossVariantProps) => {
+export const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: Props & GlossVariantProps) => {
   const { t } = useTranslation();
 
   const parsedTitle = useMemo(() => parse(title.htmlTitle), [title.htmlTitle]);
@@ -189,5 +189,3 @@ const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, variant }: P
     </AccordionRoot>
   );
 };
-
-export default Gloss;

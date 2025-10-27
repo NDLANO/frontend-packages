@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import CodeBlock from "./CodeBlock";
+import { CodeBlock } from "./CodeBlock";
 
 export default {
   title: "Components/CodeBlock",

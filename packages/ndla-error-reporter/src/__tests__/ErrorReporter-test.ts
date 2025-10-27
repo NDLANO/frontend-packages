@@ -7,7 +7,7 @@
  */
 
 import nock from "nock";
-import { ErrorReporter } from "../index";
+import { ErrorReporter } from "../ErrorReporter";
 
 const state = {
   data: "test state",

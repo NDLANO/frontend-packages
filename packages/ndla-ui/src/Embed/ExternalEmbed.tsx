@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { OembedMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
-import ResourceBox from "../ResourceBox/ResourceBox";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import { ResourceBox } from "../ResourceBox/ResourceBox";
 
 interface Props {
   embed: OembedMetaData;
@@ -27,7 +27,7 @@ const StyledFigure = styled(Figure, {
   },
 });
 
-const ExternalEmbed = ({ embed }: Props) => {
+export const ExternalEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   const figRef = useRef<HTMLElement>(null);
 
@@ -73,4 +73,3 @@ const ExternalEmbed = ({ embed }: Props) => {
     />
   );
 };
-export default ExternalEmbed;

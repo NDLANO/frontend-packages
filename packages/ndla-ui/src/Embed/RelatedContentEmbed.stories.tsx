@@ -9,7 +9,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import type { RelatedContentMetaData } from "@ndla/types-embed";
-import RelatedContentEmbed from "./RelatedContentEmbed";
+import { RelatedContentEmbed } from "./RelatedContentEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
 import { RelatedArticleList } from "../RelatedArticleList/RelatedArticleList";
 

@@ -8,7 +8,7 @@
 
 import type { Meta, StoryFn } from "@storybook/react";
 import type { ISearchResultV3DTO } from "@ndla/types-backend/image-api";
-import ImageSearch from "./ImageSearch";
+import { ImageSearch } from "./ImageSearch";
 
 export default {
   title: "Production system/ImageSearch",

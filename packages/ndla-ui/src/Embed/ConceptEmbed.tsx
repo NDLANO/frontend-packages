@@ -13,7 +13,7 @@ import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ConceptMetaData } from "@ndla/types-embed";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { GlossEmbed } from "./GlossEmbed";
 import type { RenderContext } from "./types";
 import { Concept, type ConceptProps } from "../Concept/Concept";

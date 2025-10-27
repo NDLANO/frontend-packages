@@ -23,7 +23,7 @@ const StyledSup = styled("sup", {
   },
 });
 
-const FootnoteEmbed = ({ embed }: Props) => {
+export const FootnoteEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return <div>{t("error")}</div>;
@@ -37,5 +37,3 @@ const FootnoteEmbed = ({ embed }: Props) => {
     </span>
   );
 };
-
-export default FootnoteEmbed;

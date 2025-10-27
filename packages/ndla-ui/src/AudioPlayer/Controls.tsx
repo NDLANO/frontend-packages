@@ -158,7 +158,7 @@ interface Props {
   title: string;
 }
 
-const Controls = ({ src, title }: Props) => {
+export const Controls = ({ src, title }: Props) => {
   const { t } = useTranslation();
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
@@ -354,5 +354,3 @@ const Controls = ({ src, title }: Props) => {
     </div>
   );
 };
-
-export default Controls;

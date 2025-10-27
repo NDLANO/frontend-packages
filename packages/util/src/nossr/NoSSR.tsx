@@ -17,7 +17,7 @@ interface Props {
  * A component that makes children not run on the server
  * Useful for not rendering private stuff on the server which will then be cached.
  */
-const NoSSR = ({ children, fallback = null }: Props): ReactNode => {
+export const NoSSR = ({ children, fallback = null }: Props): ReactNode => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -30,5 +30,3 @@ const NoSSR = ({ children, fallback = null }: Props): ReactNode => {
 
   return children;
 };
-
-export default NoSSR;

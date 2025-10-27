@@ -50,7 +50,7 @@ const StyledPopoverContent = styled(PopoverContent, {
   },
 });
 
-const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) => {
+export const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return (
@@ -87,5 +87,3 @@ const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Props) =>
     </DisclaimerWrapper>
   );
 };
-
-export default UuDisclaimerEmbed;

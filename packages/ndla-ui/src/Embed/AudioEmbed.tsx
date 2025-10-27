@@ -9,9 +9,9 @@
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { AudioMetaData } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import type { Author } from "./ImageEmbed";
-import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import { AudioPlayer } from "../AudioPlayer/AudioPlayer";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 
@@ -32,7 +32,7 @@ export const getFirstNonEmptyLicenseCredits = (authors: {
   processors: Author[];
 }) => Object.values(authors).find((i) => i.length > 0) ?? [];
 
-const AudioEmbed = ({ embed, lang }: Props) => {
+export const AudioEmbed = ({ embed, lang }: Props) => {
   const type = embed.embedData.type === "standard" ? "audio" : "podcast";
   if (embed.status === "error") {
     return <EmbedErrorPlaceholder type={type} />;
@@ -74,5 +74,3 @@ const AudioEmbed = ({ embed, lang }: Props) => {
     </StyledFigure>
   );
 };
-
-export default AudioEmbed;

@@ -14,7 +14,7 @@ interface Props {
   embed: MetaData<any, any>;
 }
 
-const UnknownEmbed = ({ embed }: Props) => {
+export const UnknownEmbed = ({ embed }: Props) => {
   const { t } = useTranslation();
   return (
     <Text color="text.error" asChild consumeCss data-embed-type="unknown">
@@ -22,5 +22,3 @@ const UnknownEmbed = ({ embed }: Props) => {
     </Text>
   );
 };
-
-export default UnknownEmbed;

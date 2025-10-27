@@ -6,5 +6,5 @@
  *
  */
 
-export { default as breakpoints } from "./breakpoints";
+export { breakpoints } from "./breakpoints";
 export type { Breakpoint, Breakpoints } from "./breakpoints";

@@ -6,4 +6,4 @@
  *
  */
 
-export { default as AudioSearch } from "./AudioSearch";
+export { AudioSearch } from "./AudioSearch";

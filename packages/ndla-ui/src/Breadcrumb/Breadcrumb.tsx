@@ -9,7 +9,7 @@
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { styled } from "@ndla/styled-system/jsx";
-import BreadcrumbItem, { type IndexedBreadcrumbItem, type SimpleBreadcrumbItem } from "./BreadcrumbItem";
+import { BreadcrumbItem, type IndexedBreadcrumbItem, type SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 interface Props {
   items: SimpleBreadcrumbItem[];
@@ -32,7 +32,7 @@ const StyledList = styled("ol", {
   },
 });
 
-const Breadcrumb = ({ items, renderItem, renderSeparator }: Props) => {
+export const Breadcrumb = ({ items, renderItem, renderSeparator }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -51,5 +51,3 @@ const Breadcrumb = ({ items, renderItem, renderSeparator }: Props) => {
     </nav>
   );
 };
-
-export default Breadcrumb;

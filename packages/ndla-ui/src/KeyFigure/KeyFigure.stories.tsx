@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import KeyFigure, { type Props } from "./KeyFigure";
+import { KeyFigure, type Props } from "./KeyFigure";
 
 const args = {
   title: "22 000+",

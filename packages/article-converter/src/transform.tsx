@@ -13,7 +13,7 @@ import { plugins } from "./plugins";
 import { embedPlugins } from "./plugins/embed";
 import { type TransformOptions } from "./plugins/types";
 
-const transform = (content: string, opts: TransformOptions) => {
+export const transform = (content: string, opts: TransformOptions) => {
   const options: HTMLReactParserOptions = {
     replace: (node) => {
       if (!("attribs" in node)) {
@@ -35,5 +35,3 @@ const transform = (content: string, opts: TransformOptions) => {
 
   return replaced;
 };
-
-export default transform;

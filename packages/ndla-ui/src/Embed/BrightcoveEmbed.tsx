@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
-import EmbedErrorPlaceholder from "./EmbedErrorPlaceholder";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import type { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
@@ -57,7 +57,7 @@ const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSourc
     width: source?.width ?? "640",
   };
 };
-const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
+export const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
   const [showOriginalVideo, setShowOriginalVideo] = useState(true);
   const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -130,5 +130,3 @@ const BrightcoveEmbed = ({ embed, renderContext = "article", lang }: Props) => {
     </Figure>
   );
 };
-
-export default BrightcoveEmbed;

@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import Controls from "./Controls";
-import SpeechControl from "./SpeechControl";
+import { Controls } from "./Controls";
+import { SpeechControl } from "./SpeechControl";
 
 // TODO: Could the audio metadata be more tightly coupled to the audio player?
 
@@ -156,7 +156,7 @@ type Props = {
   };
 };
 
-const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion }: Props) => {
+export const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion }: Props) => {
   const { t } = useTranslation();
   const [showTextVersion, setShowTextVersion] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -228,5 +228,3 @@ const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersi
     </AudioPlayerWrapper>
   );
 };
-
-export default AudioPlayer;

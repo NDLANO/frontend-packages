@@ -18,7 +18,7 @@ interface Props {
   locale: string;
 }
 
-const ImageMeta = ({ contentType, fileSize, imageDimensions, locale }: Props) => {
+export const ImageMeta = ({ contentType, fileSize, imageDimensions, locale }: Props) => {
   const prettySize = useMemo(() => {
     return humanFileSize(fileSize, locale);
   }, [fileSize, locale]);
@@ -26,5 +26,3 @@ const ImageMeta = ({ contentType, fileSize, imageDimensions, locale }: Props) =>
   const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : "";
   return <Text>{`${contentType} - ${prettySize}${dimensions}`}</Text>;
 };
-
-export default ImageMeta;

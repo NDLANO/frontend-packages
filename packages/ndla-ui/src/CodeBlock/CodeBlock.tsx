@@ -18,7 +18,7 @@ interface Props extends StyledProps, ComponentPropsWithRef<"pre"> {
 
 const Pre = styled("pre", {});
 
-export const Codeblock = forwardRef<HTMLPreElement, Props>(({ highlightedCode, format, className, ...props }, ref) => {
+export const CodeBlock = forwardRef<HTMLPreElement, Props>(({ highlightedCode, format, className, ...props }, ref) => {
   const codeWithLineNumbers = useMemo(() => {
     return highlightedCode
       .split("\n")
@@ -37,5 +37,3 @@ export const Codeblock = forwardRef<HTMLPreElement, Props>(({ highlightedCode, f
     />
   );
 });
-
-export default Codeblock;

@@ -127,7 +127,7 @@ const StyledIconButton = styled(IconButton, {
 
 // TODO: Consider moving the open trigger depending on whether the content is open or closed.
 
-const FactBox = forwardRef<HTMLElement, Props>(
+export const FactBox = forwardRef<HTMLElement, Props>(
   ({ children, open, onOpenChange, defaultOpen = false, ...rest }, ref) => {
     const { t } = useTranslation();
     const [state, setState] = useState<"open" | "closed">(defaultOpen ? "open" : "closed");
@@ -187,5 +187,3 @@ const FactBox = forwardRef<HTMLElement, Props>(
     );
   },
 );
-
-export default FactBox;

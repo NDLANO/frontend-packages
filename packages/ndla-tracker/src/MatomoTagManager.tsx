@@ -11,7 +11,7 @@ interface Props {
   containerId: string;
 }
 
-export const MatomoTagManger = ({ trackerUrl, containerId }: Props) => {
+export const MatomoTagManager = ({ trackerUrl, containerId }: Props) => {
   return (
     <script
       dangerouslySetInnerHTML={{
@@ -24,5 +24,3 @@ export const MatomoTagManger = ({ trackerUrl, containerId }: Props) => {
     />
   );
 };
-
-export default MatomoTagManger;

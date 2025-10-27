@@ -6,7 +6,7 @@
  *
  */
 
-export { default as HelmetWithTracker } from "./HelmetWithTracker";
-export { default as MatomoTagManager } from "./MatomoTagManager";
-export { default as MatomoTracker } from "./MatomoTracker";
-export { default as useTracker } from "./useTracker";
+export { HelmetWithTracker } from "./HelmetWithTracker";
+export { MatomoTagManager } from "./MatomoTagManager";
+export { MatomoTracker } from "./MatomoTracker";
+export { useTracker } from "./useTracker";

@@ -7,7 +7,7 @@
  */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import CampaignBlock from "./CampaignBlock";
+import { CampaignBlock } from "./CampaignBlock";
 
 export default {
   title: "Components/Campaign Block",

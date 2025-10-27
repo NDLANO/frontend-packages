@@ -9,7 +9,7 @@
 import { type ReactNode, useEffect } from "react";
 import warning from "tiny-warning";
 import { usePrevious } from "@ndla/util";
-import useTracker from "./useTracker";
+import { useTracker } from "./useTracker";
 
 interface Props {
   title: string;
@@ -22,7 +22,7 @@ interface Props {
  * Since we only can track a page once, changes to the title prop will trigger a warning.
  */
 
-const HelmetWithTracker = ({ title, children }: Props) => {
+export const HelmetWithTracker = ({ title, children }: Props) => {
   const { hasTracked, trackPageView } = useTracker();
   const previousTitle = usePrevious(title);
 
@@ -44,5 +44,3 @@ const HelmetWithTracker = ({ title, children }: Props) => {
     </>
   );
 };
-
-export default HelmetWithTracker;

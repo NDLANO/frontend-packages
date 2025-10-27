@@ -25,8 +25,8 @@ import type {
   IAudioSummaryDTO,
   IAudioSummarySearchResultDTO,
 } from "@ndla/types-backend/audio-api";
-import AudioSearchInput from "./AudioSearchInput";
-import AudioSearchList from "./AudioSearchList";
+import { AudioSearchInput } from "./AudioSearchInput";
+import { AudioSearchList } from "./AudioSearchList";
 
 const AudioSearchWrapper = styled("div", {
   base: {
@@ -94,7 +94,7 @@ export interface QueryObject {
   fallback?: boolean;
 }
 
-const AudioSearch = ({
+export const AudioSearch = ({
   queryObject: query,
   searchAudios: search,
   onError,
@@ -214,5 +214,3 @@ const AudioSearch = ({
     </AudioSearchWrapper>
   );
 };
-
-export default AudioSearch;

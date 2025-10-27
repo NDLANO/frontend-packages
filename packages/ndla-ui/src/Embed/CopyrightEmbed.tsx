@@ -22,7 +22,7 @@ const StyledCopyrightContent = styled("div", {
   },
 });
 
-const CopyrightEmbed = ({ embed, children }: Props) => {
+export const CopyrightEmbed = ({ embed, children }: Props) => {
   return (
     <figure data-embed-type="copyright">
       <StyledCopyrightContent data-copyright-content="">{children}</StyledCopyrightContent>
@@ -30,5 +30,3 @@ const CopyrightEmbed = ({ embed, children }: Props) => {
     </figure>
   );
 };
-
-export default CopyrightEmbed;

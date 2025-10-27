@@ -102,5 +102,3 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
     </Container>
   );
 };
-
-export default ResourceBox;

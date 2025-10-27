@@ -1,7 +1,7 @@
 {
   "name": "@ndla/primitives",
   "type": "module",
-  "version": "1.0.105-alpha.0",
+  "version": "1.0.106-alpha.0",
   "description": "Primitive components for NDLA.",
   "license": "GPL-3.0",
   "exports": {
@@ -34,7 +34,7 @@
   "dependencies": {
     "@ark-ui/react": "^5.25.0",
     "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "^5.0.13-alpha.0"
+    "@ndla/util": "^5.0.14-alpha.0"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",

@@ -7,6 +7,7 @@
  */
 
 import { useTranslation } from "react-i18next";
+import { Badge } from "@ndla/primitives";
 import type { RelatedContentMetaData } from "@ndla/types-embed";
 import { contentTypeMapping } from "../model/ContentType";
 import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
@@ -16,9 +17,10 @@ interface Props {
   isOembed?: boolean;
   subject?: string;
   ndlaFrontendDomain?: string;
+  language?: string;
 }
 
-export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain }: Props) => {
+export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDomain, language }: Props) => {
   const { t } = useTranslation();
   if (embed.status === "error") {
     return null;
@@ -27,8 +29,15 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
   const { data, embedData } = embed;
 
   if (embedData.articleId && data) {
-    const typeId = data.resource?.resourceTypes.find((rt) => contentTypeMapping[rt.id])?.id;
-    const type = typeId ? contentTypeMapping[typeId] : undefined;
+    const resourceTypes = data.resource?.resourceTypes.map((rt) => ({
+      type: contentTypeMapping[rt.id],
+      name: rt.translations.find((t) => t.language === language)?.name ?? rt.name,
+    }));
+    const badges = resourceTypes?.map((rt) => (
+      <Badge key={rt.type} color="subtle">
+        {rt.name}
+      </Badge>
+    ));
     const context = data.resource?.contexts.find((c) => c.rootId === subject);
     const url = context?.url ?? data.resource?.url ?? `/article/${embedData.articleId}`;
     return (
@@ -37,7 +46,7 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
         introduction={data.article.metaDescription?.metaDescription ?? ""}
         target={isOembed ? "_blank" : undefined}
         to={`${ndlaFrontendDomain ?? ""}${url ?? ""}`}
-        type={type}
+        badges={badges}
       />
     );
   }
@@ -48,7 +57,7 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
         introduction=""
         to={embedData.url}
         target="_blank"
-        type="external"
+        badges={<Badge color="subtle">{t("contentTypes.external")}</Badge>}
         linkInfo={`${t("related.linkInfo")} ${embedData.urlDomain}`}
       />
     );

@@ -13,8 +13,6 @@ import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { ContentTypeBadge } from "../ContentTypeBadge/ContentTypeBadge";
-import { contentTypes } from "../model/ContentType";
 import type { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {
@@ -23,7 +21,7 @@ interface RelatedArticleProps {
   to: string;
   linkInfo?: string;
   target?: string;
-  type?: string;
+  badges?: ReactNode;
 }
 
 const StyledSpan = styled("span", {
@@ -33,18 +31,28 @@ const StyledSpan = styled("span", {
   },
 });
 
+const BadgeContainer = styled("div", {
+  base: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    flexWrap: "wrap",
+    gap: "xxsmall",
+  },
+});
+
 export const RelatedArticle = ({
   title,
   introduction,
   to,
+  badges,
   linkInfo = "",
   target = "",
-  type = contentTypes.SUBJECT_MATERIAL,
 }: RelatedArticleProps) => {
   return (
     <CardRoot data-embed-type="related-article">
       <CardContent>
-        <ContentTypeBadge contentType={type} />
+        <BadgeContainer>{badges}</BadgeContainer>
         <CardHeading asChild consumeCss>
           <span>
             <SafeLink

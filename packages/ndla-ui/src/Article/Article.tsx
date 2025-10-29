@@ -13,6 +13,7 @@ import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
+import { LabelContainer } from "./LabelContainer";
 import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
@@ -120,16 +121,6 @@ const StyledWrapper = styled("div", {
   },
 });
 
-const BadgeContainer = styled("div", {
-  base: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
-    gap: "xxsmall",
-  },
-});
-
 interface ArticleTitleProps {
   badges?: ReactNode;
   heartButton?: ReactNode;
@@ -156,7 +147,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!badges || !!heartButton) && (
           <InfoWrapper>
-            <BadgeContainer>{badges}</BadgeContainer>
+            <LabelContainer>{badges}</LabelContainer>
             {heartButton}
           </InfoWrapper>
         )}

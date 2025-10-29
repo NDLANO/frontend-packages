@@ -9,7 +9,6 @@
 import { useTranslation } from "react-i18next";
 import { Badge } from "@ndla/primitives";
 import type { RelatedContentMetaData } from "@ndla/types-embed";
-import { contentTypeMapping } from "../model/ContentType";
 import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
 
 interface Props {
@@ -30,7 +29,7 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
 
   if (embedData.articleId && data) {
     const resourceTypes = data.resource?.resourceTypes.map((rt) => ({
-      type: contentTypeMapping[rt.id],
+      type: rt.id,
       name: rt.translations.find((t) => t.language === language)?.name ?? rt.name,
     }));
     const badges = resourceTypes?.map((rt) => (

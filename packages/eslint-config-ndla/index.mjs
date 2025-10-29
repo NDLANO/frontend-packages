@@ -18,9 +18,6 @@ import hooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import eslint from "@eslint/js";
-// this will be used later
-// eslint-disable-next-line no-unused-vars
-import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 // eslint 9 workaround
 pluginHeader.rules.header.meta.schema = false;
@@ -59,21 +56,11 @@ export default tseslint.config(
       "array-callback-return": "warn",
       "default-case": "warn",
       eqeqeq: ["warn", "smart"],
-      "no-array-constructor": "warn",
-      "no-caller": "warn",
-      "no-eval": "warn",
-      "no-implied-eval": "warn",
-      "no-loop-func": "warn",
-      "no-object-constructor": "warn",
-      "no-new-wrappers": "warn",
-      "no-script-url": "warn",
       "no-self-compare": "warn",
       "no-sequences": "warn",
       "no-template-curly-in-string": "warn",
       "no-throw-literal": "warn",
       "no-unused-expressions": "error",
-      "no-useless-computed-key": "warn",
-      "no-useless-concat": "warn",
       "no-duplicate-imports": "error",
       "no-unused-vars": [
         "error",
@@ -87,15 +74,6 @@ export default tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
-      "no-useless-rename": [
-        "warn",
-        {
-          ignoreDestructuring: false,
-          ignoreImport: false,
-          ignoreExport: false,
-        },
-      ],
-      strict: ["warn", "never"],
       "no-restricted-imports": [
         "error",
         {
@@ -158,12 +136,9 @@ export default tseslint.config(
     rules: {
       "react/display-name": "off",
       "react/prop-types": "off",
-      "react/no-unused-state": "warn",
       "react/button-has-type": "error",
       "react/jsx-pascal-case": "warn",
       "react/style-prop-object": "warn",
-      "react/jsx-uses-react": "error",
-      "react/no-unknown-property": "error",
       "react/forward-ref-uses-ref": "error",
       "react/jsx-no-leaked-render": "error",
       "react/jsx-no-useless-fragment": "error",
@@ -183,7 +158,6 @@ export default tseslint.config(
     },
     rules: {
       "import/first": "error",
-      "import/no-amd": "error",
       // TODO: There's a perf issue with this rule. It's disabled until it's fixed.
       // "import/no-cycle": ["warn", { maxDepth: Infinity }],
       "import/no-anonymous-default-export": "error",
@@ -246,17 +220,4 @@ export default tseslint.config(
       "react/no-unescaped-entities": "off",
     },
   },
-  // {
-  //   plugins: {
-  //     "simple-import-sort": simpleImportSort,
-  //   },
-  //   rules: {
-  //     "simple-import-sort/imports": [
-  //       "error",
-  //       {
-  //         groups: [["^\\u0000", "^node:", "^\\w", "^@?\\w", "^", "^\\."]],
-  //       },
-  //     ],
-  //   },
-  // },
 );

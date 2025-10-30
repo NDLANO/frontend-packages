@@ -40,6 +40,7 @@ export {
   ArticleHGroup,
   ArticleTitle,
 } from "./Article/Article";
+export { BadgesContainer } from "./Article/BadgesContainer";
 
 export { ArticleByline, ArticleBylineAccordionItem } from "./Article/ArticleByline";
 export { ArticleFootNotes } from "./Article/ArticleFootNotes";

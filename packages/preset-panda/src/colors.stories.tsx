@@ -113,6 +113,18 @@ export const Colors: StoryFn = () => (
       <ColorBlock backgroundColor={"purple.900"} />
       <ColorBlock backgroundColor={"purple.950"} />
     </ColorBlocks>
+    <ColorBlocks title="Purple.alpha">
+      <ColorBlock backgroundColor={"purple.alpha.5"} />
+      <ColorBlock backgroundColor={"purple.alpha.10"} />
+      <ColorBlock backgroundColor={"purple.alpha.20"} />
+      <ColorBlock backgroundColor={"purple.alpha.30"} />
+      <ColorBlock backgroundColor={"purple.alpha.40"} />
+      <ColorBlock backgroundColor={"purple.alpha.50"} />
+      <ColorBlock backgroundColor={"purple.alpha.60"} />
+      <ColorBlock backgroundColor={"purple.alpha.70"} />
+      <ColorBlock backgroundColor={"purple.alpha.80"} />
+      <ColorBlock backgroundColor={"purple.alpha.90"} />
+    </ColorBlocks>
     <ColorBlocks title="lightYellow">
       <ColorBlock backgroundColor={"lightYellow.50"} />
       <ColorBlock backgroundColor={"lightYellow.100"} />

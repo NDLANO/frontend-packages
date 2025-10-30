@@ -47,6 +47,18 @@ export const colors = defineTokens.colors({
     800: { value: "#823CC8" },
     900: { value: "#5E1F9E" },
     950: { value: "#40116F" },
+    alpha: {
+      5: { value: "rgba(45, 27, 98, 0.05)" },
+      10: { value: "rgba(45, 27, 98, 0.1)" },
+      20: { value: "rgba(45, 27, 98, 0.2)" },
+      30: { value: "rgba(45, 27, 98, 0.3)" },
+      40: { value: "rgba(45, 27, 98, 0.4)" },
+      50: { value: "rgba(45, 27, 98, 0.5)" },
+      60: { value: "rgba(45, 27, 98, 0.6)" },
+      70: { value: "rgba(45, 27, 98, 0.7)" },
+      80: { value: "rgba(45, 27, 98, 0.8)" },
+      90: { value: "rgba(45, 27, 98, 0.9)" },
+    },
   },
   lightYellow: {
     50: { value: "#FFFCF0" },

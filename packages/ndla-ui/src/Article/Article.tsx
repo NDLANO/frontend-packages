@@ -147,7 +147,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!badges || !!heartButton) && (
           <InfoWrapper>
-            <BadgesContainer>{badges}</BadgesContainer>
+            {!!badges && <BadgesContainer>{badges}</BadgesContainer>}
             {heartButton}
           </InfoWrapper>
         )}

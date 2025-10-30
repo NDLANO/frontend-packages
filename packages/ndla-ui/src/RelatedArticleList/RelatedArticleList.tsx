@@ -43,7 +43,7 @@ export const RelatedArticle = ({
   return (
     <CardRoot data-embed-type="related-article">
       <CardContent>
-        <BadgesContainer>{badges}</BadgesContainer>
+        {!!badges && <BadgesContainer>{badges}</BadgesContainer>}
         <CardHeading asChild consumeCss>
           <span>
             <SafeLink

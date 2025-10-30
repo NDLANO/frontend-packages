@@ -28,14 +28,8 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
   const { data, embedData } = embed;
 
   if (embedData.articleId && data) {
-    const resourceTypes = data.resource?.resourceTypes.map((rt) => ({
-      type: rt.id,
-      name: rt.translations.find((t) => t.language === language)?.name ?? rt.name,
-    }));
-    const badges = resourceTypes?.map((rt) => (
-      <Badge key={rt.type} color="subtle">
-        {rt.name}
-      </Badge>
+    const badges = data.resource?.resourceTypes?.map((rt) => (
+      <Badge key={rt.id}>{rt.translations.find((t) => t.language === language)?.name ?? rt.name}</Badge>
     ));
     const context = data.resource?.contexts.find((c) => c.rootId === subject);
     const url = context?.url ?? data.resource?.url ?? `/article/${embedData.articleId}`;
@@ -56,7 +50,7 @@ export const RelatedContentEmbed = ({ embed, isOembed, subject, ndlaFrontendDoma
         introduction=""
         to={embedData.url}
         target="_blank"
-        badges={<Badge color="subtle">{t("contentTypes.external")}</Badge>}
+        badges={<Badge>{t("contentTypes.external")}</Badge>}
         linkInfo={`${t("related.linkInfo")} ${embedData.urlDomain}`}
       />
     );

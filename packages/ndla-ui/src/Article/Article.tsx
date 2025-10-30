@@ -13,7 +13,7 @@ import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
-import { LabelContainer } from "./LabelContainer";
+import { BadgesContainer } from "./BadgesContainer";
 import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
@@ -147,7 +147,7 @@ export const ArticleTitle = ({
       <ArticleHGroup>
         {(!!badges || !!heartButton) && (
           <InfoWrapper>
-            <LabelContainer>{badges}</LabelContainer>
+            <BadgesContainer>{badges}</BadgesContainer>
             {heartButton}
           </InfoWrapper>
         )}

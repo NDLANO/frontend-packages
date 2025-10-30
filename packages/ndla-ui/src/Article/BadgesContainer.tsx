@@ -8,7 +8,7 @@
 
 import { styled } from "@ndla/styled-system/jsx";
 
-export const LabelContainer = styled("div", {
+export const BadgesContainer = styled("div", {
   base: {
     display: "flex",
     flexDirection: "row",

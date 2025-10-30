@@ -13,7 +13,7 @@ import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { LabelContainer } from "../Article/LabelContainer";
+import { BadgesContainer } from "../Article/BadgesContainer";
 import type { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {
@@ -43,7 +43,7 @@ export const RelatedArticle = ({
   return (
     <CardRoot data-embed-type="related-article">
       <CardContent>
-        <LabelContainer>{badges}</LabelContainer>
+        <BadgesContainer>{badges}</BadgesContainer>
         <CardHeading asChild consumeCss>
           <span>
             <SafeLink

@@ -13,7 +13,7 @@ import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { ArticleByline } from "./ArticleByline";
-import { ContentTypeBadge, type ContentType } from "../ContentTypeBadge/ContentTypeBadge";
+import { BadgesContainer } from "./BadgesContainer";
 import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
@@ -122,9 +122,8 @@ const StyledWrapper = styled("div", {
 });
 
 interface ArticleTitleProps {
+  badges?: ReactNode;
   heartButton?: ReactNode;
-  contentType?: ContentType;
-  contentTypeLabel?: ReactNode;
   competenceGoals?: ReactNode;
   id: string;
   lang?: string;
@@ -134,22 +133,21 @@ interface ArticleTitleProps {
 }
 
 export const ArticleTitle = ({
-  contentType,
+  badges,
   heartButton,
   title,
   lang,
   id,
   introduction,
-  contentTypeLabel,
   competenceGoals,
   disclaimer,
 }: ArticleTitleProps) => {
   return (
     <ArticleHeader>
       <ArticleHGroup>
-        {(!!contentType || !!heartButton) && (
+        {(!!badges || !!heartButton) && (
           <InfoWrapper>
-            {!!contentType && <ContentTypeBadge contentType={contentType}>{contentTypeLabel}</ContentTypeBadge>}
+            <BadgesContainer>{badges}</BadgesContainer>
             {heartButton}
           </InfoWrapper>
         )}
@@ -171,11 +169,10 @@ export const ArticleTitle = ({
 };
 
 interface Props {
+  badges?: ReactNode;
   heartButton?: ReactNode;
   article: ArticleType;
   licenseBox?: ReactNode;
-  contentType?: ContentType;
-  contentTypeLabel?: ReactNode;
   children?: ReactNode;
   competenceGoals?: ReactNode;
   id: string;
@@ -184,12 +181,11 @@ interface Props {
 }
 
 export const Article = ({
+  badges,
   article,
-  contentType,
   licenseBox,
   children,
   competenceGoals,
-  contentTypeLabel,
   id,
   heartButton,
   lang,
@@ -204,13 +200,12 @@ export const Article = ({
     <ArticleWrapper>
       <ArticleTitle
         id={id}
-        contentType={contentType}
+        badges={badges}
         heartButton={heartButton}
         title={title}
         introduction={introduction}
         competenceGoals={competenceGoals}
         lang={lang}
-        contentTypeLabel={contentTypeLabel}
         disclaimer={disclaimer}
       />
       <ArticleContent>{content}</ArticleContent>

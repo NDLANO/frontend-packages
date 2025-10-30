@@ -6,9 +6,6 @@
  *
  */
 
-// Ignore typescript implicit any warning and export all javascript components
-// Move components to this file when they are migrated to typescript
-
 export { Concept } from "./Concept/Concept";
 
 export { ImageEmbed, getCrop, getFocalPoint } from "./Embed/ImageEmbed";

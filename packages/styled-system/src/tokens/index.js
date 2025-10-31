@@ -131,6 +131,46 @@ const tokens = {
     "value": "#40116F",
     "variable": "var(--colors-purple-950)"
   },
+  "colors.purple.alpha.5": {
+    "value": "rgba(45, 27, 98, 0.05)",
+    "variable": "var(--colors-purple-alpha-5)"
+  },
+  "colors.purple.alpha.10": {
+    "value": "rgba(45, 27, 98, 0.1)",
+    "variable": "var(--colors-purple-alpha-10)"
+  },
+  "colors.purple.alpha.20": {
+    "value": "rgba(45, 27, 98, 0.2)",
+    "variable": "var(--colors-purple-alpha-20)"
+  },
+  "colors.purple.alpha.30": {
+    "value": "rgba(45, 27, 98, 0.3)",
+    "variable": "var(--colors-purple-alpha-30)"
+  },
+  "colors.purple.alpha.40": {
+    "value": "rgba(45, 27, 98, 0.4)",
+    "variable": "var(--colors-purple-alpha-40)"
+  },
+  "colors.purple.alpha.50": {
+    "value": "rgba(45, 27, 98, 0.5)",
+    "variable": "var(--colors-purple-alpha-50)"
+  },
+  "colors.purple.alpha.60": {
+    "value": "rgba(45, 27, 98, 0.6)",
+    "variable": "var(--colors-purple-alpha-60)"
+  },
+  "colors.purple.alpha.70": {
+    "value": "rgba(45, 27, 98, 0.7)",
+    "variable": "var(--colors-purple-alpha-70)"
+  },
+  "colors.purple.alpha.80": {
+    "value": "rgba(45, 27, 98, 0.8)",
+    "variable": "var(--colors-purple-alpha-80)"
+  },
+  "colors.purple.alpha.90": {
+    "value": "rgba(45, 27, 98, 0.9)",
+    "variable": "var(--colors-purple-alpha-90)"
+  },
   "colors.lightYellow.50": {
     "value": "#FFFCF0",
     "variable": "var(--colors-light-yellow-50)"
@@ -1508,11 +1548,11 @@ const tokens = {
     "variable": "var(--colors-surface-default)"
   },
   "colors.surface.hover": {
-    "value": "var(--colors-grey-100)",
+    "value": "var(--colors-purple-alpha-5)",
     "variable": "var(--colors-surface-hover)"
   },
   "colors.surface.active": {
-    "value": "var(--colors-grey-200)",
+    "value": "var(--colors-purple-alpha-10)",
     "variable": "var(--colors-surface-active)"
   },
   "colors.surface.selected": {
@@ -2075,6 +2115,82 @@ const tokens = {
     "value": "var(--colors-color-palette-950)",
     "variable": "var(--colors-color-palette-950)"
   },
+  "colors.colorPalette.alpha.5": {
+    "value": "var(--colors-color-palette-alpha-5)",
+    "variable": "var(--colors-color-palette-alpha-5)"
+  },
+  "colors.colorPalette.5": {
+    "value": "var(--colors-color-palette-5)",
+    "variable": "var(--colors-color-palette-5)"
+  },
+  "colors.colorPalette.alpha.10": {
+    "value": "var(--colors-color-palette-alpha-10)",
+    "variable": "var(--colors-color-palette-alpha-10)"
+  },
+  "colors.colorPalette.10": {
+    "value": "var(--colors-color-palette-10)",
+    "variable": "var(--colors-color-palette-10)"
+  },
+  "colors.colorPalette.alpha.20": {
+    "value": "var(--colors-color-palette-alpha-20)",
+    "variable": "var(--colors-color-palette-alpha-20)"
+  },
+  "colors.colorPalette.20": {
+    "value": "var(--colors-color-palette-20)",
+    "variable": "var(--colors-color-palette-20)"
+  },
+  "colors.colorPalette.alpha.30": {
+    "value": "var(--colors-color-palette-alpha-30)",
+    "variable": "var(--colors-color-palette-alpha-30)"
+  },
+  "colors.colorPalette.30": {
+    "value": "var(--colors-color-palette-30)",
+    "variable": "var(--colors-color-palette-30)"
+  },
+  "colors.colorPalette.alpha.40": {
+    "value": "var(--colors-color-palette-alpha-40)",
+    "variable": "var(--colors-color-palette-alpha-40)"
+  },
+  "colors.colorPalette.40": {
+    "value": "var(--colors-color-palette-40)",
+    "variable": "var(--colors-color-palette-40)"
+  },
+  "colors.colorPalette.alpha.50": {
+    "value": "var(--colors-color-palette-alpha-50)",
+    "variable": "var(--colors-color-palette-alpha-50)"
+  },
+  "colors.colorPalette.alpha.60": {
+    "value": "var(--colors-color-palette-alpha-60)",
+    "variable": "var(--colors-color-palette-alpha-60)"
+  },
+  "colors.colorPalette.60": {
+    "value": "var(--colors-color-palette-60)",
+    "variable": "var(--colors-color-palette-60)"
+  },
+  "colors.colorPalette.alpha.70": {
+    "value": "var(--colors-color-palette-alpha-70)",
+    "variable": "var(--colors-color-palette-alpha-70)"
+  },
+  "colors.colorPalette.70": {
+    "value": "var(--colors-color-palette-70)",
+    "variable": "var(--colors-color-palette-70)"
+  },
+  "colors.colorPalette.alpha.80": {
+    "value": "var(--colors-color-palette-alpha-80)",
+    "variable": "var(--colors-color-palette-alpha-80)"
+  },
+  "colors.colorPalette.80": {
+    "value": "var(--colors-color-palette-80)",
+    "variable": "var(--colors-color-palette-80)"
+  },
+  "colors.colorPalette.alpha.90": {
+    "value": "var(--colors-color-palette-alpha-90)",
+    "variable": "var(--colors-color-palette-alpha-90)"
+  },
+  "colors.colorPalette.90": {
+    "value": "var(--colors-color-palette-90)",
+    "variable": "var(--colors-color-palette-90)"
+  },
   "colors.colorPalette.1000": {
     "value": "var(--colors-color-palette-1000)",
     "variable": "var(--colors-color-palette-1000)"
@@ -2290,10 +2406,6 @@ const tokens = {
   "colors.colorPalette.brand.5": {
     "value": "var(--colors-color-palette-brand-5)",
     "variable": "var(--colors-color-palette-brand-5)"
-  },
-  "colors.colorPalette.5": {
-    "value": "var(--colors-color-palette-5)",
-    "variable": "var(--colors-color-palette-5)"
   },
   "colors.colorPalette.brand.5.subtle": {
     "value": "var(--colors-color-palette-brand-5-subtle)",

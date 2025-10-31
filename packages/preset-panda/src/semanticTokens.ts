@@ -129,8 +129,8 @@ export const semanticTokens = defineSemanticTokens({
         },
       },
       default: { value: "{colors.white}" },
-      hover: { value: "{colors.grey.100}" },
-      active: { value: "{colors.grey.200}" },
+      hover: { value: "{colors.purple.alpha.5}" },
+      active: { value: "{colors.purple.alpha.10}" },
       selected: { value: "{colors.purple.200}" },
       disabled: {
         DEFAULT: { value: "{colors.grey.200}" },

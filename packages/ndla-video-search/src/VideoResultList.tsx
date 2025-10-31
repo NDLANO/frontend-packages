@@ -14,6 +14,9 @@ import type { VideoTranslations } from "./VideoSearch";
 
 const StyledList = styled("ul", {
   base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "xxsmall",
     listStyle: "none",
     width: "100%",
   },

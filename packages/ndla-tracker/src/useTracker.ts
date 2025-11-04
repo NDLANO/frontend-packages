@@ -6,7 +6,7 @@
  *
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 import { usePrevious } from "@ndla/util";
 
@@ -22,29 +22,26 @@ declare global {
 }
 
 export const useTracker = () => {
-  const [hasTracked, setHasTracked] = useState(false);
+  const hasTracked = useRef(false);
   const { pathname } = useLocation();
   const previousPath = usePrevious(pathname);
 
   useEffect(() => {
     if (hasTracked && previousPath !== pathname) {
-      setHasTracked(false);
+      hasTracked.current = false;
     }
   }, [hasTracked, pathname, previousPath]);
 
-  const trackPageView = useCallback(
-    ({ title, dimensions = {} }: TrackPageViewProps) => {
-      if (!hasTracked) {
-        setHasTracked(true);
-        window._mtm?.push({
-          page_title: title,
-          event: "Pageview",
-          ...dimensions,
-        });
-      }
-    },
-    [hasTracked],
-  );
+  const trackPageView = useCallback(({ title, dimensions = {} }: TrackPageViewProps) => {
+    if (!hasTracked.current) {
+      hasTracked.current = true;
+      window._mtm?.push({
+        page_title: title,
+        event: "Pageview",
+        ...dimensions,
+      });
+    }
+  }, []);
 
   return { trackPageView, hasTracked };
 };

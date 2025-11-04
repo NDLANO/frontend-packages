@@ -19,18 +19,21 @@ export const listItemRecipe = sva({
   base: {
     root: {
       minHeight: "3xlarge",
-      borderBlockWidth: "1px",
-      borderInlineColor: "transparent",
+      borderStyle: "solid",
+      borderWidth: "1px",
+      borderColor: "stroke.subtle",
+      backgroundColor: "background.default",
       color: "text.default",
       position: "relative",
       display: "flex",
-      gap: "xsmall",
+      gap: "small",
       alignItems: "center",
       paddingBlock: "xsmall",
-      paddingInline: "xsmall",
+      paddingInline: "xxsmall",
       transitionProperty: "background-color, border-color, color",
       transitionDuration: "superFast",
       transitionTimingFunction: "ease-in-out",
+      boxShadow: "xsmall",
     },
     content: {
       display: "flex",
@@ -40,34 +43,33 @@ export const listItemRecipe = sva({
       width: "100%",
     },
     image: {
-      minHeight: "40px",
-      maxHeight: "40px",
-      minWidth: "56px",
-      maxWidth: "56px",
+      minHeight: "50px",
+      maxHeight: "50px",
+      minWidth: "70px",
+      maxWidth: "70px",
       objectFit: "cover",
     },
   },
   defaultVariants: {
-    variant: "intense",
-    context: "standalone",
-    borderVariant: "solid",
     nonInteractive: false,
   },
   variants: {
-    borderVariant: {
-      solid: {
-        root: {
-          borderStyle: "solid",
-        },
-      },
-      dashed: {
-        root: {
-          borderStyle: "dashed",
-        },
-      },
-    },
     nonInteractive: {
       false: {
+        root: {
+          _highlighted: {
+            borderColor: "stroke.hover",
+            backgroundColor: "surface.hover",
+          },
+          _hover: {
+            borderColor: "stroke.hover",
+            backgroundColor: "surface.hover",
+          },
+          _active: {
+            borderColor: "stroke.hover",
+            backgroundColor: "surface.active",
+          },
+        },
         title: {
           textDecoration: "underline",
           _hover: {
@@ -76,143 +78,23 @@ export const listItemRecipe = sva({
         },
       },
     },
-    colorTheme: {
-      brand1: {
-        root: {
-          "--background-hover": "colors.surface.action.brand.1.hover",
-          "--border-hover": "colors.stroke.hover",
-          "--border-color-current": "colors.stroke.default",
-        },
-      },
-      brand2: {
-        root: {
-          "--background-hover": "colors.surface.brand.2.moderate",
-          "--border-hover": "colors.surface.brand.2.strong",
-          "--border-color-current": "colors.surface.brand.2.strong",
-        },
-      },
-      brand3: {
-        root: {
-          "--background-hover": "colors.surface.action.myNdla.hover",
-          "--border-hover": "colors.stroke.subtle",
-          "--border-color-current": "colors.stroke.subtle",
-        },
-      },
-      neutral: {
-        root: {
-          "--background-hover": "colors.surface.hover",
-          "--border-hover": "colors.stroke.subtle",
-          "--border-color-current": "colors.stroke.discrete",
-        },
-      },
-    },
-    variant: {
-      intense: {
-        root: {
-          _hover: {
-            background: "var(--background-hover)",
-          },
-          _highlighted: {
-            background: "var(--background-hover)",
-          },
-        },
-      },
-      subtle: {},
-    },
-    context: {
-      standalone: {
-        root: {
-          borderBlockColor: "stroke.subtle",
-          _hover: {
-            borderBlockColor: "var(--border-hover)",
-          },
-          _highlighted: {
-            borderBlockColor: "var(--border-hover)",
-          },
-        },
-      },
-      list: {
-        root: {
-          borderBlockStartColor: "transparent",
-          borderBlockEndColor: "stroke.subtle",
-          marginBlockStart: "-1px",
-        },
-      },
-    },
   },
-  compoundVariants: [
-    {
-      context: "list",
-      nonInteractive: false,
-      css: {
-        root: {
-          _first: {
-            _hover: {
-              borderBlockStartColor: "var(--border-hover)",
-            },
-            _highlighted: {
-              borderBlockStartColor: "var(--border-hover)",
-            },
-          },
-          "&:hover + &": {
-            borderBlockStartColor: "var(--border-hover)",
-          },
-          "&[data-highlighted] + &": {
-            borderBlockStartColor: "var(--border-hover)",
-          },
-          _hover: {
-            borderBlockEndColor: "transparent",
-            borderBlockStartColor: "var(--border-hover)",
-            _last: {
-              borderBlockEndColor: "var(--border-hover)",
-            },
-          },
-          _highlighted: {
-            borderBlockStartColor: "var(--border-hover)",
-            _last: {
-              borderBlockEndColor: "var(--border-hover)",
-            },
-          },
-        },
-      },
-    },
-  ],
 });
 
 const { withProvider, withContext } = createStyleContext(listItemRecipe);
 
 export type ListItemVariantProps = NonNullable<RecipeVariantProps<typeof listItemRecipe>>;
 
-type NonInteractiveListItemVariantProps = Omit<ListItemVariantProps, "colorTheme">;
+export interface ListItemProps extends HTMLArkProps<"div">, StyledProps, ListItemVariantProps {}
 
-interface BaseListItemProps extends HTMLArkProps<"div">, StyledProps {
-  nonInteractive?: true | false;
-}
-
-interface NonInteractiveListItemProps extends BaseListItemProps, NonInteractiveListItemVariantProps {
-  nonInteractive: true;
-}
-
-interface InteractiveListItemProps extends BaseListItemProps, ListItemVariantProps {
-  nonInteractive?: false;
-}
-
-export type ListItemProps = NonInteractiveListItemProps | InteractiveListItemProps;
-
-const InternalListItemRoot = withProvider(ark.div, "root", { baseComponent: true });
-
-export const ListItemRoot = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => (
-  <InternalListItemRoot
-    {...props}
-    colorTheme={props.nonInteractive ? undefined : (props.colorTheme ?? "brand1")}
-    ref={ref}
-  />
-));
+export const ListItemRoot = withProvider(ark.div, "root", { baseComponent: true });
 
 interface ListItemHeadingProps extends Omit<HTMLArkProps<"p">, "color">, TextProps {}
 
 const InternalListItemHeading = forwardRef<HTMLHeadingElement, ListItemHeadingProps>(
-  ({ textStyle = "label.medium", ...props }, ref) => <Heading textStyle={textStyle} {...props} ref={ref} />,
+  ({ textStyle = "label.medium", fontWeight = "bold", ...props }, ref) => (
+    <Heading textStyle={textStyle} fontWeight={fontWeight} {...props} ref={ref} />
+  ),
 );
 
 export const ListItemHeading = withContext(InternalListItemHeading, "title");

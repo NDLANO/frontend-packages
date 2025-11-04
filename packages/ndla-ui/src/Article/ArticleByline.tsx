@@ -105,7 +105,7 @@ export const ArticleByline = ({
   bylineSuffix,
   learningpathCopiedFrom,
 }: Props) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
   const accordionItemValue = "rulesForUse";
@@ -133,7 +133,7 @@ export const ArticleByline = ({
   }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const listFormatter = new Intl.ListFormat(lang, { style: "long", type: "conjunction" });
+  const listFormatter = new Intl.ListFormat(lang ?? i18n.language, { style: "long", type: "conjunction" });
 
   return (
     <Wrapper>

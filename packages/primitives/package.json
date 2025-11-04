@@ -1,7 +1,7 @@
 {
   "name": "@ndla/primitives",
   "type": "module",
-  "version": "1.0.107-alpha.0",
+  "version": "1.0.108-alpha.0",
   "description": "Primitive components for NDLA.",
   "license": "GPL-3.0",
   "exports": {

@@ -48,7 +48,7 @@ const badgeRecipe = cva({
       },
       neutral: {
         backgroundColor: "surface.infoSubtle",
-        borderColor: "stroke.default",
+        borderColor: "stroke.info",
       },
       danger: {
         backgroundColor: "surface.dangerSubtle",

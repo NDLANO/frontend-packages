@@ -12,10 +12,10 @@ import { AlertLine } from "@ndla/icons";
 import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { ICopyrightDTO as ArticleCopyright } from "@ndla/types-backend/article-api";
-import type { ICopyrightDTO as AudioCopyright } from "@ndla/types-backend/audio-api";
-import type { IDraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
-import type { ICopyrightDTO as ImageCopyright } from "@ndla/types-backend/image-api";
+import type { CopyrightDTO as ArticleCopyright } from "@ndla/types-backend/article-api";
+import type { CopyrightDTO as AudioCopyright } from "@ndla/types-backend/audio-api";
+import type { DraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import type { CopyrightDTO as ImageCopyright } from "@ndla/types-backend/image-api";
 import type { BrightcoveCopyright } from "@ndla/types-embed";
 import { LicenseLink } from "./LicenseLink";
 

@@ -8,7 +8,7 @@
 
 import { useRef } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
-import type { IAudioMetaInformationDTO, IAudioSummarySearchResultDTO } from "@ndla/types-backend/audio-api";
+import type { AudioMetaInformationDTO, AudioSummarySearchResultDTO } from "@ndla/types-backend/audio-api";
 import { AudioSearch, type QueryObject } from "./AudioSearch";
 
 export default {
@@ -46,7 +46,7 @@ export default {
 
 export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const fetchAudios = (queryObject: QueryObject): Promise<IAudioSummarySearchResultDTO> => {
+  const fetchAudios = (queryObject: QueryObject): Promise<AudioSummarySearchResultDTO> => {
     ref.current?.scrollIntoView({
       block: "start",
     });
@@ -63,7 +63,7 @@ export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
     });
   };
 
-  const fetchAudio = (id: number): Promise<IAudioMetaInformationDTO> =>
+  const fetchAudio = (id: number): Promise<AudioMetaInformationDTO> =>
     new Promise((resolve, reject) => {
       fetch(`https://api.test.ndla.no/audio-api/v1/audio/${id}`, {
         method: "GET",

@@ -21,7 +21,7 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledVariantProps } from "@ndla/styled-system/types";
-import type { ConceptTitleDTO, IGlossDataDTO, IGlossExampleDTO } from "@ndla/types-backend/concept-api";
+import type { ConceptTitleDTO, GlossDataDTO, GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import { GlossExample } from "./GlossExample";
 import { SpeechControl } from "../AudioPlayer/SpeechControl";
 
@@ -30,10 +30,10 @@ import { SpeechControl } from "../AudioPlayer/SpeechControl";
 // When a gloss is bordered there's way too much padding.
 
 const getFilteredExamples = (
-  glossData: IGlossDataDTO | undefined,
+  glossData: GlossDataDTO | undefined,
   exampleIds: string | undefined,
   exampleLangs: string | undefined,
-): IGlossExampleDTO[][] => {
+): GlossExampleDTO[][] => {
   if (exampleIds !== undefined || exampleLangs !== undefined) {
     const exampleIdsList = exampleIds?.toString()?.split(",") ?? [];
     const exampleLangsList = exampleLangs?.split(",") ?? [];
@@ -102,7 +102,7 @@ type GlossVariantProps = StyledVariantProps<typeof StyledAccordionItem>;
 
 export interface Props {
   title: ConceptTitleDTO;
-  glossData?: IGlossDataDTO;
+  glossData?: GlossDataDTO;
   audio?: {
     title: string;
     src?: string;

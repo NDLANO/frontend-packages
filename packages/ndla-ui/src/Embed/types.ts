@@ -7,7 +7,7 @@
  */
 
 import type { ElementType } from "react";
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { EmbedMetaData } from "@ndla/types-embed";
 
 export type HeartButtonType = ElementType<{
@@ -19,7 +19,7 @@ export type EmbedParameter<T extends EmbedMetaData["resource"]> = Partial<
 >;
 
 export type CanonicalUrlFuncs = {
-  image?: (image: IImageMetaInformationV3DTO) => string;
+  image?: (image: ImageMetaInformationV3DTO) => string;
 };
 
 export type RenderContext = "article" | "embed";

@@ -10,7 +10,7 @@ import type { ReactNode } from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { PageContent, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { ImageEmbedData } from "@ndla/types-embed";
 import { ImageEmbed } from "./ImageEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
@@ -27,7 +27,7 @@ const embedData: ImageEmbedData = {
   url: "https://api.test.ndla.no/image-api/v2/images/61181",
 };
 
-const metaData: IImageMetaInformationV3DTO = {
+const metaData: ImageMetaInformationV3DTO = {
   id: "61181",
   metaUrl: "https://api.test.ndla.no/image-api/v3/images/61181",
   title: {

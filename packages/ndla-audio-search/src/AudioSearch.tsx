@@ -21,9 +21,9 @@ import {
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type {
-  IAudioMetaInformationDTO,
-  IAudioSummaryDTO,
-  IAudioSummarySearchResultDTO,
+  AudioMetaInformationDTO,
+  AudioSummaryDTO,
+  AudioSummarySearchResultDTO,
 } from "@ndla/types-backend/audio-api";
 import { AudioSearchInput } from "./AudioSearchInput";
 import { AudioSearchList } from "./AudioSearchList";
@@ -77,11 +77,11 @@ export interface AudioSearchTranslations {
 
 interface Props {
   queryObject: QueryObject;
-  fetchAudio: (id: number) => Promise<IAudioMetaInformationDTO>;
-  searchAudios: (queryObject: QueryObject) => Promise<IAudioSummarySearchResultDTO>;
+  fetchAudio: (id: number) => Promise<AudioMetaInformationDTO>;
+  searchAudios: (queryObject: QueryObject) => Promise<AudioSummarySearchResultDTO>;
   onError: (err: any) => void;
   translations: AudioSearchTranslations;
-  onAudioSelect: (audio: IAudioSummaryDTO) => void;
+  onAudioSelect: (audio: AudioSummaryDTO) => void;
   loadingIndicator?: ReactNode;
 }
 
@@ -105,7 +105,7 @@ export const AudioSearch = ({
 }: Props) => {
   const [queryObject, setQueryObject] = useState<QueryObject>(query);
   const [searching, setSearching] = useState(false);
-  const [searchResult, setSearchResult] = useState<IAudioSummarySearchResultDTO | undefined>();
+  const [searchResult, setSearchResult] = useState<AudioSummarySearchResultDTO | undefined>();
   const noResultsFound = !searching && searchResult?.results.length === 0;
 
   const { locale } = queryObject ?? {};

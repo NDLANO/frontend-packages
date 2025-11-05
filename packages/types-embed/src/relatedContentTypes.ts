@@ -6,8 +6,8 @@
  *
  */
 
-import type { IArticleV2DTO } from "@ndla/types-backend/article-api";
-import type { IArticleDTO } from "@ndla/types-backend/draft-api";
+import type { ArticleV2DTO } from "@ndla/types-backend/article-api";
+import type { ArticleDTO } from "@ndla/types-backend/draft-api";
 import type { Node } from "@ndla/types-taxonomy";
 import type { MetaData } from "./baseTypes";
 
@@ -21,7 +21,7 @@ export interface RelatedContentEmbedData {
 }
 
 export interface RelatedContentData {
-  article: IArticleV2DTO | IArticleDTO;
+  article: ArticleV2DTO | ArticleDTO;
   resource?: Node;
 }
 

@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from "./baseTypes";
 import type { OembedProxyResponse } from "./oembedTypes";
 
@@ -24,7 +24,7 @@ export interface OembedEmbedData {
 
 export interface OembedData {
   oembed: OembedProxyResponse;
-  iframeImage?: IImageMetaInformationV3DTO;
+  iframeImage?: ImageMetaInformationV3DTO;
 }
 
 export type OembedMetaData = MetaData<OembedEmbedData, OembedData>;

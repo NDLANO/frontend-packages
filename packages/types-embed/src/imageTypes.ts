@@ -6,7 +6,7 @@
  *
  */
 
-import type { ICopyrightDTO, IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { CopyrightDTO, ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from "./baseTypes";
 
 export interface ImageEmbedData {
@@ -34,9 +34,9 @@ export interface ImageEmbedData {
 export interface ImageData {
   title: string;
   altText: string;
-  copyright: ICopyrightDTO;
+  copyright: CopyrightDTO;
   src: string;
   copyText: string;
 }
 
-export type ImageMetaData = MetaData<ImageEmbedData, IImageMetaInformationV3DTO>;
+export type ImageMetaData = MetaData<ImageEmbedData, ImageMetaInformationV3DTO>;

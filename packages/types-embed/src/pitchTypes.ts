@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from "./baseTypes";
 
 export type PitchEmbedData = {
@@ -19,7 +19,7 @@ export type PitchEmbedData = {
 };
 
 export interface PitchMeta {
-  metaImage?: IImageMetaInformationV3DTO;
+  metaImage?: ImageMetaInformationV3DTO;
 }
 
 export type PitchMetaData = MetaData<PitchEmbedData, PitchMeta>;

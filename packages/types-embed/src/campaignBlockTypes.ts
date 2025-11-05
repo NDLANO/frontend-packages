@@ -6,7 +6,7 @@
  *
  */
 
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import type { MetaData } from "./baseTypes";
 
 export interface CampaignBlockEmbedData {
@@ -23,7 +23,7 @@ export interface CampaignBlockEmbedData {
 }
 
 export interface CampaignBlockMeta {
-  image?: IImageMetaInformationV3DTO;
+  image?: ImageMetaInformationV3DTO;
 }
 
 export type CampaignBlockMetaData = MetaData<CampaignBlockEmbedData, CampaignBlockMeta>;

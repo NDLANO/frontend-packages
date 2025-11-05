@@ -22,7 +22,7 @@ import {
   FieldRoot,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import { ImageMeta } from "./ImageMeta";
 import type { PreviewTranslations } from "./ImageSearch";
 import { getSrcSets } from "./util/imageUtil";
@@ -114,8 +114,8 @@ const StyledFieldRoot = styled(FieldRoot, {
 
 interface Props {
   id: string;
-  image: IImageMetaInformationV3DTO;
-  onSelectImage: (image: IImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => void;
+  image: ImageMetaInformationV3DTO;
+  onSelectImage: (image: ImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => void;
   showCheckbox: boolean;
   translations: PreviewTranslations;
   locale: string;

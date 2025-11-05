@@ -38,7 +38,8 @@ const StyledText = styled(Text, {
 
 const StyledCardRoot = styled(CardRoot, {
   base: {
-    border: "0",
+    outline: "0px",
+    boxShadow: "none",
     display: "flex",
     flexDirection: "column",
     gap: "small",
@@ -56,7 +57,7 @@ export const Pitch = ({ title, url, metaImage, path, description }: Props) => {
   const href = getPossiblyRelativeUrl(url, path);
 
   return (
-    <StyledCardRoot variant="subtle" data-embed-type="pitch" asChild consumeCss>
+    <StyledCardRoot nonInteractive data-embed-type="pitch" asChild consumeCss>
       <div>
         <StyledCardHeading textStyle="heading.small" asChild consumeCss>
           <SafeLink to={href} unstyled css={linkOverlay.raw()}>

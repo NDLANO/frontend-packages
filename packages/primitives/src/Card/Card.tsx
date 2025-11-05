@@ -19,24 +19,25 @@ const cardRecipe = sva({
   base: {
     root: {
       position: "relative",
-      border: "1px solid",
+      outline: "1px solid",
       borderRadius: "xsmall",
-      borderColor: "stroke.subtle",
+      outlineColor: "transparent",
+      outlineOffset: "-1px",
+      height: "100%",
+      boxShadow: "xsmall",
       transitionDuration: "fast",
-      transitionProperty: "background, color",
+      transitionProperty: "background, color, outline-color",
       transitionTimingFunction: "default",
       background: "surface.default",
       overflow: "hidden",
-      _hover: {
-        borderColor: "stroke.hover",
-      },
     },
     content: {
       display: "flex",
       flexDirection: "column",
-      gap: "xsmall",
-      paddingBlock: "xsmall",
-      paddingInline: "medium",
+      gap: "small",
+      paddingBlockStart: "small",
+      paddingBlockEnd: "medium",
+      paddingInline: "small",
     },
     title: {
       textDecoration: "underline",
@@ -51,15 +52,19 @@ const cardRecipe = sva({
     },
   },
   defaultVariants: {
-    variant: "intense",
+    nonInteractive: false,
   },
   variants: {
-    variant: {
-      subtle: {},
-      intense: {
+    nonInteractive: {
+      true: {},
+      false: {
         root: {
           _hover: {
-            background: "surface.actionSubtle.hover",
+            background: "surface.hover",
+            outlineColor: "stroke.hover",
+          },
+          _active: {
+            background: "surface.active",
           },
         },
       },

@@ -38,7 +38,7 @@
     "@ndla/primitives": "workspace:^",
     "@ndla/safelink": "workspace:^",
     "@ndla/ui": "^56.0.154-alpha.0",
-    "html-react-parser": "^5.1.19"
+    "html-react-parser": "^5.2.8"
   },
   "peerDependencies": {
     "i18next": ">= 25.0.0",

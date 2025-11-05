@@ -44,7 +44,7 @@
     "@ndla/safelink": "^7.0.111-alpha.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.14-alpha.0",
-    "html-react-parser": "^5.1.19"
+    "html-react-parser": "^5.2.8"
   },
   "peerDependencies": {
     "i18next": ">= 25.0.0",

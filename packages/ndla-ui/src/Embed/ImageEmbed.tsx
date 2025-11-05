@@ -191,7 +191,7 @@ const ExpandButton = styled(
 );
 
 export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article", children }: Props) => {
-  const [imageSizes, setImageSizes] = useState<string | undefined>(undefined);
+  const [expanded, setExpanded] = useState(false);
   const figureProps = getFigureProps(embed.embedData.size, embed.embedData.align);
   const { t } = useTranslation();
 
@@ -218,7 +218,7 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
   const crop = getCrop(embedData);
 
   const toggleImageSize = () => {
-    setImageSizes((sizes) => (!sizes ? expandedSizes : undefined));
+    setExpanded((prev) => !prev);
   };
 
   const licenseProps = licenseAttributes(data.copyright.license.license, lang, embedData.url);
@@ -228,7 +228,7 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
   return (
     <StyledFigure
       float={figureProps?.float}
-      size={imageSizes ? "full" : figureSize}
+      size={expanded ? "full" : figureSize}
       data-embed-type="image"
       {...licenseProps}
     >
@@ -238,7 +238,7 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
           focalPoint={focalPoint}
           contentType={data.image.contentType}
           crop={crop}
-          sizes={imageSizes ?? sizes}
+          sizes={expanded ? expandedSizes : sizes}
           alt={altText}
           src={data.image.imageUrl}
           lang={lang}
@@ -247,9 +247,9 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
         />
         {(embedData.align === "right" || embedData.align === "left") && (
           <ExpandButton
-            aria-label={t(`license.images.itemImage.zoom${imageSizes ? "Out" : ""}ImageButtonLabel`)}
+            aria-label={t(`license.images.itemImage.zoom${expanded ? "Out" : ""}ImageButtonLabel`)}
             onClick={toggleImageSize}
-            data-expanded={!!imageSizes}
+            data-expanded={expanded}
           >
             <AddLine />
           </ExpandButton>

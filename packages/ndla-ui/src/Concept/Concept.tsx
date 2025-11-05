@@ -9,7 +9,7 @@
 import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IDraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import type { DraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
 import type { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { BrightcoveEmbed } from "../Embed/BrightcoveEmbed";
 import { ExternalEmbed } from "../Embed/ExternalEmbed";

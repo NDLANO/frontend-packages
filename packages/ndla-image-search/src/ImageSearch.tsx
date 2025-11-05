@@ -22,7 +22,7 @@ import {
   type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { IImageMetaInformationV3DTO, ISearchResultV3DTO, ISearchParamsDTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO, SearchResultV3DTO, SearchParamsDTO } from "@ndla/types-backend/image-api";
 import { ImageSearchResult } from "./ImageSearchResult";
 
 const ImageSearchWrapper = styled("div", {
@@ -100,12 +100,12 @@ export interface ImageSearchTranslations {
 }
 
 export interface ImageSearchProps {
-  onImageSelect: (image: IImageMetaInformationV3DTO) => void;
-  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3DTO>;
+  onImageSelect: (image: ImageMetaInformationV3DTO) => void;
+  searchImages: (query: string | undefined, page: number | undefined) => Promise<SearchResultV3DTO>;
   onError?: (err: any) => void;
   locale: string;
   noResults?: ReactNode;
-  checkboxAction?: (image: IImageMetaInformationV3DTO) => void;
+  checkboxAction?: (image: ImageMetaInformationV3DTO) => void;
   showCheckbox?: boolean;
   translations: ImageSearchTranslations;
 }
@@ -120,19 +120,19 @@ export const ImageSearch = ({
   showCheckbox,
   translations,
 }: ImageSearchProps) => {
-  const [queryObject, setQueryObject] = useState<ISearchParamsDTO>({
+  const [queryObject, setQueryObject] = useState<SearchParamsDTO>({
     query: undefined,
     page: 1,
     pageSize: 16,
   });
-  const [selectedImage, setSelectedImage] = useState<IImageMetaInformationV3DTO | undefined>();
+  const [selectedImage, setSelectedImage] = useState<ImageMetaInformationV3DTO | undefined>();
   const [searching, setSearching] = useState<boolean>(false);
-  const [searchResult, setSearchResult] = useState<ISearchResultV3DTO | undefined>();
+  const [searchResult, setSearchResult] = useState<SearchResultV3DTO | undefined>();
 
   const { page } = queryObject;
   const noResultsFound = !searching && searchResult?.results.length === 0;
 
-  const onSelectImage = (image: IImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => {
+  const onSelectImage = (image: ImageMetaInformationV3DTO | undefined, saveAsMetaImage?: boolean) => {
     setSelectedImage(undefined);
     if (!image) return;
     onImageSelect(image);
@@ -141,7 +141,7 @@ export const ImageSearch = ({
     }
   };
 
-  const searchImages = (queryObject: ISearchParamsDTO) => {
+  const searchImages = (queryObject: SearchParamsDTO) => {
     setSearching(true);
     search(queryObject.query, queryObject.page)
       .then((result) => {

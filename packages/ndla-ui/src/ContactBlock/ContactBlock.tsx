@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { SystemStyleObject } from "@ndla/styled-system/types";
-import type { IImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
 export type ContactBlockBackground = "strong" | "moderate" | "subtle";
@@ -143,7 +143,7 @@ const StyledDescription = styled(Text, {
 });
 
 interface Props {
-  image?: IImageMetaInformationV3DTO;
+  image?: ImageMetaInformationV3DTO;
   jobTitle: string;
   description: string;
   backgroundColor?: ContactBlockBackground;

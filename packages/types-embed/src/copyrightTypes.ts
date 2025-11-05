@@ -6,13 +6,13 @@
  *
  */
 
-import type { ICopyrightDTO } from "@ndla/types-backend/article-api";
+import type { CopyrightDTO } from "@ndla/types-backend/article-api";
 import type { MetaData } from "./baseTypes";
 
 export interface CopyrightEmbedData {
   resource: "copyright";
   title?: string;
-  copyright: ICopyrightDTO;
+  copyright: CopyrightDTO;
 }
 
 export type CopyrightMetaData = MetaData<CopyrightEmbedData, undefined>;

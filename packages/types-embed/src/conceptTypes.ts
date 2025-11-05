@@ -6,7 +6,7 @@
  *
  */
 
-import type { IConceptDTO } from "@ndla/types-backend/concept-api";
+import type { ConceptDTO } from "@ndla/types-backend/concept-api";
 import type { MetaData } from "./baseTypes";
 import type { OembedEmbedData, OembedMetaData } from "./externalTypes";
 import type { H5pEmbedData, H5pMetaData } from "./h5pTypes";
@@ -40,7 +40,7 @@ export type ConceptVisualElementMeta =
   | AudioMetaData;
 
 export interface ConceptData {
-  concept: IConceptDTO;
+  concept: ConceptDTO;
   visualElement?: ConceptVisualElementMeta;
 }
 

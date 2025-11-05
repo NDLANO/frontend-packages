@@ -47,7 +47,7 @@
     "@fontsource-variable/source-code-pro": "^5.2.7",
     "@fontsource-variable/source-serif-4": "^5.2.9",
     "@ndla/types-backend": "^1.0.50",
-    "@pandacss/dev": "^1.3.1",
+    "@pandacss/dev": "^1.4.3",
     "@storybook/addon-a11y": "^10.0.1",
     "@storybook/addon-docs": "^10.0.1",
     "@storybook/addon-links": "^10.0.1",

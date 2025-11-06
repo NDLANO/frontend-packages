@@ -1,7 +1,7 @@
 {
   "name": "@ndla/util",
   "type": "module",
-  "version": "5.0.14-alpha.0",
+  "version": "5.0.15-alpha.0",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "exports": {

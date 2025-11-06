@@ -70,7 +70,7 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
   ({ title, url, fileExists, fileType, fileSize, ...rest }, ref) => {
     const { t } = useTranslation();
     const filename = `${title}-${url.split("/").pop() ?? ""}`;
-    const downloadUrl = `${url}?download=${filename}`;
+    const downloadUrl = `${url}?download=true`;
     const tooltip = `${t("download")} ${filename}`;
 
     return (
@@ -78,7 +78,7 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
         <InfoContainer>
           <DownloadLine />
           {fileExists ? (
-            <StyledSafeLink unstyled css={linkOverlay.raw()} to={downloadUrl} title={tooltip}>
+            <StyledSafeLink unstyled download={filename} css={linkOverlay.raw()} to={downloadUrl} title={tooltip}>
               {title}
             </StyledSafeLink>
           ) : (

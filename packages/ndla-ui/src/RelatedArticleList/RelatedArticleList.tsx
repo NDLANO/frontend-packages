@@ -13,54 +13,37 @@ import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
-import { BadgesContainer } from "../Article/BadgesContainer";
 import type { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {
   title: string;
-  introduction: string;
+  introduction?: string;
   to: string;
   linkInfo?: string;
   target?: string;
-  badges?: ReactNode;
 }
 
 const StyledSpan = styled("span", {
   base: {
     display: "flex",
+    alignItems: "center",
     gap: "3xsmall",
   },
 });
 
-export const RelatedArticle = ({
-  title,
-  introduction,
-  to,
-  badges,
-  linkInfo = "",
-  target = "",
-}: RelatedArticleProps) => {
+export const RelatedArticle = ({ title, introduction, to, linkInfo = "", target = "" }: RelatedArticleProps) => {
   return (
     <CardRoot data-embed-type="related-article">
       <CardContent>
-        {!!badges && <BadgesContainer>{badges}</BadgesContainer>}
-        <CardHeading asChild consumeCss>
-          <span>
-            <SafeLink
-              unstyled
-              to={to}
-              target={target}
-              rel={linkInfo ? "noopener noreferrer" : undefined}
-              css={linkOverlay.raw()}
-            >
-              <StyledSpan>
-                {title}
-                {target === "_blank" && <ExternalLinkLine />}
-              </StyledSpan>
-            </SafeLink>
-          </span>
+        <CardHeading asChild consumeCss css={linkOverlay.raw()}>
+          <SafeLink to={to} target={target} rel={linkInfo ? "noopener noreferrer" : undefined}>
+            <StyledSpan>
+              {title}
+              {target === "_blank" && <ExternalLinkLine />}
+            </StyledSpan>
+          </SafeLink>
         </CardHeading>
-        <Text dangerouslySetInnerHTML={{ __html: introduction }} />
+        {!!introduction && <Text dangerouslySetInnerHTML={{ __html: introduction }} />}
         <Text color="text.subtle" textStyle="label.small">
           {linkInfo}
         </Text>

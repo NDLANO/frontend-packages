@@ -6,7 +6,7 @@
  *
  */
 
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useSyncExternalStore } from "react";
 
 interface Props {
   children: ReactNode;
@@ -18,11 +18,11 @@ interface Props {
  * Useful for not rendering private stuff on the server which will then be cached.
  */
 export const NoSSR = ({ children, fallback = null }: Props): ReactNode => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => typeof window !== "undefined",
+    () => false,
+  );
 
   if (!mounted) {
     return fallback;

@@ -244,6 +244,7 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
           lang={lang}
           onClick={figureProps?.float ? toggleImageSize : undefined}
           variant="rounded"
+          {...data.image.dimensions}
         />
         {(embedData.align === "right" || embedData.align === "left") && (
           <ExpandButton

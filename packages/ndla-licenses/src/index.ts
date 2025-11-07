@@ -13,7 +13,7 @@ export {
   getGroupedContributorDescriptionList,
 } from "./contributorTypes";
 
-export { resourceTypes, getResourceTypeNamespace, metaTypes } from "./CCRel";
+export { getResourceTypeNamespace, metaTypes } from "./CCRel";
 export type { MetaType } from "./CCRel";
 
 export { rights, getLicenseRightByAbbreviation } from "./licenseRights";

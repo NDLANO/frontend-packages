@@ -6,33 +6,20 @@
  *
  */
 
-export type ResourceTypes = "video" | "image" | "audio" | "text" | "h5p" | "podcast";
+const resourceTypeToNamespaceMap = {
+  video: "MovingImage",
+  image: "Image",
+  audio: "Sound",
+  podcast: "Sound",
+  text: "Text",
+  h5p: "InteractiveResource",
+} as const;
 
-export const resourceTypes: Record<ResourceTypes, ResourceTypes> = {
-  video: "video",
-  image: "image",
-  audio: "audio",
-  text: "text",
-  h5p: "h5p",
-  podcast: "podcast",
-};
+export type ResourceTypes = keyof typeof resourceTypeToNamespaceMap;
 
 export const getResourceTypeNamespace = (type: ResourceTypes | undefined | null) => {
-  switch (type) {
-    case resourceTypes.video:
-      return "http://purl.org/dc/dcmitype/MovingImage";
-    case resourceTypes.image:
-      return "http://purl.org/dc/dcmitype/Image";
-    case resourceTypes.audio:
-    case resourceTypes.podcast:
-      return "http://purl.org/dc/dcmitype/Sound";
-    case resourceTypes.text:
-      return "http://purl.org/dc/dcmitype/Text";
-    case resourceTypes.h5p:
-      return "http://purl.org/dc/dcmitype/InteractiveResource";
-    default:
-      return null;
-  }
+  const namespace = type ? resourceTypeToNamespaceMap[type] : null;
+  return namespace ? `http://purl.org/dc/dcmitype/${namespace}` : null;
 };
 
 export const metaTypes = {

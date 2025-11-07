@@ -27,11 +27,6 @@ export {
 } from "./licenses";
 export type { LicenseLocaleType } from "./licenses";
 
-export {
-  figureApa7CopyString,
-  podcastSeriesApa7CopyString,
-  podcastEpisodeApa7CopyString,
-  webpageReferenceApa7CopyString,
-} from "./getCopyString";
+export { figureApa7CopyString, webpageReferenceApa7CopyString } from "./getCopyString";
 
 export { getModelReleaseValue } from "./modelRelease";

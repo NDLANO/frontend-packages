@@ -9,7 +9,7 @@
 import { type Dispatch, type ReactNode, type SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AlertLine } from "@ndla/icons";
-import { getLicenseByAbbreviation, getLicenseCredits } from "@ndla/licenses";
+import { getLicenseByAbbreviation } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CopyrightDTO as ArticleCopyright } from "@ndla/types-backend/article-api";
@@ -236,8 +236,8 @@ const LicenseDescription = ({ children, isOpen, setIsOpen }: LicenseDescriptionP
 export const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
   const { t, i18n } = useTranslation();
   const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
-  const authors = getLicenseCredits(copyright);
-  const captionAuthors = Object.values(authors).find((i) => i.length > 0) ?? [];
+  const captionAuthors =
+    [copyright?.creators, copyright?.rightsholders, copyright?.processors].find((authors) => authors?.length) ?? [];
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const content = (

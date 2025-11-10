@@ -8,7 +8,6 @@
 
 import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,
@@ -92,6 +91,7 @@ const StyledAccordionRoot = styled(AccordionRoot, {
 
 const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
+const accordionItemValue = "rulesForUse";
 
 export const ArticleByline = ({
   lang,
@@ -106,9 +106,7 @@ export const ArticleByline = ({
   learningpathCopiedFrom,
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const { pathname } = useLocation();
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
-  const accordionItemValue = "rulesForUse";
 
   const onHashChange = useCallback(
     (e: HashChangeEvent) => {
@@ -122,10 +120,6 @@ export const ArticleByline = ({
     },
     [openAccordions],
   );
-
-  useEffect(() => {
-    setOpenAccordions((prev) => prev.filter((state) => state !== accordionItemValue));
-  }, [pathname]);
 
   useEffect(() => {
     window.addEventListener("hashchange", onHashChange);

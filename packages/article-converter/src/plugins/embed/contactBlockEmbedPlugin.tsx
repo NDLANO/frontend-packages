@@ -8,21 +8,14 @@
 
 import { attributesToProps } from "html-react-parser";
 import { type ContactBlockMetaData } from "@ndla/types-embed";
-import { ContactBlock, contactBlockBackgrounds, type ContactBlockBackground } from "@ndla/ui";
+import { ContactBlock, contactBlockBackgrounds } from "@ndla/ui";
 import { type PluginType } from "../types";
-
-export function isBackground(background?: string): background is ContactBlockBackground {
-  return (contactBlockBackgrounds as readonly string[]).includes(background ?? "");
-}
-const parseBackground = (background: string | undefined): ContactBlockBackground | undefined => {
-  if (isBackground(background)) return background;
-};
 
 export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
   const props = attributesToProps(element.attribs);
   const embedData = JSON.parse(props["data-json"] as string) as ContactBlockMetaData;
   const { name, email, description, background, jobTitle, alt } = embedData.embedData;
-  const parsedBackground = parseBackground(background);
+  const validBackground = contactBlockBackgrounds.find((bg) => bg === background);
 
   return (
     <ContactBlock
@@ -33,7 +26,7 @@ export const contactBlockEmbedPlugin: PluginType = (element, _, opts) => {
       jobTitle={jobTitle}
       name={name}
       lang={opts.articleLanguage}
-      backgroundColor={parsedBackground}
+      backgroundColor={validBackground}
     />
   );
 };

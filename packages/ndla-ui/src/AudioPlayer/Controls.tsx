@@ -163,15 +163,9 @@ export const Controls = ({ src, title }: Props) => {
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
   const [currentTime, setCurrentTime] = useState(0);
-  const [remainingTime, setRemainingTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.playbackRate = speedValue;
-    }
-  }, [speedValue]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -179,13 +173,13 @@ export const Controls = ({ src, title }: Props) => {
       const handleTimeUpdate = () => {
         const { currentTime, duration } = audioElement;
         setCurrentTime(Math.round(currentTime));
-        setRemainingTime(Math.round(duration - currentTime));
+        setDuration(Math.round(duration));
       };
 
       const handleLoadedMetaData = () => {
         const { currentTime, duration } = audioElement;
         setCurrentTime(Math.round(currentTime));
-        setRemainingTime(Math.round(duration - currentTime));
+        setDuration(Math.round(duration));
       };
 
       const handleTimeEnded = () => {
@@ -212,6 +206,13 @@ export const Controls = ({ src, title }: Props) => {
         audioElement.pause();
       }
       setPlaying(!playing);
+    }
+  };
+
+  const onPlaybackRateChange = (rate: number) => {
+    setSpeedValue(rate);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = rate;
     }
   };
 
@@ -265,15 +266,15 @@ export const Controls = ({ src, title }: Props) => {
             <div>{formatTime(currentTime)}</div>
           </StyledText>
           <SliderRoot
-            value={[audioRef.current?.currentTime || 0]}
+            value={[currentTime]}
             defaultValue={[0]}
             step={1}
-            max={Math.round(audioRef.current?.duration || 0)}
+            max={duration}
             onValueChange={handleSliderChange}
             getAriaValueText={(value) =>
               t("audio.valueText", {
                 start: formatTime(Math.round(value.value)),
-                end: formatTime(Math.round(audioRef.current?.duration ?? 0)),
+                end: formatTime(Math.round(duration)),
               })
             }
           >
@@ -288,14 +289,14 @@ export const Controls = ({ src, title }: Props) => {
             </SliderControl>
           </SliderRoot>
           <StyledText textStyle="label.medium" asChild consumeCss>
-            <div>-{formatTime(remainingTime)}</div>
+            <div>-{formatTime(Math.round(duration - currentTime))}</div>
           </StyledText>
         </ProgressWrapper>
         <FieldRoot>
           <StyledSelectRoot
             collection={speedValues}
             value={[speedValue.toString()]}
-            onValueChange={(details) => setSpeedValue(parseFloat(details.value[0]))}
+            onValueChange={(details) => onPlaybackRateChange(parseFloat(details.value[0]))}
             positioning={{ placement: "top" }}
           >
             <SelectLabel srOnly>{t("audio.controls.selectSpeed")}</SelectLabel>

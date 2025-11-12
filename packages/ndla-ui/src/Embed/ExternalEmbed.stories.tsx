@@ -45,7 +45,7 @@ const metaData: OembedData = {
     thumbnailHeight: 315,
     width: 560,
     height: 315,
-    html: '<iframe src="https://embed.ted.com/talks/zahra_biabani_the_eco_creators_helping_the_climate_through_social_media" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+    html: '<iframe src="https://embed.ted.com/talks/zahra_biabani_the_eco_creators_helping_the_climate_through_social_media" width="560" height="315" allowfullscreen style="border: none;" scrolling="no"></iframe>',
   },
 };
 
@@ -109,7 +109,7 @@ const opensInNewMetaData: OembedData = {
     thumbnailHeight: 315,
     width: 560,
     height: 315,
-    html: '<iframe src="https://embed.ted.com/talks/zahra_biabani_the_eco_creators_helping_the_climate_through_social_media" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+    html: '<iframe src="https://embed.ted.com/talks/zahra_biabani_the_eco_creators_helping_the_climate_through_social_media" width="560" height="315" allowfullscreen style="border: none;" scrolling="no" ></iframe>',
   },
   iframeImage: {
     id: "65086",

@@ -465,6 +465,16 @@ const messages = {
       link: "Link ({{shortcut}})",
     },
   },
+  articleTraits: {
+    VIDEO: "Video",
+    AUDIO: "Audio",
+    H5P: "Interactive content",
+    PODCAST: "Podcast",
+  },
+  relevance: {
+    core: "Core content",
+    supplementary: "Supplementary content",
+  },
 };
 
 export default messages;

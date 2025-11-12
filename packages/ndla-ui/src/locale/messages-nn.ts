@@ -466,6 +466,16 @@ const messages = {
       link: "Lenke ({{shortcut}})",
     },
   },
+  articleTraits: {
+    VIDEO: "Video",
+    AUDIO: "Lyd",
+    H5P: "Interaktivt innhald",
+    PODCAST: "Podkast",
+  },
+  relevance: {
+    core: "Kjernestoff",
+    supplementary: "Tilleggsstoff",
+  },
 };
 
 export default messages;

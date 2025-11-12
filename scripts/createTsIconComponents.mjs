@@ -8,6 +8,8 @@
 
 import { readFile, readdir, stat, writeFile } from "fs/promises";
 import { join, dirname } from "path";
+import { format } from "prettier";
+import prettierConfig from "../.prettierrc.js";
 import { optimize } from "svgo";
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
@@ -32,7 +34,7 @@ const allFiles = await Promise.all(
 );
 
 const filePromises = allFiles.map(async ({ filename, file, ctime, mtime }) => {
-  // if (mtime && mtime < today) return;
+  if (mtime && mtime < today) return;
   const componentName = filename.split(".")[0];
   const optimizedSvg = optimize(file, {
     multipass: true,
@@ -64,7 +66,8 @@ ${imports}
 export const ${componentName} = (props: Props): JSX.Element => (
   ${component}
 );`;
-  await writeFile(`${rootDir}/src/icons/${componentName}.tsx`, componentContent);
+  const formatted = await format(componentContent, { parser: "typescript", ...prettierConfig });
+  await writeFile(`${rootDir}/src/icons/${componentName}.tsx`, formatted);
 });
 
 const exports = svgFiles.map((icon) => `export { ${icon.split(".")[0]} } from "./${icon.split(".")[0]}";`).join("\n");

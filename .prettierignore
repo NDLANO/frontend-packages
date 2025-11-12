@@ -10,6 +10,7 @@ packages/**/.scss
 .idea/
 yarn.lock
 packages/styled-system/**/*
+packages/icons/**/*
 
 /.nx/cache
 /.nx/workspace-data

@@ -9,18 +9,6 @@
 import type { Contributor, CopyrightType } from "./contributorTypes";
 import { getLicenseByAbbreviation } from "./licenses";
 
-export const getLicenseCredits = (copyright?: {
-  creators?: Contributor[];
-  rightsholders?: Contributor[];
-  processors?: Contributor[];
-}) => {
-  return {
-    creators: copyright?.creators ?? [],
-    rightsholders: copyright?.rightsholders ?? [],
-    processors: copyright?.processors ?? [],
-  };
-};
-
 type TranslationFunction = (id: string) => string;
 
 export const getCreditString = (

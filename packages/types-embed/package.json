@@ -24,7 +24,7 @@
   ],
   "devDependencies": {
     "@ndla/types-backend": "^1.0.50",
-    "@ndla/types-taxonomy": "^1.0.34"
+    "@ndla/types-taxonomy": "^1.0.39"
   },
   "publishConfig": {
     "access": "public"

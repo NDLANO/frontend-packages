@@ -130,6 +130,7 @@ interface ArticleTitleProps {
   title?: ReactNode;
   introduction?: ReactNode;
   disclaimer?: ReactNode;
+  children?: ReactNode;
 }
 
 export const ArticleTitle = ({
@@ -141,6 +142,7 @@ export const ArticleTitle = ({
   introduction,
   competenceGoals,
   disclaimer,
+  children,
 }: ArticleTitleProps) => {
   return (
     <ArticleHeader>
@@ -164,6 +166,7 @@ export const ArticleTitle = ({
         {competenceGoals}
         {disclaimer}
       </StyledWrapper>
+      {children}
     </ArticleHeader>
   );
 };

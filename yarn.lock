@@ -1289,14 +1289,14 @@ __metadata:
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
     "@ndla/types-backend": "npm:^1.0.50"
-    "@ndla/types-taxonomy": "npm:^1.0.34"
+    "@ndla/types-taxonomy": "npm:^1.0.39"
   languageName: unknown
   linkType: soft
 
-"@ndla/types-taxonomy@npm:^1.0.34":
-  version: 1.0.34
-  resolution: "@ndla/types-taxonomy@npm:1.0.34"
-  checksum: 10c0/66f00f6544efe13d6bcf69b3c9942bff09611519d08c5c22c62f9d384e7b91f1e8c5aa59703e1649ccfab472612941076f79c3a9549c4b5f295460a6e20bcbd0
+"@ndla/types-taxonomy@npm:^1.0.39":
+  version: 1.0.39
+  resolution: "@ndla/types-taxonomy@npm:1.0.39"
+  checksum: 10c0/128622b8a93a961e12e257f39ba085d7aad6ac16ec5380a2266af487debe9d3f244e7545f2092938d9942c85b2b5f136a6d5231cc0edf3c96e7b948abe8574db
   languageName: node
   linkType: hard
 

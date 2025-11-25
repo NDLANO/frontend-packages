@@ -44,10 +44,10 @@ export default {
 export const Default = ({ ...args }: Props) => {
   return (
     <Grid columns="2" background="transparent">
-      <div data-type="grid-cell" data-parallax-cell="false">
+      <div data-type="grid-cell">
         <Pitch {...args} />
       </div>
-      <div data-type="grid-cell" data-parallax-cell="false">
+      <div data-type="grid-cell">
         <Pitch {...args} description="Kortere beskrivelse" />
       </div>
     </Grid>

@@ -110,7 +110,6 @@ export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock/ContactBlo
 export type { ContactBlockBackground } from "./ContactBlock/ContactBlock";
 export { CampaignBlock } from "./CampaignBlock/CampaignBlock";
 export { Grid } from "./Grid/Grid";
-export { GridParallaxItem } from "./Grid/GridParallaxItem";
 export type { GridProps as GridType } from "./Grid/Grid";
 
 export { Gloss } from "./Gloss/Gloss";

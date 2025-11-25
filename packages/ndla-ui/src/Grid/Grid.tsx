@@ -21,7 +21,7 @@ const GridContainer = styled("div", {
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
 
-    "& :not(div[data-parallax-cell='true']) > div[data-embed-type='pitch']": {
+    "& div[data-embed-type='pitch']": {
       height: "100%",
       "& > :last-child": {
         marginTop: "auto",

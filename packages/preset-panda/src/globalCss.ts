@@ -86,7 +86,7 @@ export const globalCss = defineGlobalStyles({
       },
 
     // Article content is usually wrapped in a section. The rest of the elements in this list contains other elements, and should add margin to them no matter where they are placed in the DOM.
-    '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"] > [data-copyright-content], [data-embed-type="uu-disclaimer"] > [data-uu-content], [data-embed-wrapper], details, [data-embed-type="expandable-box"], blockquote':
+    '& section:not([class]), section:not([class]) > div:not([class]), [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"] > [data-copyright-content], [data-embed-type="uu-disclaimer"] > [data-uu-content], [data-embed-wrapper], details, [data-embed-type="expandable-box"], blockquote':
       {
         '& > :is(h2, [data-embed-type="copy-heading"])': {
           marginBlockStart: "xlarge",
@@ -124,7 +124,7 @@ export const globalCss = defineGlobalStyles({
           marginInlineStart: "xlarge!",
         },
       },
-    '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="grid-parallax"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"] > [data-copyright-content], [data-embed-type="uu-disclaimer"] > [data-uu-content], details, blockquote':
+    '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"] > [data-copyright-content], [data-embed-type="uu-disclaimer"] > [data-uu-content], details, blockquote':
       {
         "& > :first-child": {
           marginBlockStart: "0",

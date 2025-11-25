@@ -31,18 +31,6 @@ export interface Author {
   type: string;
 }
 
-export const getLicenseCredits = (copyright?: {
-  creators?: Author[];
-  rightsholders?: Author[];
-  processors?: Author[];
-}) => {
-  return {
-    creators: copyright?.creators ?? [],
-    rightsholders: copyright?.rightsholders ?? [],
-    processors: copyright?.processors ?? [],
-  };
-};
-
 const getFigureProps = (size?: string, float?: string): FigureVariantProps => {
   const actualFloat = float === "left" ? "left" : float === "right" ? "right" : undefined;
   const replacedSize = size?.replace("-hide-byline", "") ?? "full";

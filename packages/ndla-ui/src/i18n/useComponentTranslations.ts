@@ -229,6 +229,7 @@ export const useDatePickerTranslations = (
       placeholder: (_locale) => {
         return { day: "dd", month: "mm", year: "yyyy" };
       },
+      ...translations,
     }),
     [t, translations],
   );

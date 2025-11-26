@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": ["**/es/**/*", "**/lib/**/*", "**/dist/**/*", "**/styled-system/**/*"],
+  "extends": ["./.oxlintrc.base.json"],
+  "overrides": [
+    {
+      "files": ["**/*.stories.{js,mjs,cjs,ts,jsx,tsx,mts,cts,mtsx,ctsx}"],
+      "rules": {
+        "react/no-unescaped-entities": "off"
+      },
+      "plugins": ["react"]
+    }
+  ]
+}

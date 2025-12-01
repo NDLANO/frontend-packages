@@ -53,7 +53,9 @@ const heroRecipe = sva({
           background: "primary",
         },
         content: {
-          color: "text.onAction",
+          "@media not print": {
+            color: "text.onAction",
+          },
         },
       },
       brand2Bold: {
@@ -61,7 +63,9 @@ const heroRecipe = sva({
           background: "surface.brand.2.bold",
         },
         content: {
-          color: "text.onAction",
+          "@media not print": {
+            color: "text.onAction",
+          },
         },
       },
       brand2: {

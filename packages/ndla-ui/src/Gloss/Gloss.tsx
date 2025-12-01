@@ -156,7 +156,9 @@ export const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, varia
             )}
             {!!glossData.wordClass && (
               <Text textStyle="label.medium" asChild consumeCss>
-                <span aria-label={t("gloss.wordClass")}>{t(`wordClass.${glossData.wordClass}`).toLowerCase()}</span>
+                <span aria-label={t("gloss.wordClass")}>
+                  {glossData.wordClass.map((wc) => t(`wordClass.${wc}`).toLowerCase()).join(" / ")}
+                </span>
               </Text>
             )}
           </TextWrapper>

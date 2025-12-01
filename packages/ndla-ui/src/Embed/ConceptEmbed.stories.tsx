@@ -116,6 +116,7 @@ const visualElementData: ConceptData["visualElement"] = {
     createdBy: "KBAJskRqPXZUv9LFjAbz8btB",
     modelRelease: "not-set",
     image: {
+      variants: [],
       fileName: "6WbfcOmr.png",
       size: 194971,
       contentType: "image/png",

@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@ndla/types-backend": "^1.0.50",
+    "@ndla/types-backend": "^1.0.82",
     "@ndla/types-embed": "^5.0.17-alpha.0",
     "@pandacss/dev": "^1.3.1"
   },

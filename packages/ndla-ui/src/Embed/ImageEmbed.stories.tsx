@@ -76,6 +76,7 @@ const metaData: ImageMetaInformationV3DTO = {
     fileName: "S81WiNgl.jpg",
     size: 1685455,
     contentType: "image/jpeg",
+    variants: [],
     imageUrl: "https://api.test.ndla.no/image-api/raw/S81WiNgl.jpg",
     dimensions: {
       width: 2000,

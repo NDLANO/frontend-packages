@@ -24,6 +24,7 @@ const filmResourceMeta: RelatedContentMetaData = {
     article: {
       id: 27911,
       revision: 40,
+      traits: [],
       title: {
         htmlTitle: "Dokumentaren «Influenser»",
         title: "Dokumentaren «Influenser»",
@@ -211,6 +212,7 @@ const learningResourceMeta: RelatedContentMetaData = {
   status: "success",
   data: {
     article: {
+      traits: [],
       id: 22972,
       revision: 16,
       title: {

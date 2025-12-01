@@ -87,6 +87,9 @@ function formatList(list: SupplierProps[], listFormatter: Intl.ListFormat) {
 const StyledAccordionRoot = styled(AccordionRoot, {
   base: {
     paddingBlockStart: "xxlarge",
+    _print: {
+      display: "none",
+    },
   },
 });
 

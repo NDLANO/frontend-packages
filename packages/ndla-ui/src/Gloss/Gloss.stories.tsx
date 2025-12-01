@@ -23,7 +23,7 @@ const meta: Meta<typeof Gloss> = {
     },
     glossData: {
       gloss: "angreifen",
-      wordClass: wordClass.verb,
+      wordClass: [wordClass.verb],
       originalLanguage: "de",
       transcriptions: {},
       examples: [
@@ -81,7 +81,7 @@ export const NoExamples: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: "angreifen",
-      wordClass: wordClass.verb,
+      wordClass: [wordClass.verb],
       originalLanguage: "de",
       transcriptions: {},
       examples: [],
@@ -102,7 +102,7 @@ export const GlossChineseStory: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: "马红",
-      wordClass: wordClass.properNoun,
+      wordClass: [wordClass.properNoun],
       originalLanguage: "zh",
       transcriptions: {
         traditional: "(馬紅)",
@@ -145,7 +145,7 @@ export const BigExample: StoryObj<typeof Gloss> = {
     },
     glossData: {
       gloss: "呢",
-      wordClass: "particle",
+      wordClass: ["particle"],
       originalLanguage: "zh",
       transcriptions: {
         pinyin: "ne",

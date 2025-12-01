@@ -153,6 +153,7 @@ const opensInNewMetaData: OembedData = {
     image: {
       fileName: "IgOjO6og.jpg",
       size: 176667,
+      variants: [],
       contentType: "image/jpeg",
       imageUrl: "https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg",
       dimensions: {

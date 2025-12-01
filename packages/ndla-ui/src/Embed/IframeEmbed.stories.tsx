@@ -112,6 +112,7 @@ const opensInnewMetaData: IframeData = {
     modelRelease: "yes",
     image: {
       fileName: "IgOjO6og.jpg",
+      variants: [],
       size: 176667,
       contentType: "image/jpeg",
       imageUrl: "https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg",

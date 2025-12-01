@@ -69,6 +69,7 @@ const visualElementData: ConceptData["visualElement"] = {
     createdBy: "lA2KgVfhY-fpmgHCYAy5W1DX",
     modelRelease: "yes",
     image: {
+      variants: [],
       fileName: "S81WiNgl.jpg",
       size: 1685455,
       contentType: "image/jpeg",

@@ -63,6 +63,7 @@ export default {
         fileName: "RVrVQIKh.jpg",
         size: 404340,
         contentType: "image/jpeg",
+        variants: [],
         imageUrl: "https://api.test.ndla.no/image-api/raw/RVrVQIKh.jpg",
         dimensions: {
           width: 1600,

@@ -168,6 +168,7 @@ const podcastSuccessData: AudioMeta = {
     createdBy: "lwkLpeEV_VUmCkly1SJ3WTkg",
     modelRelease: "yes",
     image: {
+      variants: [],
       fileName: "NkEZw98N.jpg",
       size: 525903,
       contentType: "image/jpeg",

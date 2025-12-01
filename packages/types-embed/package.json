@@ -1,6 +1,6 @@
 {
   "name": "@ndla/types-embed",
-  "version": "5.0.17-alpha.0",
+  "version": "5.0.18-alpha.0",
   "description": "Types used for NDLA embeds",
   "license": "GPL-3.0",
   "types": "lib/index.d.ts",

@@ -8,7 +8,7 @@
 
 import { domToReact, attributesToProps, Element, type DOMNode } from "html-react-parser";
 import { FramedContent } from "@ndla/primitives";
-import { FileListEmbed, RelatedArticleList, Grid, type GridType, GridParallaxItem } from "@ndla/ui";
+import { FileListEmbed, RelatedArticleList, Grid, type GridType } from "@ndla/ui";
 import { type PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -61,9 +61,6 @@ export const divPlugin: PluginType = (node, opts) => {
         {domToReact(node.children, opts)}
       </Grid>
     );
-  }
-  if (node.attribs["data-parallax-cell"] === "true" && node.children.length) {
-    return <GridParallaxItem>{domToReact(node.children as DOMNode[], opts)}</GridParallaxItem>;
   }
   return null;
 };

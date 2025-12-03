@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es2022",
     "esModuleInterop": true,
     "jsx": "react-jsx",

@@ -9,7 +9,7 @@
     "directory": "packages/styled-system"
   },
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown --config-loader unrun"
   },
   "sideEffects": false,
   "publishConfig": {

@@ -12,7 +12,7 @@
   "sideEffects": false,
   "scripts": {
     "prepare": "panda codegen",
-    "build": "tsdown",
+    "build": "tsdown --config-loader unrun",
     "dev": "tsdown --watch ./src",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "concurrently 'yarn build:types' 'yarn build:css'",

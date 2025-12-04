@@ -13,7 +13,7 @@
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown --config-loader unrun",
     "dev": "tsdown --watch ./src"
   },
   "keywords": [

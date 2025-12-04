@@ -6,7 +6,7 @@
  *
  */
 
-import config from "../../tsdown.config";
+import config from "../../tsdown.config.ts";
 
 export default {
   ...config,

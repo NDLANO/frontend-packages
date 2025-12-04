@@ -10,7 +10,7 @@ import { defineConfig } from "tsdown";
 import path from "path";
 import { readFileSync } from "fs";
 
-const pkgRoot = __dirname;
+const pkgRoot = typeof __dirname === "undefined" ? import.meta.dirname : __dirname;
 export function getExternalDeps(pkgDir: string) {
   const pkgJson = JSON.parse(readFileSync(path.join(pkgDir, "package.json"), "utf-8"));
   return [...Object.keys(pkgJson.dependencies || {}), ...Object.keys(pkgJson.peerDependencies || {})];

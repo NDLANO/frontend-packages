@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import config from "../../tsdown.config";
+import config from "../../tsdown.config.ts";
 
 export default {
   ...config,

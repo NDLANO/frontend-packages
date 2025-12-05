@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es2022",
+    "target": "esnext",
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "isolatedModules": true,
@@ -9,17 +8,14 @@
     "allowJs": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "moduleDetection": "force",
-    "module": "preserve",
-    "noLib": false,
+    "module": "esnext",
     "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false,
     "skipLibCheck": true,
     "noEmit": true,
-    "sourceMap": true,
     "verbatimModuleSyntax": true,
-    "lib": ["ES2023", "esnext.asynciterable", "dom"],
     "types": ["vitest/globals", "node", "@testing-library/jest-dom"],
     "paths": {
       "@ndla/article-converter": ["./packages/article-converter/src"],

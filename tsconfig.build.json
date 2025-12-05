@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "paths": {}
   },
   "exclude": [
     "./packages/*/dist",

@@ -10,6 +10,7 @@ import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
+import type { ImageVariantSize } from "@ndla/types-backend/image-api";
 
 export interface ImageCrop {
   startX: number;
@@ -24,19 +25,17 @@ export interface ImageFocalPoint {
 }
 
 interface SrcQueryStringOptions {
-  width: number | undefined;
   crop?: ImageCrop;
   focalPoint?: ImageFocalPoint;
   imageLanguage?: string;
 }
 
-export const makeSrcQueryString = ({ width, crop, focalPoint, imageLanguage }: SrcQueryStringOptions) => {
-  const widthParams = width && `width=${width}`;
+export const makeSrcQueryString = ({ crop, focalPoint, imageLanguage }: SrcQueryStringOptions) => {
   const cropParams =
     crop && `cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`;
   const focalPointParams = focalPoint && `focalX=${focalPoint.x}&focalY=${focalPoint.y}`;
   const imageLanguageParams = imageLanguage && `language=${imageLanguage}`;
-  const params = [widthParams, cropParams, focalPointParams, imageLanguageParams].filter((p) => p).join("&");
+  const params = [cropParams, focalPointParams, imageLanguageParams].filter((p) => p).join("&");
 
   return params;
 };
@@ -48,15 +47,50 @@ interface SrcSetOptions {
   imageLanguage?: string;
 }
 
+interface VariantWidth {
+  width: number;
+  variant: ImageVariantSize;
+}
+
+const VARIANT_WIDTHS: VariantWidth[] = [
+  {
+    width: 2560,
+    variant: "xxlarge",
+  },
+  {
+    width: 1920,
+    variant: "xlarge",
+  },
+  {
+    width: 1440,
+    variant: "large",
+  },
+  {
+    width: 1080,
+    variant: "medium",
+  },
+  {
+    width: 800,
+    variant: "small",
+  },
+  {
+    width: 480,
+    variant: "xsmall",
+  },
+  {
+    width: 240,
+    variant: "icon",
+  },
+];
+
 export const getSrcSet = ({ src, crop, focalPoint, imageLanguage }: SrcSetOptions) => {
   if (!src) return undefined;
-  const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
-  return widths
-    .map((width) => `${src}?${makeSrcQueryString({ width, crop, focalPoint, imageLanguage })} ${width}w`)
-    .join(", ");
+  return VARIANT_WIDTHS.map(
+    (width) => `${src}/${width.width}/?${makeSrcQueryString({ crop, focalPoint, imageLanguage })} ${width}w`,
+  ).join(", ");
 };
 
-const FALLBACK_WIDTH = 1024;
+// const FALLBACK_WIDTH = 1024;
 
 const FALLBACK_SIZES = "(min-width: 1024px) 1024px, 100vw";
 
@@ -125,7 +159,6 @@ type ImageVariantProps = StyledVariantProps<typeof StyledImage>;
 export interface ImgProps extends StyledProps, ComponentPropsWithRef<"img">, ImageVariantProps {
   alt: string;
   src: string;
-  fallbackWidth?: number;
   contentType?: string;
   crop?: ImageCrop;
   imageLanguage?: string;
@@ -133,8 +166,8 @@ export interface ImgProps extends StyledProps, ComponentPropsWithRef<"img">, Ima
 }
 
 export const Img = forwardRef<HTMLImageElement, ImgProps>(
-  ({ fallbackWidth = FALLBACK_WIDTH, crop, focalPoint, imageLanguage, contentType, src, alt, ...props }, ref) => {
-    const queryString = makeSrcQueryString({ width: fallbackWidth, crop, focalPoint, imageLanguage });
+  ({ crop, focalPoint, imageLanguage, contentType, src, alt, ...props }, ref) => {
+    const queryString = makeSrcQueryString({ crop, focalPoint, imageLanguage });
     return (
       <StyledImage alt={alt} src={contentType === "image/gif" ? src : `${src}?${queryString}`} {...props} ref={ref} />
     );
@@ -162,7 +195,6 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
       src,
       contentType,
       imageLanguage,
-      fallbackWidth = FALLBACK_WIDTH,
       sizes = FALLBACK_SIZES,
       alt,
       fallbackElement,
@@ -171,7 +203,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     ref,
   ) => {
     const srcSet = srcSetProp ?? getSrcSet({ src, crop, focalPoint, imageLanguage });
-    const queryString = makeSrcQueryString({ width: fallbackWidth, crop, focalPoint, imageLanguage });
+    const queryString = makeSrcQueryString({ crop, focalPoint, imageLanguage });
     const fallbackSrc = src ? `${src}?${queryString}` : src;
     if ((!src || !src.length) && fallbackElement) {
       return (

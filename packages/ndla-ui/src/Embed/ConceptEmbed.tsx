@@ -60,7 +60,7 @@ export const ConceptEmbed = ({ embed, renderContext, lang, previewAlt, children 
 
   // TODO: Consider whether we should do this in article-converter instead.
   if (embed.data.concept.glossData) {
-    return <GlossEmbed embed={embed} />;
+    return <GlossEmbed embed={embed}>{children}</GlossEmbed>;
   }
 
   if (embed.embedData.type === "inline") {

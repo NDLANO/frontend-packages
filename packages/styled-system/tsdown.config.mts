@@ -5,5 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import config from "../../tsdown.config.mts";
 
-export { default } from "../../tsdown.config.ts";
+export default {
+  ...config,
+  entry: ["src/css/index.js", "src/jsx/index.js", "src/patterns/index.js", "src/tokens/index.js"],
+};

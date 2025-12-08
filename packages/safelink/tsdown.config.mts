@@ -6,9 +6,4 @@
  *
  */
 
-import config from "../../tsdown.config.ts";
-
-export default {
-  ...config,
-  entry: ["src/index.js"],
-};
+export { default } from "../../tsdown.config.mts";

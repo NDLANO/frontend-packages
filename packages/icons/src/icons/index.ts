@@ -99,6 +99,8 @@ export { FolderUserLine } from "./FolderUserLine";
 export { Forum } from "./Forum";
 export { ForumOutlined } from "./ForumOutlined";
 export { Forward15Line } from "./Forward15Line";
+export { GithubFill } from "./GithubFill";
+export { GithubLine } from "./GithubLine";
 export { GlobalFill } from "./GlobalFill";
 export { GlobalLine } from "./GlobalLine";
 export { H5P } from "./H5P";

@@ -9,7 +9,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
-import { Grid } from "./Grid";
+import { Grid, GridItem } from "./Grid";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
 import { Default as PitchStory } from "../Pitch/Pitch.stories";
 
@@ -23,8 +23,6 @@ export default {
   },
   args: {
     columns: "3",
-    border: "none",
-    background: "gray",
   },
   decorators: [
     (Story) => (
@@ -51,9 +49,9 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const items = new Array(columns).fill(0).map((_, idx) => {
     const args = keyFigureArgs[idx % keyFigureArgs.length];
     return (
-      <div key={idx} data-type="grid-cell">
+      <GridItem key={idx} data-type="grid-cell">
         <Plain key={idx} {...args} />
-      </div>
+      </GridItem>
     );
   });
   return <Grid {...args}>{items}</Grid>;
@@ -62,7 +60,7 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
 export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
-    <div data-type="grid-cell">
+    <GridItem data-type="grid-cell">
       <PitchStory
         // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         metaImage={PitchStory.args?.metaImage!}
@@ -72,7 +70,37 @@ export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
         url={PitchStory.args?.url!}
         description={PitchStory.args?.description}
       />
-    </div>,
+    </GridItem>,
   );
   return <Grid {...args}>{items}</Grid>;
+};
+
+export const GridItemsWithBorders: StoryFn<typeof Grid> = ({ ...args }) => {
+  const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
+  const items = new Array(columns).fill(0).map((_, idx) => {
+    const args = keyFigureArgs[idx % keyFigureArgs.length];
+    return (
+      <GridItem key={idx} data-type="grid-cell" border={idx % 2 === 0}>
+        <Plain key={idx} {...args} />
+      </GridItem>
+    );
+  });
+  return <Grid {...args}>{items}</Grid>;
+};
+
+export const GridItemsWithBordersInsideGridWithBorder: StoryFn<typeof Grid> = ({ ...args }) => {
+  const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
+  const items = new Array(columns).fill(0).map((_, idx) => {
+    const args = keyFigureArgs[idx % keyFigureArgs.length];
+    return (
+      <GridItem key={idx} data-type="grid-cell" border={true}>
+        <Plain key={idx} {...args} />
+      </GridItem>
+    );
+  });
+  return (
+    <Grid {...args} border="lightBlue">
+      {items}
+    </Grid>
+  );
 };

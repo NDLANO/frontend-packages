@@ -8,7 +8,7 @@
 
 import { domToReact, attributesToProps, Element, type DOMNode } from "html-react-parser";
 import { FramedContent } from "@ndla/primitives";
-import { FileListEmbed, RelatedArticleList, Grid, type GridType } from "@ndla/ui";
+import { FileListEmbed, RelatedArticleList, Grid, type GridType, GridItem } from "@ndla/ui";
 import { type PluginType } from "./types";
 
 export const divPlugin: PluginType = (node, opts) => {
@@ -54,12 +54,21 @@ export const divPlugin: PluginType = (node, opts) => {
     const props = attributesToProps(node.attribs);
     const columns = props["data-columns"] as GridType["columns"];
     const border = props["data-border"] as GridType["border"];
-    const background = props["data-background"] as GridType["background"];
     return (
-      <Grid border={border} columns={columns} background={background} {...props}>
+      <Grid border={border} columns={columns} {...props}>
         {/* @ts-expect-error - This works, the types just won't match entirely */}
         {domToReact(node.children, opts)}
       </Grid>
+    );
+  }
+  if (node.attribs["data-type"] === "grid-item") {
+    const props = attributesToProps(node.attribs);
+    const border = props["data-border"] === "true";
+    return (
+      <GridItem border={border} {...props}>
+        {/* @ts-expect-error - This works, the types just won't match entirely */}
+        {domToReact(node.children, opts)}
+      </GridItem>
     );
   }
   return null;

@@ -8,6 +8,7 @@
 
 import { type ComponentProps, type ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledVariantProps } from "@ndla/styled-system/types";
 
 const GridContainer = styled("div", {
   base: {
@@ -17,7 +18,6 @@ const GridContainer = styled("div", {
     gridRowGap: "large",
     gridColumnGap: "medium",
     width: "100%",
-    backgroundColor: "background.subtle",
     minWidth: "surface.xxsmall",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
 
@@ -48,11 +48,6 @@ const GridContainer = styled("div", {
       "3": { desktop: { gridTemplateColumns: "repeat(3, minmax(0, 1fr))" } },
       "4": { desktop: { gridTemplateColumns: "repeat(4, minmax(0, 1fr))" } },
     },
-    background: {
-      white: { backgroundColor: "surface.default" },
-      transparent: { backgroundColor: "transparent" },
-      gray: { backgroundColor: "background.subtle" },
-    },
     border: {
       lightBlue: {
         padding: "xsmall",
@@ -63,25 +58,43 @@ const GridContainer = styled("div", {
   },
 });
 
-export interface GridProps extends ComponentProps<"div"> {
-  columns: "2" | "3" | "4" | "2x2";
-  border?: "none" | "lightBlue";
-  background?: "transparent" | "white" | "gray";
+const StyledGridItem = styled("div", {
+  base: {},
+  variants: {
+    border: {
+      true: {
+        outline: "1px solid",
+        borderColor: "stroke.default",
+      },
+    },
+  },
+});
+
+type GridVariantProps = NonNullable<StyledVariantProps<typeof GridContainer>>;
+
+export interface GridProps extends ComponentProps<"div">, GridVariantProps {
   children?: ReactNode[];
+  columns: NonNullable<GridVariantProps["columns"]>;
 }
 
-export const Grid = ({ columns, border, children, background = "gray", ...rest }: GridProps) => {
+type GridItemVariantProps = NonNullable<StyledVariantProps<typeof StyledGridItem>>;
+
+export interface GridItemProps extends ComponentProps<"div">, GridItemVariantProps {}
+
+export const Grid = ({ columns, border, children, ...rest }: GridProps) => {
   const amountOfColumns = children?.length === 3 ? "3" : columns;
 
   return (
-    <GridContainer
-      data-embed-type="grid"
-      border={border === "none" ? undefined : border}
-      columns={amountOfColumns}
-      background={background}
-      {...rest}
-    >
+    <GridContainer data-embed-type="grid" border={border} columns={amountOfColumns} {...rest}>
       {children}
     </GridContainer>
+  );
+};
+
+export const GridItem = ({ border, children, ...rest }: GridItemProps) => {
+  return (
+    <StyledGridItem data-embed-type="grid-item" border={border} {...rest}>
+      {children}
+    </StyledGridItem>
   );
 };

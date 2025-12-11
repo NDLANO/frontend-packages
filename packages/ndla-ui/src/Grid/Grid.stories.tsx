@@ -51,7 +51,7 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const items = new Array(columns).fill(0).map((_, idx) => {
     const args = keyFigureArgs[idx % keyFigureArgs.length];
     return (
-      <div key={idx} data-type="grid-cell" data-parallax-cell="false">
+      <div key={idx} data-type="grid-cell">
         <Plain key={idx} {...args} />
       </div>
     );
@@ -62,7 +62,7 @@ export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
 export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
   const items = new Array(columns).fill(
-    <div data-type="grid-cell" data-parallax-cell="false">
+    <div data-type="grid-cell">
       <PitchStory
         // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         metaImage={PitchStory.args?.metaImage!}

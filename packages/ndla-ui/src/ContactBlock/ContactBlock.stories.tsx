@@ -16,6 +16,7 @@ export default {
   args: {
     image: {
       id: "65750",
+      inactive: false,
       metaUrl: "https://api.test.ndla.no/image-api/v3/images/65750",
       title: {
         title: "Sigurd Trageton",

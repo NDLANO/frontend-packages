@@ -77,6 +77,7 @@ const visualElementData: ConceptData["visualElement"] = {
   },
   data: {
     id: "52863",
+    inactive: false,
     metaUrl: "https://api.test.ndla.no/image-api/v3/images/52863",
     title: {
       title: "Skin - formasjonsskade",

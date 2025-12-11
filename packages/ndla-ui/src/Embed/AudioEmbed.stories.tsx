@@ -124,6 +124,7 @@ const podcastSuccessData: AudioMeta = {
   updated: "2022-03-26T07:49:09Z",
   imageMeta: {
     id: "60913",
+    inactive: false,
     metaUrl: "https://api.test.ndla.no/image-api/v3/images/60913",
     title: {
       title: "Podkastserie: Lytt deg gjennom mediefaget (samme på bm og nn)",

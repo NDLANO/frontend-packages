@@ -1,7 +1,7 @@
 {
   "name": "@ndla/ui",
   "type": "module",
-  "version": "56.0.162-alpha.0",
+  "version": "56.0.163-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "exports": {
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.89",
-    "@ndla/types-embed": "^5.0.19-alpha.0",
+    "@ndla/types-embed": "^5.0.20-alpha.0",
     "@pandacss/dev": "^1.7.0"
   },
   "publishConfig": {

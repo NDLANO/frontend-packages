@@ -1261,8 +1261,8 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.89"
-    "@ndla/types-embed": "npm:^5.0.19-alpha.0"
-    "@ndla/ui": "npm:^56.0.162-alpha.0"
+    "@ndla/types-embed": "npm:^5.0.20-alpha.0"
+    "@ndla/ui": "npm:^56.0.163-alpha.0"
     html-react-parser: "npm:^5.2.8"
   peerDependencies:
     i18next: ">= 25.0.0"
@@ -1466,7 +1466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/types-embed@npm:^5.0.19-alpha.0, @ndla/types-embed@workspace:packages/types-embed":
+"@ndla/types-embed@npm:^5.0.20-alpha.0, @ndla/types-embed@workspace:packages/types-embed":
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
@@ -1482,7 +1482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/ui@npm:^56.0.162-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.163-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ndla-ui"
   dependencies:
@@ -1495,7 +1495,7 @@ __metadata:
     "@ndla/safelink": "npm:^7.0.117-alpha.0"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.89"
-    "@ndla/types-embed": "npm:^5.0.19-alpha.0"
+    "@ndla/types-embed": "npm:^5.0.20-alpha.0"
     "@ndla/util": "npm:^5.0.17-alpha.0"
     "@pandacss/dev": "npm:^1.7.0"
     html-react-parser: "npm:^5.2.8"
@@ -1525,7 +1525,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-embed": "npm:^5.0.19-alpha.0"
+    "@ndla/types-embed": "npm:^5.0.20-alpha.0"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
     react: ">= 18"

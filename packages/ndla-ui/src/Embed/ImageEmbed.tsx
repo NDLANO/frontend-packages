@@ -173,6 +173,9 @@ const ExpandButton = styled(
       tabletDown: {
         display: "none",
       },
+      _print: {
+        display: "none",
+      },
     },
   },
   { defaultProps: { type: "button" } },

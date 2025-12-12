@@ -121,7 +121,7 @@ export const globalCss = defineGlobalStyles({
           marginBlockEnd: "xsmall",
         },
         '& > :is([data-embed-type="ordered-list"])': {
-          marginInlineStart: "xlarge!",
+          marginInlineStart: "small",
         },
       },
     '& [data-embed-type="framed-content"], [data-embed-type="grid"] > div, [data-embed-type="factbox"] > div, [data-embed-type="copyright"] > [data-copyright-content], [data-embed-type="uu-disclaimer"] > [data-uu-content], details, blockquote':

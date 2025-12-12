@@ -6,33 +6,22 @@
  *
  */
 
-import { type CSSProperties, forwardRef, useMemo } from "react";
+import { type CSSProperties, forwardRef, useId, useMemo } from "react";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 
-const LIST_ITEM = "& > li";
-const LETTER_LIST = "& > ol[data-variant='letters']";
-const NUMBER_LIST = "& > ol:not([data-variant='letters'])";
-const LETTER_LIST_ITEM = `${LETTER_LIST} > li`;
-
 const orderedListRecipe = cva({
   base: {
-    marginInlineStart: "small",
-    paddingInlineStart: "small",
-    [LIST_ITEM]: {
-      "& > ul": {
-        marginInlineStart: "0 !important",
-      },
+    paddingInlineStart: "large",
+    "& > li": {
+      marginBlock: "small",
       _before: {
         position: "absolute",
-        transform: "translateX(calc(-100% + (token(spacing.small) * -1)))",
+        transform: "translateX(calc(-100% - token(spacing.small)))",
         fontVariantNumeric: "tabular-nums",
       },
-    },
-    "& li": {
-      marginBlock: "small",
     },
   },
   defaultVariants: {
@@ -41,82 +30,45 @@ const orderedListRecipe = cva({
   variants: {
     variant: {
       numbers: {
-        [NUMBER_LIST]: {
-          marginInlineStart: "0",
-          paddingInlineStart: "0",
-        },
-        counterReset: "level1",
-        "&[data-count='true']": {
-          counterReset: "level1 var(--start, 0)",
-        },
-        [LIST_ITEM]: {
-          counterIncrement: "level1",
+        /** We utilize a CSS variable for the counter name to correctly reset counters when nested inside a letter list.
+         * This way, the nested number list won't pick up on any other counters named "numbers" higher up in the DOM tree.
+         * This fixes the following scenario
+         * ol (numbers) -> 1.
+         *  ol(letters) -> A.
+         *    ol (numbers) -> 1. (Without the CSS variable, this would be 1.1)
+         */
+        counterReset: "var(--counter-name, numbers) var(--start, 0)",
+        "& > li": {
+          counterIncrement: "var(--counter-name, numbers)",
           _before: {
-            content: "counter(level1, decimal) '. '",
+            content: `counters(var(--counter-name, numbers), ".") ". "`,
           },
-          [NUMBER_LIST]: {
-            counterReset: "level2",
-            "&[data-count='true']": {
-              counterReset: "level2 var(--start, 0)",
-            },
-            [LIST_ITEM]: {
-              marginInlineStart: "small",
-              counterIncrement: "level2",
-              _before: {
-                content: "counter(level1, decimal) '.' counter(level2, decimal) '. '",
-              },
-              [NUMBER_LIST]: {
-                counterReset: "level3",
-                "&[data-count='true']": {
-                  counterReset: "level3 var(--start, 0)",
-                },
-                [LIST_ITEM]: {
-                  marginInlineStart: "calc(1.5ch + token(spacing.small))",
-                  counterIncrement: "level3",
-                  _before: {
-                    content: "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '. '",
-                  },
-                  [NUMBER_LIST]: {
-                    counterReset: "level4",
-                    "&[data-count='true']": {
-                      counterReset: "level4 var(--start, 0)",
-                    },
-                    [LIST_ITEM]: {
-                      marginInlineStart: "calc(3ch + token(spacing.small))",
-                      counterIncrement: "level4",
-                      _before: {
-                        content:
-                          "counter(level1, decimal) '.' counter(level2, decimal) '.' counter(level3, decimal) '.' counter(level4,  decimal) '. '",
-                      },
-                    },
-                  },
-                },
+          // If a nested OL is not a letters variant, it's a numbers variant. Keep increasing the margin to account for wider numbers.
+          "& > ol:not([data-variant='letters']) > li": {
+            paddingInlineStart: "small",
+            "& > ol:not([data-variant='letters']) > li": {
+              paddingInlineStart: "large",
+              "& > ol:not([data-variant='letters']) > li": {
+                paddingInlineStart: "xxlarge",
               },
             },
           },
         },
       },
       letters: {
-        counterReset: "level1",
-        "&[data-count='true']": {
-          counterReset: "level1 var(--start, 0)",
-        },
-        [LETTER_LIST]: {
-          marginInlineStart: "0",
-          paddingInlineStart: "0",
-        },
-        [LIST_ITEM]: {
-          counterIncrement: "level1",
+        counterReset: "letters var(--start, 0)",
+        "& > li": {
+          counterIncrement: "letters",
           _before: {
-            content: "counter(level1, upper-alpha) '. '",
+            content: `counter(letters, upper-alpha) ". "`,
           },
-          [LETTER_LIST_ITEM]: {
+          "& > ol[data-variant='letters'] > li": {
             _before: {
-              content: "counter(level1, lower-alpha) '. '",
+              content: `counter(letters, lower-alpha) ". "`,
             },
-            [LETTER_LIST_ITEM]: {
+            "& > ol[data-variant='letters'] > li": {
               _before: {
-                content: "counter(level1, lower-roman) '. '",
+                content: `counter(letters, lower-roman) ". "`,
               },
             },
           },
@@ -134,12 +86,21 @@ const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 
 export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
   ({ variant, css: cssProp, start, ...props }, ref) => {
-    const style = useMemo(() => ({ "--start": start ? start - 1 : undefined }) as CSSProperties, [start]);
+    const counterId = useId();
+    const style = useMemo(
+      () =>
+        ({
+          "--start": start ? start - 1 : 0,
+          "--counter-name": variant === "letters" ? counterId : undefined,
+        }) as CSSProperties,
+      [counterId, start, variant],
+    );
     return (
       <StyledOrderedList
         data-embed-type="ordered-list"
         data-variant={variant}
-        data-count={start !== undefined}
+        start={start}
+        type={variant === "letters" ? "A" : undefined}
         css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
         style={style}
         ref={ref}
@@ -151,7 +112,7 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
 
 export interface UnOrderedListProps extends StyledProps, HTMLArkProps<"ul"> {}
 
-export const UnOrderedList = styled("ul", {
+export const StyledUnOrderedList = styled("ul", {
   base: {
     listStyle: "revert",
     marginInlineStart: "medium",
@@ -179,6 +140,20 @@ export const UnOrderedList = styled("ul", {
       },
     },
   },
+});
+
+export const UnOrderedList = forwardRef<HTMLUListElement, UnOrderedListProps>((props, ref) => {
+  const counterId = useId();
+
+  const style = useMemo(
+    () =>
+      ({
+        "--counter-name": counterId,
+      }) as CSSProperties,
+    [counterId],
+  );
+
+  return <StyledUnOrderedList ref={ref} style={style} {...props} />;
 });
 
 export const DefinitionList = styled("dl", {

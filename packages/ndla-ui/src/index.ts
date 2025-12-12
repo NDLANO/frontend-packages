@@ -109,8 +109,8 @@ export { KeyFigure } from "./KeyFigure/KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock/ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock/ContactBlock";
 export { CampaignBlock } from "./CampaignBlock/CampaignBlock";
-export { Grid } from "./Grid/Grid";
-export type { GridProps as GridType } from "./Grid/Grid";
+export { Grid, GridItem } from "./Grid/Grid";
+export type { GridProps as GridType, GridItemProps } from "./Grid/Grid";
 
 export { Gloss } from "./Gloss/Gloss";
 export { GlossExample } from "./Gloss/GlossExample";

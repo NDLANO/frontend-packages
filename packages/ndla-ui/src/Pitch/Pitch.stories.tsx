@@ -43,7 +43,7 @@ export default {
 
 export const Default = ({ ...args }: Props) => {
   return (
-    <Grid columns="2" background="transparent">
+    <Grid columns="2">
       <div data-type="grid-cell">
         <Pitch {...args} />
       </div>

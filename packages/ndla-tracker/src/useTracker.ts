@@ -8,7 +8,6 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
-import { usePrevious } from "@ndla/util";
 
 interface TrackPageViewProps {
   title: string;
@@ -24,13 +23,10 @@ declare global {
 export const useTracker = () => {
   const hasTracked = useRef(false);
   const { pathname } = useLocation();
-  const previousPath = usePrevious(pathname);
 
   useEffect(() => {
-    if (hasTracked && previousPath !== pathname) {
-      hasTracked.current = false;
-    }
-  }, [hasTracked, pathname, previousPath]);
+    hasTracked.current = false;
+  }, [pathname]);
 
   const trackPageView = useCallback(({ title, dimensions = {} }: TrackPageViewProps) => {
     if (!hasTracked.current) {
@@ -43,5 +39,5 @@ export const useTracker = () => {
     }
   }, []);
 
-  return { trackPageView, hasTracked };
+  return { trackPageView, hasTracked: hasTracked.current };
 };

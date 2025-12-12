@@ -232,6 +232,7 @@ export const ImageEmbed = ({ embed, previewAlt, lang, renderContext = "article",
           sizes={expanded ? expandedSizes : sizes}
           alt={altText}
           src={data.image.imageUrl}
+          variants={data.image.variants}
           lang={lang}
           onClick={figureProps?.float ? toggleImageSize : undefined}
           variant="rounded"

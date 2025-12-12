@@ -29,6 +29,7 @@ const embedData: ImageEmbedData = {
 
 const metaData: ImageMetaInformationV3DTO = {
   id: "61181",
+  inactive: false,
   metaUrl: "https://api.test.ndla.no/image-api/v3/images/61181",
   title: {
     title: "\nHigh angle view of teenage girl with tousled dyed hair dancing at skateboard park\n",

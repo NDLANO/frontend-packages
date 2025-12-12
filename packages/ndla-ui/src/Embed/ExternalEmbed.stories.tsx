@@ -113,6 +113,7 @@ const opensInNewMetaData: OembedData = {
   },
   iframeImage: {
     id: "65086",
+    inactive: false,
     metaUrl: "https://api.test.ndla.no/image-api/v3/images/65086",
     title: {
       title: "\nSamtale ",

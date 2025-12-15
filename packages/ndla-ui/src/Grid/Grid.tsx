@@ -59,12 +59,14 @@ const GridContainer = styled("div", {
 });
 
 const StyledGridItem = styled("div", {
-  base: {},
+  base: {
+    padding: "medium",
+  },
   variants: {
     border: {
       true: {
         outline: "1px solid",
-        borderColor: "stroke.default",
+        outlineColor: "stroke.default",
       },
     },
   },

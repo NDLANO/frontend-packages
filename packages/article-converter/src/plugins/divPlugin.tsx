@@ -61,7 +61,7 @@ export const divPlugin: PluginType = (node, opts) => {
       </Grid>
     );
   }
-  if (node.attribs["data-type"] === "grid-item") {
+  if (node.attribs["data-type"] === "grid-cell") {
     const props = attributesToProps(node.attribs);
     const border = props["data-border"] === "true";
     return (

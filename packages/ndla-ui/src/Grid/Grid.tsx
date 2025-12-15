@@ -93,7 +93,7 @@ export const Grid = ({ columns, border, children, ...rest }: GridProps) => {
 
 export const GridItem = ({ border, children, ...rest }: GridItemProps) => {
   return (
-    <StyledGridItem data-embed-type="grid-item" border={border} {...rest}>
+    <StyledGridItem data-embed-type="grid-cell" border={border} {...rest}>
       {children}
     </StyledGridItem>
   );

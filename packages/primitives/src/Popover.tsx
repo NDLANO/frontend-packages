@@ -93,10 +93,7 @@ export const PopoverPositioner = withContext(Popover.Positioner, "positioner", {
 const InternalPopoverTitle = withContext(Popover.Title, "title", { baseComponent: true });
 
 interface PopoverTitleProps
-  extends Omit<Popover.TitleProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLHeadingElement> {}
+  extends Omit<Popover.TitleProps, "color">, TextProps, StyledProps, RefAttributes<HTMLHeadingElement> {}
 
 export const PopoverTitle = ({ textStyle = "title.medium", children, ...rest }: PopoverTitleProps) => (
   <Heading textStyle={textStyle} {...rest} asChild consumeCss>

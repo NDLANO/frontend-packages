@@ -111,10 +111,7 @@ const InternalRadioGroupItemText = withContext(RadioGroup.ItemText, "itemText");
 const InnerRadioGroupItemText = styled(ark.span, {}, { baseComponent: true });
 
 interface RadioGroupItemTextProps
-  extends Omit<RadioGroup.ItemTextProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLParagraphElement> {}
+  extends Omit<RadioGroup.ItemTextProps, "color">, TextProps, StyledProps, RefAttributes<HTMLParagraphElement> {}
 
 export const RadioGroupItemText = ({
   textStyle = "label.medium",
@@ -137,10 +134,7 @@ export const InternalRadioGroupLabel = withContext(RadioGroup.Label, "label");
 const InnerRadioGroupLabel = styled(ark.div, {}, { baseComponent: true });
 
 interface RadioGroupLabelProps
-  extends Omit<RadioGroup.LabelProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<RadioGroup.LabelProps, "color">, TextProps, StyledProps, RefAttributes<HTMLLabelElement> {}
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroupLabelProps>(
   ({ textStyle = "label.large", fontWeight = "bold", children, asChild, consumeCss, ...props }, ref) => (

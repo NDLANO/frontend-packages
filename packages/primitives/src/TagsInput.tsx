@@ -147,10 +147,7 @@ export const TagsInputItemText = withContext(TagsInput.ItemText, "itemText", { b
 const InternalTagsInputLabel = withContext(TagsInput.Label, "label");
 
 export interface TagsInputLabelProps
-  extends Omit<TagsInput.LabelProps, "color">,
-    StyledProps,
-    TextProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<TagsInput.LabelProps, "color">, StyledProps, TextProps, RefAttributes<HTMLLabelElement> {}
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>(({ children, ...props }, ref) => (
   <InternalTagsInputLabel asChild ref={ref} {...props}>

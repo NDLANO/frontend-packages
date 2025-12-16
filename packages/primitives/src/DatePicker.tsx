@@ -108,10 +108,7 @@ export const DatePickerControl = withContext(DatePicker.Control, "control", { ba
 export const DatePickerInput = withContext(DatePicker.Input, "input", { baseComponent: true });
 
 interface DatePickerLabelProps
-  extends Omit<DatePicker.LabelProps, "color">,
-    StyledProps,
-    TextProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<DatePicker.LabelProps, "color">, StyledProps, TextProps, RefAttributes<HTMLLabelElement> {}
 
 const InternalDatePickerLabel = withContext(DatePicker.Label, "label");
 

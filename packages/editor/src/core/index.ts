@@ -86,8 +86,10 @@ export type MappedConfigurationOption<T> = {
       : T[K];
 };
 
-export interface PluginConfigurationConfigurationType<TType extends ElementType, TOptions>
-  extends Omit<Partial<PluginConfiguration<TType, TOptions>>, "options"> {
+export interface PluginConfigurationConfigurationType<TType extends ElementType, TOptions> extends Omit<
+  Partial<PluginConfiguration<TType, TOptions>>,
+  "options"
+> {
   options?: MappedConfigurationOption<TOptions>;
   /**
    * Specify whether the new configuration should entirely replace the existing configuration, or if it should be merged with the existing configuration.
@@ -130,8 +132,9 @@ export interface SlateSerializer<TOptions extends {} | undefined = undefined> {
   options?: TOptions;
 }
 
-export interface ConfigurableSlateSerializer<TOptions extends {} | undefined = undefined>
-  extends SlateSerializer<TOptions> {
+export interface ConfigurableSlateSerializer<
+  TOptions extends {} | undefined = undefined,
+> extends SlateSerializer<TOptions> {
   /**
    * Allows consumers of serializers to modify the default options passed into the serializer.
    */

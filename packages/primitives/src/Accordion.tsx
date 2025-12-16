@@ -128,10 +128,7 @@ const { withProvider, withContext } = createStyleContext(accordionRecipe);
 export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accordionRecipe>>;
 
 export interface AccordionRootProps
-  extends StyledProps,
-    Accordion.RootProps,
-    RefAttributes<HTMLDivElement>,
-    AccordionVariantProps {}
+  extends StyledProps, Accordion.RootProps, RefAttributes<HTMLDivElement>, AccordionVariantProps {}
 
 export const InternalAccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
 

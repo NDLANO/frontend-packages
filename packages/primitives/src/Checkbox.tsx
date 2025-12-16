@@ -231,10 +231,7 @@ export const CheckboxIndicator = withContext(Checkbox.Indicator, "indicator", { 
 const InternalCheckboxLabel = withContext(Checkbox.Label, "label");
 
 interface CheckboxLabelProps
-  extends StyledProps,
-    Omit<Checkbox.LabelProps, "color">,
-    TextProps,
-    RefAttributes<HTMLSpanElement> {}
+  extends StyledProps, Omit<Checkbox.LabelProps, "color">, TextProps, RefAttributes<HTMLSpanElement> {}
 
 export const CheckboxLabel = ({ textStyle = "label.medium", children, ...props }: CheckboxLabelProps) => (
   <InternalCheckboxLabel {...props} asChild>

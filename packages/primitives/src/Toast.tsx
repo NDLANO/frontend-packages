@@ -85,10 +85,7 @@ export const ToastCloseTrigger = withContext(Toast.CloseTrigger, "closeTrigger",
 const InternalToastDescription = withContext(Toast.Description, "description");
 
 interface ToastDescriptionProps
-  extends Omit<Toast.DescriptionProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Omit<Toast.DescriptionProps, "color">, TextProps, StyledProps, RefAttributes<HTMLDivElement> {}
 
 export const ToastDescription = ({ textStyle = "label.medium", children, ...props }: ToastDescriptionProps) => (
   <InternalToastDescription asChild>
@@ -101,10 +98,7 @@ export const ToastDescription = ({ textStyle = "label.medium", children, ...prop
 const InternalToastTitle = withContext(Toast.Title, "title");
 
 interface ToastTitleProps
-  extends Omit<Toast.TitleProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Omit<Toast.TitleProps, "color">, TextProps, StyledProps, RefAttributes<HTMLDivElement> {}
 
 export const ToastTitle = ({
   textStyle = "label.medium",

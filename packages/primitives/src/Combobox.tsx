@@ -148,10 +148,7 @@ const { withProvider, withContext } = createStyleContext(comboboxRecipe);
 export type ComboboxVariantProps = NonNullable<RecipeVariantProps<typeof comboboxRecipe>>;
 
 export interface ComboboxRootProps<T extends Combobox.CollectionItem>
-  extends StyledProps,
-    Combobox.RootProps<T>,
-    ComboboxVariantProps,
-    RefAttributes<HTMLDivElement> {
+  extends StyledProps, Combobox.RootProps<T>, ComboboxVariantProps, RefAttributes<HTMLDivElement> {
   translations: Combobox.RootProps<T>["translations"];
 }
 
@@ -194,10 +191,7 @@ export const ComboboxInput = withContext(Combobox.Input, "input", { baseComponen
 const InternalComboboxItemGroupLabel = withContext(Combobox.ItemGroupLabel, "itemGroupLabel");
 
 export interface ComboboxItemGroupLabelProps
-  extends Omit<Combobox.ItemGroupLabelProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Omit<Combobox.ItemGroupLabelProps, "color">, TextProps, StyledProps, RefAttributes<HTMLDivElement> {}
 
 export const ComboboxItemGroupLabel = ({
   children,
@@ -227,10 +221,7 @@ export const ComboboxItem = withContext(Combobox.Item, "item", { baseComponent: 
 const InternalComboboxItemText = withContext(Combobox.ItemText, "itemText");
 
 export interface ComboboxItemTextProps
-  extends Omit<Combobox.ItemTextProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Omit<Combobox.ItemTextProps, "color">, TextProps, StyledProps, RefAttributes<HTMLDivElement> {}
 
 export const ComboboxItemText = ({
   textStyle = "label.medium",
@@ -248,10 +239,7 @@ export const ComboboxItemText = ({
 const InternalComboboxLabel = withContext(Combobox.Label, "label");
 
 export interface ComboboxLabelProps
-  extends Omit<Combobox.LabelProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<Combobox.LabelProps, "color">, TextProps, StyledProps, RefAttributes<HTMLLabelElement> {}
 
 export const ComboboxLabel = ({ textStyle = "label.medium", fontWeight = "bold", ...props }: ComboboxLabelProps) => (
   <InternalComboboxLabel asChild>

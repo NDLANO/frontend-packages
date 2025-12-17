@@ -38,10 +38,7 @@ const pageContainerRecipe = cva({
 export type PageContainerVariantProps = NonNullable<RecipeVariantProps<typeof pageContainerRecipe>>;
 
 export interface PageContainerProps
-  extends HTMLArkProps<"div">,
-    StyledProps,
-    PageContentVariantProps,
-    PageContainerVariantProps {}
+  extends HTMLArkProps<"div">, StyledProps, PageContentVariantProps, PageContainerVariantProps {}
 
 export const PageContainer = forwardRef<HTMLDivElement, PageContainerProps>(
   ({ padding, css: cssProp, ...props }, ref) => (

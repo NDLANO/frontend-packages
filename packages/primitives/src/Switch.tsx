@@ -125,10 +125,7 @@ export const SwitchThumb = withContext(Switch.Thumb, "thumb", { baseComponent: t
 const InternalSwitchLabel = withContext(Switch.Label, "label");
 
 interface SwitchLabelProps
-  extends Omit<Switch.LabelProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLSpanElement> {}
+  extends Omit<Switch.LabelProps, "color">, TextProps, StyledProps, RefAttributes<HTMLSpanElement> {}
 
 export const SwitchLabel = ({ textStyle = "label.medium", children, ...props }: SwitchLabelProps) => (
   <InternalSwitchLabel asChild {...props}>

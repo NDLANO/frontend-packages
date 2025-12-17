@@ -100,10 +100,7 @@ export const SliderThumb = withContext(Slider.Thumb, "thumb", { baseComponent: t
 const InternalSliderLabel = withContext(Slider.Label, "label");
 
 interface SliderLabelProps
-  extends Omit<Slider.LabelProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<Slider.LabelProps, "color">, TextProps, StyledProps, RefAttributes<HTMLLabelElement> {}
 
 export const SliderLabel = ({ textStyle = "label.medium", ...props }: SliderLabelProps) => (
   <InternalSliderLabel asChild>

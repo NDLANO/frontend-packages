@@ -147,9 +147,7 @@ const selectRecipe = sva({
 const { withProvider, withContext } = createStyleContext(selectRecipe);
 
 export interface SelectRootProps<T extends Select.CollectionItem>
-  extends Select.RootProps<T>,
-    StyledProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Select.RootProps<T>, StyledProps, RefAttributes<HTMLDivElement> {}
 const InternalSelectRoot = withProvider<ElementType<SelectRootProps<Select.CollectionItem>>>(Select.Root, "root", {
   baseComponent: true,
 });
@@ -177,10 +175,7 @@ export const SelectControl = withContext(Select.Control, "control", { baseCompon
 export const SelectIndicator = withContext(Select.Indicator, "indicator", { baseComponent: true });
 
 interface SelectItemGroupLabelProps
-  extends Omit<Select.ItemGroupLabelProps, "color">,
-    StyledProps,
-    TextProps,
-    RefAttributes<HTMLDivElement> {}
+  extends Omit<Select.ItemGroupLabelProps, "color">, StyledProps, TextProps, RefAttributes<HTMLDivElement> {}
 
 export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(
   ({ children, ...props }, ref) => (
@@ -207,10 +202,7 @@ export const SelectItemText = withContext(Select.ItemText, "itemText", { baseCom
 const InternalSelectLabel = withContext(Select.Label, "label");
 
 interface SelectLabelProps
-  extends Omit<Select.LabelProps, "color">,
-    StyledProps,
-    TextProps,
-    RefAttributes<HTMLLabelElement> {}
+  extends Omit<Select.LabelProps, "color">, StyledProps, TextProps, RefAttributes<HTMLLabelElement> {}
 
 export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>(({ children, ...props }, ref) => (
   <InternalSelectLabel asChild ref={ref} {...props}>

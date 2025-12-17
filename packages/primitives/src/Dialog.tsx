@@ -338,10 +338,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((pro
 const InternalDialogDescription = withContext(Dialog.Description, "description");
 
 interface DialogDescriptionProps
-  extends Omit<Dialog.DescriptionProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLParagraphElement> {}
+  extends Omit<Dialog.DescriptionProps, "color">, TextProps, StyledProps, RefAttributes<HTMLParagraphElement> {}
 
 export const DialogDescription = ({ textStyle = "body.large", children, ...rest }: DialogDescriptionProps) => {
   return (
@@ -356,10 +353,7 @@ export const DialogDescription = ({ textStyle = "body.large", children, ...rest 
 const InternalDialogTitle = withContext(Dialog.Title, "title");
 
 interface DialogTitleProps
-  extends Omit<Dialog.TitleProps, "color">,
-    TextProps,
-    StyledProps,
-    RefAttributes<HTMLHeadingElement> {}
+  extends Omit<Dialog.TitleProps, "color">, TextProps, StyledProps, RefAttributes<HTMLHeadingElement> {}
 
 export const DialogTitle = ({ textStyle = "title.medium", children, ...rest }: DialogTitleProps) => (
   <InternalDialogTitle asChild>

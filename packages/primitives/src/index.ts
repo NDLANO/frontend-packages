@@ -210,6 +210,7 @@ export {
   MenuTrigger,
   MenuSeparator,
   MenuItemText,
+  MenuContentStandalone,
 } from "./Menu";
 
 export type { MessageBoxVariantProps, MessageBoxProps } from "./MessageBox";

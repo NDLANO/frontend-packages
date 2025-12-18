@@ -339,7 +339,17 @@ export const WithNestedUnOrderedList: StoryFn = () => (
         <li>
           Listepunkt 5
           <UnOrderedList>
-            <li>Listepunkt 6</li>
+            <li>
+              Listepunkt 6
+              <OrderedList>
+                <li>
+                  Listepunkt 7
+                  <OrderedList>
+                    <li>Listepunkt 8</li>
+                  </OrderedList>
+                </li>
+              </OrderedList>
+            </li>
           </UnOrderedList>
         </li>
       </UnOrderedList>

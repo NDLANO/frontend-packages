@@ -175,7 +175,7 @@ export const CampaignBlock = ({
   className,
   background,
 }: Props) => {
-  const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
+  const imageComponent = image && <StyledImg src={`${image.src}?width=455`} width={455} alt={image.alt} />;
 
   return (
     <Wrapper>

@@ -94,6 +94,7 @@ const Container = styled("div", {
   },
 });
 
+// TODO: Variants
 const StyledImg = styled("img", {
   base: {
     objectFit: "cover",

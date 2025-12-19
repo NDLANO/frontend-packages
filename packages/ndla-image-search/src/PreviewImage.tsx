@@ -25,7 +25,6 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import { ImageMeta } from "./ImageMeta";
 import type { PreviewTranslations } from "./ImageSearch";
-import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {
   base: {
@@ -129,10 +128,9 @@ export const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translati
       <ImageContainer>
         <StyledImage
           alt=""
-          srcSet={getSrcSets(image.image.imageUrl)}
-          sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
           src={image.image.imageUrl}
           aria-label={image.title.title}
+          variants={image.image.variants}
           variant="rounded"
         />
       </ImageContainer>

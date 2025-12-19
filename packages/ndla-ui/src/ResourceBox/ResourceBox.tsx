@@ -6,99 +6,105 @@
  *
  */
 
+import { ark } from "@ark-ui/react";
 import { breakpoints } from "@ndla/core";
 import { ShareBoxLine } from "@ndla/icons";
 import { Heading, Image, Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
-import { styled } from "@ndla/styled-system/jsx";
+import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 
-const Container = styled("div", {
+const resourceBoxRecipe = sva({
+  slots: ["root", "content", "image", "text"],
   base: {
-    display: "flex",
-    padding: "medium",
-    borderRadius: "xsmall",
-    border: "1px solid",
-    borderColor: "stroke.default",
-    boxShadow: "full",
-    marginBlockEnd: "medium",
-    gap: "medium",
-    tabletWideDown: {
-      padding: "xsmall",
+    root: {
+      display: "flex",
+      padding: "medium",
+      borderRadius: "xsmall",
+      border: "1px solid",
+      borderColor: "stroke.default",
+      boxShadow: "full",
+      marginBlockEnd: "medium",
+      gap: "medium",
+      tabletWideDown: {
+        padding: "xsmall",
+      },
+      tabletDown: {
+        flexDirection: "column",
+        gap: "0",
+        padding: "0",
+      },
     },
-    tabletDown: {
+    content: {
+      display: "flex",
       flexDirection: "column",
-      gap: "0",
-      padding: "0",
+      alignItems: "flex-start",
+      gap: "xsmall",
+      flex: "1",
+      tabletDown: {
+        padding: "xsmall",
+      },
+    },
+    image: {
+      objectFit: "cover",
+      borderRadius: "xsmall",
+      width: "fit-content",
+      aspectRatio: "1/1",
+      tabletDown: {
+        width: "100%",
+        borderRadius: "0",
+      },
+    },
+    text: {
+      flex: "1",
     },
   },
 });
 
-const ContentWrapper = styled("div", {
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "xsmall",
-    flex: "1",
-    tabletDown: {
-      padding: "xsmall",
-    },
-  },
-});
+const { withProvider, withContext } = createStyleContext(resourceBoxRecipe);
 
-const StyledImage = styled(Image, {
-  base: {
-    objectFit: "cover",
-    borderRadius: "xsmall",
-    width: "fit-content",
-    aspectRatio: "1/1",
-    tabletDown: {
-      width: "100%",
-      borderRadius: "0",
-    },
-  },
-});
+const ResourceBoxRoot = withProvider(ark.div, "root", { baseComponent: true });
 
-const StyledText = styled(Text, {
-  base: {
-    flex: "1",
-  },
-});
+const ResourceBoxContent = withContext(ark.div, "content", { baseComponent: true });
 
-interface ImageMeta {
-  src: string | undefined;
-  alt: string;
-}
+const ResourceBoxImage = withContext(Image, "image");
+
+const ResourceBoxText = withContext(Text, "text");
 
 interface Props {
-  image?: ImageMeta;
+  image?: ImageMetaInformationV3DTO;
   title: string;
+  imageAlt?: string;
   caption: string;
   url: string;
   buttonText: string;
 }
 
-export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) => {
+export const ResourceBox = ({ image, title, caption, url, buttonText, imageAlt }: Props) => {
   return (
-    <Container>
+    <ResourceBoxRoot>
       {image ? (
-        <StyledImage
-          src={image.src}
-          alt={image.alt}
+        <ResourceBoxImage
+          src={image.image.imageUrl}
+          alt={(imageAlt !== undefined ? imageAlt : image.alttext.alttext) ?? ""}
+          variants={image.image.variants}
+          width={image.image.dimensions?.width}
+          height={image.image.dimensions?.height}
           sizes={`(min-width: ${breakpoints.desktop}) 150px, (max-width: ${breakpoints.tablet} ) 400px, 200px`}
           variant="rounded"
         />
       ) : null}
-      <ContentWrapper>
+      <ResourceBoxContent>
         <Heading textStyle="label.large" fontWeight="bold" asChild consumeCss>
           <h3>{title}</h3>
         </Heading>
-        <StyledText textStyle="body.medium">{caption}</StyledText>
+        <ResourceBoxText textStyle="body.medium">{caption}</ResourceBoxText>
         <SafeLinkButton to={url} target="_blank" variant="secondary">
           {buttonText}
           <ShareBoxLine />
         </SafeLinkButton>
-      </ContentWrapper>
-    </Container>
+      </ResourceBoxContent>
+    </ResourceBoxRoot>
   );
 };

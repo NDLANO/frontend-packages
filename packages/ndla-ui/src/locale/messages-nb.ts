@@ -217,6 +217,7 @@ const messages = {
     learningpath: "Læringssti",
     "learning-path": "Læringssti",
     "subject-material": "Fagstoff",
+    standard: "Fagstoff",
     "tasks-and-activities": "Oppgaver og aktiviteter",
     "source-material": "Kildemateriale",
     "assessment-resources": "Vurderingsressurs",

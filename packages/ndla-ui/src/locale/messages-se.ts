@@ -218,6 +218,7 @@ const messages = {
     learningpath: "Oahppanbálggis",
     "learning-path": "Oahppanbálggis",
     "subject-material": "Fágaávdnasat",
+    standard: "Fágaávdnasat",
     "tasks-and-activities": "Bihtát ja doaimmat",
     "source-material": "Gáldomateriála",
     "assessment-resources": "Árvoštallanresursa",

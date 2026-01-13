@@ -216,6 +216,7 @@ const messages = {
     learningpath: "Learning path",
     "learning-path": "Learning path",
     "subject-material": "Subject material",
+    standard: "Subject material",
     "tasks-and-activities": "Task and activities",
     "source-material": "Source material",
     "assessment-resources": "Assessment resource",

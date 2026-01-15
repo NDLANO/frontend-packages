@@ -7,9 +7,9 @@
  */
 
 import { type DOMNode, Element, domToReact } from "html-react-parser";
-import { CopyParagraphButton } from "@ndla/ui";
+import { AnchorHeading } from "@ndla/ui";
 import { type PluginType } from "./types";
-export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
+export const anchorHeadingPlugin: PluginType = (node, converterOpts, opts) => {
   const parent = node.parent as Element | undefined;
   if (
     parent?.name === "section" ||
@@ -17,9 +17,9 @@ export const copyParagraphPlugin: PluginType = (node, converterOpts, opts) => {
     (parent?.name === "ndlaembed" && parent.attribs["data-resource"] === "uu-disclaimer")
   ) {
     return (
-      <CopyParagraphButton copyText={node.attribs["data-text"]} lang={opts.articleLanguage}>
+      <AnchorHeading copyText={node.attribs["data-text"]} lang={opts.articleLanguage}>
         {domToReact(node.children as DOMNode[], converterOpts)}
-      </CopyParagraphButton>
+      </AnchorHeading>
     );
   }
   return null;

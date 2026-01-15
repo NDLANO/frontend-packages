@@ -6,14 +6,14 @@
  *
  */
 
-import { Editor, Path, Range, Transforms } from "slate";
+import { Editor, Location, Path, Range, Transforms } from "slate";
 import { LIST_PLUGIN, type ListPluginOptions, type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
-const isPathSelected = (editor: Editor, path: Path) => {
-  return Range.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
+const isPathSelected = (editor: Editor, path: Path): boolean => {
+  return !!editor.selection && Location.isRange(editor.selection) && Range.includes(editor.selection, path.concat(0));
 };
 
 const getListItemType = (editor: Editor, path: Path): ListType => {
@@ -51,7 +51,7 @@ const isSelectionOnlyOfType = (editor: Editor, type: ListType) => {
 };
 
 export const toggleList = (editor: Editor, listType: ListType, options?: ListPluginOptions) => {
-  if (!Range.isRange(editor.selection)) return;
+  if (!editor.selection || !Location.isRange(editor.selection)) return;
   const pluginOptions = options ?? editor.getPluginOptions<ListPluginOptions>(LIST_PLUGIN);
 
   // If all selected list items are of type input by user, unwrap all of them by lifting them out.

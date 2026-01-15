@@ -6,7 +6,7 @@
  *
  */
 
-import { Editor, Element, Path, Text, type ElementType } from "slate";
+import { Editor, Element, Node, Path, type ElementType } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import type { Logger } from "../core";
 import { isElementOfType } from "./isElementType";
@@ -54,7 +54,7 @@ const normalizeNodes = (
     // 1. If first node
     if (index === 0 && config.firstNode) {
       // a. Wrap text as default firstNode type
-      if (Text.isText(child)) {
+      if (Node.isText(child)) {
         logger?.log("First child is text, wrapping in default firstNode type.");
         editor.wrapNodes(createNode(config.firstNode.defaultType), { at: path.concat(0) });
         return true;
@@ -86,7 +86,7 @@ const normalizeNodes = (
     // 2. If last node
     if (index === children.length - 1 && config.lastNode) {
       // a. Wrap text as default firstNode type
-      if (Text.isText(child)) {
+      if (Node.isText(child)) {
         logger?.log("Last child is text, wrapping in default lastNode type.");
         editor.wrapNodes(createNode(config.lastNode.defaultType), { at: path.concat(children.length - 1) });
         return true;
@@ -117,7 +117,7 @@ const normalizeNodes = (
     // TODO: Make this prettier
     // 3. If node is valid first or last node, skip next step
     if (
-      Element.isElement(child) &&
+      Node.isElement(child) &&
       ((index === 0 && config.firstNode?.allowed.includes(child.type)) ||
         (index === children.length - 1 && config.lastNode?.allowed.includes(child.type)))
     ) {
@@ -127,7 +127,7 @@ const normalizeNodes = (
     // 4. Other nodes
     if (config.nodes) {
       // a. Wrap if text
-      if (Text.isText(child)) {
+      if (Node.isText(child)) {
         logger?.log("Child is text, wrapping in default nodes type.");
         editor.wrapNodes(createNode(config.nodes.defaultType), { at: path.concat(index) });
         return true;

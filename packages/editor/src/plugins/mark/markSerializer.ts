@@ -8,7 +8,7 @@
 
 //@ts-expect-error missing types
 import escapeHtml from "escape-html";
-import { Text } from "slate";
+import { Node } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { marks, type MarkTagType } from "./markTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
@@ -18,11 +18,11 @@ export const markSerializer = createSerializer({
   deserialize(el, children) {
     const mark = marks[el.tagName.toLowerCase() as MarkTagType];
     if (!mark) return;
-    return children.map((child) => (Text.isText(child) ? slatejsx("text", { [mark]: true }, child) : child));
+    return children.map((child) => (Node.isText(child) ? slatejsx("text", { [mark]: true }, child) : child));
   },
 
   serialize(node) {
-    if (!Text.isText(node)) return;
+    if (!Node.isText(node)) return;
     let ret;
 
     const escapedText: string = escapeHtml(node.text);

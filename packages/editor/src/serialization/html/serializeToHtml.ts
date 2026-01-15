@@ -6,11 +6,11 @@
  *
  */
 
-import { Element, type Descendant } from "slate";
+import { Node, type Descendant } from "slate";
 import type { SlateSerializer } from "../../core";
 
 const serialize = (node: Descendant, rules: SlateSerializer[]): string | undefined => {
-  const children = Element.isElement(node) ? node.children.map((n) => serialize(n, rules)).join("") : "";
+  const children = Node.isElement(node) ? node.children.map((n) => serialize(n, rules)).join("") : "";
 
   for (const rule of rules) {
     if (rule.serialize) {

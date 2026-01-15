@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Transforms, Node } from "slate";
+import { Transforms, Node } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { isSectionElement } from "./queries/sectionQueries";
 import {
@@ -29,18 +29,18 @@ export const sectionPlugin = createPlugin<SectionElementType, SectionPluginOptio
     if (!isSectionElement(node)) return false;
 
     for (const [child, childPath] of Node.children(editor, path)) {
-      if (Text.isText(child)) {
+      if (Node.isText(child)) {
         Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: childPath });
         return true;
       }
     }
 
-    const textNodes = Array.from(node.children.entries()).filter((entry) => Text.isText(entry[1]));
+    const textNodes = Array.from(node.children.entries()).filter((entry) => Node.isText(entry[1]));
     if (textNodes.length) {
       logger.log("Section contains text node, wrapping them in paragraphs");
       // TODO: this is somewhat ineffective, but I couldn't figure out a better way of doing it.
       // Also: This normalization check runs before the others because the others will insert redundant empty paragraphs.
-      Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: path, match: (n) => Text.isText(n) });
+      Transforms.wrapNodes(editor, { type: "paragraph", children: [] }, { at: path, match: (n) => Node.isText(n) });
       return true;
     }
 

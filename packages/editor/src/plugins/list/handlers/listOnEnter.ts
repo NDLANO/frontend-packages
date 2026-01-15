@@ -18,7 +18,7 @@ export const listOnEnter: ShortcutHandler = (editor, event, logger) => {
 
   const ancestors = Node.ancestors(editor, editor.path(editor.selection.anchor.path), { reverse: true });
   const [firstEntry, secondEntry] = Array.from(ancestors).filter(
-    (entry): entry is NodeEntry<Element> => Element.isElement(entry[0]) && entry[0].type !== "section",
+    (entry): entry is NodeEntry<Element> => Node.isElement(entry[0]) && entry[0].type !== "section",
   );
 
   const selectedDefinitionEntry = firstEntry[0]?.type === LIST_ITEM_ELEMENT_TYPE ? firstEntry : secondEntry;

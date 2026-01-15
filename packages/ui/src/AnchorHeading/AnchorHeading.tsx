@@ -7,13 +7,14 @@
  */
 
 import { type ReactNode, useMemo } from "react";
+import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 
-const StyledAnchor = styled("a", {
+const StyledAnchor = styled(SafeLink, {
   base: {
     _before: {
       position: "absolute",
-      marginInlineStart: "-1em",
+      marginInlineStart: "-0.75em",
       content: '"#"',
       visibility: "hidden",
     },
@@ -43,7 +44,7 @@ function slugifyUnicode(input: string) {
       // Normalize to reduce weird Unicode equivalences
       .normalize("NFKC")
       // Keep any Unicode letters/numbers; replace everything else with "-"
-      .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
+      .replace(/[^\p{Letter}\p{Number}]+/gu, "_")
       // Trim leading/trailing "-"
       .replace(/^-+|-+$/g, "")
   );
@@ -54,7 +55,7 @@ export const AnchorHeading = ({ children, copyText, lang }: Props) => {
 
   return (
     <h2 id={slug} lang={lang} tabIndex={-1}>
-      <StyledAnchor href={`#${encodeURIComponent(slug)}`}>{children}</StyledAnchor>
+      <StyledAnchor to={`#${encodeURIComponent(slug)}`}>{children}</StyledAnchor>
     </h2>
   );
 };

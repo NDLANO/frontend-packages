@@ -6,7 +6,7 @@
  *
  */
 
-import { contributorTypes } from "@ndla/licenses";
+import { contributorTypes, rights } from "@ndla/licenses";
 import { subjectCategories } from "../model/SubjectCategories";
 import { subjectTypes } from "../model/SubjectTypes";
 import { wordClass } from "../model/WordClass";
@@ -196,6 +196,45 @@ const messages = {
       },
     },
     processed: "Innhaldet har vorte omarbeidd",
+    rights: {
+      [rights.BY]: {
+        title: "Namngiving",
+        description: "Du må alltid oppgi kven som har laga innhaldet.",
+      },
+      [rights.SA]: {
+        title: "Del på same vilkår",
+        description: "Du kan berre dele innhaldet med same lisens som det opphavlege innhaldet.",
+      },
+      [rights.NC]: {
+        title: "Ikkje-kommersiell",
+        description: "Du kan ikkje tene pengar på bruk av dette innhaldet.",
+      },
+      [rights.ND]: {
+        title: "Ingen tilarbeiding",
+        description: "Du kan ikkje endre innhaldet.",
+      },
+      [rights.PD]: {
+        title: "Offentleg eige",
+        description: "Innhaldet er så gammalt at du kan bruke det som du vil.",
+      },
+      [rights.CC0]: {
+        title: "Gjeve til fellesskapet",
+        description: "Du kan bruke innhaldet fritt.",
+      },
+      [rights.COPYRIGHTED]: {
+        title: "Opphavsrett",
+        description:
+          "Det er berre den som har laga innhaldet som kan endre, publisera og gje andre rett til å bruke innhaldet.",
+      },
+      [rights.CC]: {
+        title: "Creative Commons",
+        description: "Denne lisensen gir deg rett til å dele og bruke dette innhaldet på visse vilkår:",
+      },
+      [rights.NA]: {
+        title: "N/A - ikkje relevant",
+        description: "Dette merket er meint for innhald som ikkje treng lisens.",
+      },
+    },
   },
   errorMessage: {
     title: "Ops, noko gjekk gale",

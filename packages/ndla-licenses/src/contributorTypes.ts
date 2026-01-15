@@ -6,8 +6,7 @@
  *
  */
 
-import { metaTypes } from "./CCRel";
-import type { Locale, LocaleString } from "./types";
+import type { LocaleString } from "./types";
 
 const creators = [
   "originator",
@@ -73,38 +72,4 @@ export interface CopyrightType {
   creators: Contributor[];
   processors: Contributor[];
   rightsholders: Contributor[];
-}
-
-export function mkContributorString(contributors: Contributor[], lang: Locale, ignoreType?: string) {
-  return contributors
-    .map((contributor) => {
-      const type = contributor.type.toLowerCase();
-      if (type === ignoreType) {
-        return contributor.name;
-      }
-      const translatedType = contributorTypes[type as ContributorType][lang];
-      return `${translatedType} ${contributor.name}`;
-    })
-    .join(", ");
-}
-
-export function getGroupedContributorDescriptionList(copyright: CopyrightType, lang: Locale) {
-  const { creators, rightsholders, processors } = copyright;
-  return [
-    {
-      label: contributorTypes.originator[lang],
-      description: mkContributorString(creators, lang, "originator"),
-      metaType: metaTypes.author,
-    },
-    {
-      label: contributorTypes.rightsholder[lang],
-      description: mkContributorString(rightsholders, lang, "rightsholder"),
-      metaType: metaTypes.copyrightHolder,
-    },
-    {
-      label: contributorTypes.processor[lang],
-      description: mkContributorString(processors, lang, "processor"),
-      metaType: metaTypes.contributor,
-    },
-  ].filter((item) => item.description !== "");
 }

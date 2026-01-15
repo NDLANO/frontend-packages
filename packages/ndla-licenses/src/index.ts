@@ -6,17 +6,12 @@
  *
  */
 
-export {
-  contributorTypes,
-  contributorGroups,
-  mkContributorString,
-  getGroupedContributorDescriptionList,
-} from "./contributorTypes";
+export { contributorTypes, contributorGroups } from "./contributorTypes";
 
 export { getResourceTypeNamespace, metaTypes } from "./CCRel";
 export type { MetaType } from "./CCRel";
 
-export { rights, getLicenseRightByAbbreviation } from "./licenseRights";
+export { rights, isValidLicenseRight } from "./licenseRights";
 
 export {
   getLicenseByAbbreviation,

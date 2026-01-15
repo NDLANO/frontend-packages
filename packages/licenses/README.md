@@ -1,4 +1,4 @@
-# ndla-licenses
+# @ndla/licenses
 
 A simple library for retrieving license information by abbreviation (and locale).
 

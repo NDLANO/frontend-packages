@@ -1,4 +1,4 @@
-# ndla-ui
+# @ndla/ui
 
 Main UI component library for NDLA.
 
@@ -30,16 +30,6 @@ react-router
 See: [package.json](package.json) for version requirements.
 
 **N.B!** Optional dependencies are required if you use `import {...} from '@ndla/ui'`.
-
-## Usage
-
-### Styling
-
-```scss
-/* Your project's main .scss import file */
-@import "~@ndla/ui/scss/main"; // with webpack and sass-loader
-@import "../path/to/node_modules/ndla-ui/scss/main"; // direct reference
-```
 
 ### Component Usage
 

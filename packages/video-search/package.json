@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
-    "directory": "packages/ndla-video-search"
+    "directory": "packages/video-search"
   },
   "keywords": [
     "ndla"

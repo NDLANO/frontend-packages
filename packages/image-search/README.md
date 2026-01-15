@@ -1,4 +1,4 @@
-# ndla-image-search
+# @ndla/image-search
 
 A simple library for selecting images from NDLA
 

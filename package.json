@@ -17,7 +17,6 @@
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "vercel --token $VERCEL_TOKEN alias set frontend-packages-master.vercel.app designmanual.ndla.no",
     "clean": "rm -rf ./packages/*/dist ./packages/*/es ./packages/*/lib",
-    "deploy-pr": "node ./packages/ndla-scripts/src/run-script.js vercel-github",
     "bootstrap": "yarn nx run-many --target build prepublish",
     "bootstrap:ci": "yarn prepare && yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap:ci && lerna publish",
@@ -25,7 +24,7 @@
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
     "start": "storybook dev -p 6006 --no-open",
-    "check-translations": "vitest --run 'packages/ndla-ui/src/locale/__tests__/'",
+    "check-translations": "vitest --run 'packages/ui/src/locale/__tests__/'",
     "generate:icons": "node ./scripts/createTsIconComponents.mjs"
   },
   "repository": {

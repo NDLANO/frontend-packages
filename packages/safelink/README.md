@@ -1,4 +1,4 @@
-# ndla-safelink
+# @ndla/safelink
 
 Link component.
 

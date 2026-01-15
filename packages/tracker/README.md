@@ -1,4 +1,4 @@
-# ndla-tracker
+# @ndla/tracker
 
 NDLA's tracker for Matomo
 

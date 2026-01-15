@@ -1,4 +1,4 @@
-# ndla-util
+# @ndla/util
 
 Collection of util functions used by NDLA
 

@@ -1,4 +1,4 @@
-# ndla-core
+# @ndla/core
 
 @ndla/core contains constants used throughout NDLA applications
 

@@ -9,7 +9,7 @@
 import { anchorPlugin } from "./anchorPlugin";
 import { asidePlugin } from "./asidePlugin";
 import { blockquotePlugin } from "./blockquotePlugin";
-import { copyParagraphPlugin } from "./copyParagraphPlugin";
+import { anchorHeadingPlugin } from "./anchorHeadingPlugin";
 import { detailsPlugin } from "./detailsPlugin";
 import { divPlugin } from "./divPlugin";
 import { dlPlugin } from "./dlPlugin";
@@ -24,7 +24,7 @@ import { type PluginType } from "./types";
 import { ulPlugin } from "./ulPlugin";
 
 export const plugins: Record<string, PluginType> = {
-  h2: copyParagraphPlugin,
+  h2: anchorHeadingPlugin,
   h3: h3Plugin,
   ol: olPlugin,
   p: paragraphPlugin,

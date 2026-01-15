@@ -13,7 +13,7 @@ import { H5pEmbed } from "./H5pEmbed";
 import { IframeEmbed } from "./IframeEmbed";
 import { UuDisclaimerEmbed } from "./UuDisclaimerEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
-import { CopyParagraphButton } from "../CopyParagraphButton/CopyParagraphButton";
+import { AnchorHeading } from "../AnchorHeading/AnchorHeading";
 import { FactBox } from "../FactBox/FactBox";
 
 const embedData: UuDisclaimerEmbedData = {
@@ -169,7 +169,7 @@ export const WithFactBox: StoryObj<typeof UuDisclaimerEmbed> = {
   },
 };
 
-export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
+export const WithAnchorHeading: StoryObj<typeof UuDisclaimerEmbed> = {
   args: {
     embed: {
       resource: "uu-disclaimer",
@@ -178,9 +178,9 @@ export const WithCopyParagraphLink: StoryObj<typeof UuDisclaimerEmbed> = {
       data,
     },
     children: (
-      <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
-        <h2>Dette er en overskrift</h2>
-      </CopyParagraphButton>
+      <AnchorHeading copyText="Dette er en overskrift" lang="no">
+        Dette er en overskrift
+      </AnchorHeading>
     ),
   },
 };
@@ -193,9 +193,9 @@ export const Error: StoryObj<typeof UuDisclaimerEmbed> = {
       embedData,
     },
     children: (
-      <CopyParagraphButton copyText="Dette er en overskrift" lang="no">
-        <h2>Dette er en overskrift</h2>
-      </CopyParagraphButton>
+      <AnchorHeading copyText="Dette er en overskrift" lang="no">
+        Dette er en overskrift
+      </AnchorHeading>
     ),
   },
 };

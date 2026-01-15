@@ -89,7 +89,7 @@ export {
 export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";
 export { ContentTypeBadge, contentTypeToBadgeVariantMap } from "./ContentTypeBadge/ContentTypeBadge";
 
-export { CopyParagraphButton } from "./CopyParagraphButton/CopyParagraphButton";
+export { AnchorHeading } from "./AnchorHeading/AnchorHeading";
 
 export type { TagSelectorControlProps, TagSelectorInputProps, TagSelectorRootProps } from "./TagSelector/TagSelector";
 

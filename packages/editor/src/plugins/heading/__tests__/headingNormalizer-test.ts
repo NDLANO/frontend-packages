@@ -171,3 +171,50 @@ test("remove bold marker on header", () => {
   editor.normalize({ force: true });
   expect(editor.children).toEqual(expectedValue);
 });
+
+test("removes invalid elements from heading children", () => {
+  const editorValue: Descendant[] = [
+    {
+      type: SECTION_ELEMENT_TYPE,
+      children: [
+        {
+          type: PARAGRAPH_ELEMENT_TYPE,
+          children: [{ text: "" }],
+        },
+        {
+          type: HEADING_ELEMENT_TYPE,
+          level: 2,
+          children: [{ text: "Test" }, { text: "Paragraf" }, { text: "Test 2" }],
+        },
+        {
+          type: PARAGRAPH_ELEMENT_TYPE,
+          children: [{ text: "" }],
+        },
+      ],
+    },
+  ];
+
+  const expectedValue: Descendant[] = [
+    {
+      type: SECTION_ELEMENT_TYPE,
+      children: [
+        {
+          type: PARAGRAPH_ELEMENT_TYPE,
+          children: [{ text: "" }],
+        },
+        {
+          type: HEADING_ELEMENT_TYPE,
+          level: 2,
+          children: [{ text: "TestParagrafTest 2" }],
+        },
+        {
+          type: PARAGRAPH_ELEMENT_TYPE,
+          children: [{ text: "" }],
+        },
+      ],
+    },
+  ];
+  editor.children = editorValue;
+  editor.normalize({ force: true });
+  expect(editor.children).toEqual(expectedValue);
+});

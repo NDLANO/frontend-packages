@@ -1,8 +1,8 @@
 {
-  "name": "@ndla/image-search",
+  "name": "@ndla/audio-search",
   "type": "module",
-  "version": "11.0.136-alpha.0",
-  "description": "A simple library for searching images from NDLA",
+  "version": "7.0.132-alpha.0",
+  "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "exports": {
     "types": "./lib/index.d.ts",
@@ -13,12 +13,12 @@
     "build": "tsdown",
     "dev": "tsdown --watch ./src",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+    "prepublish": "concurrently 'yarn build:types' 'mkdir -p dist' 'panda cssgen --minimal  --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git",
-    "directory": "packages/ndla-image-search"
+    "directory": "packages/audio-search"
   },
   "keywords": [
     "ndla"
@@ -27,14 +27,14 @@
   "files": [
     "dist",
     "lib",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "workspace:^"
+    "@ndla/styled-system": "workspace:^"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
@@ -48,5 +48,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "ebeb8a1d86cba369e1156719ebaecb58a6e2cdfc"
+  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

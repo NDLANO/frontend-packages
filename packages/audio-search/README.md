@@ -1,4 +1,4 @@
-# ndla-audio-search
+# @ndla/audio-search
 
 A simple library for selecting NDLA audio files.
 

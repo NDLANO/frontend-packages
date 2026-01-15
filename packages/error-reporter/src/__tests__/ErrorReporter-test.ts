@@ -20,11 +20,11 @@ const errorReporter = ErrorReporter.getInstance({
   ignoreUrls: ["https://example.com/script.js"],
 });
 
-test("ndla-error-reporter/ErrorReporter is singleton", () => {
+test("error-reporter/ErrorReporter is singleton", () => {
   expect(errorReporter).toBe(ErrorReporter.getInstance());
 });
 
-test("ndla-error-reporter/ErrorReporter can capture message", async () => {
+test("error-reporter/ErrorReporter can capture message", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", {
       level: "info",
@@ -40,7 +40,7 @@ test("ndla-error-reporter/ErrorReporter can capture message", async () => {
   apiMock.done();
 });
 
-test("ndla-error-reporter/ErrorReporter can capture warning", async () => {
+test("error-reporter/ErrorReporter can capture warning", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", (body) => {
       expect(body).toMatchObject({
@@ -60,7 +60,7 @@ test("ndla-error-reporter/ErrorReporter can capture warning", async () => {
   apiMock.done();
 });
 
-test("ndla-error-reporter/ErrorReporter can capture error", async () => {
+test("error-reporter/ErrorReporter can capture error", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", (body) => {
       expect(body).toMatchObject({
@@ -80,7 +80,7 @@ test("ndla-error-reporter/ErrorReporter can capture error", async () => {
   apiMock.done();
 });
 
-test("ndla-error-reporter/ErrorReporter can capture error with additional info", async () => {
+test("error-reporter/ErrorReporter can capture error with additional info", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", (body) => {
       expect(body).toMatchObject({
@@ -99,7 +99,7 @@ test("ndla-error-reporter/ErrorReporter can capture error with additional info",
   apiMock.done();
 });
 
-test("ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly", async () => {
+test("error-reporter/ErrorReporter captures onerror calls and sends error to loggly", async () => {
   nock("http://loggly-mock-api")
     .post("/inputs/1223/", (body) => {
       expect(body).toMatchObject({
@@ -125,7 +125,7 @@ test("ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
   }
 });
 
-test("ndla-error-reporter/ErrorReporter should not send duplicate errors ", async () => {
+test("error-reporter/ErrorReporter should not send duplicate errors ", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", (body) => {
       expect(body).toMatchObject({
@@ -149,7 +149,7 @@ test("ndla-error-reporter/ErrorReporter should not send duplicate errors ", asyn
   expect(apiMock.pendingMocks()).toHaveLength(1);
 });
 
-test("ndla-error-reporter/ErrorReporter should not send more then 10 messages", async () => {
+test("error-reporter/ErrorReporter should not send more then 10 messages", async () => {
   errorReporter.refresh();
 
   const apiMock = nock("http://loggly-mock-api")
@@ -170,7 +170,7 @@ test("ndla-error-reporter/ErrorReporter should not send more then 10 messages", 
   errorReporter.refresh();
 });
 
-test("ndla-error-reporter/ErrorReporter should ignore script errors", async () => {
+test("error-reporter/ErrorReporter should ignore script errors", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", () => true)
     .reply(200);
@@ -182,7 +182,7 @@ test("ndla-error-reporter/ErrorReporter should ignore script errors", async () =
   nock.cleanAll();
 });
 
-test("ndla-error-reporter/ErrorReporter should ignore resizeobserver errors", async () => {
+test("error-reporter/ErrorReporter should ignore resizeobserver errors", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", () => true)
     .reply(200);
@@ -194,7 +194,7 @@ test("ndla-error-reporter/ErrorReporter should ignore resizeobserver errors", as
   nock.cleanAll();
 });
 
-test("ndla-error-reporter/ErrorReporter should ignore provided urls", async () => {
+test("error-reporter/ErrorReporter should ignore provided urls", async () => {
   const apiMock = nock("http://loggly-mock-api")
     .post("/inputs/1223/", () => true)
     .reply(200);

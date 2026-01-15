@@ -10,7 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-error-reporter/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/error-reporter"
   },
   "scripts": {
     "build": "tsdown",

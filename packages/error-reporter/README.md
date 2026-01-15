@@ -1,4 +1,4 @@
-# ndla-error-reporter
+# @ndla/error-reporter
 
 Error reporter for NDLA. Listens to window.onerror and sends client errors to Loggly
 

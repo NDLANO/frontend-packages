@@ -1284,9 +1284,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/audio-search@workspace:packages/ndla-audio-search":
+"@ndla/audio-search@workspace:packages/audio-search":
   version: 0.0.0-use.local
-  resolution: "@ndla/audio-search@workspace:packages/ndla-audio-search"
+  resolution: "@ndla/audio-search@workspace:packages/audio-search"
   dependencies:
     "@ndla/icons": "workspace:^"
     "@ndla/licenses": "workspace:^"
@@ -1351,9 +1351,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/error-reporter@workspace:packages/ndla-error-reporter":
+"@ndla/error-reporter@workspace:packages/error-reporter":
   version: 0.0.0-use.local
-  resolution: "@ndla/error-reporter@workspace:packages/ndla-error-reporter"
+  resolution: "@ndla/error-reporter@workspace:packages/error-reporter"
   dependencies:
     "@ndla/util": "npm:^5.0.17-alpha.0"
     nock: "npm:^14.0.10"
@@ -1384,9 +1384,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/image-search@workspace:packages/ndla-image-search":
+"@ndla/image-search@workspace:packages/image-search":
   version: 0.0.0-use.local
-  resolution: "@ndla/image-search@workspace:packages/ndla-image-search"
+  resolution: "@ndla/image-search@workspace:packages/image-search"
   dependencies:
     "@ndla/icons": "workspace:^"
     "@ndla/licenses": "workspace:^"
@@ -1402,9 +1402,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/licenses@npm:^10.0.8-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/ndla-licenses":
+"@ndla/licenses@npm:^10.0.8-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/licenses":
   version: 0.0.0-use.local
-  resolution: "@ndla/licenses@workspace:packages/ndla-licenses"
+  resolution: "@ndla/licenses@workspace:packages/licenses"
   languageName: unknown
   linkType: soft
 
@@ -1458,9 +1458,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/tracker@workspace:packages/ndla-tracker":
+"@ndla/tracker@workspace:packages/tracker":
   version: 0.0.0-use.local
-  resolution: "@ndla/tracker@workspace:packages/ndla-tracker"
+  resolution: "@ndla/tracker@workspace:packages/tracker"
   dependencies:
     "@ndla/util": "npm:^5.0.17-alpha.0"
     tiny-warning: "npm:^1.0.3"
@@ -1493,9 +1493,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/ui@npm:^56.0.167-alpha.0, @ndla/ui@workspace:packages/ndla-ui":
+"@ndla/ui@npm:^56.0.167-alpha.0, @ndla/ui@workspace:packages/ui":
   version: 0.0.0-use.local
-  resolution: "@ndla/ui@workspace:packages/ndla-ui"
+  resolution: "@ndla/ui@workspace:packages/ui"
   dependencies:
     "@ark-ui/react": "npm:^5.25.0"
     "@ndla/core": "npm:^6.0.6-alpha.0"
@@ -1527,9 +1527,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/video-search@workspace:packages/ndla-video-search":
+"@ndla/video-search@workspace:packages/video-search":
   version: 0.0.0-use.local
-  resolution: "@ndla/video-search@workspace:packages/ndla-video-search"
+  resolution: "@ndla/video-search@workspace:packages/video-search"
   dependencies:
     "@ndla/icons": "workspace:^"
     "@ndla/licenses": "workspace:^"

@@ -1,4 +1,4 @@
-# ndla-video-search
+# @ndla/video-search
 
 A simple library for selecting NDLA videos.
 

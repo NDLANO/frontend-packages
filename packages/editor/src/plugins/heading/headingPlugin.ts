@@ -6,7 +6,7 @@
  *
  */
 
-import { Editor, Node, Path, Point, Range, Text, Transforms } from "slate";
+import { Editor, Location, Node, Path, Point, Range, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
@@ -37,7 +37,7 @@ export const headingPlugin = createPlugin({
       return true;
     }
 
-    const boldEntries = Array.from(editor.nodes({ match: (n) => Text.isText(n) && !!n.bold }), (n) => n);
+    const boldEntries = Array.from(editor.nodes({ match: (n) => Node.isText(n) && !!n.bold }), (n) => n);
     if (boldEntries.length) {
       logger.log("Removing bold from nodes within heading.");
       editor.withoutNormalizing(() => {
@@ -69,7 +69,7 @@ export const headingPlugin = createPlugin({
     };
 
     editor.insertBreak = () => {
-      if (!editor.selection || !Range.isRange(editor.selection)) return insertBreak();
+      if (!editor.selection || !Location.isRange(editor.selection)) return insertBreak();
 
       const entry = getCurrentBlock(editor, HEADING_ELEMENT_TYPE);
       if (!entry) return insertBreak();

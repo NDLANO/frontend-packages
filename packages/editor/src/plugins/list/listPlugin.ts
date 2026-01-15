@@ -6,7 +6,7 @@
  *
  */
 
-import { Element, Node, Path, Text, Transforms } from "slate";
+import { Node, Path, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import {
   LIST_ELEMENT_TYPE,
@@ -40,14 +40,14 @@ export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
   normalize: (editor, node, path, logger, options) => {
     if (isListItemElement(node)) {
       const [parentNode] = editor.node(Path.parent(path));
-      if (Element.isElement(parentNode) && parentNode.type !== LIST_ELEMENT_TYPE) {
+      if (Node.isElement(parentNode) && parentNode.type !== LIST_ELEMENT_TYPE) {
         logger.log("ListItem is not placed inside list, unwrapping.");
         Transforms.unwrapNodes(editor, { at: path });
         return true;
       }
 
       for (const [child, childPath] of Node.children(editor, path)) {
-        if (Text.isText(child)) {
+        if (Node.isText(child)) {
           logger.log("ListItem contains direct text, wrapping in paragraph.");
           Transforms.wrapNodes(editor, { type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] }, { at: childPath });
           return true;
@@ -55,7 +55,7 @@ export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
       }
 
       const firstChild = node.children[0];
-      if (Element.isElement(firstChild) && !options.allowedListItemFirstChildTypes?.includes(firstChild.type)) {
+      if (Node.isElement(firstChild) && !options.allowedListItemFirstChildTypes?.includes(firstChild.type)) {
         logger.log("First child is not an allowed element, inserting default text element type");
         Transforms.insertNodes(
           editor,
@@ -78,7 +78,10 @@ export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
       }
     }
     if (isListElement(node)) {
-      if (node.children.length === 0 || (Text.isTextList(node.children) && Node.string(node) === "")) {
+      if (
+        node.children.length === 0 ||
+        (node.children.every((node) => Node.isText(node)) && Node.string(node) === "")
+      ) {
         logger.log("List is empty, removing.");
         Transforms.removeNodes(editor, { at: path });
         return true;

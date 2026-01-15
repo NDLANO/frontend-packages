@@ -9,7 +9,7 @@
 import { jsx as slatejsx } from "slate-hyperscript";
 import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
 import { isParagraphElement } from "./queries/paragraphElementQueries";
-import { Node, Text } from "slate";
+import { Node } from "slate";
 import {
   createDataAttributes,
   createHtmlTag,
@@ -41,7 +41,7 @@ export const paragraphSerializer = createSerializer({
       on seriaization.
      */
 
-    if (Node.string(node) === "" && node.children.length === 1 && Text.isText(node.children[0])) return undefined;
+    if (Node.string(node) === "" && node.children.length === 1 && Node.isText(node.children[0])) return undefined;
 
     if (node.serializeAsText) {
       return children;

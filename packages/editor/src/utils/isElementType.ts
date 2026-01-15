@@ -12,7 +12,7 @@ export const isElementOfType = <TType extends ElementType>(
   node: Node | undefined,
   type: TType | TType[] | undefined,
 ): node is TType extends any[] ? Extract<Element, { type: TType[number] }>[] : Extract<Element, { type: TType }> => {
-  if (!Element.isElement(node)) {
+  if (!node || !Node.isElement(node)) {
     return false;
   }
   return Array.isArray(type) ? type.includes(node.type as TType) : node.type === type;

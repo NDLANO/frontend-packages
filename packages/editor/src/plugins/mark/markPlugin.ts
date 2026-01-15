@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Transforms } from "slate";
+import { Node, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { MARK_PLUGIN, type MarkPluginOptions, type MarkType } from "./markTypes";
 
@@ -16,7 +16,7 @@ export const markPlugin = createPlugin<any, MarkPluginOptions>({
     supportedMarks: ["bold", "code", "italic", "underlined", "sup", "sub"],
   },
   normalize: (editor, node, path, logger) => {
-    if (!Text.isText(node)) return false;
+    if (!Node.isText(node)) return false;
     const marks = Object.keys(node).filter((key) => key !== "text") as MarkType[];
     const invalidMarks = marks.filter((mark) => !editor.supportsMark(mark));
     if (invalidMarks.length) {

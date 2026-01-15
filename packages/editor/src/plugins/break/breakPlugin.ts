@@ -6,7 +6,7 @@
  *
  */
 
-import { Node, Range, Transforms } from "slate";
+import { Location, Node, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { BREAK_ELEMENT_TYPE, BREAK_PLUGIN, type BreakElementType, type BreakPluginOptions } from "./breakTypes";
@@ -26,7 +26,7 @@ export const breakPlugin = createPlugin<BreakElementType, BreakPluginOptions>({
     const { insertBreak } = editor;
 
     editor.insertBreak = () => {
-      if (!editor.selection || !Range.isRange(editor.selection)) return false;
+      if (!editor.selection || !Location.isRange(editor.selection)) return false;
       const entry = getCurrentBlock(editor, options.validBreakElements ?? PARAGRAPH_ELEMENT_TYPE);
       if (!entry) return insertBreak();
       const [node, path] = entry;

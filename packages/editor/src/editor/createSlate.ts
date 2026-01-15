@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import { createEditor, Element, type Descendant, type Editor } from "slate";
+import { createEditor, Node, type Descendant, type Editor } from "slate";
 import type { ElementRenderer, LeafRenderer, PluginReturnType, SlatePlugin, SlateRenderer } from "../core";
 import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
@@ -116,7 +116,7 @@ export const createSlate = ({
     initializeEditor({ editor, plugins, shouldNormalize, value, onInitialNormalized });
   };
 
-  editor.hasVoids = (element) => element.children.some((n) => Element.isElement(n) && editor.isVoid(n));
+  editor.hasVoids = (element) => element.children.some((n) => Node.isElement(n) && editor.isVoid(n));
 
   return editor;
 };

@@ -7,7 +7,7 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import { Element, Node, Text, type Descendant, type ElementType } from "slate";
+import { Element, Node, type Descendant, type ElementType } from "slate";
 import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
 import type { SlateSerializer } from "../../core";
@@ -98,7 +98,7 @@ const addEmptyTextNodes = (node: Element) => {
   // Iterating in reverse ensures that we add empty text nodes only when necessary
   for (let i = 0; i < children.length; i++) {
     const child = children[i];
-    const currentIsText = Text.isText(child);
+    const currentIsText = Node.isText(child);
 
     if (!currentIsText && !lastWasText) {
       children.splice(i, 0, { text: "" });
@@ -108,7 +108,7 @@ const addEmptyTextNodes = (node: Element) => {
   }
 
   // Ensure the last child is a text node
-  if (!Text.isText(children[children.length - 1])) {
+  if (!Node.isText(children[children.length - 1])) {
     children.push({ text: "" });
   }
 };
@@ -136,10 +136,10 @@ const addEmptyParagraphs = (node: Element, blocks: ElementType[]) => {
 };
 
 const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: ElementType[]): Descendant => {
-  if (!Element.isElement(node)) return node;
+  if (!Node.isElement(node)) return node;
   const children = node.children;
 
-  const blockChildren = children.filter((child) => Element.isElement(child) && !inlines.includes(child.type));
+  const blockChildren = children.filter((child) => Node.isElement(child) && !inlines.includes(child.type));
   const mixed = !!blockChildren.length && blockChildren.length !== children.length;
   if (!mixed) {
     node.children = children.map((child) => wrapMixedChildren(child, blocks, inlines));
@@ -155,7 +155,7 @@ const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: Ele
   const cleanNodes: Descendant[] = [];
   let openWrapperBlock: ParagraphElement | null = null;
   for (const child of children) {
-    if (Text.isText(child) || (Element.isElement(child) && inlines.includes(child.type))) {
+    if (Node.isText(child) || (Node.isElement(child) && inlines.includes(child.type))) {
       // TODO: Consider trimming
       if (Node.string(child) === "" || Node.string(child) === " ") {
         continue;

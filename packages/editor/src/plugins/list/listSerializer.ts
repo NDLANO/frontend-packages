@@ -6,7 +6,7 @@
  *
  */
 
-import { Element, Text, type Descendant } from "slate";
+import { Node, type Descendant } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { isElementOfType } from "../../utils/isElementType";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListSerializerOptions } from "./listTypes";
@@ -38,7 +38,7 @@ export const listSerializer = createSerializer<ListSerializerOptions>({
       const lastElement = acc[acc.length - 1];
       if (!cur) {
         return acc;
-      } else if (Element.isElement(cur) && !options.inlineTypes.includes(cur.type)) {
+      } else if (Node.isElement(cur) && !options.inlineTypes.includes(cur.type)) {
         if (cur.type === BREAK_ELEMENT_TYPE) {
           if (isElementOfType(lastElement, PARAGRAPH_ELEMENT_TYPE) && lastElement.serializeAsText) {
             lastElement.children.push({ text: "\n" });
@@ -49,7 +49,7 @@ export const listSerializer = createSerializer<ListSerializerOptions>({
           acc.push(cur);
         }
         return acc;
-      } else if (Text.isText(cur) || isElementOfType(cur, options.inlineTypes)) {
+      } else if (Node.isText(cur) || isElementOfType(cur, options.inlineTypes)) {
         if (isElementOfType(lastElement, PARAGRAPH_ELEMENT_TYPE) && lastElement.serializeAsText) {
           lastElement.children.push(cur);
           return acc;
@@ -96,7 +96,7 @@ export const listSerializer = createSerializer<ListSerializerOptions>({
     }
   },
   serialize(node, children, options) {
-    if (!Element.isElement(node)) return;
+    if (!Node.isElement(node)) return;
 
     if (node.type === LIST_ELEMENT_TYPE) {
       if (node.listType === "bulleted-list") {
@@ -115,7 +115,7 @@ export const listSerializer = createSerializer<ListSerializerOptions>({
       // If first child of list-item is a list, it means that an empty paragraph has been removed by
       // paragraph serializer. This should not be removed, therefore inserting it when serializing.
       const firstChild = node.children[0];
-      const illegalFirstElement = !Element.isElement(firstChild) || options.allowedListTags.includes(firstChild.type);
+      const illegalFirstElement = !Node.isElement(firstChild) || options.allowedListTags.includes(firstChild.type);
       return createHtmlTag({ tag: "li", children: illegalFirstElement ? `<p></p>${children}` : children });
     }
   },

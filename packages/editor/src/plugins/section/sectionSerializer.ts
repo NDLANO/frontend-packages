@@ -6,7 +6,7 @@
  *
  */
 
-import { Text } from "slate";
+import { Node } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
@@ -18,7 +18,7 @@ export const sectionSerializer = createSerializer({
     const tag = el.tagName.toLowerCase();
     if (tag === SECTION_ELEMENT_TYPE) {
       // Wrap single text node in section in a paragraph
-      if (children.length === 1 && Text.isText(children[0])) {
+      if (children.length === 1 && Node.isText(children[0])) {
         children = [slatejsx("element", { type: "paragraph" }, children)];
       }
       return slatejsx("element", { type: SECTION_ELEMENT_TYPE }, children);

@@ -6,7 +6,7 @@
  *
  */
 
-import { Node, Text, Transforms } from "slate";
+import { Node, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { LINK_ELEMENT_TYPE, LINK_PLUGIN } from "./linkTypes";
 import { isLinkElement } from "./queries/linkQueries";
@@ -23,7 +23,7 @@ export const linkPlugin = createPlugin({
       Transforms.unwrapNodes(editor, { at: path });
       return true;
     }
-    const nonTextEntries = Array.from(node.children.entries()).filter(([_, child]) => !Text.isText(child));
+    const nonTextEntries = Array.from(node.children.entries()).filter(([_, child]) => !Node.isText(child));
     if (nonTextEntries.length) {
       logger.log("Link element contains non-text children, unwrapping them");
       editor.withoutNormalizing(() => {

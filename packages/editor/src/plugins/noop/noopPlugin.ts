@@ -6,7 +6,7 @@
  *
  */
 
-import { Text, Transforms } from "slate";
+import { Node, Transforms } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { createPlugin } from "../../core/createPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
@@ -26,7 +26,7 @@ export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
 
     if (node.children.length === 1) {
       const child = node.children[0];
-      if (Text.isText(child)) {
+      if (Node.isText(child)) {
         logger.log("Noop contains only text, wrapping in paragraph.");
         Transforms.wrapNodes(
           editor,

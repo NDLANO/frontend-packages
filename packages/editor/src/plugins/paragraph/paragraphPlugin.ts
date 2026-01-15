@@ -6,7 +6,7 @@
  *
  */
 
-import { Element, Node, Path, Text, Transforms } from "slate";
+import { Node, Path, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import {
   PARAGRAPH_ELEMENT_TYPE,
@@ -29,11 +29,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
     const [parentNode] = editor.node(Path.parent(path));
 
     // If paragraph is not in a list or table, make sure it will be rendered with <p>-tag
-    if (
-      Element.isElement(parentNode) &&
-      !opts.nonSerializableParents?.includes(parentNode.type) &&
-      node.serializeAsText
-    ) {
+    if (Node.isElement(parentNode) && !opts.nonSerializableParents?.includes(parentNode.type) && node.serializeAsText) {
       logger.log("Paragraph is not in a non-serializable parent, unsetting serializeAsText.");
       Transforms.unsetNodes(editor, "serializeAsText", { at: path });
       return true;
@@ -67,7 +63,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
 
     // Unwrap block element children. Only text allowed.
     for (const [child, childPath] of Node.children(editor, path)) {
-      if (Element.isElement(child) && !editor.isInline(child)) {
+      if (Node.isElement(child) && !editor.isInline(child)) {
         logger.log("Paragraph contains block element, unwrapping.");
         Transforms.unwrapNodes(editor, { at: childPath });
         return true;
@@ -82,7 +78,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
 
     if (stringContent[0] === " ") {
       const [firstTextElement] = editor.nodes({
-        match: (n, p) => Text.isText(n) && p[p.length - 1] === 0 && n.text.startsWith(" "),
+        match: (n, p) => Node.isText(n) && p[p.length - 1] === 0 && n.text.startsWith(" "),
         at: path,
       });
       if (!firstTextElement) {
@@ -104,7 +100,7 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
 
     if (opts.enableWhitespaceStrip && stringContent[stringContent.length - 1] === " ") {
       const [lastTextElement] = editor.nodes<Text>({
-        match: (n, p) => Text.isText(n) && !editor.hasPath(Path.next(p)) && n.text.endsWith(" "),
+        match: (n, p) => Node.isText(n) && !editor.hasPath(Path.next(p)) && n.text.endsWith(" "),
         at: path,
       });
       if (!lastTextElement) {

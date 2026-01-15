@@ -113,7 +113,6 @@ const opensInNewMetaData: OembedData = {
   },
   iframeImage: {
     id: "65086",
-    inactive: false,
     metaUrl: "https://api.test.ndla.no/image-api/v3/images/65086",
     title: {
       title: "\nSamtale ",
@@ -148,21 +147,47 @@ const opensInNewMetaData: OembedData = {
       language: "nb",
     },
     supportedLanguages: ["nb"],
-    created: "2022-12-02T14:24:19Z",
+    created: "2022-12-02T14:24:19.000Z",
     createdBy: "oltQx44eGQp0DwkiR1NRo5qE",
     modelRelease: "yes",
     image: {
       fileName: "IgOjO6og.jpg",
       size: 176667,
-      variants: [],
       contentType: "image/jpeg",
-      imageUrl: "https://api.test.ndla.no/image-api/raw/IgOjO6og.jpg",
+      imageUrl: "https://images.test.ndla.no/IgOjO6og.jpg",
       dimensions: {
         width: 1920,
         height: 804,
       },
+      variants: [
+        {
+          size: "icon",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/icon.webp",
+        },
+        {
+          size: "xsmall",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/xsmall.webp",
+        },
+        {
+          size: "small",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/small.webp",
+        },
+        {
+          size: "medium",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/medium.webp",
+        },
+        {
+          size: "large",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/large.webp",
+        },
+        {
+          size: "xlarge",
+          variantUrl: "https://images.test.ndla.no/IgOjO6og/xlarge.webp",
+        },
+      ],
       language: "nb",
     },
+    inactive: false,
   },
 };
 

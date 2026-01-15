@@ -48,14 +48,11 @@ export const ExternalEmbed = ({ embed }: Props) => {
   const { embedData, data } = embed;
 
   if (embedData.type === "fullscreen") {
-    const image = {
-      src: data.iframeImage?.image.imageUrl,
-      alt: embedData.alt !== undefined ? embedData.alt : (data.iframeImage?.alttext?.alttext ?? ""),
-    };
     return (
       <Figure data-embed-type="external">
         <ResourceBox
-          image={image}
+          image={data.iframeImage}
+          imageAlt={embedData.alt}
           title={embedData.title ?? ""}
           url={embedData.url}
           caption={embedData.caption ?? ""}

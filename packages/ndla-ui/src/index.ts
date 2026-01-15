@@ -8,6 +8,7 @@
 
 export { Concept } from "./Concept/Concept";
 
+export { KeyFigureEmbed } from "./Embed/KeyFigureEmbed";
 export { ImageEmbed, getCrop, getFocalPoint } from "./Embed/ImageEmbed";
 export { InlineTriggerButton } from "./Embed/InlineTriggerButton";
 export { AudioEmbed } from "./Embed/AudioEmbed";
@@ -105,7 +106,7 @@ export {
 } from "./TagSelector/TagSelector";
 
 export { Pitch } from "./Pitch/Pitch";
-export { KeyFigure } from "./KeyFigure/KeyFigure";
+export { KeyFigure, KeyFigureRoot, KeyFigureImage, KeyFigureSubTitle, KeyFigureTitle } from "./KeyFigure/KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock/ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock/ContactBlock";
 export { CampaignBlock } from "./CampaignBlock/CampaignBlock";

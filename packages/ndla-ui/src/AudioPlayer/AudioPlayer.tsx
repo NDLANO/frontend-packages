@@ -186,6 +186,7 @@ export const AudioPlayer = ({ src, title, subtitle, speech, description, img, te
   return (
     <AudioPlayerWrapper>
       <InfoWrapper>
+        {/* TODO: Image variants */}
         {!!img && (
           <ImageWrapper>
             <img src={img.url} alt={img.alt} />

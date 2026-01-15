@@ -49,16 +49,14 @@ export const IframeEmbed = ({ embed }: Props) => {
     return <EmbedErrorPlaceholder type="external" />;
   }
 
-  const { embedData, data } = embed;
+  const { embedData } = embed;
 
   if (embedData.type === "fullscreen") {
-    const iframeImage = embed.status === "success" ? data.iframeImage : undefined;
-    const alt = embedData.alt !== undefined ? embedData.alt : iframeImage?.alttext.alttext;
-    const image = { src: iframeImage?.image.imageUrl, alt: alt ?? "" };
     return (
       <StyledFigure data-embed-type="iframe">
         <ResourceBox
-          image={image}
+          image={embed.status === "success" ? embed.data.iframeImage : undefined}
+          imageAlt={embedData.alt}
           title={embedData.title ?? ""}
           url={embedData.url}
           caption={embedData.caption ?? ""}

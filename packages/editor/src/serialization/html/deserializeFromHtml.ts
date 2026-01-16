@@ -16,7 +16,12 @@ import { NOOP_ELEMENT_TYPE } from "../../plugins/noop/noopTypes";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 
-const DEFAULT_NOOP: Descendant[] = [{ type: NOOP_ELEMENT_TYPE, children: [{ text: "" }] }];
+const DEFAULT_NOOP: Descendant[] = [
+  {
+    type: NOOP_ELEMENT_TYPE,
+    children: [{ type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true, children: [{ text: "" }] }],
+  },
+];
 
 const EMPTY_VALUE: Descendant[] = [
   {

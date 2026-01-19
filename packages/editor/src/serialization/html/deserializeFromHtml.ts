@@ -16,28 +16,32 @@ import { NOOP_ELEMENT_TYPE } from "../../plugins/noop/noopTypes";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 
-const DEFAULT_NOOP: Descendant[] = [
-  {
-    type: NOOP_ELEMENT_TYPE,
-    children: [{ type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true, children: [{ text: "" }] }],
-  },
-];
+const createDefaultNoop = (): Descendant[] => {
+  return [
+    {
+      type: NOOP_ELEMENT_TYPE,
+      children: [{ type: PARAGRAPH_ELEMENT_TYPE, serializeAsText: true, children: [{ text: "" }] }],
+    },
+  ];
+};
 
-const EMPTY_VALUE: Descendant[] = [
-  {
-    type: SECTION_ELEMENT_TYPE,
-    children: [
-      {
-        type: PARAGRAPH_ELEMENT_TYPE,
-        children: [
-          {
-            text: "",
-          },
-        ],
-      },
-    ],
-  },
-];
+const createEmptyValue = (): Descendant[] => {
+  return [
+    {
+      type: SECTION_ELEMENT_TYPE,
+      children: [
+        {
+          type: PARAGRAPH_ELEMENT_TYPE,
+          children: [
+            {
+              text: "",
+            },
+          ],
+        },
+      ],
+    },
+  ];
+};
 
 interface DeserializeOptions {
   noop?: boolean;
@@ -52,7 +56,7 @@ export const deserializeFromHtml = (
   options: DeserializeOptions,
 ): Descendant[] => {
   if (!html) {
-    return options.noop ? DEFAULT_NOOP : EMPTY_VALUE;
+    return options.noop ? createDefaultNoop() : createEmptyValue();
   }
   const deserialize = (el: HTMLElement | ChildNode): Descendant | Descendant[] => {
     if (el.nodeType === 3) {

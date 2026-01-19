@@ -36,7 +36,7 @@
     "types"
   ],
   "dependencies": {
-    "@ark-ui/react": "^5.25.0",
+    "@ark-ui/react": "^5.30.0",
     "@ndla/editor": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "@ndla/styled-system": "workspace:^"

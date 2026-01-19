@@ -6,7 +6,7 @@
  *
  */
 
-import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef, useEffect, useState } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
@@ -210,6 +210,12 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     },
     ref,
   ) => {
+    const [hasError, setHasError] = useState(false);
+
+    useEffect(() => {
+      setHasError(false);
+    }, [src, srcSetProp, sizesProp, variants]);
+
     if (!src?.length && !variants?.length && fallbackElement) {
       return (
         <StyledFallbackElement {...props} ref={ref}>
@@ -237,7 +243,21 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
             sizes={sizesProp ?? FALLBACK_SIZES}
           />
         )}
-        <StyledImage alt={alt} src={contentType === "image/gif" ? src : fallbackSrc} {...props} ref={ref} />
+        <StyledImage
+          alt={alt}
+          src={contentType === "image/gif" ? src : fallbackSrc}
+          {...props}
+          ref={ref}
+          data-error={hasError ? "" : undefined}
+          onError={(e) => {
+            setHasError(true);
+            props.onError?.(e);
+          }}
+          onLoad={(e) => {
+            setHasError(false);
+            props.onLoad?.(e);
+          }}
+        />
       </picture>
     );
   },

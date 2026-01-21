@@ -86,9 +86,6 @@ export {
   useDatePickerTranslations,
 } from "./i18n/useComponentTranslations";
 
-export type { ContentTypeBadgeProps, StrictContentType, ContentType } from "./ContentTypeBadge/ContentTypeBadge";
-export { ContentTypeBadge, contentTypeToBadgeVariantMap } from "./ContentTypeBadge/ContentTypeBadge";
-
 export { AnchorHeading } from "./AnchorHeading/AnchorHeading";
 
 export type { TagSelectorControlProps, TagSelectorInputProps, TagSelectorRootProps } from "./TagSelector/TagSelector";

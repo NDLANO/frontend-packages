@@ -33,7 +33,6 @@ export { EmbedByline } from "./LicenseByline/EmbedByline";
 
 export {
   ArticleWrapper,
-  Article,
   ArticleFooter,
   ArticleHeader,
   ArticleContent,

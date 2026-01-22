@@ -12,9 +12,7 @@ import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
-import { ArticleByline } from "./ArticleByline";
 import { BadgesContainer } from "./BadgesContainer";
-import type { Article as ArticleType } from "../types";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });
 
@@ -168,61 +166,5 @@ export const ArticleTitle = ({
       </StyledWrapper>
       {children}
     </ArticleHeader>
-  );
-};
-
-interface Props {
-  badges?: ReactNode;
-  heartButton?: ReactNode;
-  article: ArticleType;
-  licenseBox?: ReactNode;
-  children?: ReactNode;
-  competenceGoals?: ReactNode;
-  id: string;
-  lang?: string;
-  disclaimer?: ReactNode;
-}
-
-export const Article = ({
-  badges,
-  article,
-  licenseBox,
-  children,
-  competenceGoals,
-  id,
-  heartButton,
-  lang,
-  disclaimer,
-}: Props) => {
-  const { title, introduction, published, content, footNotes, copyright } = article;
-
-  const authors =
-    copyright?.creators.length || copyright?.rightsholders.length ? copyright.creators : copyright?.processors;
-
-  return (
-    <ArticleWrapper>
-      <ArticleTitle
-        id={id}
-        badges={badges}
-        heartButton={heartButton}
-        title={title}
-        introduction={introduction}
-        competenceGoals={competenceGoals}
-        lang={lang}
-        disclaimer={disclaimer}
-      />
-      <ArticleContent>{content}</ArticleContent>
-      <ArticleFooter>
-        <ArticleByline
-          lang={lang}
-          footnotes={footNotes}
-          authors={authors}
-          suppliers={copyright?.rightsholders}
-          published={published}
-          licenseBox={licenseBox}
-        />
-        {children}
-      </ArticleFooter>
-    </ArticleWrapper>
   );
 };

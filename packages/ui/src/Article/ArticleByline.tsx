@@ -6,9 +6,9 @@
  *
  */
 
-import { type ReactNode, forwardRef, useCallback, useEffect, useState } from "react";
+import { type ReactNode, forwardRef, useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router";
+import { useAccordionContext } from "@ark-ui/react";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,
@@ -95,6 +95,7 @@ const StyledAccordionRoot = styled(AccordionRoot, {
 
 const refRegexp = /note\d/;
 const footnotesAccordionId = "footnotes";
+const accordionItemValue = "rulesForUse";
 
 export const ArticleByline = ({
   lang,
@@ -109,31 +110,6 @@ export const ArticleByline = ({
   learningpathCopiedFrom,
 }: Props) => {
   const { t, i18n } = useTranslation();
-  const { pathname } = useLocation();
-  const [openAccordions, setOpenAccordions] = useState<string[]>([]);
-  const accordionItemValue = "rulesForUse";
-
-  const onHashChange = useCallback(
-    (e: HashChangeEvent) => {
-      const hash = e.newURL.split("#")[1];
-      if (hash?.match(refRegexp) && !openAccordions.includes(footnotesAccordionId)) {
-        setOpenAccordions([...openAccordions, footnotesAccordionId]);
-        const el = document.getElementById(`#${hash}`);
-        el?.click();
-        el?.focus();
-      }
-    },
-    [openAccordions],
-  );
-
-  useEffect(() => {
-    setOpenAccordions((prev) => prev.filter((state) => state !== accordionItemValue));
-  }, [pathname]);
-
-  useEffect(() => {
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, [onHashChange]);
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const listFormatter = new Intl.ListFormat(lang ?? i18n.language, { style: "long", type: "conjunction" });
@@ -162,21 +138,13 @@ export const ArticleByline = ({
         </TextWrapper>
       )}
       {(!!licenseBox || !!footnotes?.length) && (
-        <StyledAccordionRoot
-          multiple
-          value={openAccordions}
-          onValueChange={(details) => setOpenAccordions(details.value)}
-        >
+        <StyledAccordionRoot multiple>
           {!!licenseBox && (
             <ArticleBylineAccordionItem value={accordionItemValue} accordionTitle={t("article.useContent")}>
               {licenseBox}
             </ArticleBylineAccordionItem>
           )}
-          {!!footnotes?.length && (
-            <ArticleBylineAccordionItem value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
-              <ArticleFootNotes footNotes={footnotes} />
-            </ArticleBylineAccordionItem>
-          )}
+          {!!footnotes?.length && <ArticleBylineFootnotes footnotes={footnotes} />}
         </StyledAccordionRoot>
       )}
     </Wrapper>
@@ -186,6 +154,43 @@ export const ArticleByline = ({
 interface ArticleBylineAccordionprops extends AccordionItemProps {
   accordionTitle: ReactNode;
 }
+
+interface ArticleBylineFootnotesProps {
+  footnotes: FootNote[];
+}
+
+export const ArticleBylineFootnotes = ({ footnotes }: ArticleBylineFootnotesProps) => {
+  const { t } = useTranslation();
+  const { value, setValue } = useAccordionContext();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onHashChange = useCallback(
+    (e: HashChangeEvent) => {
+      const hash = e.newURL.split("#")[1];
+      if (hash?.match(refRegexp) && !value.includes(footnotesAccordionId)) {
+        ref.current?.scrollIntoView({ behavior: "smooth" });
+        setValue([...value, footnotesAccordionId]);
+        setTimeout(() => {
+          const el = document.getElementById(`${hash}`);
+          el?.click();
+          el?.focus();
+        }, 300);
+      }
+    },
+    [value, setValue],
+  );
+
+  useEffect(() => {
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [onHashChange]);
+
+  return (
+    <ArticleBylineAccordionItem ref={ref} value={footnotesAccordionId} accordionTitle={t("article.footnotes")}>
+      <ArticleFootNotes footNotes={footnotes} />
+    </ArticleBylineAccordionItem>
+  );
+};
 
 export const ArticleBylineAccordionItem = forwardRef<HTMLDivElement, ArticleBylineAccordionprops>(
   ({ value, accordionTitle, children, ...props }, ref) => {

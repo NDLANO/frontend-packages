@@ -26,7 +26,7 @@ const StyledCite = styled("cite", {
 
 const FootNote = ({ footNote }: FootNoteProps) => (
   <li>
-    <Text id={`note${footNote.ref}`} asChild consumeCss textStyle="body.medium">
+    <Text id={`note${footNote.ref}`} asChild consumeCss textStyle="body.medium" tabIndex={-1}>
       <StyledCite>
         <a href={`#ref${footNote.ref}`} target="_self">
           {footNote.ref}

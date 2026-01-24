@@ -96,14 +96,6 @@ const figureRecipe = cva({
         tabletDown: { marginInlineStart: "0" },
       },
     },
-    {
-      float: ["left", "right"],
-      size: ["full"],
-      css: {
-        marginInlineStart: "0",
-        marginInlineEnd: "0",
-      },
-    },
   ],
 });
 

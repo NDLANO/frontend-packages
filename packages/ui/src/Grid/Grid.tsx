@@ -52,7 +52,7 @@ const GridContainer = styled("div", {
       lightBlue: {
         padding: "xsmall",
         border: "1px solid",
-        borderColor: "surface.brand.2",
+        borderColor: "stroke.subtle",
       },
     },
   },
@@ -66,7 +66,7 @@ const StyledGridItem = styled("div", {
     border: {
       true: {
         outline: "1px solid",
-        outlineColor: "stroke.default",
+        outlineColor: "stroke.subtle",
       },
     },
   },

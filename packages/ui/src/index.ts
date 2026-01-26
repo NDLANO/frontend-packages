@@ -73,7 +73,6 @@ export { Breadcrumb } from "./Breadcrumb/Breadcrumb";
 export { HomeBreadcrumb } from "./Breadcrumb/HomeBreadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb/BreadcrumbItem";
 
-export { formatNestedMessages } from "./i18n/formatNestedMessages";
 export {
   useTagsInputTranslations,
   useTagSelectorTranslations,

@@ -40,6 +40,7 @@
     "@ndla/core": "^6.0.7-alpha.0",
     "@ndla/icons": "^8.0.77-alpha.0",
     "@ndla/licenses": "^10.0.9-alpha.0",
+    "@ndla/locales": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "@ndla/safelink": "^7.0.120-alpha.0",
     "@ndla/styled-system": "workspace:^",

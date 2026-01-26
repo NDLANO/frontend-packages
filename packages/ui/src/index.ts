@@ -64,10 +64,7 @@ export { subjectTypes } from "./model/SubjectTypes";
 export { wordClass } from "./model/WordClass";
 export { subjectCategories } from "./model/SubjectCategories";
 
-export { default as messagesNB } from "./locale/messages-nb";
-export { default as messagesNN } from "./locale/messages-nn";
-export { default as messagesEN } from "./locale/messages-en";
-export { default as messagesSE } from "./locale/messages-se";
+export { messagesNB, messagesNN, messagesSE, messagesEN } from "@ndla/locales";
 
 export { Breadcrumb } from "./Breadcrumb/Breadcrumb";
 export { HomeBreadcrumb } from "./Breadcrumb/HomeBreadcrumb";

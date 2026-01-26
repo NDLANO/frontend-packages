@@ -28,6 +28,7 @@
       "@ndla/icons": ["./packages/icons/src"],
       "@ndla/image-search": ["./packages/image-search/src"],
       "@ndla/licenses": ["./packages/licenses/src"],
+      "@ndla/locales": ["./packages/locales/src"],
       "@ndla/preset-panda": ["./packages/preset-panda/src"],
       "@ndla/primitives": ["./packages/primitives/src"],
       "@ndla/safelink": ["./packages/safelink/src"],

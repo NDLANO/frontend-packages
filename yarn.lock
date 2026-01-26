@@ -1461,6 +1461,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ndla/locales@workspace:^, @ndla/locales@workspace:packages/locales":
+  version: 0.0.0-use.local
+  resolution: "@ndla/locales@workspace:packages/locales"
+  languageName: unknown
+  linkType: soft
+
 "@ndla/preset-panda@workspace:^, @ndla/preset-panda@workspace:packages/preset-panda":
   version: 0.0.0-use.local
   resolution: "@ndla/preset-panda@workspace:packages/preset-panda"
@@ -1554,6 +1560,7 @@ __metadata:
     "@ndla/core": "npm:^6.0.7-alpha.0"
     "@ndla/icons": "npm:^8.0.77-alpha.0"
     "@ndla/licenses": "npm:^10.0.9-alpha.0"
+    "@ndla/locales": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^7.0.120-alpha.0"

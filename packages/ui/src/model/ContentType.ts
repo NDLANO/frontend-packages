@@ -25,6 +25,8 @@ export const GLOSS = "gloss";
 export const PROGRAMME = "programme";
 export const PODCAST_SERIES = "podcast-series";
 export const FRONTPAGE_ARTICLE = "frontpage-article";
+export const GAME = "game";
+export const CASE = "case";
 
 export const contentTypes = {
   SUBJECT_MATERIAL,
@@ -40,6 +42,8 @@ export const contentTypes = {
   MISSING,
   PROGRAMME,
   PODCAST_SERIES,
+  GAME,
+  CASE,
 };
 
 export const RESOURCE_TYPE_LEARNING_PATH = "urn:resourcetype:learningPath";
@@ -48,6 +52,7 @@ export const RESOURCE_TYPE_TASKS_AND_ACTIVITIES = "urn:resourcetype:tasksAndActi
 export const RESOURCE_TYPE_ASSESSMENT_RESOURCES = "urn:resourcetype:reviewResource";
 export const RESOURCE_TYPE_SOURCE_MATERIAL = "urn:resourcetype:SourceMaterial";
 export const RESOURCE_TYPE_CONCEPT = "urn:resourcetype:concept";
+export const RESOURCE_TYPE_GAME = "urn:resourcetype:game";
 
 export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_LEARNING_PATH]: LEARNING_PATH,
@@ -56,7 +61,9 @@ export const contentTypeMapping: Record<string, string> = {
   [RESOURCE_TYPE_ASSESSMENT_RESOURCES]: ASSESSMENT_RESOURCES,
   [RESOURCE_TYPE_SOURCE_MATERIAL]: SOURCE_MATERIAL,
   [RESOURCE_TYPE_CONCEPT]: CONCEPT,
+  [RESOURCE_TYPE_GAME]: GAME,
   [MULTIDISCIPLINARY]: MULTIDISCIPLINARY,
+  [CASE]: CASE,
   [TOPIC]: TOPIC,
   [FRONTPAGE_ARTICLE]: FRONTPAGE_ARTICLE,
   default: SUBJECT_MATERIAL,

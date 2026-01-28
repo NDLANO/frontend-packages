@@ -247,6 +247,8 @@ const messages = {
     programme: "Programme",
     "podcast-series": "Podcast series",
     "frontpage-article": "About NDLA article",
+    case: "Case",
+    game: "Game",
   },
   languages: {
     nb: "Norwegian Bokmål",

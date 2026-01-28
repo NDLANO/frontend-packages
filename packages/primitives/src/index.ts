@@ -195,7 +195,7 @@ export { ListItemRoot, ListItemHeading, ListItemContent, ListItemImage } from ".
 export type { PageContainerVariantProps, PageContainerProps } from "./Layout/PageContainer";
 export { PageContainer } from "./Layout/PageContainer";
 
-export type { PageContentVariantProps } from "./Layout/PageContent";
+export type { PageContentVariantProps, PageContentProps } from "./Layout/PageContent";
 export { PageContent, BleedPageContent } from "./Layout/PageContent";
 
 export type { MenuRootProps, MenuItemVariantProps, MenuItemProps } from "./Menu";

@@ -331,7 +331,7 @@ export {
 export type { TabsVariantProps, TabsRootProps } from "./Tabs";
 export { TabsRoot, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "./Tabs";
 
-export type { TextProps } from "./Text";
+export type { TextProps, TextComponentProps, HeadingComponentProps } from "./Text";
 export { Text, Heading } from "./Text";
 
 export type { ToastRootProps } from "./Toast";

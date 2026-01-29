@@ -52,7 +52,7 @@ const messages = {
     altText: "Nasjonal digital læringsarena",
   },
   article: {
-    lastUpdated: "Sist faglig oppdatert",
+    lastUpdated: "Sist oppdatert",
     useContent: "Sitere eller gjenbruke?",
     authorsLabel_article: "Skrevet av",
     authorsLabel_external: "Denne lenken er lagt til av",
@@ -69,11 +69,11 @@ const messages = {
     footnotes: "Fotnoter",
   },
   external: {
-    lastUpdated: "Sist faglig oppdatert",
+    lastUpdated: "Sist oppdatert",
   },
   learningPath: {
     copiedFrom: "Dette er en remiks av en annen læringsti",
-    lastUpdated: "Sist faglig oppdatert",
+    lastUpdated: "Sist oppdatert",
   },
   license: {
     copyTitle: "Kopier kildehenvisning",

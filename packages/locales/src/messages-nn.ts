@@ -248,6 +248,8 @@ const messages = {
     programme: "Programfag",
     "podcast-series": "Podkast-serie",
     "frontpage-article": "Om NDLA-artikkel",
+    case: "Case",
+    game: "Spel",
   },
   languages: {
     nb: "Bokmål",

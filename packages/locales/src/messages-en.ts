@@ -51,7 +51,7 @@ const messages = {
     altText: "The Norwegian Digital Learning Arena",
   },
   article: {
-    lastUpdated: "Last revised date",
+    lastUpdated: "Last updated",
     useContent: "Cite or reuse?",
     authorsLabel_article: "Written by",
     authorsLabel_learningPath: "Made by",
@@ -68,11 +68,11 @@ const messages = {
     footnotes: "Footnotes",
   },
   external: {
-    lastUpdated: "Last revised date",
+    lastUpdated: "Last updated",
   },
   learningPath: {
     copiedFrom: "This is a remix of a different learning path",
-    lastUpdated: "Last revised date",
+    lastUpdated: "Last updated",
   },
   license: {
     tabs: {

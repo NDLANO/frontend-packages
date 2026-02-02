@@ -6,11 +6,11 @@
  *
  */
 
-import { type ReactNode, useId, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Heading, Text, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { type ReactNode, useId, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Controls } from "./Controls";
 import { SpeechControl } from "./SpeechControl";
 

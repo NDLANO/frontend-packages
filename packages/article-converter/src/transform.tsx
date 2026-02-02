@@ -6,9 +6,9 @@
  *
  */
 
-import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { type MetaData } from "@ndla/types-embed";
 import { UnknownEmbed } from "@ndla/ui";
+import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { plugins } from "./plugins";
 import { embedPlugins } from "./plugins/embed";
 import { type TransformOptions } from "./plugins/types";

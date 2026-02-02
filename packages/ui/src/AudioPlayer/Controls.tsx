@@ -6,8 +6,6 @@
  *
  */
 
-import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { type SliderValueChangeDetails, createListCollection } from "@ark-ui/react";
 import { Replay15Line, Forward15Line, PlayFill, PauseLine, VolumeUpFill, CheckLine } from "@ndla/icons";
 import {
@@ -35,6 +33,8 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ControlsWrapper = styled("div", {
   base: {

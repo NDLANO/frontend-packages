@@ -8,6 +8,7 @@
 
 // @ts-check
 
+import eslint from "@eslint/js";
 // @ts-expect-error - no typedefs
 import pluginHeader from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
@@ -17,7 +18,6 @@ import reactPlugin from "eslint-plugin-react";
 import hooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import eslint from "@eslint/js";
 
 // eslint 9 workaround
 pluginHeader.rules.header.meta.schema = false;
@@ -162,31 +162,6 @@ export default tseslint.config(
       // "import/no-cycle": ["warn", { maxDepth: Infinity }],
       "import/no-anonymous-default-export": "error",
       // TODO: Replace this with the simple-import-sort plugin
-      "import/order": [
-        "warn",
-        {
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          groups: ["builtin", "external", "internal"],
-          pathGroupsExcludedImportTypes: [],
-          pathGroups: [
-            {
-              pattern: "@ndla/**",
-              group: "internal",
-              position: "before",
-              patternOptions: { matchBase: true },
-            },
-            {
-              pattern: "@*/**",
-              group: "external",
-              position: "after",
-              patternOptions: { matchBase: true },
-            },
-          ],
-        },
-      ],
       "import/no-extraneous-dependencies": "error",
     },
   },

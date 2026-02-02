@@ -6,11 +6,11 @@
  *
  */
 
-import { type ComponentPropsWithoutRef } from "react";
-import { css } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
 import type { ColorToken } from "@ndla/styled-system/tokens";
 import type { StyledProps } from "@ndla/styled-system/types";
+import { css } from "@ndla/styled-system/css";
+import { styled } from "@ndla/styled-system/jsx";
+import { type ComponentPropsWithoutRef } from "react";
 
 export interface LogoProps extends Omit<ComponentPropsWithoutRef<"svg">, "color">, StyledProps {
   color?: ColorToken;

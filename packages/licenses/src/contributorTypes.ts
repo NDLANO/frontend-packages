@@ -6,8 +6,8 @@
  *
  */
 
-import { metaTypes } from "./CCRel";
 import type { Locale, LocaleString } from "./types";
+import { metaTypes } from "./CCRel";
 
 const creators = [
   "originator",

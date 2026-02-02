@@ -6,11 +6,11 @@
  *
  */
 
-import { useTranslation } from "react-i18next";
-import { Text } from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
 import type { SystemStyleObject } from "@ndla/styled-system/types";
 import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
+import { Text } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
+import { useTranslation } from "react-i18next";
 import { LicenseContainerContent } from "../LicenseByline/EmbedByline";
 
 export type ContactBlockBackground = "strong" | "moderate" | "subtle";

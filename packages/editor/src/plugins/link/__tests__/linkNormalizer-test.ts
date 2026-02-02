@@ -8,15 +8,15 @@
 
 import type { Descendant } from "slate";
 import { createSlate } from "../../../editor/createSlate";
-import { sectionPlugin } from "../../section/sectionPlugin";
-import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
-import { linkPlugin } from "../linkPlugin";
-import { headingPlugin } from "../../heading/headingPlugin";
-import { markPlugin } from "../../mark/markPlugin";
-import { listPlugin } from "../../list/listPlugin";
 import { softBreakPlugin } from "../../break/softBreakPlugin";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { headingPlugin } from "../../heading/headingPlugin";
+import { listPlugin } from "../../list/listPlugin";
+import { markPlugin } from "../../mark/markPlugin";
+import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { sectionPlugin } from "../../section/sectionPlugin";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { linkPlugin } from "../linkPlugin";
 import { LINK_ELEMENT_TYPE } from "../linkTypes";
 
 const editor = createSlate({

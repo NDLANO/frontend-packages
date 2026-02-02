@@ -7,15 +7,15 @@
  */
 
 import { Transforms, type Descendant } from "slate";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
-import { HEADING_ELEMENT_TYPE } from "../headingTypes";
-import { sectionPlugin } from "../../section/sectionPlugin";
-import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
-import { headingPlugin } from "../headingPlugin";
-import { markPlugin } from "../../mark/markPlugin";
 import { createSlate } from "../../../editor/createSlate";
 import { softBreakPlugin } from "../../break/softBreakPlugin";
+import { markPlugin } from "../../mark/markPlugin";
+import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
+import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { sectionPlugin } from "../../section/sectionPlugin";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { headingPlugin } from "../headingPlugin";
+import { HEADING_ELEMENT_TYPE } from "../headingTypes";
 
 const editor = createSlate({ plugins: [sectionPlugin, paragraphPlugin, headingPlugin, markPlugin, softBreakPlugin] });
 

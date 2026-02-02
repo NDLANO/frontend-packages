@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef } from "react";
+import type { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
+import type { StyledProps, UtilityValues } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";
-import type { StyledProps, UtilityValues } from "@ndla/styled-system/types";
+import { forwardRef } from "react";
 
 export interface TextProps {
   textStyle?: UtilityValues["textStyle"];

@@ -6,9 +6,9 @@
  *
  */
 
-import { useTranslation } from "react-i18next";
-import { styled } from "@ndla/styled-system/jsx";
 import type { FootnoteMetaData } from "@ndla/types-embed";
+import { styled } from "@ndla/styled-system/jsx";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   embed: FootnoteMetaData;

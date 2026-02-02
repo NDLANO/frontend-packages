@@ -6,9 +6,8 @@
  *
  */
 
-import TraceKit from "raven-js/vendor/TraceKit/tracekit";
 import { uuid } from "@ndla/util";
-
+import TraceKit from "raven-js/vendor/TraceKit/tracekit";
 import { logglyApi } from "./logglyApi";
 
 // Taken from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions

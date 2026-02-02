@@ -6,11 +6,11 @@
  *
  */
 
+import type { IframeData, IframeEmbedData } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import type { IframeData, IframeEmbedData } from "@ndla/types-embed";
-import { IframeEmbed } from "./IframeEmbed";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
+import { IframeEmbed } from "./IframeEmbed";
 
 const embedData: IframeEmbedData = {
   width: "708px",

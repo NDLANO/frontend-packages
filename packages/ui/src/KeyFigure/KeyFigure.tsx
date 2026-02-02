@@ -6,8 +6,8 @@
  *
  */
 
-import parse from "html-react-parser";
 import { styled } from "@ndla/styled-system/jsx";
+import parse from "html-react-parser";
 
 const ContentWrapper = styled("div", {
   base: {

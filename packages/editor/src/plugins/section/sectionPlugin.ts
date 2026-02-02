@@ -8,6 +8,9 @@
 
 import { Transforms, Node } from "slate";
 import { createPlugin } from "../../core/createPlugin";
+import { isElementOfType } from "../../utils/isElementType";
+import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
+import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isSectionElement } from "./queries/sectionQueries";
 import {
   SECTION_ELEMENT_TYPE,
@@ -15,9 +18,6 @@ import {
   type SectionElementType,
   type SectionPluginOptions,
 } from "./sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
-import { isElementOfType } from "../../utils/isElementType";
-import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
 export const sectionPlugin = createPlugin<SectionElementType, SectionPluginOptions>({
   type: SECTION_ELEMENT_TYPE,

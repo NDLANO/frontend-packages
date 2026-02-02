@@ -6,11 +6,11 @@
  *
  */
 
+import type { StyledProps } from "@ndla/styled-system/types";
 import type { RefAttributes } from "react";
 import { Slider, sliderAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
 

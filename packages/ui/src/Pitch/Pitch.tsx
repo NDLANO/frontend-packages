@@ -6,11 +6,11 @@
  *
  */
 
-import parse from "html-react-parser";
 import { CardHeading, CardImage, CardRoot, Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
+import parse from "html-react-parser";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 export interface Props {

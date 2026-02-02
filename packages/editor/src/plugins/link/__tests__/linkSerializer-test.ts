@@ -7,10 +7,10 @@
  */
 
 import type { Descendant } from "slate";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
-import { LINK_ELEMENT_TYPE } from "../linkTypes";
 import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
+import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { LINK_ELEMENT_TYPE } from "../linkTypes";
 
 // TODO: This used to include content-link tests. We need to port those over
 

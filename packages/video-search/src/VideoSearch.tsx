@@ -6,11 +6,11 @@
  *
  */
 
-import { type ChangeEvent, useCallback, useEffect, useState, type KeyboardEvent } from "react";
+import type { BrightcoveApiType } from "@ndla/types-embed";
 import { SearchLine } from "@ndla/icons";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { BrightcoveApiType } from "@ndla/types-embed";
+import { type ChangeEvent, useCallback, useEffect, useState, type KeyboardEvent } from "react";
 import { VideoResultList } from "./VideoResultList";
 
 export interface VideoTranslations {

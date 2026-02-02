@@ -6,7 +6,7 @@
  *
  */
 
-import { useState } from "react";
+import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import { CloseLine, HashTag, CheckLine } from "@ndla/icons";
 import { getModelReleaseValue } from "@ndla/licenses";
 import {
@@ -22,9 +22,9 @@ import {
   FieldRoot,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import { ImageMeta } from "./ImageMeta";
+import { useState } from "react";
 import type { PreviewTranslations } from "./ImageSearch";
+import { ImageMeta } from "./ImageMeta";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {

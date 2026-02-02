@@ -6,9 +6,9 @@
  *
  */
 
+import { styled } from "@ndla/styled-system/jsx";
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { styled } from "@ndla/styled-system/jsx";
 import { BreadcrumbItem, type IndexedBreadcrumbItem, type SimpleBreadcrumbItem } from "./BreadcrumbItem";
 
 interface Props {

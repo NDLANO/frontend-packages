@@ -9,6 +9,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { LoginBoxLine, PresentationLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
+//@ts-expect-error - It exists.
+import Oops from "../../../../images/oops.gif";
+import { Button } from "../Button";
 import {
   ErrorMessageActions,
   ErrorMessageContent,
@@ -16,9 +19,6 @@ import {
   ErrorMessageRoot,
   ErrorMessageTitle,
 } from "./ErrorMessage";
-//@ts-expect-error - It exists.
-import Oops from "../../../../images/oops.gif";
-import { Button } from "../Button";
 
 export default {
   title: "Primitives/ErrorMessage",

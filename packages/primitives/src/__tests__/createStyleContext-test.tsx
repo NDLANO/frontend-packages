@@ -6,12 +6,12 @@
  *
  */
 
-import { type ReactNode, forwardRef } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
-import { render } from "@testing-library/react";
 import { css, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { render } from "@testing-library/react";
+import { type ReactNode, forwardRef } from "react";
 
 const svaA = sva({
   slots: ["root", "child"],

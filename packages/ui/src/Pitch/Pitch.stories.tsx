@@ -8,9 +8,9 @@
 
 import type { Meta } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
-import { Pitch, type Props } from "./Pitch";
 import { ArticleContent, ArticleWrapper } from "../Article/Article";
 import { Grid } from "../Grid/Grid";
+import { Pitch, type Props } from "./Pitch";
 
 const args: Props = {
   title: "Min pitch",

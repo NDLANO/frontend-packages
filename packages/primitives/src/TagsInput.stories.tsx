@@ -6,11 +6,11 @@
  *
  */
 
-import { useState } from "react";
-import { TagsInputContext } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
+import { TagsInputContext } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons";
 import { HStack } from "@ndla/styled-system/jsx";
+import { useState } from "react";
 import { IconButton } from "./Button";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";

@@ -6,10 +6,10 @@
  *
  */
 
-import React from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import React from "react";
 
 const TextContainer = styled("div", {
   base: {

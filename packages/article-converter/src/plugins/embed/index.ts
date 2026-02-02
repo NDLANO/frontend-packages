@@ -6,6 +6,7 @@
  *
  */
 
+import { type PluginType } from "../types";
 import { audioEmbedPlugin } from "./audioEmbedPlugin";
 import { brightcoveEmbedPlugin } from "./brightcoveEmbedPlugin";
 import { campaignBlockPlugin } from "./campaignBlockPlugin";
@@ -26,7 +27,6 @@ import { pitchEmbedPlugin } from "./pitchEmbedPlugin";
 import { relatedContentEmbedPlugin } from "./relatedContentEmbedPlugin";
 import { symbolEmbedPlugin } from "./symbolEmbedPlugin";
 import { uuDisclaimerEmbedPlugin } from "./uuDisclaimerEmbedPlugin";
-import { type PluginType } from "../types";
 
 export const embedPlugins: Record<string, PluginType> = {
   image: imageEmbedPlugin,

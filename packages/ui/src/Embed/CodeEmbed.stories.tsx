@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import type { CodeEmbedData, CodeMetaData } from "@ndla/types-embed";
+import type { Meta, StoryObj } from "@storybook/react";
 import { CodeEmbed } from "./CodeEmbed";
 
 const codeEmbedData: CodeEmbedData = {

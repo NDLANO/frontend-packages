@@ -10,6 +10,7 @@ import type { TreeViewNodeProviderProps } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { ArrowRightShortLine, CheckLine, FolderLine } from "@ndla/icons";
 import { HStack } from "@ndla/styled-system/jsx";
+import { IconButton } from "../Button";
 import {
   createTreeCollection,
   Tree,
@@ -25,7 +26,6 @@ import {
   TreeRoot,
   TreeNodeProvider,
 } from "./Tree";
-import { IconButton } from "../Button";
 
 export default {
   title: "Primitives/Tree",

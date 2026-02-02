@@ -7,13 +7,13 @@
  */
 
 import type { Descendant } from "slate";
-import { SPAN_ELEMENT_TYPE } from "../spanTypes";
-import { spanPlugin } from "../spanPlugin";
-import { sectionPlugin } from "../../section/sectionPlugin";
-import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { createSlate } from "../../../editor/createSlate";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { sectionPlugin } from "../../section/sectionPlugin";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { spanPlugin } from "../spanPlugin";
+import { SPAN_ELEMENT_TYPE } from "../spanTypes";
 
 const editor = createSlate({ plugins: [sectionPlugin, paragraphPlugin, spanPlugin] });
 

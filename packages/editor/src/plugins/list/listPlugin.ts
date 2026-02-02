@@ -6,8 +6,15 @@
  *
  */
 
+import { isKeyHotkey } from "is-hotkey";
 import { Node, Path, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
+import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
+import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
+import { listOnBackspace } from "./handlers/listOnBackspace";
+import { listOnEnter } from "./handlers/listOnEnter";
+import { listOnTab } from "./handlers/listOnTab";
+import { defaultListBlock } from "./listBlocks";
 import {
   LIST_ELEMENT_TYPE,
   LIST_ITEM_ELEMENT_TYPE,
@@ -15,14 +22,7 @@ import {
   type ListElementType,
   type ListPluginOptions,
 } from "./listTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
-import { isKeyHotkey } from "is-hotkey";
-import { listOnTab } from "./handlers/listOnTab";
-import { listOnEnter } from "./handlers/listOnEnter";
-import { listOnBackspace } from "./handlers/listOnBackspace";
 import { isListElement, isListItemElement } from "./queries/listElementQueries";
-import { defaultListBlock } from "./listBlocks";
-import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
 
 export const listPluginDefaultOptions: ListPluginOptions = {
   allowedListItemFirstChildTypes: [PARAGRAPH_ELEMENT_TYPE, HEADING_ELEMENT_TYPE] as const,

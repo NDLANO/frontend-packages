@@ -6,7 +6,6 @@
  *
  */
 
-import { forwardRef, useEffect, useId, useRef } from "react";
 import { type CollectionItem, useTagsInputContext, useComboboxContext } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons";
 import {
@@ -32,6 +31,7 @@ import {
   TagsInputItemInput,
 } from "@ndla/primitives";
 import { contains } from "@ndla/util";
+import { forwardRef, useEffect, useId, useRef } from "react";
 
 export type TagSelectorRootProps<T extends CollectionItem> = ComboboxRootProps<T> & TagsInputRootProps;
 

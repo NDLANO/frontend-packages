@@ -8,12 +8,12 @@
 
 import type { Descendant } from "slate";
 import { createSlate } from "../../../editor/createSlate";
-import { sectionPlugin } from "../sectionPlugin";
-import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { headingPlugin } from "../../heading/headingPlugin";
-import { SECTION_ELEMENT_TYPE } from "../sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { HEADING_ELEMENT_TYPE } from "../../heading/headingTypes";
+import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
+import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { sectionPlugin } from "../sectionPlugin";
+import { SECTION_ELEMENT_TYPE } from "../sectionTypes";
 
 const editor = createSlate({
   plugins: [sectionPlugin, paragraphPlugin, headingPlugin],

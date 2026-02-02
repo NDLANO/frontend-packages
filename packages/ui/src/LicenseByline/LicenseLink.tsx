@@ -6,10 +6,10 @@
  *
  */
 
-import { forwardRef } from "react";
 import type { LicenseLocaleType } from "@ndla/licenses";
 import { SafeLink, type SafeLinkProps } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { forwardRef } from "react";
 
 interface Props extends Omit<SafeLinkProps, "to"> {
   license: LicenseLocaleType;

@@ -7,10 +7,10 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
-import { isHeadingElement } from "./queries/headingQueries";
-import { HEADING_ELEMENT_TYPE } from "./headingTypes";
-import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { createSerializer } from "../../core/createSerializer";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { HEADING_ELEMENT_TYPE } from "./headingTypes";
+import { isHeadingElement } from "./queries/headingQueries";
 
 export const headingSerializer = createSerializer({
   deserialize: (el, children) => {

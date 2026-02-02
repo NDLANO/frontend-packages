@@ -8,6 +8,7 @@
 
 import { Node, Path, Text, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
+import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 import {
   PARAGRAPH_ELEMENT_TYPE,
   PARAGRAPH_PLUGIN,
@@ -15,7 +16,6 @@ import {
   type ParagraphPluginOptions,
 } from "./paragraphTypes";
 import { isParagraphElement } from "./queries/paragraphElementQueries";
-import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 
 export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPluginOptions>({
   type: PARAGRAPH_ELEMENT_TYPE,

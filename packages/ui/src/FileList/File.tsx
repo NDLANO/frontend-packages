@@ -6,13 +6,13 @@
  *
  */
 
-import { type ComponentPropsWithRef, forwardRef } from "react";
-import { useTranslation } from "react-i18next";
 import { DownloadLine } from "@ndla/icons";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
+import { type ComponentPropsWithRef, forwardRef } from "react";
+import { useTranslation } from "react-i18next";
 import { FileListItem } from "./FileList";
 
 export interface FileProps extends ComponentPropsWithRef<"div"> {

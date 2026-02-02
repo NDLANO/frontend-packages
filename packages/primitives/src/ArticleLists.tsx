@@ -6,11 +6,11 @@
  *
  */
 
-import { type CSSProperties, forwardRef, useId, useMemo } from "react";
+import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
+import { type CSSProperties, forwardRef, useId, useMemo } from "react";
 
 const orderedListRecipe = cva({
   base: {

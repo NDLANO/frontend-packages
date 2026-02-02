@@ -6,13 +6,13 @@
  *
  */
 
-import { jsx as slatejsx } from "slate-hyperscript";
 import { Element, Node, type Descendant, type ElementType } from "slate";
-import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
+import { jsx as slatejsx } from "slate-hyperscript";
 import type { SlateSerializer } from "../../core";
-import { isElementOfType } from "../../utils/isElementType";
 import { NOOP_ELEMENT_TYPE } from "../../plugins/noop/noopTypes";
+import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/paragraph/paragraphTypes";
+import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
+import { isElementOfType } from "../../utils/isElementType";
 
 // TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
 

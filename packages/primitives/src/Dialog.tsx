@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef, type RefAttributes } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { forwardRef, type RefAttributes } from "react";
 import { Heading, Text, type TextProps } from "./Text";
 
 const dialogRecipe = sva({

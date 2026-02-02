@@ -7,9 +7,9 @@
  */
 
 import type { Meta, StoryObj, StoryFn } from "@storybook/react";
+import { wordClass } from "../model/WordClass";
 import { Gloss } from "./Gloss";
 import { GlossExample } from "./GlossExample";
-import { wordClass } from "../model/WordClass";
 
 const meta: Meta<typeof Gloss> = {
   title: "Components/Gloss",

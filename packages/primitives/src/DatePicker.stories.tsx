@@ -6,8 +6,8 @@
  *
  */
 
-import { getLocalTimeZone, today } from "@internationalized/date";
 import type { Meta, StoryFn } from "@storybook/react";
+import { getLocalTimeZone, today } from "@internationalized/date";
 import { ArrowLeftLine, ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
 import { useDatePickerTranslations } from "@ndla/ui";
 import { Button, IconButton } from "./Button";

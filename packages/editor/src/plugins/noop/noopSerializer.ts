@@ -8,8 +8,8 @@
 
 import { jsx as slatejsx } from "slate-hyperscript";
 import { createSerializer } from "../../core/createSerializer";
-import { isNoopElement } from "./queries/noopQueries";
 import { NOOP_ELEMENT_TYPE } from "./noopTypes";
+import { isNoopElement } from "./queries/noopQueries";
 
 export const noopSerializer = createSerializer({
   deserialize: (el, children) => {

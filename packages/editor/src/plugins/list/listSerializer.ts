@@ -8,13 +8,13 @@
 
 import { Node, type Descendant } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import { isElementOfType } from "../../utils/isElementType";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListSerializerOptions } from "./listTypes";
-import { BREAK_ELEMENT_TYPE } from "../break/breakTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
-import { LINK_ELEMENT_TYPE } from "../link/linkTypes";
-import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { createSerializer } from "../../core/createSerializer";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { isElementOfType } from "../../utils/isElementType";
+import { BREAK_ELEMENT_TYPE } from "../break/breakTypes";
+import { LINK_ELEMENT_TYPE } from "../link/linkTypes";
+import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, type ListSerializerOptions } from "./listTypes";
 
 export const listSerializer = createSerializer<ListSerializerOptions>({
   options: {

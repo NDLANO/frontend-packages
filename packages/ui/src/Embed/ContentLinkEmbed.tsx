@@ -6,10 +6,10 @@
  *
  */
 
-import type { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
-import { Text } from "@ndla/primitives";
 import type { ContentLinkMetaData } from "@ndla/types-embed";
+import type { ReactNode } from "react";
+import { Text } from "@ndla/primitives";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   embed: ContentLinkMetaData;

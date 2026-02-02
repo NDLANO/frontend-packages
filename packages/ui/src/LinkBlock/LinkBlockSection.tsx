@@ -6,8 +6,8 @@
  *
  */
 
-import { Children, type HTMLAttributes, type ReactNode } from "react";
 import { styled } from "@ndla/styled-system/jsx";
+import { Children, type HTMLAttributes, type ReactNode } from "react";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;

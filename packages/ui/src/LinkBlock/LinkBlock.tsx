@@ -6,13 +6,13 @@
  *
  */
 
-import parse from "html-react-parser";
-import { useMemo } from "react";
+import type { LinkBlockEmbedData } from "@ndla/types-embed";
 import { ArrowRightLine, CalendarLine } from "@ndla/icons";
 import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import type { LinkBlockEmbedData } from "@ndla/types-embed";
+import parse from "html-react-parser";
+import { useMemo } from "react";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 const InfoWrapper = styled("div", {

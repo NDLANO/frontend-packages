@@ -10,9 +10,9 @@
 import escapeHtml from "escape-html";
 import { Node } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import { marks, type MarkTagType } from "./markTypes";
-import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { createSerializer } from "../../core/createSerializer";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
+import { marks, type MarkTagType } from "./markTypes";
 
 export const markSerializer = createSerializer({
   deserialize(el, children) {

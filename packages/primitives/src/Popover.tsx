@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef, type RefAttributes } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { forwardRef, type RefAttributes } from "react";
 import { Heading, type TextProps } from "./Text";
 
 const popoverRecipe = sva({

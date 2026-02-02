@@ -6,10 +6,10 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import type { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
-import { GlossEmbed } from "./GlossEmbed";
+import type { Meta, StoryObj } from "@storybook/react";
 import { wordClass } from "../model/WordClass";
+import { GlossEmbed } from "./GlossEmbed";
 
 const glossBlockEmbedData: ConceptEmbedData = {
   contentId: "4942",

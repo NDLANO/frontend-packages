@@ -7,10 +7,10 @@
  */
 
 import type { Descendant } from "slate";
+import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
+import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
 import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
-import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
 
 const editor: Descendant[] = [
   {

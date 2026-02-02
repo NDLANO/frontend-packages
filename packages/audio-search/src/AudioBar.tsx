@@ -8,8 +8,8 @@
 
 /* eslint jsx-a11y/media-has-caption: 0 */
 
-import { useEffect, useState } from "react";
 import type { AudioMetaInformationDTO } from "@ndla/types-backend/audio-api";
+import { useEffect, useState } from "react";
 
 interface Props {
   audio: { id: number };

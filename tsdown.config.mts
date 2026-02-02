@@ -6,9 +6,9 @@
  *
  */
 
-import { defineConfig } from "tsdown";
-import path from "path";
 import { readFileSync } from "fs";
+import path from "path";
+import { defineConfig } from "tsdown";
 
 const pkgRoot = typeof __dirname === "undefined" ? import.meta.dirname : __dirname;
 export function getExternalDeps(pkgDir: string) {

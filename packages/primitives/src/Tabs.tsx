@@ -6,11 +6,11 @@
  *
  */
 
+import type { StyledProps } from "@ndla/styled-system/types";
 import type { RefAttributes } from "react";
 import { Tabs } from "@ark-ui/react";
 import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
 
 const tabsRecipe = sva({
   // TODO: This still doesn't work. Need to figure out why we need to pass keys manually.

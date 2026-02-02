@@ -6,9 +6,9 @@
  *
  */
 
-import { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { DeleteBinLine, FileTextLine, UploadCloudLine } from "@ndla/icons";
+import { useState } from "react";
 import { Button, IconButton } from "./Button";
 import { FieldRoot } from "./Field";
 import { FieldErrorMessage } from "./FieldErrorMessage";

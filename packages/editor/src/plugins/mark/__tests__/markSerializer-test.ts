@@ -7,8 +7,8 @@
  */
 
 import type { Descendant } from "slate";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 
 const editor: Descendant[] = [
   {

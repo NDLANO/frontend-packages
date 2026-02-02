@@ -6,8 +6,8 @@
  *
  */
 
-import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { ExpandableBoxSummary } from "@ndla/primitives";
+import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { type PluginType } from "./types";
 
 export const summaryPlugin: PluginType = (node, converterOpts) => {

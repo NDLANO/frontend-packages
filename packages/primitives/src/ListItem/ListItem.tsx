@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import { forwardRef } from "react";
 import { Image, type ImageProps } from "../Image";
 import { Heading, type TextProps } from "../Text";
 

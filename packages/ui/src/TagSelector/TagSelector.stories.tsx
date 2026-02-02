@@ -6,10 +6,8 @@
  *
  */
 
-import { useState } from "react";
-import { type ComboboxInputValueChangeDetails, createListCollection } from "@ark-ui/react";
-
 import type { Meta, StoryFn } from "@storybook/react";
+import { type ComboboxInputValueChangeDetails, createListCollection } from "@ark-ui/react";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import {
   ComboboxContent,
@@ -21,6 +19,8 @@ import {
   InputContainer,
 } from "@ndla/primitives";
 import { HStack } from "@ndla/styled-system/jsx";
+import { useState } from "react";
+import { useTagSelectorTranslations } from "../i18n/useComponentTranslations";
 import {
   TagSelectorClearTrigger,
   TagSelectorControl,
@@ -29,7 +29,6 @@ import {
   TagSelectorRoot,
   TagSelectorTrigger,
 } from "./TagSelector";
-import { useTagSelectorTranslations } from "../i18n/useComponentTranslations";
 
 export default {
   title: "Components/TagSelector",

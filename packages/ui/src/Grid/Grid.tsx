@@ -6,9 +6,9 @@
  *
  */
 
-import { type ComponentProps, type ReactNode } from "react";
-import { styled } from "@ndla/styled-system/jsx";
 import type { StyledVariantProps } from "@ndla/styled-system/types";
+import { styled } from "@ndla/styled-system/jsx";
+import { type ComponentProps, type ReactNode } from "react";
 
 const GridContainer = styled("div", {
   base: {

@@ -1,7 +1,7 @@
 {
   "name": "@ndla/ui",
   "type": "module",
-  "version": "56.0.172-alpha.0",
+  "version": "56.0.173-alpha.0",
   "description": "UI component library for NDLA",
   "license": "GPL-3.0",
   "exports": {
@@ -38,11 +38,11 @@
   "dependencies": {
     "@ark-ui/react": "^5.30.0",
     "@ndla/core": "^6.0.7-alpha.0",
-    "@ndla/icons": "^8.0.77-alpha.0",
-    "@ndla/licenses": "^10.0.9-alpha.0",
+    "@ndla/icons": "^8.0.78-alpha.0",
+    "@ndla/licenses": "^10.0.10-alpha.0",
     "@ndla/locales": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "^7.0.122-alpha.0",
+    "@ndla/safelink": "^7.0.123-alpha.0",
     "@ndla/styled-system": "workspace:^",
     "@ndla/util": "^5.0.18-alpha.0",
     "html-react-parser": "^5.2.8"
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.89",
-    "@ndla/types-embed": "^5.0.20-alpha.0",
+    "@ndla/types-embed": "^5.0.21-alpha.0",
     "@pandacss/dev": "^1.7.0"
   },
   "publishConfig": {

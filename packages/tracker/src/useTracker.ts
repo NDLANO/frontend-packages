@@ -6,9 +6,9 @@
  *
  */
 
+import { usePrevious } from "@ndla/util";
 import { useCallback, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
-import { usePrevious } from "@ndla/util";
 
 interface TrackPageViewProps {
   title: string;

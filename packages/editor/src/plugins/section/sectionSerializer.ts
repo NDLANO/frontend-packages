@@ -8,10 +8,10 @@
 
 import { Node } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
-import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
+import { createSerializer } from "../../core/createSerializer";
 import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { isElementOfType } from "../../utils/isElementType";
-import { createSerializer } from "../../core/createSerializer";
+import { SECTION_ELEMENT_TYPE } from "./sectionTypes";
 
 export const sectionSerializer = createSerializer({
   deserialize(el, children) {

@@ -9,8 +9,8 @@
 import { jsx as slatejsx } from "slate-hyperscript";
 import { createSerializer } from "../../core/createSerializer";
 import { createHtmlTag, parseElementAttributes } from "../../serialization/html/htmlSerializationHelpers";
-import { SPAN_ELEMENT_TYPE } from "./spanTypes";
 import { isSpanElement } from "./spanQueries";
+import { SPAN_ELEMENT_TYPE } from "./spanTypes";
 
 export const spanSerializer = createSerializer({
   deserialize(el, children) {

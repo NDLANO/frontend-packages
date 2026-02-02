@@ -8,13 +8,13 @@
 
 import { Node, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
-import { isSpanElement } from "./spanQueries";
-import { SPAN_ELEMENT_TYPE, SPAN_PLUGIN, type SpanPluginOptions } from "./spanTypes";
 import { defaultNormalizer } from "../../utils/defaultNormalizer";
 import { HEADING_ELEMENT_TYPE } from "../heading/headingTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 import { NOOP_ELEMENT_TYPE } from "../noop/noopTypes";
+import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
+import { isSpanElement } from "./spanQueries";
+import { SPAN_ELEMENT_TYPE, SPAN_PLUGIN, type SpanPluginOptions } from "./spanTypes";
 
 export const spanPlugin = createPlugin<typeof SPAN_ELEMENT_TYPE, SpanPluginOptions>({
   name: SPAN_PLUGIN,

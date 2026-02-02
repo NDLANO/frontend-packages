@@ -6,16 +6,16 @@
  *
  */
 
-import { jsx as slatejsx } from "slate-hyperscript";
-import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
-import { isParagraphElement } from "./queries/paragraphElementQueries";
 import { Node } from "slate";
+import { jsx as slatejsx } from "slate-hyperscript";
+import { createSerializer } from "../../core/createSerializer";
 import {
   createDataAttributes,
   createHtmlTag,
   parseElementAttributes,
 } from "../../serialization/html/htmlSerializationHelpers";
-import { createSerializer } from "../../core/createSerializer";
+import { PARAGRAPH_ELEMENT_TYPE } from "./paragraphTypes";
+import { isParagraphElement } from "./queries/paragraphElementQueries";
 
 export const paragraphSerializer = createSerializer({
   deserialize(el, children) {

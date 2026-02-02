@@ -6,7 +6,6 @@
  *
  */
 
-import { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
 import {
@@ -18,6 +17,7 @@ import {
   RadioGroupItemText,
   RadioGroupItemHiddenInput,
 } from "@ndla/primitives";
+import { useState } from "react";
 
 /**
  * Liste over lisenser som brukes på NDLA.

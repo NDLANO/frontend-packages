@@ -6,11 +6,11 @@
  *
  */
 
+import type { BrightcoveApiType } from "@ndla/types-embed";
 import { Text, Button, Spinner } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { BrightcoveApiType } from "@ndla/types-embed";
-import { VideoListItem } from "./VideoListItem";
 import type { VideoTranslations } from "./VideoSearch";
+import { VideoListItem } from "./VideoListItem";
 
 const StyledList = styled("ul", {
   base: {

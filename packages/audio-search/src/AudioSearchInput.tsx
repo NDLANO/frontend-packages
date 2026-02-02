@@ -6,10 +6,10 @@
  *
  */
 
-import { type ChangeEvent, type KeyboardEvent, useState } from "react";
 import { SearchLine } from "@ndla/icons";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import { type ChangeEvent, type KeyboardEvent, useState } from "react";
 import { type QueryObject } from "./AudioSearch";
 
 const InputWrapper = styled("div", {

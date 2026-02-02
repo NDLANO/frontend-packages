@@ -6,8 +6,6 @@
  *
  */
 
-import { type ReactNode, forwardRef, useCallback, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
 import { useAccordionContext } from "@ark-ui/react";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
@@ -21,8 +19,10 @@ import {
 } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { ArticleFootNotes } from "./ArticleFootNotes";
+import { type ReactNode, forwardRef, useCallback, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import type { FootNote } from "../types";
+import { ArticleFootNotes } from "./ArticleFootNotes";
 
 const Wrapper = styled("div", {
   base: {

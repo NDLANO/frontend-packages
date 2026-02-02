@@ -6,17 +6,17 @@
  *
  */
 
-import parse from "html-react-parser";
-import { type ReactNode, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import type { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
 import { AddLine } from "@ndla/icons";
 import { Figure, type FigureSize, type FigureVariantProps, Image } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { ImageEmbedData, ImageMetaData } from "@ndla/types-embed";
-import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import parse from "html-react-parser";
+import { type ReactNode, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 
 interface Props {
   embed: ImageMetaData;

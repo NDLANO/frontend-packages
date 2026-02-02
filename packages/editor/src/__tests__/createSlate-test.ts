@@ -7,8 +7,8 @@
  */
 
 import type { Descendant } from "slate";
-import { createSlate } from "../editor/createSlate";
 import { createPlugin } from "../core/createPlugin";
+import { createSlate } from "../editor/createSlate";
 
 describe("createSlate", () => {
   describe("normalizeInitialValue", () => {

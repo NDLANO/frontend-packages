@@ -6,9 +6,9 @@
  *
  */
 
-import { useRef } from "react";
-import type { Meta, StoryFn } from "@storybook/react";
 import type { AudioMetaInformationDTO, AudioSummarySearchResultDTO } from "@ndla/types-backend/audio-api";
+import type { Meta, StoryFn } from "@storybook/react";
+import { useRef } from "react";
 import { AudioSearch, type QueryObject } from "./AudioSearch";
 
 export default {

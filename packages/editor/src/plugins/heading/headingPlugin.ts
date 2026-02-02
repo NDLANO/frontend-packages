@@ -7,11 +7,11 @@
  */
 
 import { Editor, Location, Node, Path, Point, Range, Transforms } from "slate";
+import type { Logger } from "../../core";
 import { createPlugin } from "../../core/createPlugin";
+import { getCurrentBlock } from "../../queries/getCurrentBlock";
 import { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./headingTypes";
 import { isHeadingElement } from "./queries/headingQueries";
-import { getCurrentBlock } from "../../queries/getCurrentBlock";
-import type { Logger } from "../../core";
 
 const onDelete = (editor: Editor, logger: Logger) => {
   if (!editor.selection || !Range.isCollapsed(editor.selection) || editor.selection.anchor.offset) return;

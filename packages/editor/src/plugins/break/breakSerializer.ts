@@ -7,10 +7,10 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
+import { createSerializer } from "../../core/createSerializer";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { BREAK_ELEMENT_TYPE, type BreakSerializerOptions } from "./breakTypes";
 import { isBreakElement } from "./queries/breakQueries";
-import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
-import { createSerializer } from "../../core/createSerializer";
 
 export const breakSerializer = createSerializer<BreakSerializerOptions>({
   options: {

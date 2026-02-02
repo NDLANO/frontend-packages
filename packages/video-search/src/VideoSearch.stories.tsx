@@ -6,10 +6,10 @@
  *
  */
 
-import type { StoryFn } from "@storybook/react";
 import type { BrightcoveApiType } from "@ndla/types-embed";
-import { VideoSearch, type VideoQueryType } from "./VideoSearch";
+import type { StoryFn } from "@storybook/react";
 import { firstBrightcoveList, secondBrightcoveList } from "../../../dummydata/mockBrightcove";
+import { VideoSearch, type VideoQueryType } from "./VideoSearch";
 
 const firstDummyData = firstBrightcoveList as unknown as BrightcoveApiType[];
 const secondDummyData = secondBrightcoveList as unknown as BrightcoveApiType[];

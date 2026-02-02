@@ -7,10 +7,10 @@
  */
 
 import { jsx as slatejsx } from "slate-hyperscript";
+import { createSerializer } from "../../core/createSerializer";
+import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
 import { LINK_ELEMENT_TYPE } from "./linkTypes";
 import { isLinkElement } from "./queries/linkQueries";
-import { createHtmlTag } from "../../serialization/html/htmlSerializationHelpers";
-import { createSerializer } from "../../core/createSerializer";
 
 export const linkSerializer = createSerializer({
   deserialize: (el, children) => {

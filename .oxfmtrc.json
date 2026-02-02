@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "experimentalSortImports": {
+    "newlinesBetween": false
+  },
+  "ignorePatterns": [
+    "package.json",
+    "packages/*/lib/**/*.js",
+    "packages/*/es/**/*js",
+    "packages/*/dist/**/*js",
+    "packages/*/lib/**/*.ts",
+    "packages/*/es/**/*ts",
+    "packages/*/dist/**/*ts",
+    "node_modules/",
+    "packages/**/.scss",
+    ".idea/",
+    "yarn.lock",
+    "packages/styled-system/**/*",
+    "/.nx/cache",
+    "/.nx/workspace-data"
+  ]
+}

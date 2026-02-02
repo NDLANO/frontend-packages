@@ -6,14 +6,14 @@
  *
  */
 
-import { useRef, type ReactNode } from "react";
+import type { ConceptMetaData } from "@ndla/types-embed";
 import { Portal } from "@ark-ui/react";
 import { Figure, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { ConceptMetaData } from "@ndla/types-embed";
+import { useRef, type ReactNode } from "react";
+import { Gloss } from "../Gloss/Gloss";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
-import { Gloss } from "../Gloss/Gloss";
 
 interface Props {
   embed: ConceptMetaData;

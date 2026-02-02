@@ -7,9 +7,9 @@
  */
 
 import { Editor, Location, Path, Range, Transforms } from "slate";
-import { LIST_PLUGIN, type ListPluginOptions, type ListType } from "../listTypes";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock, defaultListItemBlock } from "../listBlocks";
+import { LIST_PLUGIN, type ListPluginOptions, type ListType } from "../listTypes";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
 const isPathSelected = (editor: Editor, path: Path): boolean => {

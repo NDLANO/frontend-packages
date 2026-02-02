@@ -6,9 +6,9 @@
  *
  */
 
-import { type ComponentPropsWithRef, type KeyboardEvent, forwardRef, useCallback, useRef } from "react";
 import { styled } from "@ndla/styled-system/jsx";
 import { composeRefs } from "@ndla/util";
+import { type ComponentPropsWithRef, type KeyboardEvent, forwardRef, useCallback, useRef } from "react";
 
 const StyledSpan = styled("span", { base: {} });
 

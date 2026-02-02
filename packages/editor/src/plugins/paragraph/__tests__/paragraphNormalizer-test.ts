@@ -8,13 +8,13 @@
 
 import type { Descendant } from "slate";
 import { createSlate } from "../../../editor/createSlate";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../../list/listTypes";
 import { sectionPlugin } from "../../section/sectionPlugin";
-import { paragraphPlugin } from "../paragraphPlugin";
 import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
-import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";
 import { spanPlugin } from "../../span/spanPlugin";
 import { SPAN_ELEMENT_TYPE } from "../../span/spanTypes";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../../list/listTypes";
+import { paragraphPlugin } from "../paragraphPlugin";
+import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";
 
 const editor = createSlate({ plugins: [sectionPlugin, paragraphPlugin, spanPlugin] });
 

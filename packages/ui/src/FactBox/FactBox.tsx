@@ -6,6 +6,9 @@
  *
  */
 
+import { ArrowDownShortLine } from "@ndla/icons";
+import { IconButton } from "@ndla/primitives";
+import { styled } from "@ndla/styled-system/jsx";
 import React, {
   type ComponentProps,
   type ReactNode,
@@ -17,9 +20,6 @@ import React, {
   useState,
 } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowDownShortLine } from "@ndla/icons";
-import { IconButton } from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
 
 interface Props extends ComponentProps<"aside"> {
   children?: ReactNode;

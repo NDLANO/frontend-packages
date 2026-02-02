@@ -6,13 +6,13 @@
  *
  */
 
-import { Children, type ComponentPropsWithoutRef, type ReactElement, type ReactNode, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { ExternalLinkLine } from "@ndla/icons";
 import { CardContent, CardHeading, CardRoot, Text, Heading, Button } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
+import { Children, type ComponentPropsWithoutRef, type ReactElement, type ReactNode, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { HeadingLevel } from "../types";
 
 interface RelatedArticleProps {

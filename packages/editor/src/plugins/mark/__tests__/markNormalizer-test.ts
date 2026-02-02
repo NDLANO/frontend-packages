@@ -8,11 +8,11 @@
 
 import type { Descendant } from "slate";
 import { createSlate } from "../../../editor/createSlate";
-import { sectionPlugin } from "../../section/sectionPlugin";
 import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
-import { markPlugin } from "../markPlugin";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { sectionPlugin } from "../../section/sectionPlugin";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { markPlugin } from "../markPlugin";
 
 describe("mark normalizer tests", () => {
   test("Remove marks from empty text nodes", () => {

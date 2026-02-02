@@ -6,9 +6,8 @@
  *
  */
 
-import parse from "html-react-parser";
-import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import type { StyledVariantProps } from "@ndla/styled-system/types";
+import type { ConceptTitleDTO, GlossDataDTO, GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import { AccordionItemTrigger } from "@ark-ui/react";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
@@ -20,10 +19,11 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { StyledVariantProps } from "@ndla/styled-system/types";
-import type { ConceptTitleDTO, GlossDataDTO, GlossExampleDTO } from "@ndla/types-backend/concept-api";
-import { GlossExample } from "./GlossExample";
+import parse from "html-react-parser";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { SpeechControl } from "../AudioPlayer/SpeechControl";
+import { GlossExample } from "./GlossExample";
 
 // TODO: Figure out padding between bordered and simple variant.
 // The design says that the content above the accordion content should have enough padding to align with the accordion content.

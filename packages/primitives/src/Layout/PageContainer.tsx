@@ -6,10 +6,10 @@
  *
  */
 
-import { forwardRef } from "react";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
-import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import { forwardRef } from "react";
 import { PageContent, type PageContentVariantProps } from "./PageContent";
 
 const pageContainerRecipe = cva({

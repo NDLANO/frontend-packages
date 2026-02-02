@@ -6,9 +6,9 @@
  *
  */
 
+import { messagesEN, messagesNN, messagesNB, messagesSE } from "@ndla/locales";
 import i18next, { type i18n } from "i18next";
 import { initReactI18next } from "react-i18next";
-import { messagesEN, messagesNN, messagesNB, messagesSE } from "@ndla/locales";
 
 export const supportedTranslationLanguages = ["nb", "nn", "en", "se"] as const;
 const i18nInstance: i18n = i18next.use(initReactI18next);

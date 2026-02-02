@@ -6,11 +6,10 @@
  *
  */
 
-import { type ComponentProps, type ReactElement, createElement, useMemo } from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-
+import { type ComponentProps, type ReactElement, createElement, useMemo } from "react";
 import { FileCopyLine, Icon, UserFill } from ".";
 import * as icons from "./icons";
 

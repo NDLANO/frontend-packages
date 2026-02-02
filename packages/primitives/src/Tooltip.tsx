@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { forwardRef } from "react";
 
 const tooltipRecipe = sva({
   slots: tooltipAnatomy.keys(),

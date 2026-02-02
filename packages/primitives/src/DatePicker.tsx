@@ -6,12 +6,12 @@
  *
  */
 
-import { forwardRef, type RefAttributes } from "react";
 import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
-import { Label } from "./Label";
+import { forwardRef, type RefAttributes } from "react";
 import type { TextProps } from "./Text";
+import { Label } from "./Label";
 
 const datePickerRecipe = sva({
   slots: datePickerAnatomy.keys(),

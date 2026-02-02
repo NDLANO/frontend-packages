@@ -6,10 +6,10 @@
  *
  */
 
-import { useMemo } from "react";
-import { Text } from "@ndla/primitives";
 import type { ImageDimensionsDTO } from "@ndla/types-backend/image-api";
+import { Text } from "@ndla/primitives";
 import { humanFileSize } from "@ndla/util";
+import { useMemo } from "react";
 
 interface Props {
   contentType: string;

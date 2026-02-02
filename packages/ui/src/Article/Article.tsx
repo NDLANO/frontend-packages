@@ -6,12 +6,12 @@
  *
  */
 
-import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { BadgesContainer } from "./BadgesContainer";
 
 const StyledArticleContent = styled(ark.section, {}, { baseComponent: true });

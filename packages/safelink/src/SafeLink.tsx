@@ -6,10 +6,10 @@
  *
  */
 
+import type { StyledProps } from "@ndla/styled-system/types";
+import { styled } from "@ndla/styled-system/jsx";
 import { forwardRef, type HTMLAttributes, type MutableRefObject, type ReactNode, useContext } from "react";
 import { Link, type LinkProps } from "react-router";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
 import { MissingRouterContext } from "./MissingRouterContext";
 
 const oldNdlaRegex = /(.*)\/?node\/(\d+).*/;

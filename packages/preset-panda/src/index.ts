@@ -6,8 +6,8 @@
  *
  */
 
-import { definePreset } from "@pandacss/dev";
 import { breakpoints } from "@ndla/core";
+import { definePreset } from "@pandacss/dev";
 import { animations, durations, easings, keyframes } from "./animations";
 import { boxShadows } from "./boxShadows";
 import { colors } from "./colors";

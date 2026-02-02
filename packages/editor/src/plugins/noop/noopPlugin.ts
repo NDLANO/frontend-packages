@@ -9,11 +9,11 @@
 import { Node, Transforms } from "slate";
 import { jsx as slatejsx } from "slate-hyperscript";
 import { createPlugin } from "../../core/createPlugin";
+import { isElementOfType } from "../../utils/isElementType";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraph/paragraphTypes";
 import { isParagraphElement } from "../paragraph/queries/paragraphElementQueries";
 import { NOOP_ELEMENT_TYPE, NOOP_PLUGIN, type NoopElementType, type NoopPluginOptions } from "./noopTypes";
 import { isNoopElement } from "./queries/noopQueries";
-import { isElementOfType } from "../../utils/isElementType";
 
 export const noopPlugin = createPlugin<NoopElementType, NoopPluginOptions>({
   name: NOOP_PLUGIN,

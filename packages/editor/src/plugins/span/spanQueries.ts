@@ -7,7 +7,7 @@
  */
 
 import type { Node } from "slate";
-import { SPAN_ELEMENT_TYPE } from "./spanTypes";
 import { isElementOfType } from "../../utils/isElementType";
+import { SPAN_ELEMENT_TYPE } from "./spanTypes";
 
 export const isSpanElement = (node: Node | undefined) => isElementOfType(node, SPAN_ELEMENT_TYPE);

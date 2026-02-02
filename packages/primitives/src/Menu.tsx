@@ -6,11 +6,11 @@
  *
  */
 
-import { forwardRef, type RefAttributes } from "react";
+import type { RecipeVariantProps, StyledProps, SystemStyleObject } from "@ndla/styled-system/types";
 import { Menu, menuAnatomy } from "@ark-ui/react";
 import { css, cva, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { RecipeVariantProps, StyledProps, SystemStyleObject } from "@ndla/styled-system/types";
+import { forwardRef, type RefAttributes } from "react";
 import { Text, type TextProps } from "./Text";
 
 const itemStyle: SystemStyleObject = css.raw({

@@ -6,11 +6,11 @@
  *
  */
 
-import type { ShortcutHandler } from "../../../core";
-import { LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { Element, Node, Path, Point, Range, Transforms, type NodeEntry } from "slate";
-import { defaultListItemBlock } from "../listBlocks";
+import type { ShortcutHandler } from "../../../core";
 import { isParagraphElement } from "../../paragraph/queries/paragraphElementQueries";
+import { defaultListItemBlock } from "../listBlocks";
+import { LIST_ITEM_ELEMENT_TYPE } from "../listTypes";
 import { isListItemElement } from "../queries/listElementQueries";
 
 export const listOnEnter: ShortcutHandler = (editor, event, logger) => {

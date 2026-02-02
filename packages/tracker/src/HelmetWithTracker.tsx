@@ -6,9 +6,9 @@
  *
  */
 
+import { usePrevious } from "@ndla/util";
 import { type ReactNode, useEffect } from "react";
 import warning from "tiny-warning";
-import { usePrevious } from "@ndla/util";
 import { useTracker } from "./useTracker";
 
 interface Props {

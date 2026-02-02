@@ -6,9 +6,9 @@
  *
  */
 
+import type { RadiusToken } from "@ndla/styled-system/tokens";
 import type { Meta, StoryFn } from "@storybook/react";
 import { styled } from "@ndla/styled-system/jsx";
-import type { RadiusToken } from "@ndla/styled-system/tokens";
 
 const RadiiContainer = styled("div", {
   base: {

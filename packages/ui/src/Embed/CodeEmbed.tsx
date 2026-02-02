@@ -6,15 +6,15 @@
  *
  */
 
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import type { CodeMetaData } from "@ndla/types-embed";
 import { FileCopyLine, CheckLine } from "@ndla/icons";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { CodeMetaData } from "@ndla/types-embed";
-import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { CodeBlock } from "../CodeBlock/CodeBlock";
 import { codeLanguageOptions, type ICodeLangugeOption } from "../CodeBlock/codeLanguageOptions";
+import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 
 interface Props {
   embed: CodeMetaData;

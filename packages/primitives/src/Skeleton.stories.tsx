@@ -6,9 +6,9 @@
  *
  */
 
-import { useEffect, useState } from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Circle, Stack } from "@ndla/styled-system/jsx";
+import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Skeleton } from "./Skeleton";
 import { Spinner } from "./Spinner";

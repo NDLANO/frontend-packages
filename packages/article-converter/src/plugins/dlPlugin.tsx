@@ -6,8 +6,8 @@
  *
  */
 
-import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { DefinitionList } from "@ndla/primitives";
+import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
 import { type PluginType } from "./types";
 
 export const dlPlugin: PluginType = (node, converterOpts, opts) => {

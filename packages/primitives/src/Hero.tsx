@@ -6,10 +6,10 @@
  *
  */
 
+import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
 
 const heroRecipe = sva({
   slots: ["root", "background", "content"],

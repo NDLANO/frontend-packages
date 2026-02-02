@@ -7,10 +7,10 @@
  */
 
 import { type UsePopoverProps } from "@ark-ui/react";
+import { usePopover } from "@ndla/primitives";
 import { useEffect, type RefObject } from "react";
 import { Range } from "slate";
 import { useFocused, useSelected, useSlate } from "slate-react";
-import { usePopover } from "@ndla/primitives";
 
 interface UseEditorPopover extends UsePopoverProps {
   openOnEnter?: boolean;

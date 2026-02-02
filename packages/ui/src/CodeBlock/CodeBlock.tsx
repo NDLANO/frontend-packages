@@ -6,10 +6,10 @@
  *
  */
 
-import { type ComponentPropsWithRef, forwardRef, useMemo } from "react";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { type ComponentPropsWithRef, forwardRef, useMemo } from "react";
 
 interface Props extends StyledProps, ComponentPropsWithRef<"pre"> {
   highlightedCode: string;

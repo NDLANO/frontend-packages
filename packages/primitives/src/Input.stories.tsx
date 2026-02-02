@@ -6,9 +6,9 @@
  *
  */
 
-import { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react";
 import { SearchLine, CheckboxCircleFill } from "@ndla/icons";
+import { useState } from "react";
 import { FieldRoot, FieldsetRoot } from "./Field";
 import { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";
 import { FieldHelper, FieldsetHelper } from "./FieldHelper";

@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import type { ConceptData } from "@ndla/types-embed";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Concept } from "./Concept";
 
 const visualElementData: ConceptData["visualElement"] = {

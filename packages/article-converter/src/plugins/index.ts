@@ -6,10 +6,10 @@
  *
  */
 
+import { anchorHeadingPlugin } from "./anchorHeadingPlugin";
 import { anchorPlugin } from "./anchorPlugin";
 import { asidePlugin } from "./asidePlugin";
 import { blockquotePlugin } from "./blockquotePlugin";
-import { anchorHeadingPlugin } from "./anchorHeadingPlugin";
 import { detailsPlugin } from "./detailsPlugin";
 import { divPlugin } from "./divPlugin";
 import { dlPlugin } from "./dlPlugin";

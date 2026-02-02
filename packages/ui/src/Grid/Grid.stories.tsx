@@ -9,9 +9,9 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
-import { Grid, GridItem } from "./Grid";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
 import { Default as PitchStory } from "../Pitch/Pitch.stories";
+import { Grid, GridItem } from "./Grid";
 
 export default {
   title: "Components/Grid",

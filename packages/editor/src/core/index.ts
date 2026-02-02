@@ -6,9 +6,9 @@
  *
  */
 
-import type { Descendant, Editor, Node, Path, ElementType } from "slate";
 import type { KeyboardEventLike } from "is-hotkey";
 import type { KeyboardEvent, JSX } from "react";
+import type { Descendant, Editor, Node, Path, ElementType } from "slate";
 import type { RenderElementProps, RenderLeafProps } from "slate-react";
 
 type KeyConditionFn = (event: KeyboardEventLike) => boolean;

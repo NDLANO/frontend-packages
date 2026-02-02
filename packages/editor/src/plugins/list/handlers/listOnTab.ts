@@ -7,13 +7,12 @@
  */
 
 import { Transforms, Path, Range } from "slate";
-
 import type { ShortcutHandler } from "../../../core";
-import { hasNodeOfType } from "../../../queries/hasNodeOfType";
-import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, LIST_PLUGIN, type ListPluginOptions } from "../listTypes";
 import { getCurrentBlock } from "../../../queries/getCurrentBlock";
+import { hasNodeOfType } from "../../../queries/hasNodeOfType";
 import { isElementOfType } from "../../../utils/isElementType";
 import { defaultListBlock } from "../listBlocks";
+import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE, LIST_PLUGIN, type ListPluginOptions } from "../listTypes";
 import { isListElement, isListItemElement } from "../queries/listElementQueries";
 
 export const listOnTab: ShortcutHandler<ListPluginOptions> = (editor, event, logger, options) => {

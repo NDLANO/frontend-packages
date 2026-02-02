@@ -6,10 +6,10 @@
  *
  */
 
-import { useRef } from "react";
-import { useTranslation } from "react-i18next";
 import { VolumeUpFill } from "@ndla/icons";
 import { IconButton } from "@ndla/primitives";
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   src: string;

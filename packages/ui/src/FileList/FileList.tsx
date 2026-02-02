@@ -6,9 +6,9 @@
  *
  */
 
-import { type ComponentPropsWithoutRef } from "react";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import { type ComponentPropsWithoutRef } from "react";
 
 interface Props extends ComponentPropsWithoutRef<"ul"> {}
 

@@ -6,8 +6,8 @@
  *
  */
 
-import mergeWith from "lodash.mergewith";
 import cloneDeep from "lodash.clonedeep";
+import mergeWith from "lodash.mergewith";
 import type { MappedConfigurationOption } from ".";
 
 export const mergeOptions = <TOptions extends object | undefined = undefined>(

@@ -7,8 +7,8 @@
  */
 
 import { isHotkey } from "is-hotkey";
-import { createPlugin } from "../../core/createPlugin";
 import { Transforms } from "slate";
+import { createPlugin } from "../../core/createPlugin";
 import { SOFT_BREAK_PLUGIN } from "./breakTypes";
 
 export const softBreakPlugin = createPlugin({

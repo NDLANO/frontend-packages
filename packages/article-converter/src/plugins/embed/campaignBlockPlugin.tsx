@@ -6,9 +6,9 @@
  *
  */
 
-import { attributesToProps } from "html-react-parser";
 import { type CampaignBlockMetaData } from "@ndla/types-embed";
 import { CampaignBlock } from "@ndla/ui";
+import { attributesToProps } from "html-react-parser";
 import { type PluginType } from "../types";
 
 export const campaignBlockPlugin: PluginType = (element, _, opts) => {

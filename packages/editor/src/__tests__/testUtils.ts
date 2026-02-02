@@ -16,10 +16,10 @@ import { listSerializer } from "../plugins/list/listSerializer";
 import { markSerializer } from "../plugins/mark/markSerializer";
 import { paragraphSerializer } from "../plugins/paragraph/paragraphSerializer";
 import { sectionSerializer } from "../plugins/section/sectionSerializer";
-import { deserializeFromHtml } from "../serialization/html/deserializeFromHtml";
-import { serializeToHtml } from "../serialization/html/serializeToHtml";
 import { spanSerializer } from "../plugins/span/spanSerializer";
 import { SPAN_ELEMENT_TYPE } from "../plugins/span/spanTypes";
+import { deserializeFromHtml } from "../serialization/html/deserializeFromHtml";
+import { serializeToHtml } from "../serialization/html/serializeToHtml";
 
 export const inlines = [
   // TYPE_CONCEPT_INLINE,

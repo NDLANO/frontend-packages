@@ -8,12 +8,12 @@
 
 import { useState } from "react";
 import { createEditor, Node, type Descendant, type Editor } from "slate";
-import type { ElementRenderer, LeafRenderer, PluginReturnType, SlatePlugin, SlateRenderer } from "../core";
-import { LoggerManager } from "../editor/logger/Logger";
 import { withHistory } from "slate-history";
 import { withReact } from "slate-react";
-import { withLogger } from "../editor/logger/withLogger";
+import type { ElementRenderer, LeafRenderer, PluginReturnType, SlatePlugin, SlateRenderer } from "../core";
 import { createElementRenderer, createLeafRenderer } from "../core/createRenderer";
+import { LoggerManager } from "../editor/logger/Logger";
+import { withLogger } from "../editor/logger/withLogger";
 
 export const withPlugins = (editor: Editor, plugins?: (SlatePlugin | PluginReturnType<any, any>)[]) => {
   // base case

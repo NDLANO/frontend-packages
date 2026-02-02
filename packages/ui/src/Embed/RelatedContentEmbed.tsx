@@ -6,8 +6,8 @@
  *
  */
 
-import { useTranslation } from "react-i18next";
 import type { RelatedContentMetaData } from "@ndla/types-embed";
+import { useTranslation } from "react-i18next";
 import { RelatedArticle } from "../RelatedArticleList/RelatedArticleList";
 
 interface Props {

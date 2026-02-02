@@ -7,10 +7,10 @@
  */
 
 import type { Descendant } from "slate";
-import { SPAN_ELEMENT_TYPE } from "../spanTypes";
 import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
-import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";
+import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
+import { SPAN_ELEMENT_TYPE } from "../spanTypes";
 
 const editor: Descendant[] = [
   {

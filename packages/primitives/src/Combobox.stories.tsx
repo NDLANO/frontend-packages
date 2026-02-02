@@ -6,11 +6,11 @@
  *
  */
 
-import { useState } from "react";
-import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import type { Meta, StoryFn } from "@storybook/react";
+import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { Flex, styled } from "@ndla/styled-system/jsx";
+import { useState } from "react";
 import { IconButton } from "./Button";
 import {
   ComboboxClearTrigger,

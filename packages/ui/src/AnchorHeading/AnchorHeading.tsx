@@ -6,9 +6,9 @@
  *
  */
 
-import { type ReactNode, useMemo } from "react";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { type ReactNode, useMemo } from "react";
 
 const StyledAnchor = styled(SafeLink, {
   base: {

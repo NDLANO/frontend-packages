@@ -50,53 +50,6 @@ export default tseslint.config(
     },
   },
   {
-    extends: [eslint.configs.recommended],
-    rules: {
-      "no-console": "warn",
-      "array-callback-return": "warn",
-      "default-case": "warn",
-      eqeqeq: ["warn", "smart"],
-      "no-self-compare": "warn",
-      "no-sequences": "warn",
-      "no-template-curly-in-string": "warn",
-      "no-throw-literal": "warn",
-      "no-unused-expressions": "error",
-      "no-duplicate-imports": "error",
-      "no-unused-vars": [
-        "error",
-        {
-          caughtErrors: "none",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          argsIgnorePattern: "^_",
-          args: "all",
-          ignoreRestSiblings: true,
-        },
-      ],
-      "no-restricted-imports": [
-        "error",
-        {
-          paths: [
-            {
-              name: "lodash",
-              message: "Do not import lodash directly, use subpath imports instead.",
-            },
-          ],
-          patterns: [
-            "@ndla/*/lib/**",
-            "@ndla/*/lib",
-            "@ndla/*/es/**",
-            "@ndla/*/es",
-            "@ndla/*/src/**",
-            "@ndla/*/src",
-            "@ndla/*/build/*",
-          ],
-        },
-      ],
-    },
-  },
-  {
     extends: tseslint.configs.recommended,
     files: ["**/*.{ts,tsx,mts,cts,mtsx,ctsx}"],
     rules: {
@@ -111,38 +64,16 @@ export default tseslint.config(
           typedefs: false,
         },
       ],
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          caughtErrors: "none",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          argsIgnorePattern: "^_",
-          args: "all",
-          ignoreRestSiblings: true,
-        },
-      ],
     },
   },
   {
-    extends: [reactPlugin.configs.flat?.recommended ?? {}, reactPlugin.configs.flat?.["jsx-runtime"] ?? {}].filter(
-      Boolean,
-    ),
     files: ["**/*.{jsx,tsx,mtsx,ctsx}"],
     plugins: {
       "react-hooks": hooksPlugin,
+      react: reactPlugin,
     },
     rules: {
-      "react/display-name": "off",
-      "react/prop-types": "off",
-      "react/button-has-type": "error",
-      "react/jsx-pascal-case": "warn",
-      "react/style-prop-object": "warn",
-      "react/forward-ref-uses-ref": "error",
-      "react/jsx-no-leaked-render": "error",
-      "react/jsx-no-useless-fragment": "error",
-      "react-hooks/rules-of-hooks": "error",
+      "react/no-deprecated": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
   },
@@ -157,10 +88,6 @@ export default tseslint.config(
       import: importPlugin,
     },
     rules: {
-      "import/first": "error",
-      // TODO: There's a perf issue with this rule. It's disabled until it's fixed.
-      // "import/no-cycle": ["warn", { maxDepth: Infinity }],
-      "import/no-anonymous-default-export": "error",
       // TODO: Replace this with the simple-import-sort plugin
       "import/no-extraneous-dependencies": "error",
     },
@@ -187,12 +114,6 @@ export default tseslint.config(
         ],
         2,
       ],
-    },
-  },
-  {
-    files: ["**/*.stories.{js,mjs,cjs,ts,jsx,tsx,mts,cts,mtsx,ctsx}"],
-    rules: {
-      "react/no-unescaped-entities": "off",
     },
   },
 );

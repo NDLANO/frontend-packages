@@ -26,6 +26,7 @@ export { ArrowLeftShortLine } from "./ArrowLeftShortLine";
 export { ArrowRightLine } from "./ArrowRightLine";
 export { ArrowRightShortLine } from "./ArrowRightShortLine";
 export { ArrowUpDoubleLine } from "./ArrowUpDoubleLine";
+export { ArrowUpDownLine } from "./ArrowUpDownLine";
 export { ArrowUpShortLine } from "./ArrowUpShortLine";
 export { Bold } from "./Bold";
 export { BookOpenFill } from "./BookOpenFill";

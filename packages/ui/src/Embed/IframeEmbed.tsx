@@ -83,7 +83,7 @@ export const IframeEmbed = ({ embed }: Props) => {
         src={url}
         width={strippedWidth}
         height={strippedHeight}
-        allow="fullscreen; encrypted-media"
+        allow="autoplay; encrypted-media; fullscreen"
         loading="lazy"
       />
     </StyledFigure>

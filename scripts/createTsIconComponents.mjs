@@ -8,6 +8,7 @@
 
 import { transform } from "@svgr/core";
 import { readFile, readdir, stat, writeFile } from "fs/promises";
+import { format } from "oxfmt";
 import { join, dirname } from "path";
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
@@ -38,7 +39,7 @@ const filePromises = allFiles.map(async ({ filename, file, ctime, mtime }) => {
     {
       jsxRuntime: "automatic",
       typescript: true,
-      plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx", "@svgr/plugin-prettier"],
+      plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
       svgo: true,
       svgoConfig: {
         multipass: true,
@@ -85,8 +86,10 @@ const filePromises = allFiles.map(async ({ filename, file, ctime, mtime }) => {
     { componentName, filePath: `${rootDir}/src/icons/${componentName}.tsx` },
   );
 
+  const fileName = `${rootDir}/src/icons/${componentName}.tsx`;
   const componentWithIcon = component.replace("<svg", "<Icon").replace("</svg>", "</Icon>");
-  await writeFile(`${rootDir}/src/icons/${componentName}.tsx`, componentWithIcon);
+  const formattedComponent = await format(fileName, componentWithIcon);
+  await writeFile(fileName, formattedComponent.code);
 });
 
 const exports = svgFiles.map((icon) => `export { ${icon.split(".")[0]} } from "./${icon.split(".")[0]}";`).join("\n");

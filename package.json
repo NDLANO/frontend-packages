@@ -1,7 +1,20 @@
 {
-  "private": true,
   "name": "frontend-packages",
+  "private": true,
   "description": "NDLA Frontend Packages",
+  "homepage": "https://github.com/NDLANO/frontend-packages",
+  "bugs": {
+    "url": "https://github.com/NDLANO/frontend-packages/issues"
+  },
+  "license": "GPL-3.0",
+  "author": "ndla@knowit.no",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "yarn workspace @ndla/preset-panda run prepare",
     "build": "nx run-many --target=build",
@@ -27,19 +40,6 @@
     "check-translations": "vitest --run 'packages/ui/src/locale/__tests__/'",
     "generate:icons": "node ./scripts/createTsIconComponents.mjs"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git"
-  },
-  "bugs": {
-    "url": "https://github.com/NDLANO/frontend-packages/issues"
-  },
-  "homepage": "https://github.com/NDLANO/frontend-packages",
-  "author": "ndla@knowit.no",
-  "license": "GPL-3.0",
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
     "@ark-ui/react": "^5.30.0",
     "@babel/core": "^7.28.6",
@@ -53,7 +53,6 @@
     "@storybook/react-vite": "^10.2.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@svgr/plugin-prettier": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

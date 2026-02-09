@@ -19,7 +19,6 @@ export function getExternalDeps(pkgDir: string) {
 export default defineConfig({
   entry: ["src/index.ts"],
   format: ["esm", "cjs"],
-  silent: true,
   outDir: "dist",
   outputOptions: (options, format) => {
     if (format === "es") {

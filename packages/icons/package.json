@@ -29,10 +29,7 @@
     "dist",
     "lib",
     "es",
-    "editor",
-    "common",
-    "contentType",
-    "action"
+    "svg"
   ],
   "dependencies": {
     "@ndla/styled-system": "workspace:^"

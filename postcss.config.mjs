@@ -8,6 +8,8 @@
 
 import panda from "@pandacss/dev/postcss";
 
-export default {
+const config = {
   plugins: [panda()],
 };
+
+export default config;

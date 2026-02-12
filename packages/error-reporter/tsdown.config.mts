@@ -10,7 +10,7 @@ import baseConfig from "../../tsdown.config.mts";
 
 const config = {
   ...baseConfig,
-  entry: ["src/index.ts"],
+  entry: ["src/index.js"],
 };
 
 export default config;

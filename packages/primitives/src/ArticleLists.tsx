@@ -91,9 +91,9 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
       () =>
         ({
           "--start": start ? start - 1 : 0,
-          "--counter-name": variant === "letters" ? counterId : undefined,
+          "--counter-name": counterId,
         }) as CSSProperties,
-      [counterId, start, variant],
+      [counterId, start],
     );
     return (
       <StyledOrderedList

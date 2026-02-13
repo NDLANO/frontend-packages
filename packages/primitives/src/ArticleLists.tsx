@@ -10,7 +10,7 @@ import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/sty
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
-import { type CSSProperties, forwardRef, useId, useMemo } from "react";
+import { createContext, type CSSProperties, forwardRef, useContext, useId, useMemo } from "react";
 
 const orderedListRecipe = cva({
   base: {
@@ -37,11 +37,11 @@ const orderedListRecipe = cva({
          *  ol(letters) -> A.
          *    ol (numbers) -> 1. (Without the CSS variable, this would be 1.1)
          */
-        counterReset: "var(--counter-name, numbers) var(--start, 0)",
+        counterReset: "var(--counter-name) var(--start, 0)",
         "& > li": {
-          counterIncrement: "var(--counter-name, numbers)",
+          counterIncrement: "var(--counter-name)",
           _before: {
-            content: `counters(var(--counter-name, numbers), ".") ". "`,
+            content: `counters(var(--counter-name), ".") ". "`,
           },
           // If a nested OL is not a letters variant, it's a numbers variant. Keep increasing the margin to account for wider numbers.
           "& > ol:not([data-variant='letters']) > li": {
@@ -84,28 +84,39 @@ export interface OrderedListProps extends StyledProps, HTMLArkProps<"ol">, Order
 
 const StyledOrderedList = styled(ark.ol, {}, { baseComponent: true });
 
+const ListContext = createContext<"numbers" | "letters" | undefined>(undefined);
+
+const useCurrentListContext = () => {
+  const ctx = useContext(ListContext);
+  return ctx;
+};
+
 export const OrderedList = forwardRef<HTMLOListElement, OrderedListProps>(
-  ({ variant, css: cssProp, start, ...props }, ref) => {
+  ({ variant = "numbers", css: cssProp, start, ...props }, ref) => {
     const counterId = useId();
-    const style = useMemo(
-      () =>
-        ({
-          "--start": start ? start - 1 : 0,
-          "--counter-name": variant === "letters" ? counterId : undefined,
-        }) as CSSProperties,
-      [counterId, start, variant],
-    );
+    const currentContext = useCurrentListContext();
+
+    const style = useMemo(() => {
+      const css: Record<string, any> = { "--start": start ? start - 1 : 0 };
+      if (variant !== currentContext) {
+        css["--counter-name"] = counterId;
+      }
+      return css as CSSProperties;
+    }, [start, variant, currentContext, counterId]);
+
     return (
-      <StyledOrderedList
-        data-embed-type="ordered-list"
-        data-variant={variant}
-        start={start}
-        type={variant === "letters" ? "A" : undefined}
-        css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
-        style={style}
-        ref={ref}
-        {...props}
-      />
+      <ListContext.Provider value={variant ?? "numbers"}>
+        <StyledOrderedList
+          data-embed-type="ordered-list"
+          data-variant={variant}
+          start={start}
+          type={variant === "letters" ? "A" : undefined}
+          css={css.raw(orderedListRecipe.raw({ variant }), cssProp)}
+          style={style}
+          ref={ref}
+          {...props}
+        />
+      </ListContext.Provider>
     );
   },
 );

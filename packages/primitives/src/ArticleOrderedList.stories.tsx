@@ -11,6 +11,7 @@ import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import { OrderedList, UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
 import { PageContent } from "./Layout/PageContent";
+import { MessageBox } from "./MessageBox";
 
 const lipsum =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis convallis augue. Aenean ipsum erat, fringilla ut erat fringilla, scelerisque eleifend nulla. Vestibulum facilisis odio vitae risus accumsan vestibulum. Nulla vitae enim condimentum, finibus lacus sed, sodales quam. Donec pretium metus ac blandit varius. Ut vehicula risus vitae malesuada accumsan. Praesent id ante condimentum, venenatis ex varius, tempor diam. Praesent mollis luctus enim, id convallis metus vulputate a. Sed et diam odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur faucibus sodales tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus.";
@@ -355,4 +356,23 @@ export const WithNestedUnOrderedList: StoryFn = () => (
       </UnOrderedList>
     </li>
   </OrderedList>
+);
+
+export const ListAfterListInsideComponent: StoryFn = () => (
+  <ArticleContent>
+    <OrderedList>
+      <li>Listepunkt 1</li>
+      <li>Listepunkt 2</li>
+      <li>Listepunkt 3</li>
+      <li>Listepunkt 4</li>
+    </OrderedList>
+    <MessageBox>
+      <OrderedList>
+        <li>Listepunkt 1</li>
+        <li>Listepunkt 2</li>
+        <li>Listepunkt 3</li>
+        <li>Listepunkt 4</li>
+      </OrderedList>
+    </MessageBox>
+  </ArticleContent>
 );

@@ -1619,6 +1619,10 @@ const tokens = {
     "value": "var(--colors-purple-100)",
     "variable": "var(--colors-surface-action-brand-1-hover)"
   },
+  "colors.surface.action.brand.1.hover.strong": {
+    "value": "var(--colors-purple-400)",
+    "variable": "var(--colors-surface-action-brand-1-hover-strong)"
+  },
   "colors.surface.action.brand.1.active": {
     "value": "var(--colors-purple-300)",
     "variable": "var(--colors-surface-action-brand-1-active)"
@@ -2519,6 +2523,22 @@ const tokens = {
     "value": "var(--colors-color-palette-1-hover)",
     "variable": "var(--colors-color-palette-1-hover)"
   },
+  "colors.colorPalette.action.brand.1.hover.strong": {
+    "value": "var(--colors-color-palette-action-brand-1-hover-strong)",
+    "variable": "var(--colors-color-palette-action-brand-1-hover-strong)"
+  },
+  "colors.colorPalette.brand.1.hover.strong": {
+    "value": "var(--colors-color-palette-brand-1-hover-strong)",
+    "variable": "var(--colors-color-palette-brand-1-hover-strong)"
+  },
+  "colors.colorPalette.1.hover.strong": {
+    "value": "var(--colors-color-palette-1-hover-strong)",
+    "variable": "var(--colors-color-palette-1-hover-strong)"
+  },
+  "colors.colorPalette.hover.strong": {
+    "value": "var(--colors-color-palette-hover-strong)",
+    "variable": "var(--colors-color-palette-hover-strong)"
+  },
   "colors.colorPalette.action.brand.1.active": {
     "value": "var(--colors-color-palette-action-brand-1-active)",
     "variable": "var(--colors-color-palette-action-brand-1-active)"
@@ -2582,10 +2602,6 @@ const tokens = {
   "colors.colorPalette.actionSubtle.hover.strong": {
     "value": "var(--colors-color-palette-action-subtle-hover-strong)",
     "variable": "var(--colors-color-palette-action-subtle-hover-strong)"
-  },
-  "colors.colorPalette.hover.strong": {
-    "value": "var(--colors-color-palette-hover-strong)",
-    "variable": "var(--colors-color-palette-hover-strong)"
   },
   "colors.colorPalette.actionSubtle.active": {
     "value": "var(--colors-color-palette-action-subtle-active)",

@@ -63,6 +63,9 @@ export const globalCss = defineGlobalStyles({
     '& p[data-align="center"]': {
       textAlign: "center",
     },
+    "& p:not([class])": {
+      overflowWrap: "break-word",
+    },
     // TODO: This is not an actual text style. Should it be?
     blockquote: {
       textStyle: "body.medium",

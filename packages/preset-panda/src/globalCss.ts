@@ -40,6 +40,7 @@ export const globalCss = defineGlobalStyles({
   code: {
     background: "background.subtle",
     whiteSpace: "pre-wrap",
+    overflowWrap: "anywhere",
   },
   /* Hide default zendesk launcher so that we can provide our own. */
   "iframe#launcher": {
@@ -62,9 +63,6 @@ export const globalCss = defineGlobalStyles({
     },
     '& p[data-align="center"]': {
       textAlign: "center",
-    },
-    "& p:not([class])": {
-      overflowWrap: "break-word",
     },
     // TODO: This is not an actual text style. Should it be?
     blockquote: {

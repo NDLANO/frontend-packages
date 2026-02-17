@@ -9,7 +9,7 @@
 import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 
 export interface ExpandableBoxProps extends HTMLArkProps<"details">, StyledProps {}
 
@@ -37,9 +37,35 @@ const StyledExpandableBox = styled(
   { baseComponent: true },
 );
 
-export const ExpandableBox = forwardRef<HTMLDetailsElement, ExpandableBoxProps>((props, ref) => (
-  <StyledExpandableBox {...props} data-embed-type="expandable-box" ref={ref} />
-));
+const onBeforePrint = (_: Event) => {
+  const detailsElements = document.querySelectorAll("details");
+  detailsElements.forEach((details) => {
+    if (!details.hasAttribute("open")) {
+      details.setAttribute("data-print-open", "true");
+      details.setAttribute("open", "true");
+    }
+  });
+};
+
+const onAfterPrint = (_: Event) => {
+  const detailsElements = document.querySelectorAll("details[data-print-open]");
+  detailsElements.forEach((details) => {
+    details.removeAttribute("data-print-open");
+    details.removeAttribute("open");
+  });
+};
+
+export const ExpandableBox = forwardRef<HTMLDetailsElement, ExpandableBoxProps>((props, ref) => {
+  useEffect(() => {
+    window.addEventListener("beforeprint", onBeforePrint);
+    window.addEventListener("afterprint", onAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", onBeforePrint);
+      window.removeEventListener("afterprint", onAfterPrint);
+    };
+  }, []);
+  return <StyledExpandableBox {...props} data-embed-type="expandable-box" ref={ref} />;
+});
 
 export interface ExpandableBoxSummaryProps extends HTMLArkProps<"summary">, StyledProps {}
 

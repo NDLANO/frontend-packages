@@ -15,13 +15,14 @@
   "workspaces": [
     "packages/*"
   ],
+  "type": "module",
   "scripts": {
     "prepare": "yarn workspace @ndla/preset-panda run prepare",
     "build": "nx run-many --target=build",
     "build:types": "nx run-many --target=prepublish",
     "lint": "yarn format-check && yarn lint-es",
-    "lint-es": "eslint --cache --max-warnings=0 ./packages",
-    "lint:fix": "yarn lint-es --fix",
+    "lint-es": "oxlint --type-aware --deny-warnings",
+    "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "format-check": "oxfmt --check",
     "type-check": "tsc --noEmit",
@@ -69,6 +70,8 @@
     "lerna": "^8.2.3",
     "nx": "20.1.4",
     "oxfmt": "^0.34.0",
+    "oxlint": "^1.50.0",
+    "oxlint-tsgolint": "^0.14.2",
     "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -81,7 +84,7 @@
     "storybook": "^10.2.8",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
+    "typescript-eslint": "^8.56.0",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
   },

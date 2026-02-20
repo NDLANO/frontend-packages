@@ -53,6 +53,6 @@ export const Default: StoryFn<typeof VideoSearch> = ({ ...args }) => {
       return setTimeout(() => resolve(firstDummyData), 1000);
     });
 
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   return <VideoSearch {...args} searchVideos={fetchVideos} onVideoSelect={console.log} onError={console.error} />;
 };

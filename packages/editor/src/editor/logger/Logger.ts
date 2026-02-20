@@ -35,7 +35,7 @@ export class LoggerManager {
 
   private createLogger(pluginName: string): Logger {
     return {
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       log: (...args: any[]) => this.#debug && console.log(`[${pluginName}]:`, ...args),
     };
   }

@@ -37,8 +37,9 @@
     "@ndla/util": "^5.0.18-alpha.0"
   },
   "devDependencies": {
+    "@internationalized/date": "3.10.0",
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^1.7.0"
+    "@storybook/react": "^10.2.10"
   },
   "peerDependencies": {
     "react": ">= 18",

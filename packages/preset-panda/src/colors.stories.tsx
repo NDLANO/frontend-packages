@@ -6,12 +6,12 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
-import type { ReactNode } from "react";
 import { Heading, Text } from "@ndla/primitives";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { type ColorToken, token } from "@ndla/styled-system/tokens";
+import type { Meta, StoryFn } from "@storybook/react";
+import type { ReactNode } from "react";
 
 const StyledColorBlocks = styled("div", {
   base: {

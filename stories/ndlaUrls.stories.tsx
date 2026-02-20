@@ -6,11 +6,11 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { PageContent } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
+import type { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "NDLA urls",

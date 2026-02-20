@@ -6,11 +6,11 @@
  *
  */
 
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { PencilFill, DeleteBinLine, ShareLine, MoreLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Badge } from "../Badge";
 import { IconButton } from "../Button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu";

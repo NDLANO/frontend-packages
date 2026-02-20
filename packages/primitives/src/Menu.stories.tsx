@@ -6,7 +6,6 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Portal } from "@ark-ui/react";
 import {
   FileCopyLine,
@@ -18,6 +17,7 @@ import {
   SettingsLine,
 } from "@ndla/icons";
 import { HStack, styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn } from "@storybook/react";
 import { Button } from "./Button";
 import {
   MenuContent,

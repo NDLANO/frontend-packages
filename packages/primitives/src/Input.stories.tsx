@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { SearchLine, CheckboxCircleFill } from "@ndla/icons";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { FieldRoot, FieldsetRoot } from "./Field";
 import { FieldErrorMessage, FieldsetErrorText } from "./FieldErrorMessage";

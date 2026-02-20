@@ -6,9 +6,9 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { forwardRef, useEffect } from "react";
 
 export interface ExpandableBoxProps extends HTMLArkProps<"details">, StyledProps {}

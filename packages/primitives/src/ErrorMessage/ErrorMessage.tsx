@@ -6,10 +6,10 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { forwardRef } from "react";
 import { Heading, Text, type TextProps } from "../Text";
 

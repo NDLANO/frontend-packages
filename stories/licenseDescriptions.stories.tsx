@@ -6,7 +6,6 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { ALL_ABBREVIATIONS, getLicenseByAbbreviation } from "@ndla/licenses";
 import {
   Table,
@@ -17,6 +16,7 @@ import {
   RadioGroupItemText,
   RadioGroupItemHiddenInput,
 } from "@ndla/primitives";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
 /**

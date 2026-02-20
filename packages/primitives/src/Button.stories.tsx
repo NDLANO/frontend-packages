@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { FileCopyLine, ArrowRightLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
 export default {

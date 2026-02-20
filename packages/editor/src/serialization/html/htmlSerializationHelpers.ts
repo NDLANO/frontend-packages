@@ -6,8 +6,8 @@
  *
  */
 
-import type { ComponentProps, ElementType } from "react";
 import he from "he";
+import type { ComponentProps, ElementType } from "react";
 
 const reduceRegexp = /(-|_)[a-z]/g;
 

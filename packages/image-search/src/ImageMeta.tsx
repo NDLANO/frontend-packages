@@ -6,8 +6,8 @@
  *
  */
 
-import type { ImageDimensionsDTO } from "@ndla/types-backend/image-api";
 import { Text } from "@ndla/primitives";
+import type { ImageDimensionsDTO } from "@ndla/types-backend/image-api";
 import { humanFileSize } from "@ndla/util";
 import { useMemo } from "react";
 

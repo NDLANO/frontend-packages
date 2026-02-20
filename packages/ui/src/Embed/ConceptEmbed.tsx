@@ -6,17 +6,17 @@
  *
  */
 
-import type { ConceptMetaData } from "@ndla/types-embed";
 import { Portal } from "@ark-ui/react";
 import { PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { ConceptMetaData } from "@ndla/types-embed";
 import parse from "html-react-parser";
 import { forwardRef, useMemo, useRef, type ReactNode } from "react";
-import type { RenderContext } from "./types";
 import { Concept, type ConceptProps } from "../Concept/Concept";
 import { ConceptInlineTriggerButton } from "./ConceptInlineTriggerButton";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 import { GlossEmbed } from "./GlossEmbed";
+import type { RenderContext } from "./types";
 
 interface BaseProps {
   renderContext?: RenderContext;

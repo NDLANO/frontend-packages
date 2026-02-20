@@ -6,11 +6,11 @@
  *
  */
 
-import type { CampaignBlockEmbedData } from "@ndla/types-embed";
 import { ArrowRightLine } from "@ndla/icons";
 import { Text } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import type { CampaignBlockEmbedData } from "@ndla/types-embed";
 import parse from "html-react-parser";
 import { type ReactNode } from "react";
 import type { HeadingLevel } from "../types";

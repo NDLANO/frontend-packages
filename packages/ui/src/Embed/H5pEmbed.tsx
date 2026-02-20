@@ -6,9 +6,9 @@
  *
  */
 
-import type { H5pMetaData } from "@ndla/types-embed";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { H5pMetaData } from "@ndla/types-embed";
 import { useTranslation } from "react-i18next";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
 

@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleWrapper, ArticleContent } from "@ndla/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 import { FramedContent } from "./FramedContent";
 import { PageContent } from "./Layout/PageContent";
 

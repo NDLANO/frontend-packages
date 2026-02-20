@@ -6,10 +6,10 @@
  *
  */
 
-import type { CodeMetaData } from "@ndla/types-embed";
 import { FileCopyLine, CheckLine } from "@ndla/icons";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { CodeMetaData } from "@ndla/types-embed";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CodeBlock } from "../CodeBlock/CodeBlock";

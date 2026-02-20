@@ -6,9 +6,9 @@
  *
  */
 
+import { styled } from "@ndla/styled-system/jsx";
 import type { CopyrightMetaData } from "@ndla/types-embed";
 import type { ReactNode } from "react";
-import { styled } from "@ndla/styled-system/jsx";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 
 interface Props {

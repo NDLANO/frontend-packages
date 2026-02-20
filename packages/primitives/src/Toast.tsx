@@ -6,11 +6,11 @@
  *
  */
 
-import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
-import type { RefAttributes } from "react";
 import { Toast, toastAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import type { RefAttributes } from "react";
 import { Text, type TextProps } from "./Text";
 
 const toastRecipe = sva({

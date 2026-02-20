@@ -6,10 +6,10 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { FileUpload, fileUploadAnatomy } from "@ark-ui/react";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { forwardRef, type RefAttributes } from "react";
 import { Label } from "./Label";
 import { type TextProps, Text } from "./Text";

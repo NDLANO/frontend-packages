@@ -6,10 +6,10 @@
  *
  */
 
-import { transform } from "@svgr/core";
 import { readFile, readdir, stat, writeFile } from "fs/promises";
-import { format } from "oxfmt";
 import { join, dirname } from "path";
+import { transform } from "@svgr/core";
+import { format } from "oxfmt";
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
 const rootDir = join(__dirname, "..", "packages", "icons");

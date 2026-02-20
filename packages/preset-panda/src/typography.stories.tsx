@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 
 const TextContainer = styled("div", {

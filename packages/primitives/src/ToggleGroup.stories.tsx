@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Bold, Italic, LinkMedium, ListAlphabetical, ListUnordered, ListOrdered } from "@ndla/icons";
 import { HStack, styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn } from "@storybook/react";
 import { IconButton } from "./Button";
 import { ToggleGroupRoot, ToggleGroupItem } from "./ToggleGroup";
 

@@ -6,10 +6,10 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import { type SizeToken, token } from "@ndla/styled-system/tokens";
+import type { Meta, StoryFn } from "@storybook/react";
 
 const SizesContainer = styled("div", {
   base: {

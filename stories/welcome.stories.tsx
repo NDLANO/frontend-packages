@@ -6,10 +6,10 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { NdlaLogoText, PageContent, UnOrderedList } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { ArticleWrapper, ArticleContent } from "@ndla/ui";
+import type { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Welcome",

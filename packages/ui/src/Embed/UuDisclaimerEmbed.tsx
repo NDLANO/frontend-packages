@@ -6,11 +6,11 @@
  *
  */
 
-import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 import { Portal } from "@ark-ui/react";
 import { AccessibilityFill, ErrorWarningFill } from "@ndla/icons";
 import { IconButton, PopoverContent, PopoverRoot, PopoverTrigger } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { UuDisclaimerMetaData } from "@ndla/types-embed";
 import { type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 

@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Heading, Text } from "./Text";
 
 const exampleText = "Nasjonal digital læringsarena";

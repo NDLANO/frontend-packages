@@ -6,11 +6,11 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Badge, Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { linkOverlay } from "@ndla/styled-system/patterns";
+import type { Meta, StoryFn } from "@storybook/react";
 import { CardContent, CardHeading, CardImage, CardRoot } from "./Card";
 
 export default {

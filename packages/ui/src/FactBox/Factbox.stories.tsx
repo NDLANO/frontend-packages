@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { Button, Heading, UnOrderedList, OrderedList } from "@ndla/primitives";
+import type { Meta, StoryObj } from "@storybook/react";
 import { FactBox } from "./FactBox";
 
 /**

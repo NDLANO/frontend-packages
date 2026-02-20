@@ -6,10 +6,10 @@
  *
  */
 
-import type { DraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
-import type { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { DraftCopyrightDTO as ConceptCopyright } from "@ndla/types-backend/concept-api";
+import type { ConceptVisualElementMeta } from "@ndla/types-embed";
 import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { BrightcoveEmbed } from "../Embed/BrightcoveEmbed";
 import { ExternalEmbed } from "../Embed/ExternalEmbed";

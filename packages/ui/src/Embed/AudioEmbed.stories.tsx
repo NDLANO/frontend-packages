@@ -6,9 +6,9 @@
  *
  */
 
+import { PageContent } from "@ndla/primitives";
 import type { AudioEmbedData, AudioMeta } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
-import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "../Article/Article";
 import { AudioEmbed } from "./AudioEmbed";
 

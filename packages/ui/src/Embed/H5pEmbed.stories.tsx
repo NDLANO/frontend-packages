@@ -6,9 +6,9 @@
  *
  */
 
+import { PageContent } from "@ndla/primitives";
 import type { H5pEmbedData, H5pData } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
-import { PageContent } from "@ndla/primitives";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
 import { H5pEmbed } from "./H5pEmbed";
 

@@ -6,11 +6,11 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Portal, createListCollection } from "@ark-ui/react";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { css } from "@ndla/styled-system/css";
 import { HStack } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { Button, IconButton } from "./Button";
 import {

@@ -6,8 +6,8 @@
  *
  */
 
-import type { ArtifactContent, Artifact, ArtifactId } from "@pandacss/types";
 import { defineConfig } from "@pandacss/dev";
+import type { ArtifactContent, Artifact, ArtifactId } from "@pandacss/types";
 import preset from "./src";
 import { forwardCssPropPlugin } from "./src/plugins/forwardCssPropPlugin";
 

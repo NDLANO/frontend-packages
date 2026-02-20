@@ -6,14 +6,14 @@
  *
  */
 
-import type { AudioMetaData } from "@ndla/types-embed";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import type { Author } from "./ImageEmbed";
+import type { AudioMetaData } from "@ndla/types-embed";
 import { AudioPlayer } from "../AudioPlayer/AudioPlayer";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import type { Author } from "./ImageEmbed";
 
 const StyledFigure = styled(Figure, {
   base: {

@@ -6,9 +6,9 @@
  *
  */
 
+import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
 import type { UUDisclaimerData, UuDisclaimerEmbedData } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
 import { AnchorHeading } from "../AnchorHeading/AnchorHeading";
 import { ArticleWrapper, ArticleContent } from "../Article/Article";
 import { FactBox } from "../FactBox/FactBox";

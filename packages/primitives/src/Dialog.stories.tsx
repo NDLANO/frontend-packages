@@ -6,10 +6,10 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Portal } from "@ark-ui/react";
 import { CloseLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { Button, IconButton } from "./Button";
 import {

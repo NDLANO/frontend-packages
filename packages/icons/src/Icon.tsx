@@ -6,9 +6,9 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { type ComponentPropsWithRef } from "react";
 
 export const iconRecipe = cva({

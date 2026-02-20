@@ -6,8 +6,8 @@
  *
  */
 
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { OrderedList, UnOrderedList } from "./ArticleLists";
 import { BlockQuote } from "./BlockQuote";
 import { PageContent } from "./Layout/PageContent";

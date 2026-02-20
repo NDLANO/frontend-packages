@@ -6,11 +6,6 @@
  *
  */
 
-import type {
-  AudioMetaInformationDTO,
-  AudioSummaryDTO,
-  AudioSummarySearchResultDTO,
-} from "@ndla/types-backend/audio-api";
 import { ArrowLeftShortLine, ArrowRightShortLine } from "@ndla/icons";
 import {
   Text,
@@ -24,6 +19,11 @@ import {
   type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type {
+  AudioMetaInformationDTO,
+  AudioSummaryDTO,
+  AudioSummarySearchResultDTO,
+} from "@ndla/types-backend/audio-api";
 import { type ReactNode, useEffect, useState } from "react";
 import { AudioSearchInput } from "./AudioSearchInput";
 import { AudioSearchList } from "./AudioSearchList";

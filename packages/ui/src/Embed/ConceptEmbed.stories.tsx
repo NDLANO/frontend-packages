@@ -6,9 +6,9 @@
  *
  */
 
+import { PageContent } from "@ndla/primitives";
 import type { ConceptData, ConceptEmbedData } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
-import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "../Article/Article";
 import { ConceptEmbed } from "./ConceptEmbed";
 

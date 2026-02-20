@@ -10,8 +10,8 @@ import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef, type RefAttributes } from "react";
-import type { TextProps } from "./Text";
 import { Label } from "./Label";
+import type { TextProps } from "./Text";
 
 const datePickerRecipe = sva({
   slots: datePickerAnatomy.keys(),

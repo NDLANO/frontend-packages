@@ -6,10 +6,10 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { type HTMLArkProps, ark } from "@ark-ui/react";
 import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { forwardRef } from "react";
 
 export const spinnerRecipe = cva({

@@ -6,8 +6,8 @@
  *
  */
 
-import type { MetaData } from "@ndla/types-embed";
 import { Text } from "@ndla/primitives";
+import type { MetaData } from "@ndla/types-embed";
 import { useTranslation } from "react-i18next";
 
 interface Props {

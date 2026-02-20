@@ -6,10 +6,10 @@
  *
  */
 
-import type { StyledProps } from "@ndla/styled-system/types";
 import { Select, selectAnatomy } from "@ark-ui/react";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
+import type { StyledProps } from "@ndla/styled-system/types";
 import { forwardRef, type ElementType, type RefAttributes } from "react";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";

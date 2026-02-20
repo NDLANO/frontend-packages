@@ -6,10 +6,10 @@
  *
  */
 
-import type { AnchorHTMLAttributes } from "react";
 import { SafeLink } from "@ndla/safelink";
 import { getPossiblyRelativeUrl } from "@ndla/ui";
 import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
+import type { AnchorHTMLAttributes } from "react";
 import { type PluginType } from "./types";
 
 export const anchorPlugin: PluginType = (node, opts, { path, isOembed }) => {

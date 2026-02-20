@@ -6,9 +6,9 @@
  *
  */
 
-import type { GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import { Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import { Fragment } from "react";
 
 interface Props {

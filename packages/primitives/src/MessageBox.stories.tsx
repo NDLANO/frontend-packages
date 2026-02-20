@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { InformationLine } from "@ndla/icons";
 import { css } from "@ndla/styled-system/css";
+import type { Meta, StoryObj } from "@storybook/react";
 import { MessageBox } from "./MessageBox";
 import { Text } from "./Text";
 

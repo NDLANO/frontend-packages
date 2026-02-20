@@ -6,8 +6,6 @@
  *
  */
 
-import type { StyledVariantProps } from "@ndla/styled-system/types";
-import type { ConceptTitleDTO, GlossDataDTO, GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import { AccordionItemTrigger } from "@ark-ui/react";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
@@ -19,6 +17,8 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledVariantProps } from "@ndla/styled-system/types";
+import type { ConceptTitleDTO, GlossDataDTO, GlossExampleDTO } from "@ndla/types-backend/concept-api";
 import parse from "html-react-parser";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";

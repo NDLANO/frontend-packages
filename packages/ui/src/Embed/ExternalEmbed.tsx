@@ -6,9 +6,9 @@
  *
  */
 
-import type { OembedMetaData } from "@ndla/types-embed";
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { OembedMetaData } from "@ndla/types-embed";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { ResourceBox } from "../ResourceBox/ResourceBox";

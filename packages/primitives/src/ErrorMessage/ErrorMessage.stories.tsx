@@ -6,9 +6,9 @@
  *
  */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { LoginBoxLine, PresentationLine } from "@ndla/icons";
 import { SafeLink } from "@ndla/safelink";
+import type { Meta, StoryObj } from "@storybook/react";
 //@ts-expect-error - It exists.
 import Oops from "../../../../images/oops.gif";
 import { Button } from "../Button";

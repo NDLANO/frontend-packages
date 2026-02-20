@@ -6,11 +6,11 @@
  *
  */
 
-import type { BrightcoveApiType } from "@ndla/types-embed";
 import { CloseLine, PanoramaPhotosphere } from "@ndla/icons";
 import { getLicenseByNBTitle, type LicenseLocaleType } from "@ndla/licenses";
 import { Image, Text, ListItemContent, ListItemRoot, Button, IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { BrightcoveApiType } from "@ndla/types-embed";
 import { useState } from "react";
 import type { VideoTranslations } from "./VideoSearch";
 

@@ -6,7 +6,6 @@
  *
  */
 
-import type { Meta, StoryFn } from "@storybook/react";
 import { Portal } from "@ark-ui/react";
 import {
   useEditorPopover,
@@ -37,12 +36,12 @@ import {
   UnOrderedList,
   type IconButtonProps,
 } from "@ndla/primitives";
+import type { Meta, StoryFn } from "@storybook/react";
 import { isKeyHotkey } from "is-hotkey";
 import { useRef } from "react";
 import { type Descendant, type EditorMarks } from "slate";
 import { DOMEditor } from "slate-dom";
 import { Editable, Slate, useSlate, type RenderElementProps } from "slate-react";
-import type { ListType } from "./plugins/list/listTypes";
 import { useCreateSlate } from "./editor/createSlate";
 import { LoggerManager } from "./editor/logger/Logger";
 import { breakPlugin } from "./plugins/break/breakPlugin";
@@ -53,6 +52,7 @@ import { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigat
 import { linkPlugin } from "./plugins/link/linkPlugin";
 import { type LinkElement } from "./plugins/link/linkTypes";
 import { listPlugin } from "./plugins/list/listPlugin";
+import type { ListType } from "./plugins/list/listTypes";
 import { toggleList } from "./plugins/list/transforms/toggleList";
 import { markPlugin } from "./plugins/mark/markPlugin";
 import { marks } from "./plugins/mark/markTypes";

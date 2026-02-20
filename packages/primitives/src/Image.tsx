@@ -6,10 +6,10 @@
  *
  */
 
-import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
-import type { ImageVariantDTO, ImageVariantSize } from "@ndla/types-backend/image-api";
 import { ark } from "@ark-ui/react";
 import { styled } from "@ndla/styled-system/jsx";
+import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
+import type { ImageVariantDTO, ImageVariantSize } from "@ndla/types-backend/image-api";
 import { type ComponentPropsWithRef, type ReactNode, forwardRef, useEffect, useState } from "react";
 
 export interface ImageCrop {

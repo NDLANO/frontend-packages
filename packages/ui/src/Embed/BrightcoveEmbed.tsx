@@ -6,16 +6,16 @@
  *
  */
 
-import type { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import { Button, Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
+import type { BrightcoveEmbedData, BrightcoveMetaData, BrightcoveVideoSource } from "@ndla/types-embed";
 import parse from "html-react-parser";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { RenderContext } from "./types";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
+import type { RenderContext } from "./types";
 
 interface Props {
   embed: BrightcoveMetaData;

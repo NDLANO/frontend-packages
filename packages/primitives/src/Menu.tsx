@@ -76,17 +76,17 @@ const itemCva = cva({
           "& svg": {
             color: "icon.default",
           },
-          background: "surface.errorSubtle.hover",
+          background: "surface.dangerSubtle.hover",
         },
         _highlighted: {
           color: "text.default",
           "& svg": {
             color: "icon.default",
           },
-          background: "surface.errorSubtle.hover",
+          background: "surface.dangerSubtle.hover",
         },
         _active: {
-          background: "surface.errorSubtle.active",
+          background: "surface.dangerSubtle.active",
         },
       },
     },

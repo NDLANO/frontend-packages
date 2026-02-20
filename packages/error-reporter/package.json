@@ -26,7 +26,7 @@
     "es"
   ],
   "devDependencies": {
-    "nock": "^14.0.10"
+    "nock": "^14.0.11"
   },
   "dependencies": {
     "@ndla/util": "^5.0.18-alpha.0",

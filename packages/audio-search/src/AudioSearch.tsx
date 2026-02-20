@@ -133,7 +133,7 @@ export const AudioSearch = ({
 
   useEffect(() => {
     searchAudios(queryObject);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react/exhaustive-deps
   }, []);
 
   const submitAudioSearchQuery = (queryObject: QueryObject) => {

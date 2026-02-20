@@ -16,7 +16,7 @@ export const linkSerializer = createSerializer({
   deserialize: (el, children) => {
     const tag = el.tagName.toLowerCase();
     if (tag !== "a") return;
-    const a = el as HTMLLinkElement;
+    const a = el as HTMLAnchorElement;
     return slatejsx(
       "element",
       {

@@ -20,8 +20,8 @@ export const logglyApi = (logglyApiKey, data) =>
     body: JSON.stringify(data),
   }).catch((ex) => {
     if (window && window.console && typeof window.console.error === "function") {
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       console.error(`Failed to log to loggly because of this exception:\n${ex}`);
-      console.error("Failed log data:", data); // eslint-disable-line no-console
+      console.error("Failed log data:", data); // oxlint-disable-line no-console
     }
   });

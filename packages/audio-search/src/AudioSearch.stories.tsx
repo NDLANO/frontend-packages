@@ -79,9 +79,9 @@ export const Default: StoryFn<typeof AudioSearch> = ({ ...args }) => {
         {...args}
         fetchAudio={fetchAudio}
         searchAudios={fetchAudios}
-        // eslint-disable-next-line no-console
+        // oxlint-disable-next-line no-console
         onError={console.error}
-        // eslint-disable-next-line no-console
+        // oxlint-disable-next-line no-console
         onAudioSelect={console.log}
       />
     </div>

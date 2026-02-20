@@ -8,7 +8,7 @@
 
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
-import { forwardRef, type HTMLAttributes, type MutableRefObject, type ReactNode, useContext } from "react";
+import { forwardRef, useContext, type RefObject } from "react";
 import { Link, type LinkProps } from "react-router";
 import { MissingRouterContext } from "./MissingRouterContext";
 
@@ -20,15 +20,12 @@ const isExternalLink = (to?: LinkProps["to"]) =>
 
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
-type Props = {
-  ref?: MutableRefObject<HTMLAnchorElement | null>;
+export interface SafeLinkProps extends LinkProps, StyledProps {
+  ref?: RefObject<HTMLAnchorElement | null>;
   asAnchor?: boolean;
-  children?: ReactNode;
   disabled?: boolean;
   unstyled?: boolean;
-};
-
-export type SafeLinkProps = Props & LinkProps & StyledProps & HTMLAttributes<HTMLElement>;
+}
 
 const StyledLink = styled(Link, {}, { baseComponent: true });
 

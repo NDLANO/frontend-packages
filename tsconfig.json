@@ -40,6 +40,6 @@
       "@ndla/video-search": ["./packages/video-search/src"]
     }
   },
-  "include": ["./packages/**/*", "./stories/**/*", "./dummydata/**/*", ".storybook/**/*"],
+  "include": ["./packages/*/src/**/*", "./stories/**/*", "./dummydata/**/*", ".storybook/**/*"],
   "exclude": ["./packages/*/lib", "./packages/*/dist", "./packages/*/es", "./packages/*/tsdown.config.mts"]
 }

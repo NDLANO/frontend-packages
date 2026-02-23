@@ -50,10 +50,16 @@
     "slate-react": "^0.123.0"
   },
   "devDependencies": {
+    "@ndla/icons": "workspace:^",
+    "@ndla/primitives": "workspace:^",
     "@types/he": "^1.2.3",
     "@types/is-hotkey": "^0",
     "@types/lodash.clonedeep": "^4",
-    "@types/lodash.mergewith": "^4"
+    "@types/lodash.mergewith": "^4",
+    "slate": "^0.123.0",
+    "slate-dom": "^0.123.0",
+    "slate-history": "^0.113.1",
+    "slate-react": "^0.123.0"
   },
   "publishConfig": {
     "access": "public"

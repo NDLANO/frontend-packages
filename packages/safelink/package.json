@@ -36,6 +36,7 @@
     "@ndla/styled-system": "workspace:^"
   },
   "devDependencies": {
+    "@ndla/icons": "workspace:^",
     "@ndla/preset-panda": "workspace:^",
     "@pandacss/dev": "^1.7.0"
   },

@@ -8,6 +8,25 @@
 
 import { Portal } from "@ark-ui/react";
 import {
+  useCreateSlate,
+  LoggerManager,
+  breakPlugin,
+  softBreakPlugin,
+  headingPlugin,
+  toggleHeading,
+  inlineNavigationPlugin,
+  linkPlugin,
+  type LinkElement,
+  listPlugin,
+  type ListType,
+  toggleList,
+  markPlugin,
+  marks,
+  toggleMark,
+  paragraphPlugin,
+  sectionPlugin,
+} from "@ndla/editor";
+import {
   useEditorPopover,
   useListToolbarButton,
   useListToolbarButtonState,
@@ -42,23 +61,6 @@ import { useRef } from "react";
 import { type Descendant, type EditorMarks } from "slate";
 import { DOMEditor } from "slate-dom";
 import { Editable, Slate, useSlate, type RenderElementProps } from "slate-react";
-import { useCreateSlate } from "./editor/createSlate";
-import { LoggerManager } from "./editor/logger/Logger";
-import { breakPlugin } from "./plugins/break/breakPlugin";
-import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
-import { headingPlugin } from "./plugins/heading/headingPlugin";
-import { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
-import { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigationPlugin";
-import { linkPlugin } from "./plugins/link/linkPlugin";
-import { type LinkElement } from "./plugins/link/linkTypes";
-import { listPlugin } from "./plugins/list/listPlugin";
-import type { ListType } from "./plugins/list/listTypes";
-import { toggleList } from "./plugins/list/transforms/toggleList";
-import { markPlugin } from "./plugins/mark/markPlugin";
-import { marks } from "./plugins/mark/markTypes";
-import { toggleMark } from "./plugins/mark/toggleMark";
-import { paragraphPlugin } from "./plugins/paragraph/paragraphPlugin";
-import { sectionPlugin } from "./plugins/section/sectionPlugin";
 
 export default {
   title: "Editor/Playground",

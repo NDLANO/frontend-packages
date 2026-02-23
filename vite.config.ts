@@ -12,7 +12,7 @@ import { defineConfig } from "vite";
 export default defineConfig(() => {
   return {
     test: {
-      include: ["packages/**/src/**/__tests__/*-test.(js|jsx|ts|tsx)"],
+      include: ["packages/*/src/**/__tests__/*-test.(js|jsx|ts|tsx)"],
       environment: "jsdom",
       globals: true,
       setupFiles: "./vitest.setup.ts",

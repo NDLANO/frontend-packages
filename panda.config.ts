@@ -16,8 +16,8 @@ export default defineConfig({
   strictPropertyValues: true,
   shorthands: false,
   outExtension: "js",
-  include: ["./packages/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
-  exclude: ["./packages/**/*-test.{js,jsx,ts,tsx}"],
+  include: ["./packages/*/src/**/*.{js,jsx,ts,tsx}", "./stories/**/*.{js,jsx,ts,tsx}"],
+  exclude: ["./packages/*/src/**/*-test.{js,jsx,ts,tsx}"],
   syntax: "object-literal",
   jsxFramework: "react",
 });

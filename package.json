@@ -37,7 +37,7 @@
     "watch:tsc": "nx watch --all -- nx prepublish \\$NX_PROJECT_NAME",
     "watch": "concurrently 'yarn watch:src' 'yarn watch:tsc'",
     "start": "storybook dev -p 6006 --no-open",
-    "check-translations": "vitest --run 'packages/ui/src/locale/__tests__/'",
+    "check-translations": "vitest --run 'packages/locales/src/__tests__/'",
     "generate:icons": "node ./scripts/createTsIconComponents.mjs"
   },
   "devDependencies": {

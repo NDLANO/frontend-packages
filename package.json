@@ -85,6 +85,7 @@
     "slate-history": "^0.113.1",
     "slate-react": "^0.123.0",
     "storybook": "^10.2.10",
+    "syncpack": "^14.0.0",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0",

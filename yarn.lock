@@ -1334,15 +1334,15 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.89"
-    "@ndla/types-embed": "npm:^5.0.21-alpha.0"
-    "@ndla/ui": "npm:^56.0.176-alpha.0"
+    "@ndla/types-embed": "npm:5.0.21-alpha.0"
+    "@ndla/ui": "npm:56.0.176-alpha.0"
     html-react-parser: "npm:^5.2.8"
   peerDependencies:
-    i18next: ">= 25.0.0"
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-    react-i18next: ">= 16"
-    react-router: ">= 7.0.0"
+    i18next: ^25.7.4
+    react: ^19.2.0
+    react-dom: ^19.2.0
+    react-i18next: ^16.5.3
+    react-router: ^7.12.0
   languageName: unknown
   linkType: soft
 
@@ -1358,12 +1358,12 @@ __metadata:
     "@ndla/types-backend": "npm:^1.0.89"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
-"@ndla/core@npm:^6.0.7-alpha.0, @ndla/core@workspace:^, @ndla/core@workspace:packages/core":
+"@ndla/core@npm:6.0.7-alpha.0, @ndla/core@workspace:^, @ndla/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@ndla/core@workspace:packages/core"
   languageName: unknown
@@ -1380,12 +1380,12 @@ __metadata:
     "@ndla/styled-system": "workspace:^"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
-    slate: ">= 0.112.0"
-    slate-dom: ">= 0.112.0"
-    slate-history: ">= 0.110.3"
-    slate-react: ">= 0.112.0"
+    react: ^19.2.0
+    react-dom: ^19.2.0
+    slate: ^0.123.0
+    slate-dom: ^0.123.0
+    slate-history: ^0.113.1
+    slate-react: ^0.123.0
   languageName: unknown
   linkType: soft
 
@@ -1404,12 +1404,12 @@ __metadata:
     lodash.mergewith: "npm:^4.6.2"
     slate-hyperscript: "npm:^0.100.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
-    slate: ">= 0.123.0"
-    slate-dom: ">= 0.123.0"
-    slate-history: ">= 0.113.0"
-    slate-react: ">= 0.123.0"
+    react: ^19.2.0
+    react-dom: ^19.2.0
+    slate: ^0.123.0
+    slate-dom: ^0.123.0
+    slate-history: ^0.113.1
+    slate-react: ^0.123.0
   languageName: unknown
   linkType: soft
 
@@ -1417,7 +1417,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/error-reporter@workspace:packages/error-reporter"
   dependencies:
-    "@ndla/util": "npm:^5.0.18-alpha.0"
+    "@ndla/util": "npm:5.0.18-alpha.0"
     nock: "npm:^14.0.11"
     raven-js: "npm:^3.22.3"
   languageName: unknown
@@ -1429,11 +1429,11 @@ __metadata:
   dependencies:
     lodash.throttle: "npm:^4.1.1"
   peerDependencies:
-    react: ">= 16.8.0"
+    react: ^19.2.0
   languageName: unknown
   linkType: soft
 
-"@ndla/icons@npm:^8.0.81-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/icons":
+"@ndla/icons@npm:8.0.81-alpha.0, @ndla/icons@workspace:^, @ndla/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@ndla/icons@workspace:packages/icons"
   dependencies:
@@ -1441,8 +1441,8 @@ __metadata:
     "@ndla/styled-system": "workspace:^"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
@@ -1459,12 +1459,12 @@ __metadata:
     "@ndla/util": "workspace:^"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
-"@ndla/licenses@npm:^10.0.10-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/licenses":
+"@ndla/licenses@npm:10.0.10-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/licenses":
   version: 0.0.0-use.local
   resolution: "@ndla/licenses@workspace:packages/licenses"
   languageName: unknown
@@ -1495,15 +1495,15 @@ __metadata:
     "@internationalized/date": "npm:3.10.0"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/util": "npm:^5.0.18-alpha.0"
+    "@ndla/util": "npm:5.0.18-alpha.0"
     "@storybook/react": "npm:^10.2.10"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.125-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:7.0.125-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -1512,9 +1512,9 @@ __metadata:
     "@ndla/styled-system": "workspace:^"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
-    react-router: ">= 7.0.0"
+    react: ^19.2.0
+    react-dom: ^19.2.0
+    react-router: ^7.12.0
   languageName: unknown
   linkType: soft
 
@@ -1524,8 +1524,8 @@ __metadata:
   dependencies:
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
@@ -1533,11 +1533,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/tracker@workspace:packages/tracker"
   dependencies:
-    "@ndla/util": "npm:^5.0.18-alpha.0"
+    "@ndla/util": "npm:5.0.18-alpha.0"
     tiny-warning: "npm:^1.0.3"
   peerDependencies:
-    react: ">= 19.0.0"
-    react-router: ">= 7.0.0"
+    react: ^19.2.0
+    react-router: ^7.12.0
   languageName: unknown
   linkType: soft
 
@@ -1548,7 +1548,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/types-embed@npm:^5.0.21-alpha.0, @ndla/types-embed@workspace:packages/types-embed":
+"@ndla/types-embed@npm:5.0.21-alpha.0, @ndla/types-embed@workspace:packages/types-embed":
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
@@ -1564,38 +1564,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ndla/ui@npm:^56.0.176-alpha.0, @ndla/ui@workspace:^, @ndla/ui@workspace:packages/ui":
+"@ndla/ui@npm:56.0.176-alpha.0, @ndla/ui@workspace:^, @ndla/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ui"
   dependencies:
     "@ark-ui/react": "npm:^5.30.0"
-    "@ndla/core": "npm:^6.0.7-alpha.0"
-    "@ndla/icons": "npm:^8.0.81-alpha.0"
-    "@ndla/licenses": "npm:^10.0.10-alpha.0"
+    "@ndla/core": "npm:6.0.7-alpha.0"
+    "@ndla/icons": "npm:8.0.81-alpha.0"
+    "@ndla/licenses": "npm:10.0.10-alpha.0"
     "@ndla/locales": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
-    "@ndla/safelink": "npm:^7.0.125-alpha.0"
+    "@ndla/safelink": "npm:7.0.125-alpha.0"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.89"
-    "@ndla/types-embed": "npm:^5.0.21-alpha.0"
-    "@ndla/util": "npm:^5.0.18-alpha.0"
+    "@ndla/types-embed": "npm:5.0.21-alpha.0"
+    "@ndla/util": "npm:5.0.18-alpha.0"
     "@pandacss/dev": "npm:^1.7.0"
     html-react-parser: "npm:^5.2.8"
   peerDependencies:
-    i18next: ">= 25.0.0"
-    react: ">= 18"
-    react-dom: ">= 18"
-    react-i18next: ">= 16"
-    react-router: ">= 7.0.0"
+    i18next: ^25.7.4
+    react: ^19.2.0
+    react-dom: ^19.2.0
+    react-i18next: ^16.5.3
+    react-router: ^7.12.0
   languageName: unknown
   linkType: soft
 
-"@ndla/util@npm:^5.0.18-alpha.0, @ndla/util@workspace:^, @ndla/util@workspace:packages/util":
+"@ndla/util@npm:5.0.18-alpha.0, @ndla/util@workspace:^, @ndla/util@workspace:packages/util":
   version: 0.0.0-use.local
   resolution: "@ndla/util@workspace:packages/util"
   peerDependencies:
-    react: ">= 16.8.0"
+    react: ^19.2.0
   languageName: unknown
   linkType: soft
 
@@ -1608,11 +1608,11 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-embed": "npm:^5.0.21-alpha.0"
+    "@ndla/types-embed": "npm:5.0.21-alpha.0"
     "@pandacss/dev": "npm:^1.7.0"
   peerDependencies:
-    react: ">= 18"
-    react-dom: ">= 18"
+    react: ^19.2.0
+    react-dom: ^19.2.0
   languageName: unknown
   linkType: soft
 
@@ -6925,8 +6925,8 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^12.1.1"
     globals: "npm:^17.3.0"
   peerDependencies:
-    eslint: ">= 9.0.0"
-    typescript-eslint: ">= 8.15.0"
+    eslint: ^9.39.2
+    typescript-eslint: ^8.54.0
   languageName: unknown
   linkType: soft
 
@@ -7516,6 +7516,7 @@ __metadata:
     slate-history: "npm:^0.113.1"
     slate-react: "npm:^0.123.0"
     storybook: "npm:^10.2.10"
+    syncpack: "npm:^14.0.0"
     tsdown: "npm:^0.20.3"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:^8.54.0"
@@ -12798,6 +12799,97 @@ __metadata:
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
   checksum: 10c0/dfbe201ae09ac6053d163578778c53aa860a784147ecf95705de0cd23f42c851e1be7889241495e95c37cabb058edb1052f141387bef68f705afc8f9dd358509
+  languageName: node
+  linkType: hard
+
+"syncpack-darwin-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-darwin-arm64@npm:14.0.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-darwin-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-darwin-x64@npm:14.0.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-arm64-musl@npm:14.0.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-arm64@npm:14.0.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-x64-musl@npm:14.0.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-x64@npm:14.0.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-windows-arm64@npm:14.0.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-windows-x64@npm:14.0.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "syncpack@npm:14.0.0"
+  dependencies:
+    syncpack-darwin-arm64: "npm:14.0.0"
+    syncpack-darwin-x64: "npm:14.0.0"
+    syncpack-linux-arm64: "npm:14.0.0"
+    syncpack-linux-arm64-musl: "npm:14.0.0"
+    syncpack-linux-x64: "npm:14.0.0"
+    syncpack-linux-x64-musl: "npm:14.0.0"
+    syncpack-windows-arm64: "npm:14.0.0"
+    syncpack-windows-x64: "npm:14.0.0"
+  dependenciesMeta:
+    syncpack-darwin-arm64:
+      optional: true
+    syncpack-darwin-x64:
+      optional: true
+    syncpack-linux-arm64:
+      optional: true
+    syncpack-linux-arm64-musl:
+      optional: true
+    syncpack-linux-x64:
+      optional: true
+    syncpack-linux-x64-musl:
+      optional: true
+    syncpack-windows-arm64:
+      optional: true
+    syncpack-windows-x64:
+      optional: true
+  bin:
+    syncpack: index.cjs
+  checksum: 10c0/6dc7ca4d1dc91423194eef9c2e3939291d129285a1b219d17eb5620af86cd7680c6c2ad65277e201ab6c3c53a0bdf76b3226ed60c1d8a96183a804b76147efe3
   languageName: node
   linkType: hard
 

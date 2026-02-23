@@ -16,8 +16,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">= 18",
-    "react-dom": ">= 18"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@pandacss/dev": "^1.7.0"

@@ -34,7 +34,7 @@
   "dependencies": {
     "@ark-ui/react": "^5.30.0",
     "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "^5.0.18-alpha.0"
+    "@ndla/util": "5.0.18-alpha.0"
   },
   "devDependencies": {
     "@internationalized/date": "3.10.0",
@@ -42,8 +42,8 @@
     "@storybook/react": "^10.2.10"
   },
   "peerDependencies": {
-    "react": ">= 18",
-    "react-dom": ">= 18"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "publishConfig": {
     "access": "public"

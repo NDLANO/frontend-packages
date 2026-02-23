@@ -31,7 +31,7 @@
     "es"
   ],
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": "^19.2.0"
   },
   "dependencies": {
     "lodash.throttle": "^4.1.1"

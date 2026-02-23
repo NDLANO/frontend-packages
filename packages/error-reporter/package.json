@@ -29,7 +29,7 @@
     "nock": "^14.0.11"
   },
   "dependencies": {
-    "@ndla/util": "^5.0.18-alpha.0",
+    "@ndla/util": "5.0.18-alpha.0",
     "raven-js": "^3.22.3"
   },
   "publishConfig": {

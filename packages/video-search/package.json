@@ -37,12 +37,12 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@ndla/types-embed": "^5.0.21-alpha.0",
+    "@ndla/types-embed": "5.0.21-alpha.0",
     "@pandacss/dev": "^1.7.0"
   },
   "peerDependencies": {
-    "react": ">= 18",
-    "react-dom": ">= 18"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "publishConfig": {
     "access": "public"

@@ -37,27 +37,27 @@
   ],
   "dependencies": {
     "@ark-ui/react": "^5.30.0",
-    "@ndla/core": "^6.0.7-alpha.0",
-    "@ndla/icons": "^8.0.81-alpha.0",
-    "@ndla/licenses": "^10.0.10-alpha.0",
+    "@ndla/core": "6.0.7-alpha.0",
+    "@ndla/icons": "8.0.81-alpha.0",
+    "@ndla/licenses": "10.0.10-alpha.0",
     "@ndla/locales": "workspace:^",
     "@ndla/primitives": "workspace:^",
-    "@ndla/safelink": "^7.0.125-alpha.0",
+    "@ndla/safelink": "7.0.125-alpha.0",
     "@ndla/styled-system": "workspace:^",
-    "@ndla/util": "^5.0.18-alpha.0",
+    "@ndla/util": "5.0.18-alpha.0",
     "html-react-parser": "^5.2.8"
   },
   "peerDependencies": {
-    "i18next": ">= 25.0.0",
-    "react": ">= 18",
-    "react-dom": ">= 18",
-    "react-i18next": ">= 16",
-    "react-router": ">= 7.0.0"
+    "i18next": "^25.7.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-i18next": "^16.5.3",
+    "react-router": "^7.12.0"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.89",
-    "@ndla/types-embed": "^5.0.21-alpha.0",
+    "@ndla/types-embed": "5.0.21-alpha.0",
     "@pandacss/dev": "^1.7.0"
   },
   "publishConfig": {

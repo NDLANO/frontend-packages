@@ -48,6 +48,14 @@ Make sure everthing is OK before push:
 yarn check-all
 ```
 
+### Check for dependency version mismatch
+
+To check for any mismatch between versions of common dependencies for our packages in the monorepo:
+
+```sh
+yarn syncpack lint
+```
+
 ### Develop
 
 ```js

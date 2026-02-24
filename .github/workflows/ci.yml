@@ -15,23 +15,22 @@ jobs:
     name: "Unit tests"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v3
         with:
           node-version: "24.11.1"
-      - name: "Enable yarn v4"
-        run: |
-          corepack enable
-          yarn set version 4.9.2
-      - uses: actions/cache@v3
+      - name: "Enable corepack"
+        run: corepack enable
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v5
         with:
-          path: |
-            **/node_modules
-            .eslintcache
-            .yarn/cache
-            ~/.npm
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: "Install"
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: "Install dependencies with Yarn"
         run: yarn install --immutable
       - name: "Check dependency versions using 'syncpack lint'"
         run: yarn syncpack lint

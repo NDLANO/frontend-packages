@@ -50,8 +50,6 @@
     "slate-react": "^0.123.0"
   },
   "devDependencies": {
-    "@ndla/icons": "workspace:^",
-    "@ndla/primitives": "workspace:^",
     "@types/he": "^1.2.3",
     "@types/is-hotkey": "^0",
     "@types/lodash.clonedeep": "^4",

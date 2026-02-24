@@ -31,5 +31,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@ndla/util": "workspace:^"
   }
 }

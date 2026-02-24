@@ -42,12 +42,12 @@
     "@ndla/styled-system": "workspace:^"
   },
   "peerDependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "slate": "^0.123.0",
-    "slate-dom": "^0.123.0",
-    "slate-history": "^0.113.1",
-    "slate-react": "^0.123.0"
+    "react": ">= 18",
+    "react-dom": ">= 18",
+    "slate": ">= 0.112.0",
+    "slate-dom": ">= 0.112.0",
+    "slate-history": ">= 0.110.3",
+    "slate-react": ">= 0.112.0"
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",

@@ -1,7 +1,7 @@
 {
   "name": "@ndla/editor",
   "type": "module",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "Slate editor plugins for NDLA",
   "license": "GPL-3.0",
   "exports": {

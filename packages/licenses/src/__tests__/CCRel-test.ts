@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import { getResourceTypeNamespace } from "../CCRel";
 
 test("microData/getResourceTypeNamespace when type video should return video namespace", () => {

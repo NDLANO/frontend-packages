@@ -7,6 +7,7 @@
  */
 
 import { Transforms, type Descendant } from "slate";
+import { describe, test, expect } from "vitest";
 import { createSlate } from "../../../editor/createSlate";
 import { softBreakPlugin } from "../../break/softBreakPlugin";
 import { markPlugin } from "../../mark/markPlugin";

@@ -39,8 +39,14 @@
     "@pandacss/dev": "^1.7.0"
   },
   "devDependencies": {
+    "@ark-ui/react": "^5.30.0",
     "@ndla/styled-system": "workspace:^",
-    "@pandacss/types": "1.7.0"
+    "@pandacss/types": "1.7.0",
+    "@storybook/react": "^10.2.10",
+    "@testing-library/react": "16.3.2",
+    "@types/react": "^19.2.14",
+    "react": "^19.2.0",
+    "vitest": "^4.0.18"
   },
   "publishConfig": {
     "access": "public"

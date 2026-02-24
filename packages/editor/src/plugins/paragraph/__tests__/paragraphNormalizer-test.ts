@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { describe, test, expect } from "vitest";
 import { createSlate } from "../../../editor/createSlate";
 import { LIST_ELEMENT_TYPE, LIST_ITEM_ELEMENT_TYPE } from "../../list/listTypes";
 import { sectionPlugin } from "../../section/sectionPlugin";

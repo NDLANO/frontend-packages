@@ -7,6 +7,7 @@
  */
 
 import { validateTranslationFiles } from "@ndla/util";
+import { test, expect } from "vitest";
 import messagesEN from "../messages-en";
 import messagesNB from "../messages-nb";
 import messagesNN from "../messages-nn";

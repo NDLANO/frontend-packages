@@ -6,6 +6,7 @@
  *
  */
 
+import { describe, expect, it } from "vitest";
 import type { MappedConfigurationOption } from "..";
 import { mergeOptions } from "../mergeOptions";
 

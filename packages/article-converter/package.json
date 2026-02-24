@@ -31,7 +31,8 @@
     "src"
   ],
   "devDependencies": {
-    "@ndla/types-embed": "workspace:^"
+    "@ndla/types-embed": "workspace:^",
+    "@types/react": "^19.2.14"
   },
   "dependencies": {
     "@ndla/primitives": "workspace:^",

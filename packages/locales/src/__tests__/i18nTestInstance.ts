@@ -8,6 +8,7 @@
 
 import i18next, { type i18n } from "i18next";
 import { initReactI18next } from "react-i18next";
+import { it, expect } from "vitest";
 import { messagesEN, messagesNN, messagesNB, messagesSE } from "..";
 
 export const supportedTranslationLanguages = ["nb", "nn", "en", "se"] as const;

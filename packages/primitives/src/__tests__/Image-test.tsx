@@ -7,6 +7,7 @@
  */
 
 import { render } from "@testing-library/react";
+import { test, expect } from "vitest";
 import { Image, makeSrcQueryString } from "../Image";
 
 test("Image renderers correctly", () => {

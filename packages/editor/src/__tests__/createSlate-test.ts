@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { describe, it, expect } from "vitest";
 import { createPlugin } from "../core/createPlugin";
 import { createSlate } from "../editor/createSlate";
 

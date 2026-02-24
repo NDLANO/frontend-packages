@@ -7,6 +7,7 @@
  */
 
 import { subjectCategories, subjectTypes } from "@ndla/ui";
+import { describe } from "vitest";
 import { translationHelper } from "./i18nTestInstance";
 
 describe("constant translations", () => {

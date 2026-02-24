@@ -7,6 +7,7 @@
  */
 
 import nock from "nock";
+import { test, expect } from "vitest";
 import { ErrorReporter } from "../ErrorReporter";
 
 const state = {

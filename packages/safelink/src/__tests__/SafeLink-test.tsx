@@ -6,9 +6,11 @@
  *
  */
 
+import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { StaticRouter } from "react-router";
+import { test, expect } from "vitest";
 import { MissingRouterContext } from "../MissingRouterContext";
 import { SafeLink, isOldNdlaLink } from "../SafeLink";
 

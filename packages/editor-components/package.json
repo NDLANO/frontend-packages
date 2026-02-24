@@ -52,6 +52,7 @@
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@pandacss/dev": "^1.7.0",
+    "@types/react": "^19.2.14",
     "slate": "^0.123.0",
     "slate-dom": "^0.123.0",
     "slate-history": "^0.113.1",

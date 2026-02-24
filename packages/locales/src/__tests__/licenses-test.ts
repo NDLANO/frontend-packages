@@ -7,6 +7,7 @@
  */
 
 import { contributorTypes } from "@ndla/licenses";
+import { describe } from "vitest";
 import { translationHelper } from "./i18nTestInstance";
 
 describe("license translations", () => {

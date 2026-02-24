@@ -12,6 +12,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { render } from "@testing-library/react";
 import { forwardRef } from "react";
+import { describe, test, expect } from "vitest";
 
 describe("CSS prop forwarding", () => {
   test("Should have a sane default", () => {

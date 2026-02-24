@@ -64,8 +64,6 @@ export { subjectTypes } from "./model/SubjectTypes";
 export { wordClass } from "./model/WordClass";
 export { subjectCategories } from "./model/SubjectCategories";
 
-export { messagesNB, messagesNN, messagesSE, messagesEN } from "@ndla/locales";
-
 export { Breadcrumb } from "./Breadcrumb/Breadcrumb";
 export { HomeBreadcrumb } from "./Breadcrumb/HomeBreadcrumb";
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from "./Breadcrumb/BreadcrumbItem";

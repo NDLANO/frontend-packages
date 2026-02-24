@@ -33,6 +33,11 @@
   "peerDependencies": {
     "react": ">= 16.8.0"
   },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "react": "^19.2.0",
+    "vitest": "^4.0.18"
+  },
   "publishConfig": {
     "access": "public"
   }

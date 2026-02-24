@@ -20,6 +20,7 @@ packages/*/.vscode
 .cache
 .vscode
 .yarn/*
+.pnp.*
 .vercel
 styled-system/*
 

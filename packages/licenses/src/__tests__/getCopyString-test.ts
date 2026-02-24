@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import { i18nInstance } from "../../../../testUtils/i18nTestInstance";
 import {
   figureApa7CopyString,

@@ -38,7 +38,14 @@
   "devDependencies": {
     "@ndla/icons": "workspace:^",
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^1.7.0"
+    "@pandacss/dev": "^1.7.0",
+    "@storybook/react": "^10.2.10",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/react": "^19.2.14",
+    "react": "^19.2.0",
+    "react-router": "^7.12.0",
+    "vitest": "^4.0.18"
   },
   "peerDependencies": {
     "react": ">= 18",

@@ -6,6 +6,7 @@
  *
  */
 
+import { describe, expect, it } from "vitest";
 import { createSlate } from "../../editor/createSlate";
 import { createPlugin } from "../createPlugin";
 

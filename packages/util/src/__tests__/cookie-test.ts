@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import { getCookie, isValidCookie } from "../index";
 
 const testCookieKey = "COOKIE_KEY";

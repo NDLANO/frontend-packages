@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { describe, test, expect } from "vitest";
 import { createSlate } from "../../../editor/createSlate";
 import { paragraphPlugin } from "../../paragraph/paragraphPlugin";
 import { PARAGRAPH_ELEMENT_TYPE } from "../../paragraph/paragraphTypes";

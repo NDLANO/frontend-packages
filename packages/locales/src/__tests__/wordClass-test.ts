@@ -7,6 +7,7 @@
  */
 
 import { wordClass } from "@ndla/ui";
+import { describe } from "vitest";
 import { translationHelper } from "./i18nTestInstance";
 
 describe("all word classes should have a translation", () => {

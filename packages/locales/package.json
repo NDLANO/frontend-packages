@@ -33,6 +33,12 @@
     "access": "public"
   },
   "devDependencies": {
-    "@ndla/util": "workspace:^"
+    "@ndla/licenses": "workspace:^",
+    "@ndla/ui": "workspace:^",
+    "@ndla/util": "workspace:^",
+    "i18next": "^25.7.4",
+    "react": "^19.2.0",
+    "react-i18next": "^16.5.3",
+    "vitest": "^4.0.18"
   }
 }

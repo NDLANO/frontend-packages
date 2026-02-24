@@ -6,6 +6,7 @@
  *
  */
 
+import { describe, it, expect } from "vitest";
 import { groupBy, keyBy, partition, sortBy, uniq, uniqBy } from "../arrayHelpers";
 
 describe("arrayHelpers", () => {

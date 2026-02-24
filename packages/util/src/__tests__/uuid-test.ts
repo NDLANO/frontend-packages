@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import { uuid } from "../index";
 
 test("@ndla/util/uuid sanity test", () => {

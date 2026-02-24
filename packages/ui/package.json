@@ -40,7 +40,6 @@
     "@ndla/core": "workspace:^",
     "@ndla/icons": "workspace:^",
     "@ndla/licenses": "workspace:^",
-    "@ndla/locales": "workspace:^",
     "@ndla/primitives": "workspace:^",
     "@ndla/safelink": "workspace:^",
     "@ndla/styled-system": "workspace:^",
@@ -58,7 +57,11 @@
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-backend": "^1.0.89",
     "@ndla/types-embed": "5.0.21-alpha.0",
-    "@pandacss/dev": "^1.7.0"
+    "@pandacss/dev": "^1.7.0",
+    "@storybook/react": "^10.2.10",
+    "@types/react": "^19.2.14",
+    "react-i18next": "^16.5.3",
+    "vitest": "^4.0.18"
   },
   "publishConfig": {
     "access": "public"

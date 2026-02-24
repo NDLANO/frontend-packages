@@ -12,6 +12,7 @@ import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { render } from "@testing-library/react";
 import { type ReactNode, forwardRef } from "react";
+import { describe, test, expect } from "vitest";
 
 const svaA = sva({
   slots: ["root", "child"],

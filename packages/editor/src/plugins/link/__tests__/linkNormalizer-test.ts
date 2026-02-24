@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { describe, test, expect } from "vitest";
 import { createSlate } from "../../../editor/createSlate";
 import { softBreakPlugin } from "../../break/softBreakPlugin";
 import { headingPlugin } from "../../heading/headingPlugin";

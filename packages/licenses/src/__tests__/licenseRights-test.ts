@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import { getLicenseRightByAbbreviation, rights } from "../licenseRights";
 
 test("lisence/getLicenseRightByAbbreviation get info for BY in bokmål", () => {

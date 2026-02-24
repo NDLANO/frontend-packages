@@ -38,7 +38,9 @@
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
     "@ndla/types-embed": "workspace:^",
-    "@pandacss/dev": "^1.7.0"
+    "@pandacss/dev": "^1.7.0",
+    "@storybook/react": "^10.2.10",
+    "@types/react": "^19.2.14"
   },
   "peerDependencies": {
     "react": ">= 18",

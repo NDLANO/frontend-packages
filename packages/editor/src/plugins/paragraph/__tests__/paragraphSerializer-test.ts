@@ -7,6 +7,7 @@
  */
 
 import type { Descendant } from "slate";
+import { describe, test, expect } from "vitest";
 import { testBlockContentToEditorValue, testBlockContentToHTML } from "../../../__tests__/testUtils";
 import { SECTION_ELEMENT_TYPE } from "../../section/sectionTypes";
 import { PARAGRAPH_ELEMENT_TYPE } from "../paragraphTypes";

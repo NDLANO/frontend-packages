@@ -6,6 +6,7 @@
  *
  */
 
+import { test, expect } from "vitest";
 import {
   testBlockContentToEditorValue,
   testBlockContentToHTML,

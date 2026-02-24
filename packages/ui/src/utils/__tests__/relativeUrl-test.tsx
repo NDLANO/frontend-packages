@@ -6,6 +6,7 @@
  *
  */
 
+import { describe, it, expect } from "vitest";
 import { getPossiblyRelativeUrl } from "../relativeUrl";
 
 describe("getPossibleRelativeUrl", () => {

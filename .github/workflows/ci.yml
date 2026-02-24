@@ -33,6 +33,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: "Install"
         run: yarn install --immutable
+      - name: "Check dependency versions using 'syncpack lint'"
+        run: yarn syncpack lint
       - name: "Bootstrap"
         run: yarn bootstrap:ci
       - name: "Check-all"

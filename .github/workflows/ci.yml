@@ -15,22 +15,24 @@ jobs:
     name: "Unit tests"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "24.11.1"
-      - name: "Enable yarn v4"
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v3
+      - name: "Enable corepack"
+        run: corepack enable
+      - name: Get Yarn and npm cache directory paths
+        id: yarn-npm-cache-path
         run: |
-          corepack enable
-          yarn set version 4.9.2
-      - uses: actions/cache@v3
+          echo "yarn=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+          echo "npm=$(npm config get cache)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v5
         with:
           path: |
-            **/node_modules
+            ${{ steps.yarn-npm-cache-path.outputs.yarn }}
+            ${{ steps.yarn-npm-cache-path.outputs.npm }}
             .eslintcache
-            .yarn/cache
-            ~/.npm
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: "Install"
         run: yarn install --immutable
       - name: "Bootstrap"

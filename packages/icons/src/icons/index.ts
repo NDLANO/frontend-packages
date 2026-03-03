@@ -114,6 +114,8 @@ export { HomeFill } from "./HomeFill";
 export { HomeLine } from "./HomeLine";
 export { ImageFill } from "./ImageFill";
 export { ImageLine } from "./ImageLine";
+export { IndentDecrease } from "./IndentDecrease";
+export { IndentIncrease } from "./IndentIncrease";
 export { InfoI } from "./InfoI";
 export { InformationFill } from "./InformationFill";
 export { InformationLine } from "./InformationLine";

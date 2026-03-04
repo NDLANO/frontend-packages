@@ -11,6 +11,6 @@ import type { JSX } from "react";
 import { Icon, type Props } from "../Icon";
 export const MenuFold = (props: Props): JSX.Element => (
   <Icon fill="currentColor" data-license="Apache License 2.0" data-source="RemixIcon" viewBox="0 0 24 24" {...props}>
-    <path d="M21 4H7v2h14zm0 7H11v2h10zm0 7H7v2h14zM3 17V7l5 5z" />
+    <path d="M21 4H7v2h14zm0 7H11v2h10zm0 7H7v2h14zM1.99 8.81 3.4 7.4 8 12l-4.6 4.6L2 15.17 5.17 12z" />
   </Icon>
 );

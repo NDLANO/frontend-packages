@@ -169,6 +169,7 @@ export { PresentationFill } from "./PresentationFill";
 export { PresentationLine } from "./PresentationLine";
 export { PushpinFill } from "./PushpinFill";
 export { PushpinLine } from "./PushpinLine";
+export { Puzzle2Line } from "./Puzzle2Line";
 export { QuestionAnswerFill } from "./QuestionAnswerFill";
 export { QuestionAnswerLine } from "./QuestionAnswerLine";
 export { QuestionFill } from "./QuestionFill";

@@ -9,8 +9,8 @@
 import { Text, Image, Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
-import type { PreviewTranslations } from "./ImageSearch";
 import { PreviewImage } from "./PreviewImage";
+import type { PreviewTranslations } from "./types";
 import { getPreviewSrcSets } from "./util/imageUtil";
 
 const StyledButton = styled(Button, {

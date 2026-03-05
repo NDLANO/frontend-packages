@@ -20,11 +20,11 @@ export const transform = (content: string, opts: TransformOptions) => {
         return;
       }
       if (plugins[node.name]) {
-        return plugins[node.name](node, options, opts);
+        return plugins[node.name](node, options, opts, transform);
       }
       if (node.name === "ndlaembed") {
         if (embedPlugins[node.attribs["data-resource"]]) {
-          return embedPlugins[node.attribs["data-resource"]](node, options, opts);
+          return embedPlugins[node.attribs["data-resource"]](node, options, opts, transform);
         }
         const embed = JSON.parse(node.attribs["data-json"]) as MetaData<any, any>;
         return <UnknownEmbed embed={embed} />;

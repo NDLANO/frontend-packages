@@ -18,12 +18,12 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
   Text,
-  type PaginationRootProps,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ImageMetaInformationV3DTO, SearchResultV3DTO, SearchParamsDTO } from "@ndla/types-backend/image-api";
 import { type ChangeEvent, type ReactNode, type KeyboardEvent, useEffect, useState } from "react";
 import { ImageSearchResult } from "./ImageSearchResult";
+import type { ImageSearchTranslations } from "./types";
 
 const ImageSearchWrapper = styled("div", {
   base: {
@@ -78,26 +78,6 @@ const StyledPaginationItem = styled(PaginationItem, {
     },
   },
 });
-
-export interface PreviewTranslations {
-  creatorsLabel: string;
-  license: string;
-  caption: string;
-  altText: string;
-  modelRelease: string;
-  tags: string;
-  close: string;
-  checkboxLabel?: string;
-  missingTitleFallback?: string;
-  useImageTitle: string;
-}
-
-export interface ImageSearchTranslations {
-  searchPlaceholder: string;
-  searchButtonTitle: string;
-  imagePreview: PreviewTranslations;
-  paginationTranslations: PaginationRootProps["translations"];
-}
 
 export interface ImageSearchProps {
   onImageSelect: (image: ImageMetaInformationV3DTO) => void;

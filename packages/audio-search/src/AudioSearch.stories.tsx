@@ -9,7 +9,8 @@
 import type { AudioMetaInformationDTO, AudioSummarySearchResultDTO } from "@ndla/types-backend/audio-api";
 import type { Meta, StoryFn } from "@storybook/react";
 import { useRef } from "react";
-import { AudioSearch, type QueryObject } from "./AudioSearch";
+import { AudioSearch } from "./AudioSearch";
+import type { QueryObject } from "./types";
 
 export default {
   title: "Production system/AudioSearch",

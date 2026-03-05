@@ -12,7 +12,7 @@ import { Image, Text, ListItemContent, ListItemRoot, Button, IconButton } from "
 import { styled } from "@ndla/styled-system/jsx";
 import type { BrightcoveApiType } from "@ndla/types-embed";
 import { useState } from "react";
-import type { VideoTranslations } from "./VideoSearch";
+import type { VideoTranslations } from "./types";
 
 const ButtonWrapper = styled("div", {
   base: {

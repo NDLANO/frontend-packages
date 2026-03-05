@@ -24,7 +24,7 @@ import { styled } from "@ndla/styled-system/jsx";
 import type { ImageMetaInformationV3DTO } from "@ndla/types-backend/image-api";
 import { useState } from "react";
 import { ImageMeta } from "./ImageMeta";
-import type { PreviewTranslations } from "./ImageSearch";
+import type { PreviewTranslations } from "./types";
 import { getSrcSets } from "./util/imageUtil";
 
 const ImageContainer = styled("div", {

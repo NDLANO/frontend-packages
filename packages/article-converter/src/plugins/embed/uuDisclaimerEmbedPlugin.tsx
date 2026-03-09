@@ -9,10 +9,9 @@
 import { type UuDisclaimerMetaData } from "@ndla/types-embed";
 import { UuDisclaimerEmbed } from "@ndla/ui";
 import { type DOMNode, attributesToProps, domToReact } from "html-react-parser";
-import { transform } from "../../transform";
 import { type PluginType } from "../types";
 
-export const uuDisclaimerEmbedPlugin: PluginType = (element, opts, transformOpts) => {
+export const uuDisclaimerEmbedPlugin: PluginType = (element, opts, transformOpts, transform) => {
   const props = attributesToProps(element.attribs);
   const data = JSON.parse(props["data-json"] as string) as UuDisclaimerMetaData;
   if (data.status === "error") {

@@ -11,18 +11,8 @@ import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { BrightcoveApiType } from "@ndla/types-embed";
 import { type ChangeEvent, useCallback, useEffect, useState, type KeyboardEvent } from "react";
+import type { VideoTranslations } from "./types";
 import { VideoResultList } from "./VideoResultList";
-
-export interface VideoTranslations {
-  searchPlaceholder: string;
-  searchButtonTitle: string;
-  loadMoreVideos: string;
-  noResults: string;
-  is360Video: string;
-  previewVideo: string;
-  addVideo: string;
-  close: string;
-}
 
 interface Props {
   onVideoSelect: (video: BrightcoveApiType) => void;

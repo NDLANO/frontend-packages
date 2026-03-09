@@ -27,6 +27,7 @@ import type {
 import { type ReactNode, useEffect, useState } from "react";
 import { AudioSearchInput } from "./AudioSearchInput";
 import { AudioSearchList } from "./AudioSearchList";
+import type { QueryObject } from "./types";
 
 const AudioSearchWrapper = styled("div", {
   base: {
@@ -83,15 +84,6 @@ interface Props {
   translations: AudioSearchTranslations;
   onAudioSelect: (audio: AudioSummaryDTO) => void;
   loadingIndicator?: ReactNode;
-}
-
-export interface QueryObject {
-  query?: string;
-  audioType?: string;
-  page: number;
-  pageSize: number;
-  locale: string;
-  fallback?: boolean;
 }
 
 export const AudioSearch = ({

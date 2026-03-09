@@ -10,7 +10,7 @@ import { SearchLine } from "@ndla/icons";
 import { IconButton, Input } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import { type ChangeEvent, type KeyboardEvent, useState } from "react";
-import { type QueryObject } from "./AudioSearch";
+import type { QueryObject } from "./types";
 
 const InputWrapper = styled("div", {
   base: {

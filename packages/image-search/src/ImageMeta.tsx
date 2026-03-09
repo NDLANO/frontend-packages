@@ -15,14 +15,16 @@ interface Props {
   contentType: string;
   fileSize: number;
   imageDimensions?: ImageDimensionsDTO;
+  originalDate?: string;
   locale: string;
 }
 
-export const ImageMeta = ({ contentType, fileSize, imageDimensions, locale }: Props) => {
+export const ImageMeta = ({ contentType, fileSize, imageDimensions, originalDate, locale }: Props) => {
   const prettySize = useMemo(() => {
     return humanFileSize(fileSize, locale);
   }, [fileSize, locale]);
 
   const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : "";
-  return <Text>{`${contentType} - ${prettySize}${dimensions}`}</Text>;
+  const date = originalDate ? ` - ${originalDate}` : "";
+  return <Text>{`${contentType} - ${prettySize}${dimensions}${date}`}</Text>;
 };

@@ -1,0 +1,48 @@
+{
+  "name": "@ndla/oxlint-config",
+  "version": "0.0.0",
+  "description": "An oxlint config used throughout NDLA.",
+  "keywords": [
+    "config",
+    "lint",
+    "ndla",
+    "oxlint"
+  ],
+  "license": "GPL-3.0",
+  "author": "ndla@knowit.no",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/oxlint-config"
+  },
+  "files": [
+    "lib",
+    "es"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "index.mjs",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./es/index.mjs",
+    "require": "./lib/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch ./src",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build:types"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-notice": "^1.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">= 9",
+    "oxlint": ">= 1.46.0"
+  }
+}

@@ -239,7 +239,7 @@ export const Controls = ({ src, title }: Props) => {
   return (
     <div>
       {/* TODO: We should tie this up to the textual description somehow */}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <ControlsWrapper>
         <Back15SecButton

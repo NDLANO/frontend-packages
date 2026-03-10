@@ -32,7 +32,7 @@ const logTable = (langs: { languageName: string; missingKeys: string[] }[]) => {
   langs.forEach((l) => {
     l.missingKeys.forEach((key) => table.push({ language: l.languageName, missing: key }));
   });
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   console.table(table);
 };
 

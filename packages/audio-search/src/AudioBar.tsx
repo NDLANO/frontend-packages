@@ -34,9 +34,10 @@ export const AudioBar = ({ audio, fetchAudio, onError }: Props) => {
 
   useEffect(
     () => loadAudio(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react/exhaustive-deps
     [],
   );
 
+  // oxlint-disable-next-line jsx-a11y/media-has-caption
   return <audio controls>{!!audioSource && <source src={audioSource} type={audioType} />}</audio>;
 };

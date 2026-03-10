@@ -28,6 +28,7 @@ export const InlineTriggerButton = forwardRef<HTMLSpanElement, ComponentPropsWit
         ref={composeRefs(spanRef, ref)}
         onKeyUp={onKeyboardEvent}
         onClick={onClick}
+        // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
         role="button"
         tabIndex={0}
         {...props}

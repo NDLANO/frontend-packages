@@ -36,7 +36,6 @@ export const useEditorPopover = ({ triggerRef, ...opts }: UseEditorPopover) => {
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [editor, isActive, isFocused]);
-
+  }, [editor, isActive, isFocused, opts.openOnEnter, popover, triggerRef]);
   return popover;
 };

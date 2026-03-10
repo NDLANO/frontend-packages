@@ -60,9 +60,9 @@ export const Default: StoryFn<typeof ImageSearch> = ({ ...args }) => {
     <ImageSearch
       {...args}
       searchImages={fetchImages}
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       onImageSelect={console.log}
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       onError={console.error}
     />
   );

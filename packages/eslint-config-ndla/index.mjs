@@ -8,6 +8,7 @@
 
 // @ts-check
 
+// oxlint-disable-next-line import-js/no-extraneous-dependencies
 import eslint from "@eslint/js";
 // @ts-expect-error - no typedefs
 import pluginHeader from "eslint-plugin-header";
@@ -22,6 +23,7 @@ import tseslint from "typescript-eslint";
 // eslint 9 workaround
 pluginHeader.rules.header.meta.schema = false;
 
+// oxlint-disable-next-line typescript/no-deprecated
 export default tseslint.config(
   {
     ignores: ["**/es/**/*", "**/lib/**/*", "**/dist/**/*", "**/styled-system/**/*"],

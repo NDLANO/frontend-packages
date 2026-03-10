@@ -55,5 +55,6 @@ declare module "slate" {
   export type BlockElement = ParagraphElement | HeadingElement;
   export type BlockElementType = BlockElement["type"];
   export type ElementType = Element["type"];
+  // oxlint-disable-next-line no-unused-vars
   interface CustomTypes extends SlateEditor {}
 }

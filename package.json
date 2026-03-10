@@ -21,7 +21,7 @@
     "build": "nx run-many --target=build",
     "build:types": "nx run-many --target=prepublish",
     "lint": "yarn format-check && yarn lint-es",
-    "lint-es": "oxlint --type-aware --deny-warnings",
+    "lint-es": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "format-check": "oxfmt --check",

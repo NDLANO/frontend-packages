@@ -9,7 +9,7 @@
 import { IconButton } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { type ComponentProps, type ReactElement, createElement, useMemo } from "react";
+import { type ComponentProps, type ReactElement, createElement } from "react";
 import { FileCopyLine, Icon, UserFill } from ".";
 import * as icons from "./icons";
 
@@ -19,16 +19,13 @@ interface IconItemProps {
 }
 
 const IconItem = ({ icon, name }: IconItemProps) => {
-  const iconProps = useMemo(() => icon({}).props as Record<string, any>, [icon]);
-
   return (
     <li>
       <div>
         {createElement(icon, { size: "medium" })}
         <strong>{name}</strong>
       </div>
-      <div title={`Kilde: ${iconProps["data-source"]}`}>
-        {iconProps["data-license"]}
+      <div>
         <IconButton
           variant="tertiary"
           onClick={async () => await navigator.clipboard.writeText(`import { ${name} } from '@ndla/icons';`)}

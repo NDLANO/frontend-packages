@@ -14,7 +14,7 @@
       "dependsOn": ["^prepublish"],
       "inputs": [
         "{workspaceRoot}/tsconfig.json",
-        "{workspaceRoot}/tsconfig.build.sjon",
+        "{workspaceRoot}/tsconfig.build.json",
         "{projectRoot}/*",
         "{projectRoot}/src/**/*"
       ],

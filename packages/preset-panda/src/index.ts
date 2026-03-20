@@ -17,12 +17,14 @@ import { radii } from "./radii";
 import { semanticTokens } from "./semanticTokens";
 import { spacing } from "./spacing";
 import { fontWeights, textStyles, fonts, fontSizes, lineHeights } from "./typography";
+import { utilities } from "./utilities";
 import { zIndex } from "./zIndex";
 
 const preset = definePreset({
   name: "ndla/panda",
   globalCss: globalCss,
   conditions: conditions,
+  utilities: utilities,
   theme: {
     breakpoints: breakpoints,
     textStyles: textStyles,

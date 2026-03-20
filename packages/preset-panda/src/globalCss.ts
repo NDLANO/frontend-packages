@@ -26,6 +26,7 @@ export const globalCss = defineGlobalStyles({
   body: {
     background: "background.default",
     color: "text.default",
+    textUnderlineOffset: "0.27em",
   },
   "a, summary,[tabindex]:not([tabindex='-1'])": {
     outline: "none",
@@ -153,6 +154,8 @@ export const globalCss = defineGlobalStyles({
   'a:not([class]):not([data-unstyled]), a[class=""]:not([data-unstyled])': {
     color: "text.link",
     textDecoration: "underline",
+    textDecorationThickness: "max(0.0625em, 1px)",
+    textUnderlineOffset: "0.27em",
     _hover: {
       textDecoration: "none",
     },

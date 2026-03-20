@@ -22,9 +22,12 @@ export const listOnBackspace: ShortcutHandler = (editor, event, logger) => {
   if (!entry) return false;
 
   const [, currentItemPath] = entry;
-  // Check that cursor is not expanded.
-  // If cursor is placed at start of first item child
-  if (Point.equals(Range.start(editor.selection), editor.start(currentItemPath.concat(0)))) {
+  const anchor = editor.selection.anchor;
+  const firstChildStart = editor.start(currentItemPath.concat(0));
+  // Also check the point before anchor to handle the case where the cursor is inside an
+  // inline element (e.g. a span) at offset 0 rather than in the empty text before it.
+  const pointBefore = editor.before(anchor);
+  if (Point.equals(anchor, firstChildStart) || (pointBefore && Point.equals(pointBefore, firstChildStart))) {
     event.preventDefault();
     logger.log("Backspace at start of list item, lifting.");
     Transforms.liftNodes(editor, { at: currentItemPath });

@@ -204,6 +204,9 @@ const StyledButton = styled(Button, {
     mobileWide: {
       display: "none",
     },
+    _print: {
+      display: "none",
+    },
   },
 });
 

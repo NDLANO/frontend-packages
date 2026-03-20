@@ -27,12 +27,18 @@ const figureRecipe = cva({
     size: {
       full: {
         width: "100%",
+        _print: {
+          width: "60%",
+        },
       },
       medium: {
         tablet: {
           width: "50%",
         },
         desktop: {
+          width: "65%",
+        },
+        _print: {
           width: "65%",
         },
       },
@@ -43,12 +49,18 @@ const figureRecipe = cva({
         desktop: {
           width: "50%",
         },
+        _print: {
+          width: "50%",
+        },
       },
       xsmall: {
         tablet: {
           width: "25%",
         },
         desktop: {
+          width: "35%",
+        },
+        _print: {
           width: "35%",
         },
       },
@@ -59,9 +71,17 @@ const figureRecipe = cva({
           float: "left",
           clear: "left",
         },
+        _print: {
+          float: "left",
+          clear: "left",
+        },
       },
       right: {
         tablet: {
+          float: "right",
+          clear: "right",
+        },
+        _print: {
           float: "right",
           clear: "right",
         },

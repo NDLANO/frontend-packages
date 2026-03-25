@@ -112,6 +112,9 @@ export const textStyles = defineTextStyles({
         mobileWideDown: {
           ...sizes("3xlarge", "3xlarge"),
         },
+        _print: {
+          ...sizes("3xlarge", "3xlarge"),
+        },
       },
     },
     medium: {
@@ -124,6 +127,9 @@ export const textStyles = defineTextStyles({
           letterSpacing: "-0.01em",
           ...sizes("xxlarge", "xxlarge"),
         },
+        _print: {
+          ...sizes("xxlarge", "xxlarge"),
+        },
       },
     },
     small: {
@@ -133,6 +139,9 @@ export const textStyles = defineTextStyles({
         letterSpacing: "-0.01em",
         ...sizes("xxlarge", "xxlarge"),
         mobileWideDown: {
+          ...sizes("xlarge", "xlarge"),
+        },
+        _print: {
           ...sizes("xlarge", "xlarge"),
         },
       },
@@ -148,6 +157,9 @@ export const textStyles = defineTextStyles({
         mobileWideDown: {
           ...sizes("large", "large"),
         },
+        _print: {
+          ...sizes("large", "large"),
+        },
       },
     },
     medium: {
@@ -159,6 +171,9 @@ export const textStyles = defineTextStyles({
         mobileWideDown: {
           ...sizes("medium", "small"),
         },
+        _print: {
+          ...sizes("medium", "medium"),
+        },
       },
     },
     small: {
@@ -167,6 +182,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "bold",
         letterSpacing: "-0.01em",
         ...sizes("medium", "small"),
+        _print: {
+          ...sizes("small", "small"),
+        },
       },
     },
   },
@@ -177,6 +195,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("medium", "medium"),
+        _print: {
+          ...sizes("small", "small"),
+        },
       },
     },
     articleLink: {
@@ -185,6 +206,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("medium", "medium"),
+        _print: {
+          ...sizes("small", "small"),
+        },
       },
     },
     link: {
@@ -193,6 +217,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("medium", "medium"),
+        _print: {
+          ...sizes("small", "small"),
+        },
       },
     },
     xlarge: {
@@ -201,6 +228,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("large", "large"),
+        _print: {
+          ...sizes("medium", "xsmall"),
+        },
       },
     },
     large: {
@@ -209,6 +239,7 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("medium", "medium"),
+        // print size is same as regular size
       },
     },
     medium: {
@@ -217,6 +248,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("small", "small"),
+        _print: {
+          ...sizes("xsmall", "xsmall"),
+        },
       },
     },
     small: {
@@ -225,6 +259,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("xsmall", "xsmall"),
+        _print: {
+          ...sizes("xxsmall", "xsmall"),
+        },
       },
     },
   },
@@ -235,6 +272,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("medium", "medium"),
+        _print: {
+          ...sizes("small", "small"),
+        },
       },
       strong: {
         value: {
@@ -242,6 +282,9 @@ export const textStyles = defineTextStyles({
           fontWeight: "bold",
           letterSpacing: "normal",
           ...sizes("medium", "medium"),
+          _print: {
+            ...sizes("small", "small"),
+          },
         },
       },
     },
@@ -251,6 +294,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("small", "small"),
+        _print: {
+          ...sizes("xsmall", "xsmall"),
+        },
       },
     },
     small: {
@@ -259,6 +305,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("xsmall", "xsmall"),
+        _print: {
+          ...sizes("xxsmall", "xsmall"),
+        },
       },
     },
     xsmall: {
@@ -267,6 +316,9 @@ export const textStyles = defineTextStyles({
         fontWeight: "normal",
         letterSpacing: "normal",
         ...sizes("xxsmall", "xxsmall"),
+        _print: {
+          ...sizes("xxsmall", "xxsmall"),
+        },
       },
     },
   },

@@ -6,7 +6,6 @@
  *
  */
 
-export { uuid } from "./uuid";
 export { setCookie, getCookie, deleteCookie, isValidCookie } from "./cookieHandler";
 export { printPage } from "./printPage";
 export { validateTranslationFiles } from "./translationValidation";

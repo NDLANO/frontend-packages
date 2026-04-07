@@ -6,7 +6,6 @@
  *
  */
 
-import { uuid } from "@ndla/util";
 import TraceKit from "raven-js/vendor/TraceKit/tracekit";
 import { logglyApi } from "./logglyApi";
 
@@ -32,7 +31,7 @@ export const ErrorReporter = (function Singleton() {
   let previousNotification;
   let messagesRemaining = 10;
 
-  const sessionId = uuid();
+  const sessionId = crypto.randomUUID();
 
   async function sendToLoggly(data, config) {
     // Don't send to loggly if api key is undefined or no remaining messages

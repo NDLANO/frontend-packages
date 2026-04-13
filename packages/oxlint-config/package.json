@@ -1,6 +1,6 @@
 {
   "name": "@ndla/oxlint-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An oxlint config used throughout NDLA.",
   "keywords": [
     "config",

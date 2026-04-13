@@ -55,7 +55,11 @@ export const listPlugin = createPlugin<ListElementType, ListPluginOptions>({
       }
 
       const firstChild = node.children[0];
-      if (Node.isElement(firstChild) && !options.allowedListItemFirstChildTypes?.includes(firstChild.type)) {
+      if (
+        firstChild &&
+        Node.isElement(firstChild) &&
+        !options.allowedListItemFirstChildTypes?.includes(firstChild.type)
+      ) {
         logger.log("First child is not an allowed element, inserting default text element type");
         Transforms.insertNodes(
           editor,

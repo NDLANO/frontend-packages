@@ -307,8 +307,8 @@ const messages = {
   },
   download: "Last ned fil: ",
   factbox: {
-    open: "Åpne faktaboks",
-    close: "Lukk faktaboks",
+    showMore: "Vis mer",
+    showLess: "Vis mindre",
   },
   embed: {
     linkError: "Klarte ikke å vise lenke.",

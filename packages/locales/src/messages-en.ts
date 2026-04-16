@@ -306,8 +306,8 @@ const messages = {
   },
   download: "Download file: ",
   factbox: {
-    open: "Open fact box",
-    close: "Close fact box",
+    showMore: "Show more",
+    showLess: "Show less",
   },
   embed: {
     linkError: "Failed to show link.",

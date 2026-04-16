@@ -6,8 +6,7 @@
  *
  */
 
-import { ArrowDownShortLine } from "@ndla/icons";
-import { IconButton } from "@ndla/primitives";
+import { Button } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import React, {
   type ComponentProps,
@@ -45,11 +44,10 @@ const StyledAside = styled("aside", {
     _open: {
       gridTemplateRows: "1fr",
     },
-    _closed: {
-      _print: {
-        overflow: "visible",
-        maxHeight: "500vh",
-      },
+    _print: {
+      gridTemplateRows: "1fr",
+      overflow: "visible",
+      maxHeight: "500vh",
     },
     "& > div": {
       minHeight: "surface.3xsmall",
@@ -60,6 +58,9 @@ const StyledAside = styled("aside", {
       true: {
         "& > div": {
           overflow: "hidden",
+          _print: {
+            overflow: "visible",
+          },
         },
       },
     },
@@ -74,51 +75,20 @@ const StyledContent = styled("div", {
     "& :first-child": {
       marginBlockStart: "0",
     },
-    _after: {
-      content: '""',
-      textAlign: "center",
-      position: "absolute",
-      inset: "0",
-      transitionProperty: "opacity",
-      transitionDuration: "slow",
-      transitionTimingFunction: "ease-in-out",
-      gradientFrom: "surface.default/20",
-      gradientTo: "surface.default/95",
-      backgroundGradient: "to-b",
-      opacity: "1",
-      zIndex: "base",
-      pointerEvents: "none",
-    },
     _print: {
       overflow: "visible",
-      _after: {
-        display: "none",
-      },
     },
     _open: {
       paddingBlockEnd: "xsmall",
-      _after: {
-        opacity: "0",
-      },
     },
   },
 });
 
-const StyledIconButton = styled(IconButton, {
+const StyledButton = styled(Button, {
   base: {
     position: "absolute",
     bottom: "-medium",
     zIndex: "base",
-    "& svg": {
-      transitionProperty: "transform",
-      transitionTimingFunction: "ease-in-out",
-      transitionDuration: "fast",
-    },
-    _open: {
-      "& svg": {
-        transform: "rotate(180deg)",
-      },
-    },
     _print: {
       display: "none",
     },
@@ -170,16 +140,16 @@ export const FactBox = forwardRef<HTMLElement, Props>(
           }
         }}
       >
-        <StyledIconButton
+        <StyledButton
           data-state={state}
           onClick={onClick}
           contentEditable={false}
           aria-expanded={state === "open"}
+          variant="secondary"
           aria-controls={contentId}
-          aria-label={t(`factbox.${state === "open" ? "close" : "open"}`)}
         >
-          <ArrowDownShortLine />
-        </StyledIconButton>
+          {t(`factbox.${state === "open" ? "showLess" : "showMore"}`)}
+        </StyledButton>
         <StyledContent id={contentId} data-state={state} aria-hidden={state === "closed"} {...inertAttribute}>
           {children}
         </StyledContent>

@@ -308,8 +308,8 @@ const messages = {
   },
   download: "Viečča fiilla: ",
   factbox: {
-    open: "Raba fáktádoasa",
-    close: "Govčča fáktádoasa",
+    showMore: "Vis mer",
+    showLess: "Vis mindre",
   },
   embed: {
     linkError: "Ii sáhttán čájehit liŋkka.",

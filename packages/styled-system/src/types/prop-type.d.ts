@@ -87,6 +87,7 @@ export interface UtilityValues {
 	textIndent: Tokens["spacing"];
 	textShadow: Tokens["shadows"];
 	textShadowColor: Tokens["colors"];
+	WebkitTextFillColor: Tokens["colors"];
 	textWrap: "wrap" | "balance" | "nowrap";
 	truncate: boolean;
 	background: Tokens["colors"];

@@ -33,7 +33,7 @@ import {
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState, type ReactEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 
 const ControlsWrapper = styled("div", {
@@ -167,80 +167,64 @@ export const Controls = ({ src, title }: Props) => {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      const audioElement = audioRef.current;
-      const handleTimeUpdate = () => {
-        const { currentTime, duration } = audioElement;
-        setCurrentTime(Math.round(currentTime));
-        setDuration(Math.round(duration));
-      };
-
-      const handleLoadedMetaData = () => {
-        const { currentTime, duration } = audioElement;
-        setCurrentTime(Math.round(currentTime));
-        setDuration(Math.round(duration));
-      };
-
-      const handleTimeEnded = () => {
-        setPlaying(false);
-      };
-
-      audioElement.addEventListener("timeupdate", handleTimeUpdate);
-      audioElement.addEventListener("loadedmetadata", handleLoadedMetaData);
-      audioElement.addEventListener("ended", handleTimeEnded);
-      return () => {
-        audioElement.removeEventListener("timeupdate", handleTimeUpdate);
-        audioElement.removeEventListener("loadedmetadata", handleLoadedMetaData);
-        audioElement.removeEventListener("ended", handleTimeEnded);
-      };
+  const togglePlay = useCallback(() => {
+    if (!audioRef.current) return;
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
     }
+    setPlaying((p) => !p);
   }, []);
 
-  const togglePlay = () => {
-    if (audioRef.current) {
-      const audioElement = audioRef.current;
-      if (!playing) {
-        audioElement.play();
-      } else {
-        audioElement.pause();
-      }
-      setPlaying(!playing);
-    }
-  };
-
-  const onPlaybackRateChange = (rate: number) => {
+  const onPlaybackRateChange = useCallback((rate: number) => {
     setSpeedValue(rate);
     if (audioRef.current) {
       audioRef.current.playbackRate = rate;
     }
-  };
+  }, []);
 
-  const onSeekSeconds = (seconds: number) => {
+  const onSeekSeconds = useCallback((seconds: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime += seconds;
     }
-  };
+  }, []);
 
-  const handleSliderChange = (details: SliderValueChangeDetails) => {
+  const handleSliderChange = useCallback((details: SliderValueChangeDetails) => {
     const newValue = details.value[0];
     if (audioRef.current && newValue != null && !isNaN(newValue)) {
       audioRef.current.currentTime = details.value[0];
     }
-  };
+  }, []);
 
-  const handleVolumeSliderChange = (details: SliderValueChangeDetails) => {
+  const handleVolumeSliderChange = useCallback((details: SliderValueChangeDetails) => {
     if (audioRef.current) {
       audioRef.current.volume = details.value[0] / 100;
       setVolumeValue(details.value[0]);
     }
-  };
+  }, []);
+
+  const onEnded = useCallback(() => setPlaying(false), []);
+
+  const onHandleTime: ReactEventHandler<HTMLAudioElement> = useCallback((meta) => {
+    const target = meta.currentTarget;
+    setCurrentTime(Math.round(target.currentTime));
+    setDuration(Math.round(target.duration));
+  }, []);
 
   return (
     <div>
       {/* TODO: We should tie this up to the textual description somehow */}
       {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio ref={audioRef} src={src} title={title} preload="metadata" />
+      <audio
+        ref={audioRef}
+        src={src}
+        title={title}
+        preload="metadata"
+        onEnded={onEnded}
+        onLoadedMetadata={onHandleTime}
+        onTimeUpdate={onHandleTime}
+      />
       <ControlsWrapper>
         <Back15SecButton
           variant="tertiary"

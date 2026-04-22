@@ -162,7 +162,7 @@ export const Gloss = ({ title, glossData, audio, exampleIds, exampleLangs, varia
               </Text>
             )}
           </TextWrapper>
-          {!!audio?.src && <SpeechControl src={audio.src} title={audio.title} type="gloss" />}
+          {!!audio?.src && <SpeechControl src={audio.src} title={audio.title} />}
         </Container>
         <StyledContainer>
           <Text textStyle="label.medium" asChild consumeCss>

@@ -6,8 +6,8 @@
  *
  */
 
-import { type SliderValueChangeDetails, createListCollection } from "@ark-ui/react";
-import { Replay15Line, Forward15Line, PlayFill, PauseLine, VolumeUpFill, CheckLine } from "@ndla/icons";
+import { createListCollection } from "@ark-ui/react";
+import { Replay15Line, Forward15Line, VolumeUpFill, CheckLine } from "@ndla/icons";
 import {
   Button,
   FieldRoot,
@@ -23,18 +23,16 @@ import {
   SelectLabel,
   SelectRoot,
   SelectTrigger,
-  SliderControl,
-  SliderHiddenInput,
-  SliderLabel,
-  SliderRange,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
   Text,
 } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
-import { useCallback, useRef, useState, type ReactEventHandler } from "react";
 import { useTranslation } from "react-i18next";
+import { AudioElement } from "./AudioElement";
+import { AudioProgress } from "./AudioProgress";
+import { formatTime } from "./audioUtils";
+import { PlayButton } from "./PlayButton";
+import { useAudioControls } from "./useAudioControls";
+import { VolumeSlider } from "./VolumeSlider";
 
 const ControlsWrapper = styled("div", {
   base: {
@@ -64,7 +62,7 @@ const ControlsWrapper = styled("div", {
   },
 });
 
-const PlayButton = styled(IconButton, {
+const StyledPlayButton = styled(PlayButton, {
   base: {
     gridArea: "play",
   },
@@ -130,97 +128,44 @@ const StyledSelectRoot = styled(SelectRoot<string>, {
   },
 });
 
-const StyledSliderControl = styled(SliderControl, {
-  base: {
-    height: "surface.3xsmall",
-    minWidth: "small",
-  },
-});
-
 const StyledPopoverContent = styled(PopoverContent, {
   base: {
     paddingInline: "small",
   },
 });
 
-const formatTime = (seconds: number) => {
-  const minutes = Math.floor(seconds / 60);
-  const currentSeconds = seconds % 60;
-
-  const formattedSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
-  return `${minutes}:${formattedSeconds}`;
-};
-
 const speedValues = createListCollection({ items: ["0.5", "0.75", "1", "1.25", "1.5", "1.75", "2"] });
 
 interface Props {
   src: string;
   title: string;
+  variant?: "full" | "simplified";
 }
 
 export const Controls = ({ src, title }: Props) => {
   const { t } = useTranslation();
-  const [speedValue, setSpeedValue] = useState(1);
-  const [volumeValue, setVolumeValue] = useState(100);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const togglePlay = useCallback(() => {
-    if (!audioRef.current) return;
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-    setPlaying((p) => !p);
-  }, []);
-
-  const onPlaybackRateChange = useCallback((rate: number) => {
-    setSpeedValue(rate);
-    if (audioRef.current) {
-      audioRef.current.playbackRate = rate;
-    }
-  }, []);
-
-  const onSeekSeconds = useCallback((seconds: number) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime += seconds;
-    }
-  }, []);
-
-  const handleSliderChange = useCallback((details: SliderValueChangeDetails) => {
-    const newValue = details.value[0];
-    if (audioRef.current && newValue != null && !isNaN(newValue)) {
-      audioRef.current.currentTime = details.value[0];
-    }
-  }, []);
-
-  const handleVolumeSliderChange = useCallback((details: SliderValueChangeDetails) => {
-    if (audioRef.current) {
-      audioRef.current.volume = details.value[0] / 100;
-      setVolumeValue(details.value[0]);
-    }
-  }, []);
-
-  const onEnded = useCallback(() => setPlaying(false), []);
-
-  const onHandleTime: ReactEventHandler<HTMLAudioElement> = useCallback((meta) => {
-    const target = meta.currentTarget;
-    setCurrentTime(Math.round(target.currentTime));
-    setDuration(Math.round(target.duration));
-  }, []);
+  const {
+    audioRef,
+    onEnded,
+    onHandleTime,
+    onSeekSeconds,
+    playing,
+    togglePlay,
+    handleSliderChange,
+    handleVolumeSliderChange,
+    currentTime,
+    duration,
+    speedValue,
+    onPlaybackRateChange,
+    volumeValue,
+  } = useAudioControls();
 
   return (
     <div>
-      {/* TODO: We should tie this up to the textual description somehow */}
-      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio
-        ref={audioRef}
+      <AudioElement
         src={src}
         title={title}
-        preload="metadata"
+        ref={audioRef}
         onEnded={onEnded}
         onLoadedMetadata={onHandleTime}
         onTimeUpdate={onHandleTime}
@@ -234,9 +179,7 @@ export const Controls = ({ src, title }: Props) => {
         >
           <Replay15Line />
         </Back15SecButton>
-        <PlayButton aria-label={t(playing ? t("audio.pause") : t("audio.play"))} variant="primary" onClick={togglePlay}>
-          {playing ? <PauseLine /> : <PlayFill />}
-        </PlayButton>
+        <StyledPlayButton playing={playing} onClick={togglePlay} />
         <Forward15SecButton
           variant="tertiary"
           title={t("audio.controls.forward15sec")}
@@ -249,29 +192,7 @@ export const Controls = ({ src, title }: Props) => {
           <StyledText textStyle="label.medium" asChild consumeCss>
             <div>{formatTime(currentTime)}</div>
           </StyledText>
-          <SliderRoot
-            value={[currentTime]}
-            defaultValue={[0]}
-            step={1}
-            max={duration}
-            onValueChange={handleSliderChange}
-            getAriaValueText={(value) =>
-              t("audio.valueText", {
-                start: formatTime(Math.round(value.value)),
-                end: formatTime(Math.round(duration)),
-              })
-            }
-          >
-            <SliderLabel srOnly>{t("audio.progressBar")}</SliderLabel>
-            <SliderControl>
-              <SliderTrack>
-                <SliderRange />
-              </SliderTrack>
-              <SliderThumb index={0}>
-                <SliderHiddenInput />
-              </SliderThumb>
-            </SliderControl>
-          </SliderRoot>
+          <AudioProgress currentTime={currentTime} duration={duration} onValueChange={handleSliderChange} />
           <StyledText textStyle="label.medium" asChild consumeCss>
             <div>-{formatTime(Math.round(duration - currentTime))}</div>
           </StyledText>
@@ -314,25 +235,7 @@ export const Controls = ({ src, title }: Props) => {
             </VolumeButton>
           </PopoverTrigger>
           <StyledPopoverContent>
-            <SliderRoot
-              orientation="vertical"
-              value={[volumeValue]}
-              min={0}
-              max={100}
-              defaultValue={[100]}
-              step={1}
-              onValueChange={handleVolumeSliderChange}
-            >
-              <SliderLabel srOnly>{t("audio.controls.adjustVolume")}</SliderLabel>
-              <StyledSliderControl>
-                <SliderTrack>
-                  <SliderRange />
-                </SliderTrack>
-                <SliderThumb index={0}>
-                  <SliderHiddenInput />
-                </SliderThumb>
-              </StyledSliderControl>
-            </SliderRoot>
+            <VolumeSlider value={volumeValue} onValueChange={handleVolumeSliderChange} />
           </StyledPopoverContent>
         </PopoverRoot>
       </ControlsWrapper>

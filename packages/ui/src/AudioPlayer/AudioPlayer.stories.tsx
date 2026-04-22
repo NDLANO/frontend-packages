@@ -52,12 +52,21 @@ export const AudioPlayerStory: StoryObj<typeof AudioPlayer> = {
 
 AudioPlayerStory.storyName = "AudioPlayer";
 
+export const SpeechVariant: StoryObj<typeof AudioPlayer> = {
+  args: {
+    src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
+    title: "Den gode lydhistoria",
+    textVersion: TextVersion,
+    variant: "minimal",
+  },
+};
+
 export const SimpleVariant: StoryObj<typeof AudioPlayer> = {
   args: {
     src: "https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3",
     title: "Den gode lydhistoria",
     textVersion: TextVersion,
-    speech: true,
+    variant: "compact",
   },
 };
 

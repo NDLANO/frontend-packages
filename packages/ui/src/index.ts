@@ -57,6 +57,8 @@ export { FactBox } from "./FactBox/FactBox";
 export { ResourceBox } from "./ResourceBox/ResourceBox";
 
 export { AudioPlayer } from "./AudioPlayer/AudioPlayer";
+export type { AudioPlayerVariant } from "./AudioPlayer/AudioPlayer";
+export { CompactAudioPlayer } from "./AudioPlayer/CompactAudioPlayer";
 
 export { constants } from "./model";
 export { contentTypes, contentTypeMapping, resourceEmbedTypeMapping } from "./model/ContentType";

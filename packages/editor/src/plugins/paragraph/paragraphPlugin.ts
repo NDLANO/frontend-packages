@@ -6,7 +6,7 @@
  *
  */
 
-import { Node, Path, Text, Transforms } from "slate";
+import { Node, Path, Transforms } from "slate";
 import { createPlugin } from "../../core/createPlugin";
 import { LIST_ITEM_ELEMENT_TYPE } from "../list/listTypes";
 import {
@@ -22,7 +22,6 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
   name: PARAGRAPH_PLUGIN,
   options: {
     nonSerializableParents: [LIST_ITEM_ELEMENT_TYPE],
-    enableWhitespaceStrip: true,
   },
   normalize: (editor, node, path, logger, opts) => {
     if (!isParagraphElement(node)) return false;
@@ -72,51 +71,6 @@ export const paragraphPlugin = createPlugin<ParagraphElementType, ParagraphPlugi
 
     if (editor.selection && Path.isDescendant(editor.selection.anchor.path, path)) {
       return false;
-    }
-
-    const stringContent = Node.string(node);
-
-    if (stringContent[0] === " ") {
-      const [firstTextElement] = editor.nodes({
-        match: (n, p) => Node.isText(n) && p[p.length - 1] === 0 && n.text.startsWith(" "),
-        at: path,
-      });
-      if (!firstTextElement) {
-        logger.log("Somehow failed to find first text element. This is probably a bug");
-        return false;
-      }
-      logger.log("Removing leading whitespace from paragraph");
-      Transforms.delete(editor, {
-        at: {
-          path: firstTextElement[1],
-          offset: 0,
-        },
-        distance: 1,
-        unit: "character",
-      });
-
-      return true;
-    }
-
-    if (opts.enableWhitespaceStrip && stringContent[stringContent.length - 1] === " ") {
-      const [lastTextElement] = editor.nodes<Text>({
-        match: (n, p) => Node.isText(n) && !editor.hasPath(Path.next(p)) && n.text.endsWith(" "),
-        at: path,
-      });
-      if (!lastTextElement) {
-        logger.log("Somehow failed to find last text element. This is probably a bug");
-        return false;
-      }
-      logger.log("Removing trailing whitespace from paragraph");
-      Transforms.delete(editor, {
-        at: {
-          path: lastTextElement[1],
-          offset: lastTextElement[0].text.length - 1,
-        },
-        distance: 1,
-        unit: "character",
-      });
-      return true;
     }
 
     return false;

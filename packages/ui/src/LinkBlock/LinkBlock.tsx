@@ -11,8 +11,10 @@ import { Heading } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import type { LinkBlockEmbedData } from "@ndla/types-embed";
+import { toIntlLanguage } from "@ndla/util";
 import parse from "html-react-parser";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
 const InfoWrapper = styled("div", {
@@ -73,16 +75,17 @@ interface Props extends Omit<LinkBlockEmbedData, "resource"> {
 }
 
 export const LinkBlock = ({ title, articleLanguage, date, url, path }: Props) => {
+  const { i18n } = useTranslation();
   const href = getPossiblyRelativeUrl(url, path);
   const formattedDate = useMemo(() => {
     if (!date) return null;
-    return new Intl.DateTimeFormat(articleLanguage, {
+    return new Intl.DateTimeFormat(toIntlLanguage(articleLanguage ?? i18n.language), {
       timeZone: "CET",
       day: "2-digit",
       month: "long",
       year: "numeric",
     }).format(new Date(date));
-  }, [date, articleLanguage]);
+  }, [date, articleLanguage, i18n.language]);
   return (
     <StyledSafeLink to={href} data-embed-type="link-block">
       <InfoWrapper>

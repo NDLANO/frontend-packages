@@ -14,5 +14,6 @@ export { usePrevious } from "./usePrevious";
 export { composeRefs } from "./composeRefs";
 export { contains } from "./contains";
 export { humanFileSize } from "./humanFileSize";
+export { toIntlLanguage } from "./toIntlLanguage";
 
 export { groupBy, uniq, uniqBy, partition, keyBy, sortBy } from "./arrayHelpers";

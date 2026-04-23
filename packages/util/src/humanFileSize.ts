@@ -6,6 +6,8 @@
  *
  */
 
+import { toIntlLanguage } from "./toIntlLanguage";
+
 // Code taken from https://stackoverflow.com/questions/10420352/converting-file-size-in-bytes-to-human-readable-string/72596863#72596863
 
 const UNITS = ["byte", "kilobyte", "megabyte", "gigabyte", "terabyte", "petabyte"];
@@ -20,7 +22,7 @@ export const humanFileSize = (sizeBytes: number | bigint, locale: string): strin
     ++u;
   }
 
-  return new Intl.NumberFormat(locale, {
+  return new Intl.NumberFormat(toIntlLanguage(locale), {
     style: "unit",
     unit: UNITS[u],
     unitDisplay: "short",

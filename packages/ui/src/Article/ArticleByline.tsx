@@ -19,6 +19,7 @@ import {
 } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
+import { toIntlLanguage } from "@ndla/util";
 import { type ReactNode, forwardRef, useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import type { FootNote } from "../types";
@@ -112,7 +113,10 @@ export const ArticleByline = ({
   const { t, i18n } = useTranslation();
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
-  const listFormatter = new Intl.ListFormat(lang ?? i18n.language, { style: "long", type: "conjunction" });
+  const listFormatter = new Intl.ListFormat(toIntlLanguage(lang ?? i18n.language), {
+    style: "long",
+    type: "conjunction",
+  });
 
   return (
     <Wrapper>

@@ -65,11 +65,13 @@ export const AudioEmbed = ({ embed, lang }: Props) => {
         title={data.title.title}
         subtitle={subtitle}
       />
-      <EmbedByline
-        error={false}
-        type={data.audioType === "standard" ? "audio" : "podcast"}
-        copyright={embed.data.copyright}
-      />
+      {variant === "standard" && (
+        <EmbedByline
+          error={false}
+          type={data.audioType === "standard" ? "audio" : "podcast"}
+          copyright={embed.data.copyright}
+        />
+      )}
     </StyledFigure>
   );
 };

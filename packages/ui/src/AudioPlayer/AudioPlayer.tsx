@@ -11,6 +11,7 @@ import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import { type ReactNode, useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { CompactAudioPlayer } from "./CompactAudioPlayer";
 import { Controls } from "./Controls";
 import { SpeechControl } from "./SpeechControl";
 
@@ -140,31 +141,37 @@ const ShowMoreButton = styled(Button, {
 
 const DESCRIPTION_MAX_LENGTH = 200;
 
-type Props = {
+export type AudioPlayerVariant = "standard" | "minimal" | "compact";
+
+interface Props {
   src: string;
   title: string;
   subtitle?: {
     title: string;
     url?: string;
   };
-  speech?: boolean;
+  variant?: AudioPlayerVariant;
   description?: string;
   textVersion?: ReactNode;
   img?: {
     url: string;
     alt: string;
   };
-};
+}
 
-export const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion }: Props) => {
+export const AudioPlayer = ({ src, title, subtitle, variant = "standard", description, img, textVersion }: Props) => {
   const { t } = useTranslation();
   const [showTextVersion, setShowTextVersion] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const truncatedDescription = useMemo(() => description?.slice(0, DESCRIPTION_MAX_LENGTH), [description]);
   const textDescriptionId = useId();
 
-  if (speech) {
+  if (variant === "minimal") {
     return <SpeechControl src={src} title={title} />;
+  }
+
+  if (variant === "compact") {
+    return <CompactAudioPlayer src={src} title={title} />;
   }
 
   const toggleTextVersion = () => {

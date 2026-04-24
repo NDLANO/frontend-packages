@@ -9,7 +9,7 @@
 import { Figure } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { AudioMetaData } from "@ndla/types-embed";
-import { AudioPlayer } from "../AudioPlayer/AudioPlayer";
+import { AudioPlayer, type AudioPlayerVariant } from "../AudioPlayer/AudioPlayer";
 import { EmbedByline } from "../LicenseByline/EmbedByline";
 import { licenseAttributes } from "../utils/licenseAttributes";
 import { EmbedErrorPlaceholder } from "./EmbedErrorPlaceholder";
@@ -40,9 +40,7 @@ export const AudioEmbed = ({ embed, lang }: Props) => {
 
   const { data, embedData } = embed;
 
-  if (embedData.type === "minimal") {
-    return <AudioPlayer speech src={data.audioFile.url} title={data.title.title} />;
-  }
+  const variant = embedData.type === "podcast" ? "standard" : (embedData.type as AudioPlayerVariant);
 
   const subtitle = data.series ? { title: data.series.title.title, url: `/podkast/${data.series.id}` } : undefined;
 
@@ -55,6 +53,7 @@ export const AudioEmbed = ({ embed, lang }: Props) => {
   return (
     <StyledFigure lang={lang} data-embed-type={type} {...licenseProps}>
       <AudioPlayer
+        variant={variant}
         description={data.podcastMeta?.introduction ?? ""}
         img={img}
         src={data.audioFile.url}

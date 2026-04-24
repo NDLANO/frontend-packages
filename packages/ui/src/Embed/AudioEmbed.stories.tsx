@@ -50,6 +50,7 @@ const successData: AudioMeta = {
   manuscript: { manuscript: "", language: "nb" },
   created: "2022-02-28T17:09:28Z",
   updated: "2022-02-28T17:09:28Z",
+  released: "2022-02-28T17:09:28Z",
 };
 
 const podcastEmbedData: AudioEmbedData = {
@@ -122,6 +123,7 @@ const podcastSuccessData: AudioMeta = {
   },
   created: "2021-06-25T08:55:31Z",
   updated: "2022-03-26T07:49:09Z",
+  released: "2022-02-28T17:09:28Z",
   imageMeta: {
     id: "60913",
     inactive: false,

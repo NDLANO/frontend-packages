@@ -8,7 +8,7 @@
 
 import type { ArticleV2DTO } from "@ndla/types-backend/article-api";
 import type { ArticleDTO } from "@ndla/types-backend/draft-api";
-import type { Node } from "@ndla/types-taxonomy";
+import type { Node } from "@ndla/types-backend/taxonomy-api";
 import type { MetaData } from "./baseTypes";
 
 export interface RelatedContentEmbedData {

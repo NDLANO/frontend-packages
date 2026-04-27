@@ -1522,7 +1522,7 @@ __metadata:
   dependencies:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.89"
+    "@ndla/types-backend": "npm:^1.0.125"
     "@ndla/types-embed": "npm:^5.0.21-alpha.0"
     "@ndla/ui": "npm:^56.0.188-alpha.0"
     html-react-parser: "npm:^6.0.0"
@@ -1544,7 +1544,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.89"
+    "@ndla/types-backend": "npm:^1.0.125"
     "@pandacss/dev": "npm:^1.10.0"
   peerDependencies:
     react: ">= 18"
@@ -1644,7 +1644,7 @@ __metadata:
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.89"
+    "@ndla/types-backend": "npm:^1.0.125"
     "@ndla/util": "workspace:^"
     "@pandacss/dev": "npm:^1.10.0"
   peerDependencies:
@@ -1740,10 +1740,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/types-backend@npm:^1.0.89":
-  version: 1.0.89
-  resolution: "@ndla/types-backend@npm:1.0.89"
-  checksum: 10c0/e99c4cec053fc89d1e1bcf27dc71bb301346c83b983a9cb86236448fdb45ebdde7c3e3e0cf6fca549d85607db12896638e717272009bd77ee17ff6c8d7558168
+"@ndla/types-backend@npm:^1.0.125":
+  version: 1.0.125
+  resolution: "@ndla/types-backend@npm:1.0.125"
+  checksum: 10c0/c82b1934f56e88f2ebea64f40b98b8ada2f57d2222c95583b11fc036180811ab9d3e79e3574fcc9999a5d6d1b592f64b92591789e8338730c725e0d7ecd12509
   languageName: node
   linkType: hard
 
@@ -1751,17 +1751,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ndla/types-embed@workspace:packages/types-embed"
   dependencies:
-    "@ndla/types-backend": "npm:^1.0.89"
-    "@ndla/types-taxonomy": "npm:^1.0.41"
+    "@ndla/types-backend": "npm:^1.0.125"
   languageName: unknown
   linkType: soft
-
-"@ndla/types-taxonomy@npm:^1.0.41":
-  version: 1.0.41
-  resolution: "@ndla/types-taxonomy@npm:1.0.41"
-  checksum: 10c0/44839c2fb565d42e51fbc99997f433ff708668f48d06e5faac1a7aa3fa8d781d12526fd6d469c04e7431c6b2e8c48acb345491d88ce9be93853183004a704eca
-  languageName: node
-  linkType: hard
 
 "@ndla/ui@npm:^56.0.188-alpha.0, @ndla/ui@workspace:packages/ui":
   version: 0.0.0-use.local
@@ -1776,7 +1768,7 @@ __metadata:
     "@ndla/primitives": "workspace:^"
     "@ndla/safelink": "npm:^7.0.131-alpha.0"
     "@ndla/styled-system": "workspace:^"
-    "@ndla/types-backend": "npm:^1.0.89"
+    "@ndla/types-backend": "npm:^1.0.125"
     "@ndla/types-embed": "npm:^5.0.21-alpha.0"
     "@ndla/util": "npm:^5.0.21-alpha.0"
     "@pandacss/dev": "npm:^1.10.0"
@@ -7923,7 +7915,7 @@ __metadata:
     "@babel/core": "npm:^7.29.0"
     "@fontsource-variable/source-code-pro": "npm:^5.2.7"
     "@fontsource-variable/source-serif-4": "npm:^5.2.9"
-    "@ndla/types-backend": "npm:^1.0.89"
+    "@ndla/types-backend": "npm:^1.0.125"
     "@pandacss/dev": "npm:^1.10.0"
     "@storybook/addon-a11y": "npm:^10.3.5"
     "@storybook/addon-docs": "npm:^10.3.5"

@@ -32,9 +32,8 @@ const StyledSliderThumb = styled(SliderThumb, {
     variant: {
       standard: {},
       simple: {
-        borderRadius: "0",
-        width: "4xsmall",
-        height: "4xsmall",
+        marginBlockStart: "-4xsmall",
+        transitionProperty: "background, border-radius, width, height",
       },
     },
   },
@@ -45,18 +44,20 @@ const StyledSliderTrack = styled(SliderTrack, {
     variant: {
       standard: {},
       simple: {
+        marginBlockStart: "-4xsmall",
         background: "unset",
       },
     },
   },
 });
 
-const StyledSliderControl = styled(SliderControl, {
+const StyledSliderRoot = styled(SliderRoot, {
   variants: {
     variant: {
       standard: {},
       simple: {
-        height: "unset",
+        position: "relative",
+        marginBlockEnd: "-xsmall",
       },
     },
   },
@@ -65,12 +66,13 @@ const StyledSliderControl = styled(SliderControl, {
 export const AudioProgress = ({ currentTime, duration, onValueChange, variant }: Props) => {
   const { t } = useTranslation();
   return (
-    <SliderRoot
+    <StyledSliderRoot
       value={[currentTime]}
       defaultValue={[0]}
       step={1}
       max={duration}
       onValueChange={onValueChange}
+      variant={variant}
       getAriaValueText={(value) =>
         t("audio.valueText", {
           start: formatTime(Math.round(value.value)),
@@ -79,14 +81,14 @@ export const AudioProgress = ({ currentTime, duration, onValueChange, variant }:
       }
     >
       <SliderLabel srOnly>{t("audio.progressBar")}</SliderLabel>
-      <StyledSliderControl variant={variant}>
+      <SliderControl>
         <StyledSliderTrack variant={variant}>
           <SliderRange />
         </StyledSliderTrack>
         <StyledSliderThumb index={0} variant={variant}>
           <SliderHiddenInput />
         </StyledSliderThumb>
-      </StyledSliderControl>
-    </SliderRoot>
+      </SliderControl>
+    </StyledSliderRoot>
   );
 };

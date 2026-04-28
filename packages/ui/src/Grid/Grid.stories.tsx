@@ -9,6 +9,7 @@
 import { PageContent } from "@ndla/primitives";
 import { ArticleContent, ArticleWrapper } from "@ndla/ui";
 import type { Meta, StoryFn } from "@storybook/react";
+import type { ReactNode } from "react";
 import { Plain } from "../KeyFigure/KeyFigure.stories";
 import { Default as PitchStory } from "../Pitch/Pitch.stories";
 import { Grid, GridItem } from "./Grid";
@@ -46,20 +47,22 @@ const keyFigureArgs = [
 
 export const GridKeyPerformanceStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
-  const items = new Array(columns).fill(0).map((_, idx) => {
-    const args = keyFigureArgs[idx % keyFigureArgs.length];
-    return (
-      <GridItem key={idx} data-type="grid-cell">
-        <Plain key={idx} {...args} />
-      </GridItem>
-    );
-  });
+  const items = Array.from<ReactNode>({ length: columns })
+    .fill(0)
+    .map((_, idx) => {
+      const args = keyFigureArgs[idx % keyFigureArgs.length];
+      return (
+        <GridItem key={idx} data-type="grid-cell">
+          <Plain key={idx} {...args} />
+        </GridItem>
+      );
+    });
   return <Grid {...args}>{items}</Grid>;
 };
 
 export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
-  const items = new Array(columns).fill(
+  const items = Array.from<ReactNode>({ length: columns }).fill(
     <GridItem data-type="grid-cell">
       <PitchStory
         // oxlint-disable-next-line typescript/no-non-null-asserted-optional-chain
@@ -77,27 +80,31 @@ export const GridPitchStory: StoryFn<typeof Grid> = ({ ...args }) => {
 
 export const GridItemsWithBorders: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
-  const items = new Array(columns).fill(0).map((_, idx) => {
-    const args = keyFigureArgs[idx % keyFigureArgs.length];
-    return (
-      <GridItem key={idx} data-type="grid-cell" border={idx % 2 === 0}>
-        <Plain key={idx} {...args} />
-      </GridItem>
-    );
-  });
+  const items = Array.from<ReactNode>({ length: columns })
+    .fill(0)
+    .map((_, idx) => {
+      const args = keyFigureArgs[idx % keyFigureArgs.length];
+      return (
+        <GridItem key={idx} data-type="grid-cell" border={idx % 2 === 0}>
+          <Plain key={idx} {...args} />
+        </GridItem>
+      );
+    });
   return <Grid {...args}>{items}</Grid>;
 };
 
 export const GridItemsWithBordersInsideGridWithBorder: StoryFn<typeof Grid> = ({ ...args }) => {
   const columns = args.columns === "2x2" ? 4 : parseInt(args.columns);
-  const items = new Array(columns).fill(0).map((_, idx) => {
-    const args = keyFigureArgs[idx % keyFigureArgs.length];
-    return (
-      <GridItem key={idx} data-type="grid-cell" border={true}>
-        <Plain key={idx} {...args} />
-      </GridItem>
-    );
-  });
+  const items = Array.from<ReactNode>({ length: columns })
+    .fill(0)
+    .map((_, idx) => {
+      const args = keyFigureArgs[idx % keyFigureArgs.length];
+      return (
+        <GridItem key={idx} data-type="grid-cell" border={true}>
+          <Plain key={idx} {...args} />
+        </GridItem>
+      );
+    });
   return (
     <Grid {...args} border="lightBlue">
       {items}

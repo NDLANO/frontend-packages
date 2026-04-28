@@ -360,7 +360,7 @@ export const FloatLeftExtraSmall: StoryObj<typeof ImageEmbed> = {
 };
 
 export const In2x2Grid: StoryFn<typeof ImageEmbed> = (args) => {
-  const items = new Array(4).fill(
+  const items = Array.from<ReactNode>({ length: 4 }).fill(
     <ImageEmbed
       {...args}
       embed={{
@@ -379,7 +379,7 @@ export const In2x2Grid: StoryFn<typeof ImageEmbed> = (args) => {
 };
 
 export const In4Grid: StoryFn<typeof ImageEmbed> = (args) => {
-  const items = new Array(4).fill(
+  const items = Array.from<ReactNode>({ length: 4 }).fill(
     <ImageEmbed
       {...args}
       embed={{

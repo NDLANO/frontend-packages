@@ -44,12 +44,10 @@ export const baseConfig = defineConfig({
     builtin: true,
   },
   rules: {
-    "no-misleading-character-class": "error",
     "no-prototype-builtins": "error",
     "no-unexpected-multiline": "error",
     "no-case-declarations": "error",
     "no-empty": "error",
-    "no-regex-spaces": "error",
     "no-console": "warn",
     "array-callback-return": "warn",
     "default-case": "warn",
@@ -140,42 +138,22 @@ export const baseConfig = defineConfig({
     "jsx-a11y/tabindex-no-positive": "error",
     "jsx-a11y/no-static-element-interactions": "error",
     "typescript/ban-ts-comment": "error",
-    "typescript/no-duplicate-enum-values": "error",
-    // This isn't enabled by default, but we used to disable it explicitly in typescript-eslint.
-    "typescript/no-empty-object-type": "off",
-    // This isn't enabled by default, but we used to disable it explicitly in typescript-eslint.
-    "typescript/no-explicit-any": "off",
-    "typescript/no-extra-non-null-assertion": "error",
-    "typescript/no-misused-new": "error",
-    "typescript/no-namespace": "error",
-    "typescript/no-non-null-asserted-optional-chain": "error",
     "typescript/no-require-imports": "error",
-    "typescript/no-this-alias": "error",
     "typescript/no-unnecessary-type-constraint": "error",
-    "typescript/no-unsafe-declaration-merging": "error",
-    "typescript/no-unsafe-function-type": "error",
-    "typescript/no-wrapper-object-types": "error",
-    "typescript/prefer-as-const": "error",
-    "typescript/prefer-namespace-keyword": "error",
-    "typescript/triple-slash-reference": "error",
-    // TODO: This is a decent alternative to react/no-deprecated. It is currently unsupported by oxlint, but we should enable it once it is implemented.
-    "typescript/no-deprecated": "warn",
     // consider turning these on later
     "typescript/no-floating-promises": "off",
     "typescript/no-redundant-type-constituents": "off",
     "typescript/restrict-template-expressions": "off",
-    "typescript/no-base-to-string": "off",
-    "typescript/no-use-before-define": [
-      "warn",
-      {
-        functions: false,
-        classes: false,
-        variables: false,
-        typedefs: false,
-      },
-    ],
+    // these are slow
+    "typescript/no-deprecated": "error",
+    // these are slow and enabled by default
+    // "typescript/no-base-to-string": "off",
+    // "typescript/no-duplicate-type-constituents": "off",
+    // "typescript/no-misused-spread": "off",
+    // "typescript/no-useless-default-assignment": "off",
+    // "typescript/unbound-method": "off",
 
-    // js plugins
+    // js plugins - these are also slow
     "import-js/no-extraneous-dependencies": "error",
     "jsx-a11y-js/no-static-element-interactions": "error",
     "jsx-a11y-js/no-noninteractive-element-interactions": "error",

@@ -58,6 +58,7 @@ const yearPattern = /(\d{4})-/g;
 
 const stringifyAttributes = (attrs: Record<string, string>) => {
   const entries = Object.entries(attributesToProps(attrs));
+  // oxlint-disable-next-line typescript/no-base-to-string
   return entries.map(([name, val]) => ` ${name}="${String(val)}"`).join("");
 };
 

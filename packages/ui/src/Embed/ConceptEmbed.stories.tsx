@@ -201,3 +201,29 @@ export const InlineFailed: StoryObj<typeof ConceptEmbed> = {
     children: "forklaring",
   },
 };
+
+export const InlineNALicence: StoryObj<typeof ConceptEmbed> = {
+  args: {
+    embed: {
+      resource: "concept",
+      status: "success",
+      embedData: inlineEmbedData,
+      data: {
+      ...blockMetaData,
+      concept: {
+        ...blockMetaData.concept,
+        copyright: {
+          ...blockMetaData.concept.copyright,
+          license: {
+            license: "N/A",
+            description: "N/A - ikke relevant",
+            url: "",
+          },
+        },
+      },
+    }
+    },
+    children: "forklaring",
+  },
+};
+

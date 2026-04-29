@@ -7,7 +7,7 @@
  */
 
 import { AlertLine } from "@ndla/icons";
-import { getLicenseByAbbreviation } from "@ndla/licenses";
+import { getLicenseByAbbreviation, rights } from "@ndla/licenses";
 import { Button, Text } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { CopyrightDTO as ArticleCopyright } from "@ndla/types-backend/article-api";
@@ -239,6 +239,7 @@ const LicenseDescription = ({ children, isOpen, setIsOpen }: LicenseDescriptionP
 export const LicenseContainerContent = ({ children, copyright, type }: LicenseContainerProps) => {
   const { t, i18n } = useTranslation();
   const license = copyright ? getLicenseByAbbreviation(copyright.license?.license ?? "", i18n.language) : undefined;
+  const shouldShowLicense = !!license && !license.rights.includes(rights.NA);
   const captionAuthors =
     [copyright?.creators, copyright?.rightsholders, copyright?.processors].find((authors) => authors?.length) ?? [];
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -248,7 +249,7 @@ export const LicenseContainerContent = ({ children, copyright, type }: LicenseCo
       {children}
       {` ${t(`embed.type.${type}`)}${captionAuthors.length ? ": " : ""}`}
       <span>{captionAuthors.map((author) => author.name).join(", ")}</span>
-      {license ? (
+      {shouldShowLicense ? (
         <>
           {" / "}
           {<LicenseLink license={license} hideLink={!isOpen && !!children} />}

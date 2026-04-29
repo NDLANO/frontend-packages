@@ -219,6 +219,13 @@ export const InlineNALicence: StoryObj<typeof ConceptEmbed> = {
             description: "N/A - ikke relevant",
             url: "",
           },
+          creators: [{ type: "writer", name: "Sissel Paaske" }],
+          processors: [
+            { type: "processor", name: "Totaltekst" },
+            { type: "correction", name: "Arbeidets art" },
+          ],
+          rightsholders: [],
+          processed: false,
         },
       },
     }

@@ -91,6 +91,7 @@ export const stringifyAttributes = <Tag extends ElementType | "ndlaembed" | "mat
 ): string => {
   const keys = Object.entries(dataAttributes ?? {}).reduce<string[]>((acc, [key, value]) => {
     if (value != null) {
+      // oxlint-disable-next-line typescript/no-base-to-string
       acc.push(`${reactToHtmlPropMap[key] ?? key}="${value}"`);
     }
     return acc;

@@ -47,6 +47,7 @@ export const makeIframeString = (url: string, width: string | number, height: st
 export const isNumeric = (value: any) => !Number.isNaN(value - Number.parseFloat(value));
 
 const getIframeProps = (data: BrightcoveEmbedData, sources: BrightcoveVideoSource[]) => {
+  // oxlint-disable-next-line typescript/no-useless-default-assignment
   const { account, videoid, player = "default" } = data;
 
   const source = sources.filter((s) => s.width && s.height).toSorted((a, b) => a!.height! - b.height!)[0];

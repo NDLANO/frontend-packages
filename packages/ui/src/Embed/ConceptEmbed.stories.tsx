@@ -228,9 +228,8 @@ export const InlineNALicence: StoryObj<typeof ConceptEmbed> = {
             processed: false,
           },
         },
-      }
+      },
     },
     children: "forklaring",
   },
 };
-

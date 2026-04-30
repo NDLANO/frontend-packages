@@ -34,6 +34,9 @@ const StyledSliderThumb = styled(SliderThumb, {
       simple: {
         marginBlockStart: "-4xsmall",
         transitionProperty: "background, border-radius, width, height",
+        width: "4xsmall",
+        height: "4xsmall",
+        borderRadius: "sharp",
       },
     },
   },

@@ -25,6 +25,7 @@ const sliderRecipe = sva({
     },
     control: {
       position: "relative",
+      cursor: "pointer",
       display: "flex",
       _vertical: {
         flexDirection: "column",

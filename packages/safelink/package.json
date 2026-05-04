@@ -5,9 +5,8 @@
   "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "sideEffects": false,
   "scripts": {
@@ -27,9 +26,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
-    "lib",
-    "es"
+    "dist"
   ],
   "dependencies": {
     "@ndla/primitives": "workspace:^",

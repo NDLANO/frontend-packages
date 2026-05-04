@@ -5,9 +5,8 @@
   "description": "Slate editor components for NDLA.",
   "license": "GPL-3.0",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "sideEffects": false,
   "scripts": {
@@ -28,13 +27,7 @@
     "ndla"
   ],
   "author": "ndla@knowit.no",
-  "files": [
-    "dist",
-    "lib",
-    "src",
-    "es",
-    "types"
-  ],
+  "files": ["dist", "src"],
   "dependencies": {
     "@ark-ui/react": "^5.34.1",
     "@ndla/editor": "workspace:^",

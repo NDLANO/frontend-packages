@@ -14,8 +14,6 @@ import { PARAGRAPH_ELEMENT_TYPE, type ParagraphElement } from "../../plugins/par
 import { SECTION_ELEMENT_TYPE } from "../../plugins/section/sectionTypes";
 import { isElementOfType } from "../../utils/isElementType";
 
-// TODO: This entire file should be refactored and reconsidered. Our current deserialization is too complex.
-
 const createDefaultNoop = (): Descendant[] => {
   return [
     {
@@ -29,16 +27,7 @@ const createEmptyValue = (): Descendant[] => {
   return [
     {
       type: SECTION_ELEMENT_TYPE,
-      children: [
-        {
-          type: PARAGRAPH_ELEMENT_TYPE,
-          children: [
-            {
-              text: "",
-            },
-          ],
-        },
-      ],
+      children: [{ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] }],
     },
   ];
 };
@@ -74,11 +63,7 @@ export const deserializeFromHtml = (
       if (rule.deserialize) {
         // Already checked that nodeType === 1 -> el must be of type HTMLElement.
         const ret = rule.deserialize(el as HTMLElement, children, rule.options);
-        if (ret === undefined) {
-          continue;
-        } else {
-          return ret;
-        }
+        if (ret !== undefined) return ret;
       }
     }
 
@@ -89,70 +74,57 @@ export const deserializeFromHtml = (
     options.noop ? `<div data-noop="true">${html}</div>` : html,
     "text/html",
   );
-  const nodes = Array.from(document.body.children).map(deserialize);
-
-  const normalizedNodes = nodes
-    .map((n) => {
-      const node = Node.isNodeList(n) ? n[0] : n;
-      return node ? wrapMixedChildren(node, options.blocks, options.inlines) : undefined;
-    })
-    .filter((n) => !!n);
-  return normalizedNodes;
+  return Array.from(document.body.children).flatMap((el) => {
+    const n = deserialize(el);
+    const node = Node.isNodeList(n) ? n[0] : n;
+    return node ? [wrapMixedChildren(node, options.blocks, options.inlines)] : [];
+  });
 };
 
 const addEmptyTextNodes = (node: Element) => {
-  const children = node.children;
-  let lastWasText = false;
-
-  // Iterating in reverse ensures that we add empty text nodes only when necessary
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i];
-    const currentIsText = Node.isText(child);
-
-    if (!currentIsText && !lastWasText) {
-      children.splice(i, 0, { text: "" });
-      i++; // Skip next iteration since we inserted a new child
+  const withTextNodes = node.children.reduce<Descendant[]>((acc, child) => {
+    if (!Node.isText(child) && (acc.length === 0 || !Node.isText(acc[acc.length - 1]))) {
+      acc.push({ text: "" });
     }
-    lastWasText = currentIsText;
+    acc.push(child);
+    return acc;
+  }, []);
+
+  if (!Node.isText(withTextNodes[withTextNodes.length - 1])) {
+    withTextNodes.push({ text: "" });
   }
 
-  // Ensure the last child is a text node
-  if (!Node.isText(children[children.length - 1])) {
-    children.push({ text: "" });
-  }
+  node.children = withTextNodes as Element["children"];
 };
 
 const addEmptyParagraphs = (node: Element, blocks: ElementType[]) => {
-  const children = node.children;
-  let lastWasBlock = false;
-
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i];
-    const currentIsBlock = isElementOfType(child, blocks);
-
-    if (currentIsBlock && (i === 0 || lastWasBlock)) {
-      children.splice(i, 0, { type: "paragraph", children: [{ text: "" }] });
-      i++; // Skip next iteration since we inserted a new paragraph
+  const withParagraphs = node.children.reduce<Descendant[]>((acc, child) => {
+    if (isElementOfType(child, blocks) && (acc.length === 0 || isElementOfType(acc[acc.length - 1], blocks))) {
+      acc.push({ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] });
     }
+    acc.push(child);
+    return acc;
+  }, []);
 
-    lastWasBlock = currentIsBlock;
+  if (isElementOfType(withParagraphs[withParagraphs.length - 1], blocks)) {
+    withParagraphs.push({ type: PARAGRAPH_ELEMENT_TYPE, children: [{ text: "" }] });
   }
 
-  // Ensure the last child is a paragraph if needed
-  if (isElementOfType(children[children.length - 1], blocks)) {
-    children.push({ type: "paragraph", children: [{ text: "" }] });
-  }
+  node.children = withParagraphs as Element["children"];
 };
+
+const isBlockElement = (node: Descendant, inlines: ElementType[]) =>
+  Node.isElement(node) && !inlines.includes(node.type);
 
 const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: ElementType[]): Descendant => {
   if (!Node.isElement(node)) return node;
   const children = node.children;
 
-  const blockChildren = children.filter((child) => Node.isElement(child) && !inlines.includes(child.type));
-  const mixed = !!blockChildren.length && blockChildren.length !== children.length;
+  const hasBlockChildren = children.some((c) => isBlockElement(c, inlines));
+  const mixed = hasBlockChildren && children.some((c) => !isBlockElement(c, inlines));
   if (!mixed) {
     node.children = children.map((child) => wrapMixedChildren(child, blocks, inlines));
-    if (!blockChildren.length && !!children.length) {
+    if (!hasBlockChildren && !!children.length) {
       addEmptyTextNodes(node);
     } else {
       addEmptyParagraphs(node, blocks);
@@ -165,23 +137,20 @@ const wrapMixedChildren = (node: Descendant, blocks: ElementType[], inlines: Ele
   let openWrapperBlock: ParagraphElement | null = null;
   for (const child of children) {
     if (Node.isText(child) || (Node.isElement(child) && inlines.includes(child.type))) {
-      // TODO: Consider trimming
-      if (Node.string(child) === "" || Node.string(child) === " ") {
+      if (Node.string(child).trim() === "") {
         continue;
       }
       if (!openWrapperBlock) {
-        openWrapperBlock = slatejsx("element", { type: "paragraph" }, []) as ParagraphElement;
+        openWrapperBlock = slatejsx("element", { type: PARAGRAPH_ELEMENT_TYPE }, []) as ParagraphElement;
         cleanNodes.push(openWrapperBlock);
       }
       openWrapperBlock.children.push(child);
     } else {
       openWrapperBlock = null;
-      if (child.type === "paragraph" && child.children.length === 0) continue;
+      if (child.type === PARAGRAPH_ELEMENT_TYPE && child.children.length === 0) continue;
       cleanNodes.push(child);
     }
   }
-
-  addEmptyParagraphs(node, blocks);
 
   // Process the cleaned-up nodes recursively
   node.children = cleanNodes.map((child) => wrapMixedChildren(child, blocks, inlines));

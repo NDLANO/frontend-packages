@@ -78,6 +78,22 @@ export const listItemRecipe = sva({
         },
       },
     },
+    hideImageOnMobile: {
+      true: {
+        root: {
+          mobileWideDown: {
+            "& picture": {
+              display: "none",
+            },
+          },
+        },
+        image: {
+          mobileWideDown: {
+            display: "none",
+          },
+        },
+      },
+    },
   },
 });
 

@@ -21,6 +21,7 @@ const moveAroundInline = (editor: Editor, event: { preventDefault(): void }, rev
     const [, inlinePath] = inlineMatch;
     if (!atBoundary(inlinePath)) return false;
     event.preventDefault();
+    editor.focus?.();
     Transforms.move(editor, { unit: "offset", reverse });
     return true;
   }
@@ -31,6 +32,7 @@ const moveAroundInline = (editor: Editor, event: { preventDefault(): void }, rev
   const sibling = parentNode.children[childIndex + (reverse ? -1 : 1)];
   if (Element.isElement(sibling) && editor.isInline(sibling)) {
     event.preventDefault();
+    editor.focus?.();
     Transforms.move(editor, { unit: "offset", reverse });
     return true;
   }

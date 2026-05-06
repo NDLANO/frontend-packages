@@ -32,6 +32,7 @@ export interface CustomEditor {
   renderElement?: (props: RenderElementProps) => JSX.Element | undefined;
   renderLeaf?: (props: RenderLeafProps) => JSX.Element | undefined;
   reinitialize: (options: ReinitializeOptions) => void;
+  focus?: () => void;
   supportsElement: (element: Element) => boolean;
   supportsMark: (mark: MarkType | MarkType[]) => boolean;
 }

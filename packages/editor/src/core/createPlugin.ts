@@ -90,14 +90,18 @@ export const createPlugin = <TType extends ElementType, TOptions extends object 
     if (shortcutEntries.length) {
       const { onKeyDown } = editor;
       editor.onKeyDown = (event) => {
-        for (const [key, { handler, keyCondition }] of shortcutEntries) {
+        for (const [key, { handler, keyCondition, ignoreSkipLogging, ignoreConsumeLogging }] of shortcutEntries) {
           const keyConditions = Array.isArray(keyCondition) ? keyCondition : [keyCondition];
           if (keyConditions.some((condition) => condition(event))) {
             if (handler(editor, event, logger, pluginOptions)) {
-              logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
+              if (!ignoreConsumeLogging) {
+                logger.log(`Shortcut "${key}" consumed keyDown event. Ignoring further handlers.`);
+              }
               return;
             } else {
-              logger.log(`Shortcut "${key}" triggered, but did not consume the keyDown event.`);
+              if (!ignoreSkipLogging) {
+                logger.log(`Shortcut "${key}" triggered, but did not consume the keyDown event.`);
+              }
             }
           }
         }

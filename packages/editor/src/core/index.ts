@@ -31,6 +31,8 @@ export interface Shortcut<TOptions = undefined> {
    * A key condition that must be met for the handler to be called
    */
   keyCondition: KeyConditionFn | KeyConditionFn[];
+  ignoreSkipLogging?: boolean;
+  ignoreConsumeLogging?: boolean;
 }
 
 export interface PluginConfiguration<TType extends ElementType, TOptions = undefined> {

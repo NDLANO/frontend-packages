@@ -46,6 +46,7 @@ import { useCreateSlate } from "./editor/createSlate";
 import { LoggerManager } from "./editor/logger/Logger";
 import { breakPlugin } from "./plugins/break/breakPlugin";
 import { softBreakPlugin } from "./plugins/break/softBreakPlugin";
+import { focusPlugin } from "./plugins/focus/focusPlugin";
 import { headingPlugin } from "./plugins/heading/headingPlugin";
 import { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
 import { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigationPlugin";
@@ -240,6 +241,7 @@ const ToolbarButtons = () => {
 export const EditorPlayground: StoryFn = () => {
   const editor = useCreateSlate({
     plugins: [
+      focusPlugin,
       inlineNavigationPlugin,
       sectionPlugin,
       headingPlugin,

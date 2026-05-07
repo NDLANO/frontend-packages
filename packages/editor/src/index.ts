@@ -49,6 +49,9 @@ export { HEADING_ELEMENT_TYPE, HEADING_PLUGIN } from "./plugins/heading/headingT
 export { isHeadingElement } from "./plugins/heading/queries/headingQueries";
 export { toggleHeading } from "./plugins/heading/transforms/toggleHeading";
 
+export { focusPlugin } from "./plugins/focus/focusPlugin";
+export { FOCUS_PLUGIN } from "./plugins/focus/focusTypes";
+
 export { inlineNavigationPlugin } from "./plugins/inlineNavigation/inlineNavigationPlugin";
 export { INLINE_NAVIGATION_PLUGIN } from "./plugins/inlineNavigation/inlineNavigationTypes";
 

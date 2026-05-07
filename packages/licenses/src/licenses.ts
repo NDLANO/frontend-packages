@@ -29,7 +29,7 @@ const ccLocaleLink = (link: string) => {
   return {
     nb: noLink,
     nn: noLink,
-    en: `${link}/4.0`,
+    en: link,
   };
 };
 

@@ -31,6 +31,7 @@ const StyledAside = styled("aside", {
   base: {
     position: "relative",
     padding: "medium",
+    paddingBottom: "xxlarge",
     display: "grid",
     gridTemplateRows: "0fr",
     transitionProperty: "grid-template-rows",

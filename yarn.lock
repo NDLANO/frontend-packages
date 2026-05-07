@@ -1561,7 +1561,7 @@ __metadata:
     "@ndla/safelink": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.125"
     "@ndla/types-embed": "npm:^5.0.22-alpha.0"
-    "@ndla/ui": "npm:^56.0.190-alpha.0"
+    "@ndla/ui": "npm:^56.0.191-alpha.0"
     html-react-parser: "npm:^6.0.0"
   peerDependencies:
     i18next: ">= 25.0.0"
@@ -1690,7 +1690,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/licenses@npm:^10.0.11-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/licenses":
+"@ndla/licenses@npm:^10.0.12-alpha.0, @ndla/licenses@workspace:^, @ndla/licenses@workspace:packages/licenses":
   version: 0.0.0-use.local
   resolution: "@ndla/licenses@workspace:packages/licenses"
   languageName: unknown
@@ -1739,7 +1739,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/safelink@npm:^7.0.131-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
+"@ndla/safelink@npm:^7.0.132-alpha.0, @ndla/safelink@workspace:^, @ndla/safelink@workspace:packages/safelink":
   version: 0.0.0-use.local
   resolution: "@ndla/safelink@workspace:packages/safelink"
   dependencies:
@@ -1792,18 +1792,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ndla/ui@npm:^56.0.190-alpha.0, @ndla/ui@workspace:packages/ui":
+"@ndla/ui@npm:^56.0.191-alpha.0, @ndla/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@ndla/ui@workspace:packages/ui"
   dependencies:
     "@ark-ui/react": "npm:^5.34.1"
     "@ndla/core": "npm:^6.0.7-alpha.0"
     "@ndla/icons": "npm:^8.0.89-alpha.0"
-    "@ndla/licenses": "npm:^10.0.11-alpha.0"
+    "@ndla/licenses": "npm:^10.0.12-alpha.0"
     "@ndla/locales": "workspace:^"
     "@ndla/preset-panda": "workspace:^"
     "@ndla/primitives": "workspace:^"
-    "@ndla/safelink": "npm:^7.0.131-alpha.0"
+    "@ndla/safelink": "npm:^7.0.132-alpha.0"
     "@ndla/styled-system": "workspace:^"
     "@ndla/types-backend": "npm:^1.0.125"
     "@ndla/types-embed": "npm:^5.0.22-alpha.0"

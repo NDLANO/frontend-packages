@@ -67,7 +67,7 @@ const radioGroupRecipe = sva({
       display: "flex",
       alignItems: "center",
       cursor: "pointer",
-      gap: "xxsmall",
+      gap: "xsmall",
       _disabled: {
         cursor: "not-allowed",
       },

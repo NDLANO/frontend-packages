@@ -65,6 +65,7 @@ export const UuDisclaimerEmbed = ({ embed, transformedDisclaimer, children }: Pr
   }
 
   return (
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
     <DisclaimerWrapper role="region" data-embed-type="uu-disclaimer">
       <PopoverRoot>
         <PopoverTrigger asChild>

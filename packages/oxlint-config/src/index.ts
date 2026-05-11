@@ -137,6 +137,7 @@ export const baseConfig = defineConfig({
     "jsx-a11y/scope": "error",
     "jsx-a11y/tabindex-no-positive": "error",
     "jsx-a11y/no-static-element-interactions": "error",
+    "jsx-a11y/interactive-supports-focus": "error",
     "typescript/ban-ts-comment": "error",
     "typescript/no-require-imports": "error",
     "typescript/no-unnecessary-type-constraint": "error",
@@ -158,7 +159,6 @@ export const baseConfig = defineConfig({
     "jsx-a11y-js/no-static-element-interactions": "error",
     "jsx-a11y-js/no-noninteractive-element-interactions": "error",
     "jsx-a11y-js/no-noninteractive-element-to-interactive-role": "error",
-    "jsx-a11y-js/interactive-supports-focus": "error",
     "jsx-a11y-js/no-interactive-element-to-noninteractive-role": "error",
     "notice/notice": [
       "error",

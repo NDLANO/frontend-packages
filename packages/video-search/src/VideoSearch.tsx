@@ -97,6 +97,7 @@ export const VideoSearch = ({ onVideoSelect, searchVideos, onError, translations
 
   return (
     <VideoSearchWrapper>
+      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role - the search element isn't supported well enough */}
       <InputWrapper role="search">
         <Input
           type="search"

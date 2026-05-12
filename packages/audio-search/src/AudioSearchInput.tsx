@@ -46,6 +46,7 @@ export const AudioSearchInput = ({ queryObject: query, translations, onSearchQue
   };
 
   return (
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role - The search element isn't supported well enough
     <InputWrapper role="search">
       <Input
         type="search"

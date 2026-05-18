@@ -20,7 +20,7 @@ export const SpeechControl = ({ src, title }: Props) => {
 
   return (
     <div data-embed-type="speech">
-      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
+      {/* oxlint-disable-next-line jsx-a11y/media-has-caption oxlint-disable-next-line jsx-a11y/control-has-associated-label */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <PlayButton variant="tertiary" onClick={togglePlay}>
         <VolumeUpFill />

@@ -35,10 +35,6 @@ export const baseConfig = defineConfig({
       name: "import-js",
       specifier: "eslint-plugin-import",
     },
-    {
-      name: "jsx-a11y-js",
-      specifier: "eslint-plugin-jsx-a11y",
-    },
   ],
   env: {
     builtin: true,
@@ -139,6 +135,8 @@ export const baseConfig = defineConfig({
     "jsx-a11y/no-static-element-interactions": "error",
     "jsx-a11y/interactive-supports-focus": "error",
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "error",
+    "jsx-a11y/no-noninteractive-element-interactions": "error",
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": "error",
     "typescript/ban-ts-comment": "error",
     "typescript/no-require-imports": "error",
     "typescript/no-unnecessary-type-constraint": "error",
@@ -157,8 +155,6 @@ export const baseConfig = defineConfig({
 
     // js plugins - these are also slow
     "import-js/no-extraneous-dependencies": "error",
-    "jsx-a11y-js/no-noninteractive-element-interactions": "error",
-    "jsx-a11y-js/no-interactive-element-to-noninteractive-role": "error",
     "notice/notice": [
       "error",
       {

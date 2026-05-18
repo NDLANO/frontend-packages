@@ -12,7 +12,7 @@
 import eslint from "@eslint/js";
 // @ts-expect-error - no typedefs
 import pluginHeader from "eslint-plugin-header";
-import importPlugin from "eslint-plugin-import";
+import importPlugin from "eslint-plugin-import-x";
 // @ts-expect-error - no typedefs
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
@@ -156,15 +156,12 @@ export default tseslint.config(
       "**/*-test.{js,mjs,cjs,ts,jsx,tsx,mts,cts,mtsx,ctsx}",
     ],
     plugins: {
-      import: importPlugin,
+      "import-x": importPlugin,
     },
     rules: {
-      "import/first": "error",
-      // TODO: There's a perf issue with this rule. It's disabled until it's fixed.
-      // "import/no-cycle": ["warn", { maxDepth: Infinity }],
-      "import/no-anonymous-default-export": "error",
-      // TODO: Replace this with the simple-import-sort plugin
-      "import/no-extraneous-dependencies": "error",
+      "import-x/first": "error",
+      "import-x/no-anonymous-default-export": "error",
+      "import-x/no-extraneous-dependencies": "error",
     },
   },
   {

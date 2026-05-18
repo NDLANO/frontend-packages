@@ -33,7 +33,7 @@ export const baseConfig = defineConfig({
     "eslint-plugin-notice",
     {
       name: "import-js",
-      specifier: "eslint-plugin-import",
+      specifier: "eslint-plugin-import-x",
     },
   ],
   env: {

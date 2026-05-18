@@ -6,6 +6,7 @@
  *
  */
 
+// oxlint-disable-next-line import-js/no-extraneous-dependencies
 import { messagesEN, messagesNN, messagesNB, messagesSE } from "@ndla/locales";
 import i18next, { type i18n } from "i18next";
 import { initReactI18next } from "react-i18next";

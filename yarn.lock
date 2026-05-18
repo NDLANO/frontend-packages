@@ -1707,7 +1707,6 @@ __metadata:
   resolution: "@ndla/oxlint-config@workspace:packages/oxlint-config"
   dependencies:
     eslint-plugin-import: "npm:^2.32.0"
-    eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-notice: "npm:^1.0.0"
   peerDependencies:
     eslint: ">= 9"

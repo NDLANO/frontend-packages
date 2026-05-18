@@ -21,6 +21,7 @@ export default defineConfig({
       rules: {
         "react/no-unescaped-entities": "off",
         "import-js/no-extraneous-dependencies": "off",
+        "jsx-a11y/control-has-associated-label": "off",
       },
       plugins: ["react"],
     },

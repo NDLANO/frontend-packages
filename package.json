@@ -42,7 +42,7 @@
     "generate:icons": "node ./scripts/createTsIconComponents.mts"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.34.1",
+    "@ark-ui/react": "^5.36.2",
     "@babel/core": "^7.29.0",
     "@fontsource-variable/source-code-pro": "^5.2.7",
     "@fontsource-variable/source-serif-4": "^5.2.9",

@@ -208,10 +208,10 @@ export const useDatePickerTranslations = (
     () => ({
       dayCell: (state) => {
         if (state.unavailable) {
-          return t("dayCell.unavailable", { date: state.formattedDate });
+          return t("dayCell.unavailable", { date: state.valueText });
         } else if (state.selected) {
-          return t("dayCell.selected", { date: state.formattedDate });
-        } else return t("dayCell.select", { date: state.formattedDate });
+          return t("dayCell.selected", { date: state.valueText });
+        } else return t("dayCell.select", { date: state.valueText });
       },
       nextTrigger: (view) => t(`nextTrigger.${view}`),
       prevTrigger: (view) => t(`prevTrigger.${view}`),

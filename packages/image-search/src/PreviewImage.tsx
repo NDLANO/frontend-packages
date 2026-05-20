@@ -184,6 +184,7 @@ export const PreviewImage = ({ id, image, onSelectImage, showCheckbox, translati
             contentType={image.image.contentType}
             fileSize={image.image.size}
             imageDimensions={image.image.dimensions}
+            originalDate={image.image.originalDate}
             locale={locale}
           />
           {!!image.tags.tags.length && (

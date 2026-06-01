@@ -6,7 +6,7 @@
  *
  */
 
-import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent } from "@ndla/primitives";
+import { ExpandableBox, ExpandableBoxSummary, FramedContent, PageContent, Button } from "@ndla/primitives";
 import type { UUDisclaimerData, UuDisclaimerEmbedData } from "@ndla/types-embed";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AnchorHeading } from "../AnchorHeading/AnchorHeading";
@@ -198,4 +198,31 @@ export const Error: StoryObj<typeof UuDisclaimerEmbed> = {
       </AnchorHeading>
     ),
   },
+};
+export const SkipContent: StoryObj<typeof UuDisclaimerEmbed> = {
+  args: {
+    embed: {
+      resource: "uu-disclaimer",
+      status: "success",
+      embedData,
+      data,
+    },
+    children: (
+      <div>
+        <h2>Dette er noe ugyldig innhold</h2>
+        <Button>Denne kan hoppes over!</Button>
+        <p>
+          Innholdet kan enkelt hoppes over ved å bruke knappen skip-knappen som dukker opp når du bruker
+          tastaturnavigering inne i popoveren.
+        </p>
+      </div>
+    ),
+  },
+  render: (args) => (
+    <>
+      <UuDisclaimerEmbed {...args} />
+      <h2>Dette er noe gyldig innhold</h2>
+      <Button>Denne vil ikke hoppes over</Button>
+    </>
+  ),
 };

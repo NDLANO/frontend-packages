@@ -328,7 +328,11 @@ const messages = {
       disclaimer: "UU-advarsel",
     },
   },
-  uuDisclaimer: { title: "Tilgjengelighet" },
+  uuDisclaimer: {
+    title: "Tilgjengelighet",
+    skipContent: "Hopp over ikkje-tilgjengeleg innhald",
+    contentCompleted: "Slutt på ikkje-tilgjengeleg innhald.",
+  },
   gloss: {
     examples: "Eksempler",
     showExamples: "Vis eksempler",

@@ -6,7 +6,7 @@
  *
  */
 
-import { AccordionItemTrigger } from "@ark-ui/react";
+import { AccordionItemTrigger } from "@ark-ui/react/accordion";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,

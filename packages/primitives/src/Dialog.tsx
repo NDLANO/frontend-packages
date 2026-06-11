@@ -6,7 +6,7 @@
  *
  */
 
-import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react";
+import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react/dialog";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

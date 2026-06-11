@@ -6,7 +6,7 @@
  *
  */
 
-import { Tabs } from "@ark-ui/react";
+import { Tabs } from "@ark-ui/react/tabs";
 import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

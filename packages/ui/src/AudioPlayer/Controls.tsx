@@ -6,7 +6,7 @@
  *
  */
 
-import { createListCollection } from "@ark-ui/react";
+import { createListCollection } from "@ark-ui/react/collection";
 import { Replay15Line, Forward15Line, VolumeUpFill, CheckLine } from "@ndla/icons";
 import {
   Button,

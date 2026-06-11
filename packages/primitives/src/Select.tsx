@@ -6,7 +6,7 @@
  *
  */
 
-import { Select, selectAnatomy } from "@ark-ui/react";
+import { Select, selectAnatomy } from "@ark-ui/react/select";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

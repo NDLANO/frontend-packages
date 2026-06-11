@@ -6,7 +6,8 @@
  *
  */
 
-import { Field, Fieldset } from "@ark-ui/react";
+import { Field } from "@ark-ui/react/field";
+import { Fieldset } from "@ark-ui/react/fieldset";
 import { styled } from "@ndla/styled-system/jsx";
 import type { SystemStyleObject } from "@ndla/styled-system/types";
 

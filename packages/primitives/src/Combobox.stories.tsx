@@ -6,7 +6,9 @@
  *
  */
 
-import { Portal, createListCollection, type ComboboxInputValueChangeDetails } from "@ark-ui/react";
+import { createListCollection } from "@ark-ui/react/collection";
+import { type ComboboxInputValueChangeDetails } from "@ark-ui/react/combobox";
+import { Portal } from "@ark-ui/react/portal";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import { Flex, styled } from "@ndla/styled-system/jsx";
 import type { Meta, StoryFn } from "@storybook/react";

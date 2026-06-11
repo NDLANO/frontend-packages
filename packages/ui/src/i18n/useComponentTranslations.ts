@@ -6,7 +6,7 @@
  *
  */
 
-import type { CollectionItem } from "@ark-ui/react";
+import type { CollectionItem } from "@ark-ui/react/collection";
 import type { ComboboxRootProps, PaginationRootProps, TagsInputRootProps, DatePickerRootProps } from "@ndla/primitives";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";

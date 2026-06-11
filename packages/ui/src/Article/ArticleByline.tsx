@@ -6,7 +6,7 @@
  *
  */
 
-import { useAccordionContext } from "@ark-ui/react";
+import { useAccordionContext } from "@ark-ui/react/accordion";
 import { ArrowDownShortLine } from "@ndla/icons";
 import {
   AccordionItem,

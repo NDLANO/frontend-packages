@@ -6,7 +6,7 @@
  *
  */
 
-import { Combobox, comboboxAnatomy } from "@ark-ui/react";
+import { Combobox, comboboxAnatomy } from "@ark-ui/react/combobox";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";

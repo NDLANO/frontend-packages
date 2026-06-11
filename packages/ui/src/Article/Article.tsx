@@ -6,7 +6,7 @@
  *
  */
 
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react/factory";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";

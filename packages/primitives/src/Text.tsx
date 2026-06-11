@@ -6,7 +6,7 @@
  *
  */
 
-import { type HTMLArkProps, ark } from "@ark-ui/react";
+import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { css } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { ColorToken, FontWeightToken } from "@ndla/styled-system/tokens";

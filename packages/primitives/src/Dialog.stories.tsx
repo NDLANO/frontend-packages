@@ -6,7 +6,7 @@
  *
  */
 
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import { CloseLine } from "@ndla/icons";
 import { styled } from "@ndla/styled-system/jsx";
 import type { Meta, StoryFn } from "@storybook/react";

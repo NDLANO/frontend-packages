@@ -136,7 +136,7 @@ export type JsxStyleProps = {
   /**
   * Tells a component to consume the `css` prop and turn it into a `className` prop. This is only used in conjunction with the `baseComponent` prop in the `styled` function to ensure that components that are `asChild`-ed onto non-panda components can consume their css before being merged with their child.
   * @example
-  * import { ark } from "@ark-ui/react"
+  * import { ark } from "@ark-ui/react/factory"
   * import { styled } from "@ndla/styled-system/jsx"
   * const Button = styled('button', { baseComponent: true })
   *

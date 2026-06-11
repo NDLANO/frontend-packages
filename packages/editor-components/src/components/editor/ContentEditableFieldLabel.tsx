@@ -6,7 +6,7 @@
  *
  */
 
-import { mergeProps } from "@ark-ui/react";
+import { mergeProps } from "@ark-ui/react/utils";
 import { Label, useFieldContext, type LabelProps, type TextProps } from "@ndla/primitives";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

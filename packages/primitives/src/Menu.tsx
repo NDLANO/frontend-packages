@@ -6,7 +6,7 @@
  *
  */
 
-import { Menu, menuAnatomy } from "@ark-ui/react";
+import { Menu, menuAnatomy } from "@ark-ui/react/menu";
 import { css, cva, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { RecipeVariantProps, StyledProps, SystemStyleObject } from "@ndla/styled-system/types";

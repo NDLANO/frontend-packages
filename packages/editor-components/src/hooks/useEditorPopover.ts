@@ -6,7 +6,7 @@
  *
  */
 
-import { type UsePopoverProps } from "@ark-ui/react";
+import { type UsePopoverProps } from "@ark-ui/react/popover";
 import { usePopover } from "@ndla/primitives";
 import { useEffect, type RefObject } from "react";
 import { Range } from "slate";

@@ -9,6 +9,9 @@
 import { defineTokens } from "@pandacss/dev";
 
 export const animations = defineTokens.animations({
+  "rainbow-spin": {
+    value: "rainbow-spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite",
+  },
   spin: {
     value: "spin 700ms infinite linear",
   },
@@ -143,5 +146,13 @@ export const keyframes = {
   },
   "skeleton-pulse": {
     "50%": { opacity: "0.5" },
+  },
+  "rainbow-spin": {
+    "0%, 15%": {
+      transform: "rotate(0)",
+    },
+    "100%": {
+      transform: "rotate(360deg)",
+    },
   },
 };

@@ -987,6 +987,10 @@ const tokens = {
     "value": "'Source Code Pro Variable', Monaco",
     "variable": "var(--fonts-code)"
   },
+  "animations.rainbow-spin": {
+    "value": "rainbow-spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite",
+    "variable": "var(--animations-rainbow-spin)"
+  },
   "animations.spin": {
     "value": "spin 700ms infinite linear",
     "variable": "var(--animations-spin)"

@@ -7,7 +7,7 @@
  */
 
 import type { HTMLProps } from "@ark-ui/react/factory";
-import { css, cva, type RecipeVariantProps } from "@ndla/styled-system/css";
+import { css, cva } from "@ndla/styled-system/css";
 import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef } from "react";
 
@@ -23,20 +23,6 @@ const rainbowRecipe = cva({
     "& > :nth-child(3)": { "--i": "2" },
     "& > :nth-child(4)": { "--i": "3" },
     "& > :nth-child(5)": { "--i": "4" },
-  },
-  variants: {
-    variant: {
-      page: {
-        paddingBlockStart: "4xlarge",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      },
-      default: {},
-    },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -88,13 +74,11 @@ const Line5 = styled(BaseLine, {
 
 const RainbowRoot = styled("div", {}, { baseComponent: true });
 
-export type RainbowSpinnerVariantProps = NonNullable<RecipeVariantProps<typeof rainbowRecipe>>;
+interface Props extends HTMLProps<"div">, StyledProps {}
 
-interface Props extends HTMLProps<"div">, StyledProps, RainbowSpinnerVariantProps {}
-
-export const RainbowSpinner = forwardRef<HTMLDivElement, Props>(({ css: cssProp, variant, ...props }, ref) => {
+export const RainbowSpinner = forwardRef<HTMLDivElement, Props>(({ css: cssProp, ...props }, ref) => {
   return (
-    <RainbowRoot css={css.raw(rainbowRecipe.raw({ variant }), cssProp)} {...props} ref={ref}>
+    <RainbowRoot css={css.raw(rainbowRecipe.raw(), cssProp)} {...props} ref={ref}>
       <Line1 />
       <Line2 />
       <Line3 />

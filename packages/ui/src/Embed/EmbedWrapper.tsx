@@ -6,7 +6,7 @@
  *
  */
 
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react/factory";
 import { css, cva } from "@ndla/styled-system/css";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";

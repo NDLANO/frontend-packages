@@ -6,7 +6,7 @@
  *
  */
 
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 import {

@@ -6,7 +6,7 @@
  *
  */
 
-import { Slider, sliderAnatomy } from "@ark-ui/react";
+import { Slider, sliderAnatomy } from "@ark-ui/react/slider";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

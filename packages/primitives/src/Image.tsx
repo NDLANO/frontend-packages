@@ -6,7 +6,7 @@
  *
  */
 
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { styled } from "@ndla/styled-system/jsx";
 import type { StyledProps, StyledVariantProps } from "@ndla/styled-system/types";
 import type { ImageVariantDTO, ImageVariantSize } from "@ndla/types-backend/image-api";

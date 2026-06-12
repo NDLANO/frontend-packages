@@ -6,7 +6,7 @@
  *
  */
 
-import type { TreeViewNodeProviderProps } from "@ark-ui/react";
+import type { TreeViewNodeProviderProps } from "@ark-ui/react/tree-view";
 import { ArrowRightShortLine, CheckLine, FolderLine } from "@ndla/icons";
 import { HStack } from "@ndla/styled-system/jsx";
 import type { Meta, StoryFn } from "@storybook/react";

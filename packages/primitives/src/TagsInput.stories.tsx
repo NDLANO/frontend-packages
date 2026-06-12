@@ -6,7 +6,7 @@
  *
  */
 
-import { TagsInputContext } from "@ark-ui/react";
+import { TagsInputContext } from "@ark-ui/react/tags-input";
 import { CloseLine } from "@ndla/icons";
 import { HStack } from "@ndla/styled-system/jsx";
 import type { Meta, StoryFn } from "@storybook/react";

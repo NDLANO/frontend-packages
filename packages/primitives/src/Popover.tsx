@@ -6,7 +6,7 @@
  *
  */
 
-import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react";
+import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react/popover";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

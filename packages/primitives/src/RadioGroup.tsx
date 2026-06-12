@@ -6,7 +6,8 @@
  *
  */
 
-import { ark, RadioGroup, radioGroupAnatomy } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
+import { RadioGroup, radioGroupAnatomy } from "@ark-ui/react/radio-group";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

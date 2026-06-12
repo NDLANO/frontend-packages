@@ -6,7 +6,7 @@
  *
  */
 
-import { TagsInput, tagsInputAnatomy } from "@ark-ui/react";
+import { TagsInput, tagsInputAnatomy } from "@ark-ui/react/tags-input";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

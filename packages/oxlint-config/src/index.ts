@@ -71,6 +71,10 @@ export const baseConfig = defineConfig({
             name: "lodash",
             message: "Do not import lodash directly, use subpath imports instead.",
           },
+          {
+            name: "@ark-ui/react",
+            message: "Do not import from @ark-ui/react directly, use subpath imports instead.",
+          },
         ],
         patterns: [
           "@ndla/*/lib/**",

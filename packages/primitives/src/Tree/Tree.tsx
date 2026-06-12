@@ -12,7 +12,7 @@ import {
   type TreeNode,
   createTreeCollection as _createTreeCollection,
   useTreeView as _useTreeView,
-} from "@ark-ui/react";
+} from "@ark-ui/react/tree-view";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

@@ -6,7 +6,7 @@
  *
  */
 
-import { FileUpload, fileUploadAnatomy } from "@ark-ui/react";
+import { FileUpload, fileUploadAnatomy } from "@ark-ui/react/file-upload";
 import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

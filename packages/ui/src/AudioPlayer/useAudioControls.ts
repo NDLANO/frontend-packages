@@ -6,7 +6,7 @@
  *
  */
 
-import type { SliderValueChangeDetails } from "@ark-ui/react";
+import type { SliderValueChangeDetails } from "@ark-ui/react/slider";
 import { useCallback, useRef, useState, type ReactEventHandler } from "react";
 
 export const useAudioControls = () => {

@@ -6,7 +6,7 @@
  *
  */
 
-import { DatePicker, datePickerAnatomy } from "@ark-ui/react";
+import { DatePicker, datePickerAnatomy } from "@ark-ui/react/date-picker";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef, type RefAttributes } from "react";
@@ -162,4 +162,4 @@ export const DatePickerViewTrigger = withContext(DatePicker.ViewTrigger, "viewTr
 
 export const DatePickerYearSelect = withContext(DatePicker.YearSelect, "yearSelect", { baseComponent: true });
 
-export { DatePickerContext } from "@ark-ui/react";
+export { DatePickerContext } from "@ark-ui/react/date-picker";

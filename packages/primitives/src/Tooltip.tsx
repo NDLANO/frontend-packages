@@ -6,7 +6,7 @@
  *
  */
 
-import { Tooltip, tooltipAnatomy } from "@ark-ui/react";
+import { Tooltip, tooltipAnatomy } from "@ark-ui/react/tooltip";
 import { sva } from "@ndla/styled-system/css";
 import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";

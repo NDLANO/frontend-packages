@@ -6,7 +6,8 @@
  *
  */
 
-import { type ComboboxInputValueChangeDetails, createListCollection } from "@ark-ui/react";
+import { createListCollection } from "@ark-ui/react/collection";
+import { type ComboboxInputValueChangeDetails } from "@ark-ui/react/combobox";
 import { CloseLine, ArrowDownShortLine, CheckLine } from "@ndla/icons";
 import {
   ComboboxContent,

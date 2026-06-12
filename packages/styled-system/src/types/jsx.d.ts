@@ -43,7 +43,7 @@ export interface JsxFactoryOptions<TProps extends Dict> {
   /**
   * Used when creating styled components from React components that do not support the css prop. If true, the css prop will be consumed and converted to `className` 
   * @example
-  * import { ark } from "@ark-ui/react"
+  * import { ark } from "@ark-ui/react/factory"
   * import { styled } from "@ndla/styled-system/jsx"
   * const Button = styled(ark.button, { baseComponent: true })
   */

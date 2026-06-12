@@ -137,7 +137,7 @@ export interface UtilityValues {
 	transitionProperty: "common" | "colors" | "size" | "position" | "background";
 	transition: "all" | "common" | "size" | "position" | "background" | "colors" | "opacity" | "shadow" | "transform";
 	animation: Tokens["animations"];
-	animationName: "spin" | "fade-shift-in" | "fade-shift-out" | "collapse-in" | "collapse-out" | "fade-in" | "fade-out" | "slide-in-left" | "slide-out-left" | "slide-in-right" | "slide-out-right" | "slide-in-top" | "slide-out-top" | "slide-in-bottom" | "slide-out-bottom" | "skeleton-pulse";
+	animationName: "spin" | "fade-shift-in" | "fade-shift-out" | "collapse-in" | "collapse-out" | "fade-in" | "fade-out" | "slide-in-left" | "slide-out-left" | "slide-in-right" | "slide-out-right" | "slide-in-top" | "slide-out-top" | "slide-in-bottom" | "slide-out-bottom" | "skeleton-pulse" | "rainbow-spin";
 	animationTimingFunction: Tokens["easings"];
 	animationDuration: Tokens["durations"];
 	animationDelay: Tokens["durations"];

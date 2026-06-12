@@ -259,6 +259,8 @@ export {
   RadioGroupItemHiddenInput,
 } from "./RadioGroup";
 
+export { RainbowSpinner } from "./RainbowSpinner";
+
 export type { SelectRootProps } from "./Select";
 export {
   SelectRoot,

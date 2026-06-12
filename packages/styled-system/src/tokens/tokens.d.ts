@@ -23,7 +23,7 @@ export type FontSizeToken = "xxsmall" | "xsmall" | "small" | "medium" | "large" 
 
 export type FontToken = "sans" | "serif" | "code"
 
-export type AnimationToken = "spin" | "collapse-in" | "collapse-out" | "fade-shift-in" | "fade-shift-out" | "backdrop-in" | "backdrop-out" | "dialog-in" | "dialog-out" | "drawer-in-left" | "drawer-out-left" | "drawer-in-right" | "drawer-out-right" | "drawer-in-bottom" | "drawer-out-bottom" | "drawer-in-top" | "drawer-out-top" | "skeleton-pulse"
+export type AnimationToken = "rainbow-spin" | "spin" | "collapse-in" | "collapse-out" | "fade-shift-in" | "fade-shift-out" | "backdrop-in" | "backdrop-out" | "dialog-in" | "dialog-out" | "drawer-in-left" | "drawer-out-left" | "drawer-in-right" | "drawer-out-right" | "drawer-in-bottom" | "drawer-out-bottom" | "drawer-in-top" | "drawer-out-top" | "skeleton-pulse"
 
 export type ShadowToken = "xsmall" | "small" | "medium" | "large" | "xlarge" | "full" | "inner" | "innerTop" | "innerRight"
 

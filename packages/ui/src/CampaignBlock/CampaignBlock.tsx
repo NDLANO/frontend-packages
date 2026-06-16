@@ -6,13 +6,14 @@
  *
  */
 
+import { ark } from "@ark-ui/react/factory";
 import { ArrowRightLine } from "@ndla/icons";
-import { Text } from "@ndla/primitives";
+import { Text, Image } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
-import { styled } from "@ndla/styled-system/jsx";
+import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import type { CampaignBlockEmbedData } from "@ndla/types-embed";
 import parse from "html-react-parser";
-import { type ReactNode } from "react";
 import type { HeadingLevel } from "../types";
 import { getPossiblyRelativeUrl } from "../utils/relativeUrl";
 
@@ -36,133 +37,101 @@ interface Props {
   background?: CampaignBlockEmbedData["background"];
 }
 
-const Wrapper = styled("div", {
+const campaignBlockRecipe = sva({
+  slots: ["root", "image", "link", "text", "content"],
   base: {
-    width: "100%",
-    height: "100%",
-    containerType: "inline-size",
-  },
-});
-
-const Container = styled("div", {
-  base: {
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    border: "1px solid",
-    borderColor: "stroke.default",
-    backgroundColor: "background.default",
-    borderRadius: "xsmall",
-    boxShadow: "full",
-    overflow: "hidden",
-  },
-  variants: {
-    imageSide: {
-      left: {
-        "@/tablet": {
-          gridTemplateColumns: "minmax(230px, 455px) auto", //required for campaign block in myNdla
+    root: {
+      display: "grid",
+      gridTemplateColumns: "1fr",
+      border: "1px solid",
+      borderColor: "stroke.default",
+      backgroundColor: "background.default",
+      borderRadius: "xsmall",
+      boxShadow: "full",
+      overflow: "hidden",
+      tablet: {
+        "&:has(> :is(img, picture):first-child)": {
+          gridTemplateColumns: "minmax(230px, 455px) auto",
         },
-        "@supports not (container-type: inline-size)": {
-          tabletWide: {
-            gridTemplateColumns: "minmax(230px, 455px) auto",
-          },
-        },
-      },
-      right: {
-        "@/tablet": {
-          gridTemplateColumns: "auto minmax(230px, 455px)", //required for campaign block in myNdla
-        },
-        "@supports not (container-type: inline-size)": {
-          tabletWide: {
-            gridTemplateColumns: "auto minmax(230px, 455px)",
-          },
+        "&:has(> :is(img, picture):last-child)": {
+          gridTemplateColumns: "auto minmax(230px, 455px)",
         },
       },
     },
+    content: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      gap: "medium",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      paddingBlock: "medium",
+      paddingInline: "medium",
+      position: "relative",
+    },
+    text: {
+      tablet: {
+        display: "block",
+        overflow: "hidden",
+        position: "relative",
+        lineClamp: 4,
+        boxOrient: "vertical",
+      },
+    },
+    link: {
+      boxShadow: "full",
+      border: "1px solid",
+      borderColor: "stroke.default",
+    },
+    image: {
+      objectFit: "cover",
+      width: "100%",
+      height: "215px",
+      backgroundColor: "background.default",
+      tablet: {
+        height: "340px",
+      },
+    },
+  },
+  variants: {
     background: {
       neutral: {},
       brand1: {
-        backgroundColor: "surface.brand.1",
+        root: {
+          backgroundColor: "surface.brand.1",
+        },
       },
       brand3: {
-        backgroundColor: "surface.brand.3",
+        root: {
+          backgroundColor: "surface.brand.3",
+        },
       },
     },
   },
   defaultVariants: {
-    imageSide: "left",
     background: "neutral",
   },
 });
 
-const StyledImg = styled("img", {
-  base: {
-    objectFit: "cover",
-    width: "100%",
-    height: "215px",
-    "@/tablet": {
-      height: "340px",
-    },
-    "@supports not (container-type: inline-size)": {
-      tablet: {
-        height: "265px",
-      },
-      tabletWide: {
-        height: "340px",
-      },
-    },
-    backgroundColor: "background.default",
+const { withProvider, withContext } = createStyleContext(campaignBlockRecipe);
+
+export const CampaignBlockContainer = withProvider(ark.div, "root", {
+  baseComponent: true,
+  defaultProps: { "data-embed-type": "campaign-block" },
+});
+
+export const CampaignBlockContent = withContext(ark.div, "content", { baseComponent: true });
+
+export const CampaignBlockText = withContext(Text, "text", { defaultProps: { textStyle: "body.xlarge" } });
+
+export const CampaignBlockSafeLinkButton = withContext(SafeLinkButton, "link", {
+  defaultProps: {
+    variant: "secondary",
+    rel: "noopener noreferrer",
   },
 });
 
-const ContentWrapper = styled("div", {
-  base: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: "medium",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    paddingBlock: "medium",
-    paddingInline: "medium",
-    position: "relative",
-  },
-});
-
-const StyledText = styled(Text, {
-  base: {
-    tablet: {
-      display: "block",
-      overflow: "hidden",
-      position: "relative",
-      lineClamp: 4,
-      boxOrient: "vertical",
-    },
-  },
-});
-
-interface LinkButtonProps {
-  url?: string;
-  path?: string;
-  children: ReactNode;
-}
-
-const StyledSafeLinkButton = styled(SafeLinkButton, {
-  base: {
-    boxShadow: "full",
-    border: "1px solid",
-    borderColor: "stroke.default",
-  },
-});
-
-const LinkButton = ({ url, children, path }: LinkButtonProps) => {
-  if (url)
-    return (
-      <StyledSafeLinkButton to={getPossiblyRelativeUrl(url, path)} variant="secondary" rel="noopener noreferrer">
-        {children}
-      </StyledSafeLinkButton>
-    );
-  return children;
-};
+export const CampaignBlockImage = withContext(Image, "image", { baseComponent: true });
 
 export const CampaignBlock = ({
   title,
@@ -175,26 +144,24 @@ export const CampaignBlock = ({
   className,
   background,
 }: Props) => {
-  const imageComponent = image && <StyledImg src={`${image.src}?width=455`} height={340} width={455} alt={image.alt} />;
+  const imageComponent = image && <CampaignBlockImage src={image.src} alt={image.alt} />;
 
   return (
-    <Wrapper>
-      <Container className={className} data-embed-type="campaign-block" imageSide={imageSide} background={background}>
-        {imageSide === "left" && imageComponent}
-        <ContentWrapper>
-          <Text asChild consumeCss textStyle="heading.small">
-            <InternalHeading>{parse(title)}</InternalHeading>
-          </Text>
-          <StyledText textStyle="body.xlarge">{parse(description)}</StyledText>
-          {!!url?.url && (
-            <LinkButton url={url.url} path={path}>
-              {parse(url.text ?? "")}
-              <ArrowRightLine />
-            </LinkButton>
-          )}
-        </ContentWrapper>
-        {imageSide !== "left" && imageComponent}
-      </Container>
-    </Wrapper>
+    <CampaignBlockContainer className={className} background={background}>
+      {imageSide === "left" && imageComponent}
+      <CampaignBlockContent>
+        <Text asChild consumeCss textStyle="heading.small">
+          <InternalHeading>{parse(title)}</InternalHeading>
+        </Text>
+        <CampaignBlockText>{parse(description)}</CampaignBlockText>
+        {!!url?.url && (
+          <CampaignBlockSafeLinkButton to={getPossiblyRelativeUrl(url.url, path)}>
+            {parse(url.text ?? "")}
+            <ArrowRightLine />
+          </CampaignBlockSafeLinkButton>
+        )}
+      </CampaignBlockContent>
+      {imageSide !== "left" && imageComponent}
+    </CampaignBlockContainer>
   );
 };

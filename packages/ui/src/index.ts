@@ -99,7 +99,8 @@ export {
 } from "./TagSelector/TagSelector";
 
 export { Pitch } from "./Pitch/Pitch";
-export { KeyFigure } from "./KeyFigure/KeyFigure";
+export { KeyFigure, KeyFigureRoot, KeyFigureSubtitle, KeyFigureImage, KeyFigureTitle } from "./KeyFigure/KeyFigure";
+export { KeyFigureEmbed } from "./KeyFigure/KeyFigureEmbed";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock/ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock/ContactBlock";
 export {

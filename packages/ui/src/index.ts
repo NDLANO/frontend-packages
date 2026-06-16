@@ -102,7 +102,15 @@ export { Pitch } from "./Pitch/Pitch";
 export { KeyFigure } from "./KeyFigure/KeyFigure";
 export { ContactBlock, contactBlockBackgrounds } from "./ContactBlock/ContactBlock";
 export type { ContactBlockBackground } from "./ContactBlock/ContactBlock";
-export { CampaignBlock } from "./CampaignBlock/CampaignBlock";
+export {
+  CampaignBlock,
+  CampaignBlockContainer,
+  CampaignBlockContent,
+  CampaignBlockText,
+  CampaignBlockSafeLinkButton,
+  CampaignBlockImage,
+} from "./CampaignBlock/CampaignBlock";
+export { CampaignBlockEmbed } from "./CampaignBlock/CampaignBlockEmbed";
 export { Grid, GridItem } from "./Grid/Grid";
 export type { GridProps as GridType, GridItemProps } from "./Grid/Grid";
 

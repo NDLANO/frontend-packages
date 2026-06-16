@@ -6,44 +6,55 @@
  *
  */
 
-import { styled } from "@ndla/styled-system/jsx";
+import { ark } from "@ark-ui/react/factory";
+import { Image } from "@ndla/primitives";
+import { sva } from "@ndla/styled-system/css";
+import { createStyleContext } from "@ndla/styled-system/jsx";
 import parse from "html-react-parser";
 
-const ContentWrapper = styled("div", {
+const keyFigureRecipe = sva({
+  slots: ["root", "image", "title", "subtitle"],
   base: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "xsmall",
-
-    "&:not(:has(> img))": {
-      paddingBlock: "xxlarge",
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "xsmall",
+      "&:not(:has(> img, picture))": {
+        paddingBlock: "xxlarge",
+      },
+    },
+    image: {
+      height: "surface.3xsmall",
+      width: "surface.3xsmall",
+      borderRadius: "xsmall",
+    },
+    title: {
+      textStyle: "heading.large",
+      textAlign: "center",
+    },
+    subtitle: {
+      textStyle: "title.medium",
+      textAlign: "center",
     },
   },
 });
 
-const StyledImage = styled("img", {
-  base: {
-    height: "surface.3xsmall",
-    width: "surface.3xsmall",
-    borderRadius: "xsmall",
+const { withProvider, withContext } = createStyleContext(keyFigureRecipe);
+
+export const KeyFigureRoot = withProvider(ark.div, "root", {
+  baseComponent: true,
+  defaultProps: {
+    "data-embed-type": "key-figure",
   },
 });
 
-const TitleWrapper = styled("div", {
-  base: {
-    textStyle: "heading.large",
-    textAlign: "center",
-  },
-});
+export const KeyFigureImage = withContext(Image, "image");
 
-const SubTitleWrapper = styled("div", {
-  base: {
-    textStyle: "title.medium",
-    textAlign: "center",
-  },
-});
+export const KeyFigureTitle = withContext(ark.div, "title", { baseComponent: true });
+
+export const KeyFigureSubtitle = withContext(ark.div, "subtitle", { baseComponent: true });
 
 export interface Props {
   image?: {
@@ -56,10 +67,10 @@ export interface Props {
 
 export const KeyFigure = ({ image, title, subtitle }: Props) => {
   return (
-    <ContentWrapper data-embed-type="key-figure">
-      {!!image && <StyledImage src={`${image?.src}?width=150`} width={150} height={150} alt={image?.alt} />}
-      <TitleWrapper>{parse(title)}</TitleWrapper>
-      <SubTitleWrapper>{parse(subtitle)}</SubTitleWrapper>
-    </ContentWrapper>
+    <KeyFigureRoot>
+      {!!image && <KeyFigureImage src={image?.src} width={150} height={150} alt={image?.alt ?? ""} />}
+      <KeyFigureTitle>{parse(title)}</KeyFigureTitle>
+      <KeyFigureSubtitle>{parse(subtitle)}</KeyFigureSubtitle>
+    </KeyFigureRoot>
   );
 };

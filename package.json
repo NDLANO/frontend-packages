@@ -30,7 +30,7 @@
     "test": "vitest --run",
     "check-all": "yarn type-check && yarn format-check && yarn lint-es && yarn test",
     "deploy": "vercel --token $VERCEL_TOKEN alias set frontend-packages-master.vercel.app designmanual.ndla.no",
-    "clean": "rm -rf ./packages/*/dist ./packages/*/es ./packages/*/lib",
+    "clean": "rm -rf ./packages/*/dist",
     "bootstrap": "yarn nx run-many --target build prepublish",
     "bootstrap:ci": "yarn prepare && yarn nx run-many --target build prepublish --skip-nx-cache",
     "publish": "yarn clean && yarn bootstrap:ci && lerna publish",

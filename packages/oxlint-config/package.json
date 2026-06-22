@@ -16,16 +16,13 @@
     "directory": "packages/oxlint-config"
   },
   "files": [
-    "lib",
-    "es"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "index.mjs",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "publishConfig": {
     "access": "public"

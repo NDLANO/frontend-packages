@@ -18,23 +18,8 @@ export function getExternalDeps(pkgDir: string) {
 
 export default defineConfig({
   entry: ["src/index.ts"],
-  format: ["esm", "cjs"],
+  format: ["esm"],
   outDir: "dist",
-  outputOptions: (options, format) => {
-    if (format === "es") {
-      return {
-        ...options,
-        dir: "es",
-        entryFileNames: "[name].mjs",
-      };
-    } else {
-      return {
-        ...options,
-        dir: "lib",
-        entryFileNames: "[name].js",
-      };
-    }
-  },
   dts: false,
   sourcemap: true,
   clean: false,

@@ -8,7 +8,7 @@
 
 import { ArrowRightLine, CalendarLine } from "@ndla/icons";
 import { Heading } from "@ndla/primitives";
-import { SafeLink } from "@ndla/safelink";
+import { UnstyledSafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
 import type { LinkBlockEmbedData } from "@ndla/types-embed";
 import { toIntlLanguage } from "@ndla/util";
@@ -25,35 +25,39 @@ const InfoWrapper = styled("div", {
   },
 });
 
-const StyledSafeLink = styled(SafeLink, {
-  base: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    background: "surface.default",
-    padding: "medium",
-    border: "1px solid",
-    borderColor: "stroke.subtle",
-    borderRadius: "xsmall",
-    "& h3": {
-      textDecoration: "underline",
-    },
-    "& [data-forward]": {
-      transitionProperty: "width, height",
-      transitionTimingFunction: "ease-in-out",
-      transitionDuration: "fast",
-    },
-    _hover: {
+const StyledSafeLink = styled(
+  UnstyledSafeLink,
+  {
+    base: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      background: "surface.default",
+      padding: "medium",
+      border: "1px solid",
+      borderColor: "stroke.subtle",
+      borderRadius: "xsmall",
       "& h3": {
-        textDecoration: "none",
+        textDecoration: "underline",
       },
       "& [data-forward]": {
-        width: "large",
-        height: "large",
+        transitionProperty: "width, height",
+        transitionTimingFunction: "ease-in-out",
+        transitionDuration: "fast",
+      },
+      _hover: {
+        "& h3": {
+          textDecoration: "none",
+        },
+        "& [data-forward]": {
+          width: "large",
+          height: "large",
+        },
       },
     },
   },
-});
+  { baseComponent: true },
+);
 
 const StyledDateContainer = styled("div", {
   base: {

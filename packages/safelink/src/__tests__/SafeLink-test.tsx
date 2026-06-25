@@ -26,7 +26,7 @@ test("SafeLink renderers Link correctly if router context is present", async () 
   expect(link).toHaveAttribute("href", "/my/path");
   expect(container.firstChild).toMatchInlineSnapshot(`
     <a
-      class=""
+      class="c_text.link text-decoration_underline td-t_max(0.0625em,_1px) tu-o_0.27em hover:text-decoration_none visited:c_text.linkVisited"
       data-discover="true"
       href="/my/path"
       tabindex="0"
@@ -41,13 +41,13 @@ test("SafeLink defaults to normal link if to prop is an external link", async ()
   const link = await findByRole("link");
   expect(link).toHaveAttribute("href", "https://example.com");
   expect(container.firstChild).toMatchInlineSnapshot(`
-<a
-  class=""
-  href="https://example.com"
->
-  External link
-</a>
-`);
+    <a
+      class="c_text.link text-decoration_underline td-t_max(0.0625em,_1px) tu-o_0.27em hover:text-decoration_none visited:c_text.linkVisited"
+      href="https://example.com"
+    >
+      External link
+    </a>
+  `);
 });
 
 test("SafeLink defaults to normal link if to prop is an old ndla link", async () => {
@@ -57,13 +57,13 @@ test("SafeLink defaults to normal link if to prop is an old ndla link", async ()
   const link = await findByRole("link");
   expect(link).toHaveAttribute("href", "/nb/node/54");
   expect(container.firstChild).toMatchInlineSnapshot(`
-<a
-  class=""
-  href="/nb/node/54"
->
-  Normal link
-</a>
-`);
+    <a
+      class="c_text.link text-decoration_underline td-t_max(0.0625em,_1px) tu-o_0.27em hover:text-decoration_none visited:c_text.linkVisited"
+      href="/nb/node/54"
+    >
+      Normal link
+    </a>
+  `);
 });
 
 test("SafeLink renderers normal link correctly when router context is not present", async () => {
@@ -75,13 +75,13 @@ test("SafeLink renderers normal link correctly when router context is not presen
   const link = await findByRole("link");
   expect(link).toHaveAttribute("href", "/my/path");
   expect(container.firstChild).toMatchInlineSnapshot(`
-<a
-  class=""
-  href="/my/path"
->
-  No router context
-</a>
-`);
+    <a
+      class="c_text.link text-decoration_underline td-t_max(0.0625em,_1px) tu-o_0.27em hover:text-decoration_none visited:c_text.linkVisited"
+      href="/my/path"
+    >
+      No router context
+    </a>
+  `);
 });
 
 test("SafeLink renderers normal mailto-link correctly", async () => {
@@ -91,13 +91,13 @@ test("SafeLink renderers normal mailto-link correctly", async () => {
   const link = await findByRole("link");
   expect(link).toHaveAttribute("href", "mailto:test@ndla.no");
   expect(container.firstChild).toMatchInlineSnapshot(`
-<a
-  class=""
-  href="mailto:test@ndla.no"
->
-  test@ndla.no
-</a>
-`);
+    <a
+      class="c_text.link text-decoration_underline td-t_max(0.0625em,_1px) tu-o_0.27em hover:text-decoration_none visited:c_text.linkVisited"
+      href="mailto:test@ndla.no"
+    >
+      test@ndla.no
+    </a>
+  `);
 });
 
 test("isOldNdlaLink checks", () => {

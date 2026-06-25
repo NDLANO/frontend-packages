@@ -37,10 +37,9 @@ export interface FileFormat {
 
 const StyledSafeLink = styled(SafeLink, {
   base: {
-    textUnderlineOffset: "2px",
-    textDecoration: "underline",
-    _hover: {
-      textDecoration: "none",
+    color: "inherit",
+    _visited: {
+      color: "inherit",
     },
   },
 });

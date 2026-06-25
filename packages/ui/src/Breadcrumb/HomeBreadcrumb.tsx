@@ -15,12 +15,8 @@ import type { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from "./BreadcrumbIt
 const StyledSafeLink = styled(SafeLink, {
   base: {
     color: "inherit",
-    textDecoration: "underline",
-    _hover: {
-      textDecoration: "none",
-    },
-    _focusVisible: {
-      textDecoration: "none",
+    _visited: {
+      color: "inherit",
     },
   },
 });
@@ -36,6 +32,9 @@ const StyledArrowRight = styled(ArrowRightShortLine, {
 const IconSafeLink = styled(SafeLink, {
   base: {
     color: "inherit",
+    _visited: {
+      color: "inherit",
+    },
   },
 });
 

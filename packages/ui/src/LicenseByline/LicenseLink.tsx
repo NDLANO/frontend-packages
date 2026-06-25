@@ -18,15 +18,7 @@ interface Props extends Omit<SafeLinkProps, "to"> {
 
 const StyledSafeLink = styled(SafeLink, {
   base: {
-    color: "text.link",
-    textDecoration: "underline",
     whiteSpace: "nowrap",
-    _hover: {
-      textDecoration: "none",
-    },
-    _focusWithin: {
-      textDecoration: "none",
-    },
     mobileWideDown: {
       _disabled: {
         display: "none",

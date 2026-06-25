@@ -11,5 +11,5 @@ export { SafeLinkButton } from "./SafeLinkButton";
 export type { SafeLinkIconButtonProps } from "./SafeLinkIconButton";
 export { SafeLinkIconButton } from "./SafeLinkIconButton";
 export type { SafeLinkButtonProps } from "./SafeLinkButton";
-export { SafeLink } from "./SafeLink";
-export type { SafeLinkProps } from "./SafeLink";
+export { SafeLink, UnstyledSafeLink } from "./SafeLink";
+export type { SafeLinkProps, UnstyledSafeLinkProps } from "./SafeLink";

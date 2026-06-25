@@ -20,53 +20,69 @@ const isExternalLink = (to?: LinkProps["to"]) =>
 
 export const isOldNdlaLink = (to?: LinkProps["to"]) => typeof to === "string" && to.match(oldNdlaRegex) !== null;
 
-export interface SafeLinkProps extends LinkProps, StyledProps {
+export interface UnstyledSafeLinkProps extends LinkProps {
   ref?: RefObject<HTMLAnchorElement | null>;
   asAnchor?: boolean;
   disabled?: boolean;
-  unstyled?: boolean;
 }
 
-const StyledLink = styled(Link, {}, { baseComponent: true });
+export interface SafeLinkProps extends UnstyledSafeLinkProps, StyledProps {}
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-
-export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, state, disabled, unstyled, children, tabIndex, asAnchor, reloadDocument, ...rest }, ref) => {
+export const UnstyledSafeLink = forwardRef<HTMLAnchorElement, UnstyledSafeLinkProps>(
+  ({ to, replace, state, disabled, children, tabIndex, asAnchor, reloadDocument, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
-    const unstyledProps = unstyled ? { "data-unstyled": "" } : {};
 
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor || disabled) {
       const href = typeof to === "string" ? to : "#";
       return (
-        <styled.a
+        <a
           href={disabled ? undefined : href}
           role={disabled ? "link" : undefined}
           aria-disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}
-          {...unstyledProps}
+          data-unstyled={rest.className?.length ? undefined : ""}
           {...rest}
         >
           {children}
-        </styled.a>
+        </a>
       );
     }
 
     return (
       // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
-      <StyledLink
+      <Link
         ref={ref}
         tabIndex={tabIndex ?? 0}
         to={to ?? ""}
         state={state}
         reloadDocument={reloadDocument}
         replace={replace}
-        {...unstyledProps}
+        data-unstyled={rest.className?.length ? undefined : ""}
         {...rest}
       >
         {children}
-      </StyledLink>
+      </Link>
     );
   },
+);
+
+export const SafeLink = styled(
+  UnstyledSafeLink,
+  {
+    base: {
+      color: "text.link",
+      textDecoration: "underline",
+      textDecorationThickness: "max(0.0625em, 1px)",
+      textUnderlineOffset: "0.27em",
+      _hover: {
+        textDecoration: "none",
+      },
+      _visited: {
+        color: "text.linkVisited",
+      },
+    },
+  },
+  { baseComponent: true },
 );

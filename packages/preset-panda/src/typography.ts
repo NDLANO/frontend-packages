@@ -6,7 +6,7 @@
  *
  */
 
-import type { FontSizeToken, LineHeightToken } from "@ndla/styled-system/tokens";
+import type { FontSizeToken, LineHeightToken } from "@ndla/styled-system/types";
 import { defineTextStyles, defineTokens } from "@pandacss/dev";
 
 export const fontWeights = defineTokens.fontWeights({

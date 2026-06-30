@@ -7,9 +7,9 @@
  */
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
-import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { sva } from "@ndla/styled-system/css";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 
 const heroRecipe = sva({
   slots: ["root", "background", "content"],
@@ -120,7 +120,7 @@ const heroRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(heroRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(heroRecipe);
 
 export type HeroVariantProps = NonNullable<RecipeVariantProps<typeof heroRecipe>>;
 

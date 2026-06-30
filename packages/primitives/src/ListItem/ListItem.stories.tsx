@@ -30,11 +30,9 @@ export default {
       <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
       <ListItemContent>
         <ListItemHeading asChild consumeCss>
-          <h2>
-            <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
-              Tittel
-            </SafeLink>
-          </h2>
+          <SafeLink to="#example" css={linkOverlay.raw()}>
+            Tittel
+          </SafeLink>
         </ListItemHeading>
         <Badge colorTheme="brand1">Fagstoff</Badge>
       </ListItemContent>
@@ -60,11 +58,9 @@ export const WithDescription: StoryFn<typeof ListItemRoot> = (args) => (
     <ListItemContent>
       <styled.div css={{ display: "flex", flexDirection: "column", gap: "4xsmall" }}>
         <ListItemHeading asChild consumeCss>
-          <h2>
-            <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
-              Tittel
-            </SafeLink>
-          </h2>
+          <SafeLink to="#example" css={linkOverlay.raw()}>
+            Tittel
+          </SafeLink>
         </ListItemHeading>
         <Text>
           En metabeskrivelse forteller litt om innholdet til kortet. Dette kortet handler for eksempel om absolutt
@@ -81,11 +77,9 @@ const ListComponent = (props: ListItemProps) => (
     <ListItemImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" />
     <ListItemContent>
       <ListItemHeading asChild consumeCss>
-        <h2>
-          <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
-            Tittel
-          </SafeLink>
-        </h2>
+        <SafeLink to="#example" css={linkOverlay.raw()}>
+          Tittel
+        </SafeLink>
       </ListItemHeading>
       <styled.div css={{ display: "flex", gap: "xsmall", alignItems: "center" }}>
         <Badge colorTheme="brand1">Fagstoff</Badge>

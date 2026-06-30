@@ -8,8 +8,7 @@
 
 import { Popover, popoverAnatomy, usePopover as _usePopover } from "@ark-ui/react/popover";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef, type RefAttributes } from "react";
 import { Heading, type TextProps } from "./Text";
 
@@ -49,14 +48,10 @@ const popoverRecipe = sva({
   },
 });
 
-const { withRootProvider, withContext } = createStyleContext(popoverRecipe);
+const { withRootProvider, withContext } = createSlotRecipeContext(popoverRecipe);
 
 export type PopoverRootProps = Popover.RootProps;
-const InternalPopoverRoot = withRootProvider(Popover.Root);
-
-export const PopoverRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: PopoverRootProps) => (
-  <InternalPopoverRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
-);
+export const PopoverRoot = withRootProvider(Popover.Root, { defaultProps: { lazyMount: true, unmountOnExit: true } });
 
 export const PopoverAnchor = withContext(Popover.Anchor, "anchor", { baseComponent: true });
 

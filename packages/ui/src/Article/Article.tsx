@@ -9,8 +9,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react/factory";
 import { Heading, Text } from "@ndla/primitives";
 import { cx } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
 import { BadgesContainer } from "./BadgesContainer";
 
@@ -38,7 +37,7 @@ const StyledArticleWrapper = styled(
         transform: "scaleY(100) translateY(0.075em)",
       },
       _after: {
-        content: "",
+        content: '""',
         display: "table",
         clear: "both",
       },

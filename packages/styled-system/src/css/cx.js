@@ -1,4 +1,7 @@
-function cx() {
+/**
+ * Conditionally join classNames into a single string
+ */
+export function cx(...args) {
   let str = '',
     i = 0,
     arg
@@ -11,5 +14,3 @@ function cx() {
   }
   return str
 }
-
-export { cx }

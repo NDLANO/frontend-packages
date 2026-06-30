@@ -11,7 +11,6 @@ import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Skeleton } from "./Skeleton";
-import { Spinner } from "./Spinner";
 import { Text } from "./Text";
 
 export default {
@@ -21,7 +20,7 @@ export default {
   parameters: {
     inlineStories: true,
   },
-} as Meta<typeof Spinner>;
+} as Meta<typeof Skeleton>;
 
 export const Default: StoryObj = {
   args: {

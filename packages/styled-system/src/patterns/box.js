@@ -1,15 +1,15 @@
-import { getPatternStyles, patternFns } from '../helpers.js';
-import { css } from '../css/index.js';
+import { getPatternStyles, patternFns } from './runtime';
+import { css } from '../css/index';
 
-const boxConfig = {
-transform(props) {
-  return props;
+const boxConfig = {transform(props) {
+	return props;
 }}
 
-export const getBoxStyle = (styles = {}) => {
-  const _styles = getPatternStyles(boxConfig, styles)
-  return boxConfig.transform(_styles, patternFns)
+export function boxRaw(styles) {
+  const s = getPatternStyles(boxConfig, styles || {})
+  return boxConfig.transform(s, patternFns)
 }
 
-export const box = (styles) => css(getBoxStyle(styles))
-box.raw = getBoxStyle
+export const box = /* @__PURE__ */ Object.assign(function box(styles = {}) {
+  return css(boxRaw(styles))
+}, { raw: boxRaw })

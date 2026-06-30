@@ -11,7 +11,7 @@ import { ArrowRightLine } from "@ndla/icons";
 import { Text, Image } from "@ndla/primitives";
 import { SafeLinkButton } from "@ndla/safelink";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
+import { createSlotRecipeContext } from "@ndla/styled-system/jsx";
 import type { CampaignBlockEmbedData } from "@ndla/types-embed";
 import parse from "html-react-parser";
 import type { HeadingLevel } from "../types";
@@ -113,7 +113,7 @@ const campaignBlockRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(campaignBlockRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(campaignBlockRecipe);
 
 export const CampaignBlockContainer = withProvider(ark.div, "root", {
   baseComponent: true,

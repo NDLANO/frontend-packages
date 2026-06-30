@@ -60,7 +60,7 @@ export const Pitch = ({ title, url, metaImage, path, description }: Props) => {
     <StyledCardRoot nonInteractive data-embed-type="pitch" asChild consumeCss>
       <div>
         <StyledCardHeading textStyle="heading.small" asChild consumeCss>
-          <SafeLink to={href} unstyled css={linkOverlay.raw()}>
+          <SafeLink to={href} css={linkOverlay.raw()}>
             {parse(title)}
           </SafeLink>
         </StyledCardHeading>

@@ -6,9 +6,9 @@
  *
  */
 
-import { type RecipeVariantProps, cva, css } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { cva, css } from "@ndla/styled-system/css";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import { type ComponentPropsWithRef } from "react";
 
 export const iconRecipe = cva({
@@ -40,7 +40,7 @@ export const iconRecipe = cva({
   },
 });
 
-export type IconVariantProps = RecipeVariantProps<typeof iconRecipe>;
+export type IconVariantProps = NonNullable<RecipeVariantProps<typeof iconRecipe>>;
 
 interface BaseIconProps extends ComponentPropsWithRef<"svg"> {
   title?: string;

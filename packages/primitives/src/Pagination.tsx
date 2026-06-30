@@ -8,8 +8,7 @@
 
 import { Pagination, paginationAnatomy } from "@ark-ui/react/pagination";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
 
 const paginationRecipe = sva({
   slots: paginationAnatomy.keys(),
@@ -29,7 +28,7 @@ const paginationRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(paginationRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(paginationRecipe);
 
 export interface PaginationRootProps extends Pagination.RootProps, StyledProps {
   translations: Pagination.RootProps["translations"];

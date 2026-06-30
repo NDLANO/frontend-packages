@@ -15,7 +15,7 @@
     "dev": "tsdown --watch ./src",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "concurrently 'yarn build:types' 'yarn build:panda'",
-    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda ship --outfile dist/panda.buildinfo.json'"
+    "build:panda": "mkdir -p dist && concurrently 'panda cssgen --minimal --outfile dist/styles.css' 'panda buildinfo --outfile dist/panda.buildinfo.json'"
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@ndla/preset-panda": "workspace:^",
-    "@pandacss/dev": "^1.10.0"
+    "@pandacss/dev": "^2.0.0-beta.5"
   },
   "publishConfig": {
     "access": "public"

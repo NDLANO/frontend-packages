@@ -7,9 +7,9 @@
  */
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
-import { type RecipeVariantProps, css, cva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { RecipeVariant, StyledProps } from "@ndla/styled-system/types";
+import { css, cva } from "@ndla/styled-system/css";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariant, RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef } from "react";
 
 const figureRecipe = cva({

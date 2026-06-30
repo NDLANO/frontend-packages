@@ -22,6 +22,7 @@ import { zIndex } from "./zIndex";
 
 const preset = definePreset({
   name: "ndla/panda",
+  presets: ["@pandacss/preset-base"],
   globalCss: globalCss,
   conditions: conditions,
   utilities: utilities,

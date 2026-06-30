@@ -1,69 +1,71 @@
-/* eslint-disable */
-import type { ElementType, JSX, ComponentPropsWithRef, ComponentType, Component } from 'react'
+import type { ElementType, JSX } from 'react';
 import type { RecipeDefinition, RecipeSelection, RecipeVariantRecord } from './recipe';
-import type { Assign, DistributiveOmit, DistributiveUnion, JsxHTMLProps, JsxStyleProps, Pretty } from './system-types';
+import type { Assign, JsxHTMLProps, JsxStyleProps } from './system';
 
-interface Dict {
+interface AnyProps {
   [k: string]: unknown
 }
 
 export type DataAttrs = Record<`data-${string}`, unknown>
 
 export interface UnstyledProps {
-  /**
-   * Whether to remove recipe styles
-   */
   unstyled?: boolean | undefined
 }
 
 export interface AsProps {
-  /**
-   * The element to render as
-   */
   as?: ElementType | undefined
 }
 
-export type ComponentProps<T extends ElementType> = T extends ComponentType<infer P> | Component<infer P>
-  ? JSX.LibraryManagedAttributes<T, P>
-  : ComponentPropsWithRef<T>
+export type ComponentProps<T extends ElementType> = T extends keyof JSX.IntrinsicElements
+  ? JSX.IntrinsicElements[T]
+  : T extends { (props: infer Props): any }
+    ? Props
+    : T extends abstract new (props: infer Props) => any
+      ? Props
+      : {}
 
-export interface StyledComponent<T extends ElementType, P extends Dict = {}> {
-  (props: JsxHTMLProps<ComponentProps<T> & UnstyledProps & AsProps, Assign<JsxStyleProps, P>>): JSX.Element
+type BaseComponentProps<T extends ElementType> = ComponentProps<T> & UnstyledProps & AsProps & DataAttrs
+
+export type StyledComponentProps<T extends ElementType, P extends AnyProps = {}> = JsxHTMLProps<
+  BaseComponentProps<T>,
+  Assign<JsxStyleProps, P>
+>
+
+export interface StyledComponent<T extends ElementType, P extends AnyProps = {}> {
+  (props: StyledComponentProps<T, P>): JSX.Element
   displayName?: string | undefined
 }
 
-interface RecipeFn {
+interface RuntimeRecipeFn {
   __type: any
 }
 
-export interface JsxFactoryOptions<TProps extends Dict> {
+export interface JsxFactoryOptions<TProps extends AnyProps> {
   dataAttr?: boolean
   defaultProps?: Partial<TProps> & DataAttrs
   shouldForwardProp?: (prop: string, variantKeys: string[]) => boolean
   /**
-  * Used when creating styled components from React components that do not support the css prop. If true, the css prop will be consumed and converted to `className` 
+  * Used when creating styled components from React components that do not support the panda css prop natively (e.g. ark components).
+  * When true, styles are always converted to `className` instead of being passed as a raw css object.
   * @example
   * import { ark } from "@ark-ui/react/factory"
   * import { styled } from "@ndla/styled-system/jsx"
-  * const Button = styled(ark.button, { baseComponent: true })
+  * const Button = styled(ark.button, {}, { baseComponent: true })
   */
   baseComponent?: boolean
   forwardProps?: string[]
 }
 
-export type JsxRecipeProps<T extends ElementType, P extends Dict> = JsxHTMLProps<ComponentProps<T> & UnstyledProps & AsProps, P>;
+export type JsxRecipeProps<T extends ElementType, P extends AnyProps> = JsxHTMLProps<BaseComponentProps<T>, P>
 
-export type JsxElement<T extends ElementType, P extends Dict> = T extends StyledComponent<infer A, infer B>
-  ? StyledComponent<A, Pretty<DistributiveUnion<P, B>>>
+export type JsxElement<T extends ElementType, P extends AnyProps> = T extends StyledComponent<infer A, infer B>
+  ? StyledComponent<A, Assign<B, P>>
   : StyledComponent<T, P>
 
 export interface JsxFactory {
   <T extends ElementType>(component: T): StyledComponent<T, {}>
-  <T extends ElementType, P extends RecipeVariantRecord>(component: T, recipe: RecipeDefinition<P>, options?: JsxFactoryOptions<JsxRecipeProps<T, RecipeSelection<P>>>): JsxElement<
-    T,
-    RecipeSelection<P>
-  >
-  <T extends ElementType, P extends RecipeFn>(component: T, recipeFn: P, options?: JsxFactoryOptions<JsxRecipeProps<T, P['__type']>>): JsxElement<T, P['__type']>
+  <T extends ElementType, P extends RecipeVariantRecord = {}>(component: T, recipe: RecipeDefinition<P>, options?: JsxFactoryOptions<JsxRecipeProps<T, RecipeSelection<P>>>): JsxElement<T, RecipeSelection<P>>
+  <T extends ElementType, P extends RuntimeRecipeFn>(component: T, recipeFn: P, options?: JsxFactoryOptions<JsxRecipeProps<T, P["__type"]>>): JsxElement<T, P["__type"]>
 }
 
 export type JsxElements = {
@@ -72,7 +74,7 @@ export type JsxElements = {
 
 export type Styled = JsxFactory & JsxElements
 
-export type HTMLStyledProps<T extends ElementType> = JsxHTMLProps<ComponentProps<T> & UnstyledProps & AsProps, JsxStyleProps>
+export type HTMLStyledProps<T extends ElementType> = JsxHTMLProps<BaseComponentProps<T>, JsxStyleProps>
 export interface StyledProps extends UnstyledProps, AsProps, JsxStyleProps {}
 
 export type StyledVariantProps<T extends StyledComponent<any, any>> = T extends StyledComponent<any, infer Props> ? Props : never

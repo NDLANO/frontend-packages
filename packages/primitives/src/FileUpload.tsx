@@ -7,9 +7,9 @@
  */
 
 import { FileUpload, fileUploadAnatomy } from "@ark-ui/react/file-upload";
-import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { sva } from "@ndla/styled-system/css";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef, type RefAttributes } from "react";
 import { Label } from "./Label";
 import { type TextProps, Text } from "./Text";
@@ -93,7 +93,7 @@ const fileUploadRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(fileUploadRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(fileUploadRecipe);
 
 export type FileUploadVariantProps = NonNullable<RecipeVariantProps<typeof fileUploadRecipe>>;
 

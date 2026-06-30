@@ -20,7 +20,8 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@pandacss/dev": "^1.10.0"
+    "@pandacss/dev": "^2.0.0-beta.5",
+    "@pandacss/preset-base": "^2.0.0-beta.3"
   },
   "files": [
     "*"
@@ -47,9 +48,8 @@
       "import": "./es/patterns/index.mjs"
     },
     "./recipes": {
-      "types": "./lib/recipes/index.d.ts",
-      "require": "./lib/recipes/index.js",
-      "import": "./es/recipes/index.mjs"
+      "require": "./lib/recipes/runtime.js",
+      "import": "./es/recipes/runtime.mjs"
     },
     "./jsx": {
       "types": "./lib/jsx/index.d.ts",

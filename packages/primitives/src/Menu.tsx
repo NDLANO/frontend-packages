@@ -8,8 +8,8 @@
 
 import { Menu, menuAnatomy } from "@ark-ui/react/menu";
 import { css, cva, sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { RecipeVariantProps, StyledProps, SystemStyleObject } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { SystemStyleObject, RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef, type RefAttributes } from "react";
 import { Text, type TextProps } from "./Text";
 
@@ -69,7 +69,7 @@ const itemCva = cva({
       destructive: {
         color: "text.error",
         "& svg": {
-          color: "icon.error",
+          color: "icon.danger",
         },
         _hover: {
           color: "text.default",
@@ -135,15 +135,11 @@ const menuRecipe = sva({
   },
 });
 
-const { withRootProvider, withContext } = createStyleContext(menuRecipe);
+const { withRootProvider, withContext } = createSlotRecipeContext(menuRecipe);
 
 export type MenuRootProps = Menu.RootProps;
 
-const InternalMenuRoot = withRootProvider(Menu.Root);
-
-export const MenuRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: MenuRootProps) => (
-  <InternalMenuRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
-);
+export const MenuRoot = withRootProvider(Menu.Root, { defaultProps: { lazyMount: true, unmountOnExit: true } });
 
 export const MenuContentStandalone = withContext(Menu.Content, "content", { baseComponent: true });
 

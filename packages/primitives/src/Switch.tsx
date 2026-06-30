@@ -7,9 +7,9 @@
  */
 
 import { Switch, switchAnatomy } from "@ark-ui/react/switch";
-import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { sva } from "@ndla/styled-system/css";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import type { RefAttributes } from "react";
 import { Text, type TextProps } from "./Text";
 
@@ -110,7 +110,7 @@ const switchRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(switchRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(switchRecipe);
 
 export type SwitchVariantProps = NonNullable<RecipeVariantProps<typeof switchRecipe>>;
 

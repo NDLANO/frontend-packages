@@ -8,8 +8,8 @@
 
 import { Accordion, accordionAnatomy } from "@ark-ui/react/accordion";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import type { RefAttributes } from "react";
 
 const accordionRecipe = sva({
@@ -123,18 +123,17 @@ const accordionRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(accordionRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(accordionRecipe);
 
 export type AccordionVariantProps = NonNullable<RecipeVariantProps<typeof accordionRecipe>>;
 
 export interface AccordionRootProps
   extends StyledProps, Accordion.RootProps, RefAttributes<HTMLDivElement>, AccordionVariantProps {}
 
-export const InternalAccordionRoot = withProvider(Accordion.Root, "root", { baseComponent: true });
-
-export const AccordionRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: AccordionRootProps) => (
-  <InternalAccordionRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
-);
+export const AccordionRoot = withProvider(Accordion.Root, "root", {
+  defaultProps: { lazyMount: true, unmountOnExit: true },
+  baseComponent: true,
+});
 
 export const AccordionItemContent = withContext(Accordion.ItemContent, "itemContent", { baseComponent: true });
 

@@ -8,8 +8,8 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { css, cva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef } from "react";
 
 const framedContentRecipe = cva({

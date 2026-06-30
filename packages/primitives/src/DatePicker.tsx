@@ -8,7 +8,7 @@
 
 import { DatePicker, datePickerAnatomy } from "@ark-ui/react/date-picker";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext, type StyledProps } from "@ndla/styled-system/jsx";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef, type RefAttributes } from "react";
 import { Label } from "./Label";
 import type { TextProps } from "./Text";
@@ -80,7 +80,7 @@ const datePickerRecipe = sva({
     },
   },
 });
-const { withProvider, withContext } = createStyleContext(datePickerRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(datePickerRecipe);
 
 export interface DatePickerRootProps extends DatePicker.RootProps, StyledProps {
   translations: DatePicker.RootProps["translations"];

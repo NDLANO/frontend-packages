@@ -10,8 +10,7 @@ import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { Field } from "@ark-ui/react/field";
 import { Fieldset } from "@ark-ui/react/fieldset";
 import { css } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef } from "react";
 import { type TextProps } from "./Text";
 

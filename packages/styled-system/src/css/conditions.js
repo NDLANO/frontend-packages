@@ -1,36 +1,32 @@
-import { withoutSpace } from '../helpers.js';
+import { withoutSpace } from '../helpers';
 
-const conditionsStr = "_chinese,_ariaInvalid,_on,_hover,_focus,_focusWithin,_focusVisible,_disabled,_active,_visited,_target,_readOnly,_readWrite,_empty,_checked,_enabled,_expanded,_highlighted,_complete,_incomplete,_dragging,_before,_after,_firstLetter,_firstLine,_marker,_selection,_file,_backdrop,_first,_last,_only,_even,_odd,_firstOfType,_lastOfType,_onlyOfType,_peerFocus,_peerHover,_peerActive,_peerFocusWithin,_peerFocusVisible,_peerDisabled,_peerChecked,_peerInvalid,_peerExpanded,_peerPlaceholderShown,_groupFocus,_groupHover,_groupActive,_groupFocusWithin,_groupFocusVisible,_groupDisabled,_groupChecked,_groupExpanded,_groupInvalid,_indeterminate,_required,_valid,_invalid,_autofill,_inRange,_outOfRange,_placeholder,_placeholderShown,_pressed,_selected,_grabbed,_underValue,_overValue,_atValue,_default,_optional,_open,_closed,_fullscreen,_loading,_hidden,_current,_currentPage,_currentStep,_today,_unavailable,_rangeStart,_rangeEnd,_now,_topmost,_motionReduce,_motionSafe,_print,_landscape,_portrait,_dark,_light,_osDark,_osLight,_highContrast,_lessContrast,_moreContrast,_ltr,_rtl,_scrollbar,_scrollbarThumb,_scrollbarTrack,_horizontal,_vertical,_icon,_starting,_noscript,_invertedColors,mobile,mobileOnly,mobileDown,mobileWide,mobileWideOnly,mobileWideDown,tablet,tabletOnly,tabletDown,tabletWide,tabletWideOnly,tabletWideDown,desktop,desktopOnly,desktopDown,wide,wideOnly,wideDown,ultraWide,ultraWideOnly,ultraWideDown,mobileToMobileWide,mobileToTablet,mobileToTabletWide,mobileToDesktop,mobileToWide,mobileToUltraWide,mobileWideToTablet,mobileWideToTabletWide,mobileWideToDesktop,mobileWideToWide,mobileWideToUltraWide,tabletToTabletWide,tabletToDesktop,tabletToWide,tabletToUltraWide,tabletWideToDesktop,tabletWideToWide,tabletWideToUltraWide,desktopToWide,desktopToUltraWide,wideToUltraWide,@/mobile,@/mobileWide,@/tablet,@/tabletWide,@/desktop,@/wide,@/ultraWide,base"
-const conditions = new Set(conditionsStr.split(','))
+const conditions = new Set("_active,_after,_ariaInvalid,_atValue,_autofill,_backdrop,_before,_checked,_chinese,_closed,_complete,_current,_currentPage,_currentStep,_dark,_default,_disabled,_dragging,_empty,_enabled,_even,_expanded,_file,_first,_firstLetter,_firstLine,_firstOfType,_focus,_focusVisible,_focusWithin,_fullscreen,_grabbed,_groupActive,_groupChecked,_groupDisabled,_groupExpanded,_groupFocus,_groupFocusVisible,_groupFocusWithin,_groupHover,_groupInvalid,_hidden,_highContrast,_highlighted,_horizontal,_hover,_icon,_inRange,_incomplete,_indeterminate,_invalid,_invertedColors,_landscape,_last,_lastOfType,_lessContrast,_light,_loading,_ltr,_marker,_moreContrast,_motionReduce,_motionSafe,_noscript,_now,_odd,_on,_only,_onlyOfType,_open,_optional,_osDark,_osLight,_outOfRange,_overValue,_peerActive,_peerChecked,_peerDisabled,_peerExpanded,_peerFocus,_peerFocusVisible,_peerFocusWithin,_peerHover,_peerInvalid,_peerPlaceholderShown,_placeholder,_placeholderShown,_portrait,_pressed,_print,_rangeEnd,_rangeStart,_readOnly,_readWrite,_required,_rtl,_scrollbar,_scrollbarThumb,_scrollbarTrack,_selected,_selection,_starting,_target,_today,_topmost,_unavailable,_underValue,_valid,_vertical,_visited,base,desktop,desktopDown,desktopOnly,desktopToUltraWide,desktopToWide,mobile,mobileDown,mobileOnly,mobileToDesktop,mobileToMobileWide,mobileToTablet,mobileToTabletWide,mobileToUltraWide,mobileToWide,mobileWide,mobileWideDown,mobileWideOnly,mobileWideToDesktop,mobileWideToTablet,mobileWideToTabletWide,mobileWideToUltraWide,mobileWideToWide,tablet,tabletDown,tabletOnly,tabletToDesktop,tabletToTabletWide,tabletToUltraWide,tabletToWide,tabletWide,tabletWideDown,tabletWideOnly,tabletWideToDesktop,tabletWideToUltraWide,tabletWideToWide,ultraWide,ultraWideDown,ultraWideOnly,wide,wideDown,wideOnly,wideToUltraWide".split(','))
+const conditionRe = /^@|&/
+const underscoreRe = /^_/
+const selectorRe = /&|@/
 
-const conditionRegex = /^@|&|&$/
+export const breakpointKeys = ["base","mobile","mobileWide","tablet","tabletWide","desktop","wide","ultraWide"]
 
-export function isCondition(value){
-  return conditions.has(value) || conditionRegex.test(value)
+export function isCondition(v) {
+  return conditions.has(v) || conditionRe.test(v)
 }
 
-const underscoreRegex = /^_/
-const conditionsSelectorRegex = /&|@/
-
-export function finalizeConditions(paths){
-  return paths.map((path) => {
-    if (conditions.has(path)){
-      return path.replace(underscoreRegex, '')
+export function finalizeConditions(paths) {
+  return paths.map((p) => {
+    if (conditions.has(p)) {
+      return p.replace(underscoreRe, '')
     }
-
-    if (conditionsSelectorRegex.test(path)){
-      return `[${withoutSpace(path.trim())}]`
+    if (selectorRe.test(p)) {
+      return `[${withoutSpace(p.trim())}]`
     }
+    return p
+  })
+}
 
-    return path
-  })}
-
-  export function sortConditions(paths){
-    return paths.sort((a, b) => {
-      const aa = isCondition(a)
-      const bb = isCondition(b)
-      if (aa && !bb) return 1
-      if (!aa && bb) return -1
-      return 0
-    })
-  }
+export function sortConditions(paths) {
+  return [...paths].sort((a, b) => {
+    const aa = isCondition(a)
+    const bb = isCondition(b)
+    return aa && !bb ? 1 : !aa && bb ? -1 : 0
+  })
+}

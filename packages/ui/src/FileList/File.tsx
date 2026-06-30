@@ -10,7 +10,6 @@ import { DownloadLine } from "@ndla/icons";
 import { Text } from "@ndla/primitives";
 import { SafeLink } from "@ndla/safelink";
 import { styled } from "@ndla/styled-system/jsx";
-import { linkOverlay } from "@ndla/styled-system/patterns";
 import { type ComponentPropsWithRef, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { FileListItem } from "./FileList";
@@ -34,16 +33,6 @@ export interface FileFormat {
   fileType: string;
   tooltip: string;
 }
-
-const StyledSafeLink = styled(SafeLink, {
-  base: {
-    textUnderlineOffset: "2px",
-    textDecoration: "underline",
-    _hover: {
-      textDecoration: "none",
-    },
-  },
-});
 
 const FileContainer = styled("div", {
   base: {
@@ -78,9 +67,9 @@ export const File = forwardRef<HTMLDivElement, FileProps>(
         <InfoContainer>
           <DownloadLine />
           {fileExists ? (
-            <StyledSafeLink unstyled download={filename} css={linkOverlay.raw()} to={downloadUrl} title={tooltip}>
+            <SafeLink download={filename} to={downloadUrl} title={tooltip}>
               {title}
-            </StyledSafeLink>
+            </SafeLink>
           ) : (
             <Text textStyle="label.medium">{title}</Text>
           )}

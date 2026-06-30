@@ -1,15 +1,12 @@
-import { createElement, forwardRef } from 'react'
-import { mergeCss } from '../css/css.js';
-import { splitProps } from '../helpers.js';
-import { getSpacerStyle } from '../patterns/spacer.js';
-import { styled } from './factory.js';
+import { createElement, forwardRef } from 'react';
+import { splitProps } from '../helpers';
+import { spacerRaw } from '../patterns/spacer';
+import { styled } from './factory';
+import { mergeCss } from '../css/css';
 
 export const Spacer = /* @__PURE__ */ forwardRef(function Spacer(props, ref) {
   const [patternProps, restProps] = splitProps(props, ["size"])
-
-const styleProps = getSpacerStyle(patternProps)
-const cssProps = { css: mergeCss(styleProps, props.css) }
-const mergedProps = { ref, ...restProps, ...cssProps }
-
-return createElement(styled.div, mergedProps)
-  })
+  const styleProps = spacerRaw(patternProps)
+  const mergedProps = { ref, ...restProps, css: mergeCss(styleProps, props.css) }
+  return createElement(styled["div"], mergedProps)
+})

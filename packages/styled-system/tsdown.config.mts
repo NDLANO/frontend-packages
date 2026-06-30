@@ -9,5 +9,5 @@ import config from "../../tsdown.config.mts";
 
 export default {
   ...config,
-  entry: ["src/css/index.js", "src/jsx/index.js", "src/patterns/index.js", "src/tokens/index.js"],
+  entry: ["src/css/index.js", "src/jsx/index.js", "src/patterns/index.js", "src/tokens/index.js", "src/recipes/runtime.js"],
 };

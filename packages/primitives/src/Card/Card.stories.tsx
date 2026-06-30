@@ -26,8 +26,8 @@ export const Default: StoryFn<typeof CardRoot> = (args) => (
   <CardRoot {...args}>
     <CardContent>
       <Badge colorTheme="brand1">Fagstoff</Badge>
-      <CardHeading>
-        <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+      <CardHeading asChild consumeCss>
+        <SafeLink to="#example" css={linkOverlay.raw()}>
           Tittel
         </SafeLink>
       </CardHeading>
@@ -47,8 +47,8 @@ export const WithImage: StoryFn<typeof CardRoot> = (args) => (
     <CardImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={200} />
     <CardContent>
       <Badge colorTheme="brand1">Fagstoff</Badge>
-      <CardHeading>
-        <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+      <CardHeading asChild consumeCss>
+        <SafeLink to="#example" css={linkOverlay.raw()}>
           Tittel
         </SafeLink>
       </CardHeading>
@@ -69,8 +69,8 @@ export const InGrid: StoryFn<typeof CardRoot> = (args) => {
       <CardImage src="https://api.staging.ndla.no/image-api/raw/Ide.jpg" alt="En lyspære" height={200} />
       <CardContent>
         <Badge colorTheme="brand1">Fagstoff</Badge>
-        <CardHeading>
-          <SafeLink to="#example" unstyled css={linkOverlay.raw()}>
+        <CardHeading asChild consumeCss>
+          <SafeLink to="#example" css={linkOverlay.raw()}>
             Tittel
           </SafeLink>
         </CardHeading>

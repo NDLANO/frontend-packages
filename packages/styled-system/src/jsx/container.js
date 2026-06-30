@@ -1,15 +1,12 @@
-import { createElement, forwardRef } from 'react'
-import { mergeCss } from '../css/css.js';
-import { splitProps } from '../helpers.js';
-import { getContainerStyle } from '../patterns/container.js';
-import { styled } from './factory.js';
+import { createElement, forwardRef } from 'react';
+import { splitProps } from '../helpers';
+import { containerRaw } from '../patterns/container';
+import { styled } from './factory';
+import { mergeCss } from '../css/css';
 
 export const Container = /* @__PURE__ */ forwardRef(function Container(props, ref) {
   const [patternProps, restProps] = splitProps(props, [])
-
-const styleProps = getContainerStyle(patternProps)
-const cssProps = { css: mergeCss(styleProps, props.css) }
-const mergedProps = { ref, ...restProps, ...cssProps }
-
-return createElement(styled.div, mergedProps)
-  })
+  const styleProps = containerRaw(patternProps)
+  const mergedProps = { ref, ...restProps, css: mergeCss(styleProps, props.css) }
+  return createElement(styled["div"], mergedProps)
+})

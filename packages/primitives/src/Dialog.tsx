@@ -7,9 +7,9 @@
  */
 
 import { Dialog, dialogAnatomy, useDialog as _useDialog } from "@ark-ui/react/dialog";
-import { type RecipeVariantProps, sva } from "@ndla/styled-system/css";
-import { createStyleContext, styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { sva } from "@ndla/styled-system/css";
+import { createSlotRecipeContext, styled, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef, type RefAttributes } from "react";
 import { Heading, Text, type TextProps } from "./Text";
 
@@ -306,17 +306,13 @@ const dialogRecipe = sva({
   },
 });
 
-const { withRootProvider, withContext } = createStyleContext(dialogRecipe);
+const { withRootProvider, withContext } = createSlotRecipeContext(dialogRecipe);
 
 export type DialogVariantProps = NonNullable<RecipeVariantProps<typeof dialogRecipe>>;
 
 export interface DialogRootProps extends Dialog.RootProps, DialogVariantProps {}
 
-export const InternalDialogRoot = withRootProvider(Dialog.Root);
-
-export const DialogRoot = ({ lazyMount = true, unmountOnExit = true, ...props }: DialogRootProps) => (
-  <InternalDialogRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
-);
+export const DialogRoot = withRootProvider(Dialog.Root, { defaultProps: { lazyMount: true, unmountOnExit: true } });
 
 export const DialogBackdrop = withContext(Dialog.Backdrop, "backdrop", { baseComponent: true });
 

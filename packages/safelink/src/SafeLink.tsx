@@ -6,8 +6,7 @@
  *
  */
 
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 import { forwardRef, useContext, type RefObject } from "react";
 import { Link, type LinkProps } from "react-router";
 import { MissingRouterContext } from "./MissingRouterContext";
@@ -24,7 +23,6 @@ export interface SafeLinkProps extends LinkProps, StyledProps {
   ref?: RefObject<HTMLAnchorElement | null>;
   asAnchor?: boolean;
   disabled?: boolean;
-  unstyled?: boolean;
 }
 
 const StyledLink = styled(Link, {}, { baseComponent: true });
@@ -32,9 +30,8 @@ const StyledLink = styled(Link, {}, { baseComponent: true });
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 
 export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, state, disabled, unstyled, children, tabIndex, asAnchor, reloadDocument, ...rest }, ref) => {
+  ({ to, replace, state, disabled, children, tabIndex, asAnchor, reloadDocument, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
-    const unstyledProps = unstyled ? { "data-unstyled": "" } : {};
 
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor || disabled) {
       const href = typeof to === "string" ? to : "#";
@@ -45,7 +42,6 @@ export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
           aria-disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}
-          {...unstyledProps}
           {...rest}
         >
           {children}
@@ -62,7 +58,6 @@ export const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
         state={state}
         reloadDocument={reloadDocument}
         replace={replace}
-        {...unstyledProps}
         {...rest}
       >
         {children}

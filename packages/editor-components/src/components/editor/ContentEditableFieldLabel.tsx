@@ -8,8 +8,7 @@
 
 import { mergeProps } from "@ark-ui/react/utils";
 import { Label, useFieldContext, type LabelProps, type TextProps } from "@ndla/primitives";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 import type { HTMLProps } from "react";
 
 interface Props extends TextProps, StyledProps, Omit<HTMLProps<HTMLParagraphElement>, "color" | "as"> {}

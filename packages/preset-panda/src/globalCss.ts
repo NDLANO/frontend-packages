@@ -50,23 +50,23 @@ export const globalCss = defineGlobalStyles({
   // For future readers: Life here would be much simpler if we could use flex.
   // However, our usage of float within the article content forces us to use margins.
   ".ndla-article": {
-    h1: {
+    "& h1": {
       textStyle: "heading.medium",
     },
-    h2: {
+    "& h2": {
       textStyle: "heading.small",
     },
-    h3: {
+    "& h3": {
       textStyle: "title.medium",
     },
-    "h4, h5, h6": {
+    "& :is(h4, h5, h6)": {
       textStyle: "title.small",
     },
     '& p[data-align="center"]': {
       textAlign: "center",
     },
     // TODO: This is not an actual text style. Should it be?
-    blockquote: {
+    "& blockquote": {
       textStyle: "body.medium",
       fontFamily: "serif",
     },

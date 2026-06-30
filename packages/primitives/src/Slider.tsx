@@ -8,8 +8,7 @@
 
 import { Slider, sliderAnatomy } from "@ark-ui/react/slider";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
 import type { RefAttributes } from "react";
 import { Label } from "./Label";
 import { type TextProps } from "./Text";
@@ -84,7 +83,7 @@ const sliderRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(sliderRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(sliderRecipe);
 
 export interface SliderRootProps extends Slider.RootProps, StyledProps {}
 

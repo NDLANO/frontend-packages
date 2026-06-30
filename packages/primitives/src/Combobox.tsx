@@ -8,8 +8,8 @@
 
 import { Combobox, comboboxAnatomy } from "@ark-ui/react/combobox";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import { forwardRef, type ElementType, type RefAttributes } from "react";
 import { Label } from "./Label";
 import { Text, type TextProps } from "./Text";
@@ -143,7 +143,7 @@ const comboboxRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(comboboxRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(comboboxRecipe);
 
 export type ComboboxVariantProps = NonNullable<RecipeVariantProps<typeof comboboxRecipe>>;
 
@@ -152,19 +152,14 @@ export interface ComboboxRootProps<T extends Combobox.CollectionItem>
   translations: Combobox.RootProps<T>["translations"];
 }
 
-const InternalComboboxRoot = withProvider<ElementType<ComboboxRootProps<Combobox.CollectionItem>>>(
+export const ComboboxRoot = withProvider<ElementType<ComboboxRootProps<Combobox.CollectionItem>>>(
   Combobox.Root,
   "root",
-  { baseComponent: true },
+  {
+    defaultProps: { lazyMount: true, unmountOnExit: true },
+    baseComponent: true,
+  },
 );
-
-export const ComboboxRoot = <T extends Combobox.CollectionItem>({
-  lazyMount = true,
-  unmountOnExit = true,
-  ...props
-}: ComboboxRootProps<T>) => {
-  return <InternalComboboxRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />;
-};
 
 export interface ComboboxClearTriggerProps extends Combobox.ClearTriggerProps, StyledProps {}
 

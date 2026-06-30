@@ -8,8 +8,8 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { css, cva } from "@ndla/styled-system/css";
-import { styled } from "@ndla/styled-system/jsx";
-import type { HTMLStyledProps, RecipeVariantProps, StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
+import type { HTMLStyledProps, RecipeVariantProps } from "@ndla/styled-system/types";
 import { createContext, type CSSProperties, forwardRef, useContext, useId, useMemo } from "react";
 
 const orderedListRecipe = cva({

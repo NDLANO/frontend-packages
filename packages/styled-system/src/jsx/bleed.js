@@ -1,15 +1,12 @@
-import { createElement, forwardRef } from 'react'
-import { mergeCss } from '../css/css.js';
-import { splitProps } from '../helpers.js';
-import { getBleedStyle } from '../patterns/bleed.js';
-import { styled } from './factory.js';
+import { createElement, forwardRef } from 'react';
+import { splitProps } from '../helpers';
+import { bleedRaw } from '../patterns/bleed';
+import { styled } from './factory';
+import { mergeCss } from '../css/css';
 
 export const Bleed = /* @__PURE__ */ forwardRef(function Bleed(props, ref) {
-  const [patternProps, restProps] = splitProps(props, ["inline","block"])
-
-const styleProps = getBleedStyle(patternProps)
-const cssProps = { css: mergeCss(styleProps, props.css) }
-const mergedProps = { ref, ...restProps, ...cssProps }
-
-return createElement(styled.div, mergedProps)
-  })
+  const [patternProps, restProps] = splitProps(props, ["block","inline"])
+  const styleProps = bleedRaw(patternProps)
+  const mergedProps = { ref, ...restProps, css: mergeCss(styleProps, props.css) }
+  return createElement(styled["div"], mergedProps)
+})

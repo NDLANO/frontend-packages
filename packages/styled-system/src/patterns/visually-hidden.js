@@ -1,18 +1,18 @@
-import { getPatternStyles, patternFns } from '../helpers.js';
-import { css } from '../css/index.js';
+import { getPatternStyles, patternFns } from './runtime';
+import { css } from '../css/index';
 
-const visuallyHiddenConfig = {
-transform(props) {
-  return {
-    srOnly: true,
-    ...props
-  };
+const visuallyHiddenConfig = {transform(props) {
+	return {
+		srOnly: true,
+		...props
+	};
 }}
 
-export const getVisuallyHiddenStyle = (styles = {}) => {
-  const _styles = getPatternStyles(visuallyHiddenConfig, styles)
-  return visuallyHiddenConfig.transform(_styles, patternFns)
+export function visuallyHiddenRaw(styles) {
+  const s = getPatternStyles(visuallyHiddenConfig, styles || {})
+  return visuallyHiddenConfig.transform(s, patternFns)
 }
 
-export const visuallyHidden = (styles) => css(getVisuallyHiddenStyle(styles))
-visuallyHidden.raw = getVisuallyHiddenStyle
+export const visuallyHidden = /* @__PURE__ */ Object.assign(function visuallyHidden(styles = {}) {
+  return css(visuallyHiddenRaw(styles))
+}, { raw: visuallyHiddenRaw })

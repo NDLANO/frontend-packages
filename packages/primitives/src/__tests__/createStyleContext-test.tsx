@@ -8,7 +8,7 @@
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
 import { css, sva } from "@ndla/styled-system/css";
-import { createStyleContext, styled } from "@ndla/styled-system/jsx";
+import { createSlotRecipeContext, styled } from "@ndla/styled-system/jsx";
 import type { StyledProps } from "@ndla/styled-system/types";
 import { render } from "@testing-library/react";
 import { type ReactNode, forwardRef } from "react";
@@ -44,7 +44,7 @@ const MockContext = ({ children }: MockContextProps) => {
 
 describe("createStyleContext", () => {
   test("should have a sane default", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -66,6 +66,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </div>
@@ -77,7 +78,7 @@ describe("createStyleContext", () => {
   });
 
   test("should have a sane default with string components", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -99,6 +100,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </div>
@@ -110,7 +112,7 @@ describe("createStyleContext", () => {
   });
 
   test("should have a sane default when using the css prop directly on a styled element", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -136,6 +138,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_block"
+        data-slot="root"
       >
         Hello
       </div>
@@ -147,7 +150,7 @@ describe("createStyleContext", () => {
   });
 
   test("should have no problems merging a react component and a string component", () => {
-    const { withProvider, withContext } = createStyleContext(svaA);
+    const { withProvider, withContext } = createSlotRecipeContext(svaA);
 
     const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
@@ -163,6 +166,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="child"
       >
         Hello
       </div>
@@ -172,7 +176,7 @@ describe("createStyleContext", () => {
   });
 
   test("should not automatically forward css prop regardless of whether you pass in a component or a string", () => {
-    const { withProvider, withContext } = createStyleContext(svaA);
+    const { withProvider, withContext } = createSlotRecipeContext(svaA);
 
     const ProviderRoot = withProvider(ark.div, "root", {
       baseComponent: true,
@@ -188,9 +192,11 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="root"
       >
         <div
           class="d_flex"
+          data-slot="root"
         >
           Hello
         </div>
@@ -201,7 +207,7 @@ describe("createStyleContext", () => {
   });
 
   test("should be automatically overridden with styled", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -239,6 +245,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_block"
+        data-slot="root"
       >
         Hello
       </div>
@@ -249,7 +256,7 @@ describe("createStyleContext", () => {
     expect(contextResult.container.firstChild?.firstChild).toMatchInlineSnapshot(inlineSnapshot);
   });
   test("should merge in css from parent components", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -293,6 +300,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_block"
+        data-slot="root"
       >
         Hello
       </div>
@@ -304,7 +312,7 @@ describe("createStyleContext", () => {
   });
 
   test("should automatically forward the css prop when asChild is true", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -344,6 +352,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </div>
@@ -355,7 +364,7 @@ describe("createStyleContext", () => {
   });
 
   test("seamlessly merges components from two different sets", () => {
-    const styledA = createStyleContext(svaA);
+    const styledA = createSlotRecipeContext(svaA);
 
     const ARootProviderRoot = styledA.withRootProvider(MockContext);
 
@@ -366,7 +375,7 @@ describe("createStyleContext", () => {
       baseComponent: true,
     });
 
-    const styledB = createStyleContext(svaB);
+    const styledB = createSlotRecipeContext(svaB);
 
     const BRootProviderRoot = styledB.withRootProvider(MockContext);
 
@@ -405,6 +414,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <div
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </div>
@@ -415,7 +425,7 @@ describe("createStyleContext", () => {
     expect(contextResult.container.firstChild?.firstChild).toMatchInlineSnapshot(inlineSnapshot);
   });
   test("seamlessly merges components onto non-styled components", () => {
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -442,6 +452,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <span
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </span>
@@ -457,7 +468,7 @@ describe("createStyleContext", () => {
       return <TextComponent css={css.raw({ display: "block" }, cssProp)} ref={ref} {...rest} />;
     });
 
-    const { withProvider, withContext, withRootProvider } = createStyleContext(svaA);
+    const { withProvider, withContext, withRootProvider } = createSlotRecipeContext(svaA);
 
     const RootProviderRoot = withRootProvider(MockContext);
 
@@ -487,6 +498,7 @@ describe("createStyleContext", () => {
     const inlineSnapshot = `
       <span
         class="d_flex"
+        data-slot="root"
       >
         Hello
       </span>

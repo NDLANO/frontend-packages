@@ -7,9 +7,9 @@
  */
 
 import { Tabs } from "@ark-ui/react/tabs";
-import { type RecipeVariantProps, cx, sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { cx, sva } from "@ndla/styled-system/css";
+import { createSlotRecipeContext, type StyledProps } from "@ndla/styled-system/jsx";
+import type { RecipeVariantProps } from "@ndla/styled-system/types";
 import type { RefAttributes } from "react";
 
 const tabsRecipe = sva({
@@ -215,7 +215,7 @@ const tabsRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(tabsRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(tabsRecipe);
 
 export type TabsVariantProps = NonNullable<RecipeVariantProps<typeof tabsRecipe>>;
 

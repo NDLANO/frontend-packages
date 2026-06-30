@@ -1,15 +1,12 @@
-import { createElement, forwardRef } from 'react'
-import { mergeCss } from '../css/css.js';
-import { splitProps } from '../helpers.js';
-import { getGridStyle } from '../patterns/grid.js';
-import { styled } from './factory.js';
+import { createElement, forwardRef } from 'react';
+import { splitProps } from '../helpers';
+import { gridRaw } from '../patterns/grid';
+import { styled } from './factory';
+import { mergeCss } from '../css/css';
 
 export const Grid = /* @__PURE__ */ forwardRef(function Grid(props, ref) {
-  const [patternProps, restProps] = splitProps(props, ["gap","columnGap","rowGap","columns","minChildWidth"])
-
-const styleProps = getGridStyle(patternProps)
-const cssProps = { css: mergeCss(styleProps, props.css) }
-const mergedProps = { ref, ...restProps, ...cssProps }
-
-return createElement(styled.div, mergedProps)
-  })
+  const [patternProps, restProps] = splitProps(props, ["columnGap","columns","gap","minChildWidth","rowGap"])
+  const styleProps = gridRaw(patternProps)
+  const mergedProps = { ref, ...restProps, css: mergeCss(styleProps, props.css) }
+  return createElement(styled["div"], mergedProps)
+})

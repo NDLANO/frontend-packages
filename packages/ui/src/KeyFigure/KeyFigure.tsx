@@ -9,7 +9,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Image } from "@ndla/primitives";
 import { sva } from "@ndla/styled-system/css";
-import { createStyleContext } from "@ndla/styled-system/jsx";
+import { createSlotRecipeContext } from "@ndla/styled-system/jsx";
 import parse from "html-react-parser";
 
 const keyFigureRecipe = sva({
@@ -41,7 +41,7 @@ const keyFigureRecipe = sva({
   },
 });
 
-const { withProvider, withContext } = createStyleContext(keyFigureRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(keyFigureRecipe);
 
 export const KeyFigureRoot = withProvider(ark.div, "root", {
   baseComponent: true,

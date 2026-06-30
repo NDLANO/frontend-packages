@@ -7,8 +7,7 @@
  */
 
 import { type HTMLArkProps, ark } from "@ark-ui/react/factory";
-import { styled } from "@ndla/styled-system/jsx";
-import type { StyledProps } from "@ndla/styled-system/types";
+import { styled, type StyledProps } from "@ndla/styled-system/jsx";
 
 export interface TableProps extends HTMLArkProps<"table">, StyledProps {}
 

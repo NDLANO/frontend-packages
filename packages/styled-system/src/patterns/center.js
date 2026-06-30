@@ -1,21 +1,21 @@
-import { getPatternStyles, patternFns } from '../helpers.js';
-import { css } from '../css/index.js';
+import { getPatternStyles, patternFns } from './runtime';
+import { css } from '../css/index';
 
-const centerConfig = {
-transform(props) {
-  const { inline, ...rest } = props;
-  return {
-    display: inline ? "inline-flex" : "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    ...rest
-  };
+const centerConfig = {transform(props) {
+	const { inline, ...rest } = props;
+	return {
+		display: inline ? "inline-flex" : "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		...rest
+	};
 }}
 
-export const getCenterStyle = (styles = {}) => {
-  const _styles = getPatternStyles(centerConfig, styles)
-  return centerConfig.transform(_styles, patternFns)
+export function centerRaw(styles) {
+  const s = getPatternStyles(centerConfig, styles || {})
+  return centerConfig.transform(s, patternFns)
 }
 
-export const center = (styles) => css(getCenterStyle(styles))
-center.raw = getCenterStyle
+export const center = /* @__PURE__ */ Object.assign(function center(styles = {}) {
+  return css(centerRaw(styles))
+}, { raw: centerRaw })

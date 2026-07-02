@@ -22,10 +22,17 @@ const isRenderableRelatedContent = (node: DOMNode) => {
     return false;
   }
 
-  const data = JSON.parse(node.attribs["data-json"]) as RelatedContentMetaData;
-  return (
-    data.status === "success" && ((!!data.embedData.articleId && !!data.data) || typeof data.embedData.url === "string")
-  );
+  try {
+    const data = JSON.parse(node.attribs["data-json"]) as RelatedContentMetaData;
+
+    if (data.status !== "success") {
+      return false;
+    }
+
+    return (!!data.embedData.articleId && !!data.data) || !!data.embedData.url?.trim();
+  } catch {
+    return false;
+  }
 };
 
 export const divPlugin: PluginType = (node, opts) => {

@@ -7,9 +7,26 @@
  */
 
 import { FramedContent } from "@ndla/primitives";
+import type { RelatedContentMetaData } from "@ndla/types-embed";
 import { FileListEmbed, RelatedArticleList, Grid, type GridType, GridItem } from "@ndla/ui";
 import { domToReact, attributesToProps, Element, type DOMNode } from "html-react-parser";
 import { type PluginType } from "./types";
+
+const isRenderableRelatedContent = (node: DOMNode) => {
+  if (
+    node.type !== "tag" ||
+    node.name !== "ndlaembed" ||
+    node.attribs["data-resource"] !== "related-content" ||
+    !node.attribs["data-json"]
+  ) {
+    return false;
+  }
+
+  const data = JSON.parse(node.attribs["data-json"]) as RelatedContentMetaData;
+  return (
+    data.status === "success" && ((!!data.embedData.articleId && !!data.data) || typeof data.embedData.url === "string")
+  );
+};
 
 export const divPlugin: PluginType = (node, opts) => {
   if (node.attribs["data-type"] === "framed-content" || node.attribs.class === "c-bodybox") {
@@ -22,11 +39,16 @@ export const divPlugin: PluginType = (node, opts) => {
   }
   if (node.attribs["data-type"] === "related-content" && node.children.length) {
     const props = attributesToProps(node.attribs);
+    const relatedContent = (node.children as DOMNode[]).filter(isRenderableRelatedContent);
+
+    if (!relatedContent.length) {
+      return null;
+    }
 
     return (
       <RelatedArticleList {...props}>
         {/* @ts-expect-error - This works, the types just won't match entirely */}
-        {domToReact(node.children, opts)}
+        {domToReact(relatedContent, opts)}
       </RelatedArticleList>
     );
   }

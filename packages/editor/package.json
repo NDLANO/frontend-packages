@@ -5,9 +5,8 @@
   "description": "Slate editor plugins for NDLA",
   "license": "GPL-3.0",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "sideEffects": false,
   "scripts": {
@@ -27,12 +26,7 @@
     "ndla"
   ],
   "author": "ndla@knowit.no",
-  "files": [
-    "lib",
-    "src",
-    "es",
-    "types"
-  ],
+  "files": ["dist", "src"],
   "dependencies": {
     "escape-html": "^1.0.3",
     "he": "^1.2.0",

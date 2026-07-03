@@ -7,7 +7,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/lib/*.js", "{projectRoot}/es/*.js"],
+      "outputs": ["{projectRoot}/dist/**/*.mjs", "{projectRoot}/dist/**/*.mjs.map"],
       "cache": true
     },
     "prepublish": {
@@ -18,7 +18,7 @@
         "{projectRoot}/*",
         "{projectRoot}/src/**/*"
       ],
-      "outputs": ["{projectRoot}/lib/*.d.ts", "{projectRoot}/dist/*.css", "{projectRoot}/dist/*"],
+      "outputs": ["{projectRoot}/dist/**/.d.ts"],
       "cache": true
     },
     "dev": {

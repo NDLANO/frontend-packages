@@ -5,9 +5,8 @@
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "scripts": {
     "build": "tsdown",
@@ -25,10 +24,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
-    "lib",
-    "es",
-    "types"
+    "dist"
   ],
   "dependencies": {
     "@ndla/icons": "workspace:^",

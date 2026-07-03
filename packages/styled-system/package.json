@@ -23,38 +23,27 @@
     "@pandacss/dev": "^1.10.0"
   },
   "files": [
-    "*"
+    "dist"
   ],
   "exports": {
     "./css": {
-      "types": "./lib/css/index.d.ts",
-      "require": "./lib/css/index.js",
-      "import": "./es/css/index.mjs"
+      "types": "./dist/css/index.d.ts",
+      "import": "./dist/css/index.mjs"
     },
     "./tokens": {
-      "types": "./lib/tokens/index.d.ts",
-      "require": "./lib/tokens/index.js",
-      "import": "./es/tokens/index.mjs"
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.mjs"
     },
     "./types": {
-      "types": "./lib/types/index.d.ts",
-      "require": "./lib/types/index.js",
-      "import": "./es/types/index.mjs"
+      "types": "./dist/types/index.d.ts"
     },
     "./patterns": {
-      "types": "./lib/patterns/index.d.ts",
-      "require": "./lib/patterns/index.js",
-      "import": "./es/patterns/index.mjs"
-    },
-    "./recipes": {
-      "types": "./lib/recipes/index.d.ts",
-      "require": "./lib/recipes/index.js",
-      "import": "./es/recipes/index.mjs"
+      "types": "./dist/patterns/index.d.ts",
+      "import": "./dist/patterns/index.mjs"
     },
     "./jsx": {
-      "types": "./lib/jsx/index.d.ts",
-      "require": "./lib/jsx/index.js",
-      "import": "./es/jsx/index.mjs"
+      "types": "./dist/jsx/index.d.ts",
+      "import": "./dist/jsx/index.mjs"
     }
   }
 }

@@ -5,9 +5,8 @@
   "description": "Panda preset for NDLA.",
   "license": "GPL-3.0",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "import": "./es/index.mjs",
-    "require": "./lib/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs"
   },
   "sideEffects": false,
   "scripts": {
@@ -30,9 +29,7 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "dist",
-    "es",
-    "lib"
+    "dist"
   ],
   "dependencies": {
     "@ndla/core": "workspace:^",
